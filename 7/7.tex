@@ -1,0 +1,706 @@
+% ===================== PREAMBLE START (Aesthetic, pdfLaTeX, RU, no shell-escape) =========
+\documentclass[12pt,a4paper]{article}
+
+% Поиск/копирование кириллицы из PDF
+\usepackage{cmap}
+\usepackage{amsmath,amssymb,amsfonts,mathtools}
+
+% Язык и кодировки
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage[russian]{babel}
+
+% Поля, типографика, абзацы
+\usepackage[a4paper,margin=2.2cm]{geometry}
+\usepackage{microtype}
+\usepackage{indentfirst}
+\setlength{\parindent}{1.25em}
+\setlength{\parskip}{0.25em}
+\raggedbottom
+
+% Цветовая тема
+\usepackage[table]{xcolor}
+\definecolor{Accent}{HTML}{1F6FEB}     % основной акцент
+\definecolor{AccentDark}{HTML}{0B5394} % тёмный акцент
+\definecolor{AccentLight}{HTML}{E8F0FE}% светлый акцент (фон)
+\definecolor{CodeBg}{HTML}{F6F8FA}     % фон для кода
+\definecolor{Link}{HTML}{1F6FEB}       % ссылки
+
+% Гиперссылки и умные ссылки
+\usepackage[unicode]{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=Link, citecolor=Link, urlcolor=Link,
+  pdfauthor={Evgeny Sokolov},
+  pdftitle={Архитектура Компьютера и Операционные Системы: Лекция 2}
+}
+\usepackage[nameinlink,capitalise]{cleveref}
+\urlstyle{same}
+
+% Заголовки разделов
+\usepackage{titlesec}
+\titleformat{\section}{\large\bfseries\sffamily\color{Accent}}{\thesection}{1em}{}
+\titleformat{\subsection}{\bfseries\sffamily\color{AccentDark}}{\thesubsection}{0.75em}{}
+\titleformat{\subsubsection}{\bfseries}{\thesubsubsection}{0.6em}{}
+\titlespacing*{\section}{0pt}{1.0ex plus 0.5ex}{0.6ex}
+\titlespacing*{\subsection}{0pt}{0.9ex plus 0.4ex}{0.5ex}
+\titlespacing*{\subsubsection}{0pt}{0.8ex plus 0.3ex}{0.4ex}
+
+% Шапки/футеры
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+% Макросы метаданных (переопределяйте в документе/LLM)
+\newcommand{\CourseName}{Архитектура Компьютера и Операционные Системы}
+\newcommand{\LectureNo}{2}
+\newcommand{\LectureTitle}{Адресация, стек и вызов функций}
+\newcommand{\LectureDate}{07.11.2025}
+\newcommand{\Lecturer}{Evgeny Sokolov}
+\fancyhead[L]{\small\sffamily \CourseName}
+\fancyhead[C]{\small\sffamily \LectureTitle}
+\fancyhead[R]{\small\sffamily Лекция \LectureNo}
+\fancyfoot[C]{\small\sffamily \thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\makeatletter
+\renewcommand{\headrule}{\hbox to\headwidth{\color{Accent}\leaders\hrule height \headrulewidth\hfill}}
+\makeatother
+
+% Подписи к рисункам/таблицам
+\usepackage[font=small,labelfont=bf,labelsep=endash]{caption}
+\usepackage{subcaption}
+
+% Математика и единицы
+\numberwithin{equation}{section}
+\usepackage{siunitx}
+\sisetup{detect-all=true}
+
+% Таблицы и списки
+\usepackage{booktabs}
+\usepackage{array,tabularx}
+\usepackage{enumitem}
+\setlist{itemsep=2pt,topsep=4pt,leftmargin=*,labelsep=0.5em}
+
+% Графика и TikZ
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,shapes.geometric,calc,fit}
+\tikzset{
+  box/.style={draw=Accent, rounded corners, fill=AccentLight, minimum width=2.6cm, minimum height=1cm, align=center},
+  arrow/.style={-{Stealth[length=3mm,width=2mm]}, line width=0.5pt, draw=AccentDark},
+  membox/.style={draw=black, minimum height=0.6cm, minimum width=1.5cm, fill=gray!10},
+  fpbox/.style={membox, fill=red!20},
+  retbox/.style={membox, fill=blue!15}
+}
+
+% Красивые боксы "методички"
+\usepackage[most]{tcolorbox}
+\tcbset{enhanced, breakable, boxrule=0.6pt, fonttitle=\bfseries\sffamily}
+\newtcolorbox{definitionbox}[1]{
+  title={Определение: #1},
+  colback=AccentLight, colframe=Accent, coltitle=black, arc=2pt, left=8pt, right=8pt, top=6pt, bottom=6pt
+}
+\newtcolorbox{notebox}{
+  title={Примечание},
+  colback=yellow!8, colframe=yellow!40!black, arc=2pt, left=8pt, right=8pt, top=6pt, bottom=6pt
+}
+\newtcolorbox{summarybox}{
+  title={Итоги раздела},
+  colback=green!6, colframe=green!50!black, arc=2pt, left=8pt, right=8pt, top=6pt, bottom=6pt
+}
+
+% Листинги (без minted, без shell-escape)
+\usepackage{listings}
+\usepackage{listingsutf8}
+\lstdefinestyle{elegant}{
+  inputencoding=utf8,
+  basicstyle=\ttfamily\small,
+  columns=fullflexible,
+  breaklines=true,
+  frame=single,
+  framerule=0.4pt,
+  rulecolor=\color{black!20},
+  backgroundcolor=\color{CodeBg},
+  xleftmargin=0.5em,
+  framexleftmargin=0.5em,
+  tabsize=2,
+  showstringspaces=false,
+  keywordstyle=\bfseries\color{AccentDark},
+  commentstyle=\itshape\color{black!55},
+  stringstyle=\color{orange!60!black},
+  numbers=left,
+  numberstyle=\tiny\color{black!50},
+  numbersep=8pt,
+  captionpos=b,
+  upquote=true,
+  escapechar=§
+}
+\lstset{style=elegant}
+% Важно: русские комментарии в listings под pdfLaTeX могут отображаться некорректно — при проблемах используйте ASCII.
+% Макросы удобства
+\newcommand{\TODO}[1]{\textcolor{red!70!black}{[TODO: #1]}}
+\newcommand{\figref}[1]{рис.~\ref{#1}}
+\newcommand{\secref}[1]{раздел~\ref{#1}}
+\newcommand{\eqnref}[1]{(\ref{#1})}
+\newcommand{\lstref}[1]{листинг~\ref{#1}}
+
+% Глоссарий и сокращения (требует makeglossaries/makeindex на этапе сборки)
+\usepackage[acronym,nonumberlist,toc]{glossaries}
+\makeglossaries
+\setacronymstyle{long-short}
+\renewcommand*{\glossaryname}{Глоссарий}
+\renewcommand*{\acronymname}{Список сокращений}
+\setglossarystyle{altlist}
+
+% Пример заранее объявленных терминов (LLM может дополнять этот блок)
+\newacronym[sort=asm]{asm}{Ассемблер}{низкоуровневый язык программирования, близкий к машинному коду}
+\newacronym[sort=rip]{rip}{RIP}{Instruction Pointer, регистр-указатель на следующую инструкцию}
+\newacronym[sort=rsp]{rsp}{RSP}{Stack Pointer, регистр-указатель на вершину стека}
+\newacronym[sort=rbp]{rbp}{RBP}{Base Pointer, регистр-указатель на базу стекового фрейма}
+\newacronym[sort=lea]{lea}{LEA}{Load Effective Address, инструкция загрузки вычисленного адреса}
+\newacronym[sort=pic]{pic}{PIC}{Position-Independent Code, позиционно-независимый код}
+\newacronym[sort=tco]{tco}{TCO}{Tail Call Optimization, оптимизация хвостового вызова}
+\newacronym[sort=cf]{cf}{CF}{Carry Flag, флаг переноса (беззнаковое переполнение)}
+\newacronym[sort=zf]{zf}{ZF}{Zero Flag, флаг нуля (результат равен нулю)}
+\newacronym[sort=sf]{sf}{SF}{Sign Flag, флаг знака (установлен старший бит результата)}
+\newacronym[sort=of]{of}{OF}{Overflow Flag, флаг переполнения (знаковое переполнение)}
+
+\newglossaryentry{rodata}{
+  name={.rodata},
+  sort={rodata},
+  description={Секция данных, доступных только для чтения (read-only data).}
+}
+\newglossaryentry{data}{
+  name={.data},
+  sort={data},
+  description={Секция инициализированных данных, доступных для чтения и записи.}
+}
+\newglossaryentry{bss}{
+  name={.bss},
+  sort={bss},
+  description={Секция неинициализированных (обнуляемых) данных, доступных для чтения и записи.}
+}
+\newglossaryentry{relocation}{
+  name={релокация},
+  sort={relokatsiya},
+  description={Процесс (или запись) исправления адресов символов на этапе компоновки (линковки).}
+}
+\newglossaryentry{intel-syntax}{
+  name={Intel-синтаксис},
+  sort={intel},
+  description={Синтаксис ассемблера, где приемник (destination) указывается перед источником (source).}
+}
+\newglossaryentry{att-syntax}{
+  name={AT\&T-синтаксис},
+  sort={att},
+  description={Синтаксис ассемблера (GNU), где источник (source) указывается перед приемником (destination).}
+}
+\newglossaryentry{stack-frame}{
+  name={стековый фрейм},
+  sort={stack-frame},
+  description={Область на стеке, выделяемая для одной функции (локальные переменные, адрес возврата и т.д.).}
+}
+
+
+% Титульные данные
+\title{\sffamily Курс: \textit{\CourseName}\\\large Лекция \LectureNo: \LectureTitle}
+\author{\sffamily Лектор: \Lecturer}
+\date{\sffamily Дата: \LectureDate}
+% ===================== PREAMBLE END =======================================================
+
+\begin{document}
+\maketitle
+\tableofcontents
+\clearpage
+
+\section{Адресация памяти в x86-64}
+Продолжаем изучение \gls{asm}. Ключевой темой является работа с памятью. В прошлый раз мы установили, что для обращения к памяти (разыменования) используется синтаксис с квадратными скобками.
+
+\subsection{Синтаксис Scale-Index-Base (SIB)}
+Общий синтаксис адресации памяти в 64-битном режиме (в \gls{intel-syntax}) выглядит следующим образом:
+$$ [rbase + rindex \times scale + displacement] $$
+где:
+\begin{itemize}
+    \item \texttt{rbase} — базовый регистр.
+    \item \texttt{rindex} — регистр-индекс.
+    \item \texttt{scale} — множитель (масштаб) для индекса. Допустимые значения: $scale \in \{1, 2, 4, 8\}$.
+    \item \texttt{displacement} — константное смещение (сдвиг).
+\end{itemize}
+
+Этот синтаксис был разработан для удобной работы с массивами и структурами. Например, \texttt{rbase} может хранить адрес начала массива, \texttt{rindex} — индекс элемента, \texttt{scale} — размер одного элемента (e.g., 8 байт для \texttt{uint64\_t}), а \texttt{displacement} — сдвиг до нужного поля внутри структуры.
+
+\begin{lstlisting}[language={[x86masm]Assembler}, caption={Примеры SIB-адресации}, label={lst:sib_examples}]
+; * (uint64_t*)(rax + 8 * rdx) = rcx
+; (rax = base, rdx = index, 8 = scale)
+mov [rax + rdx * 8], rcx
+
+; * (uint64_t*)(rbx + rbp + 32) = rax
+; (rbx = base, rbp = index, 1 = scale (default), 32 = displacement)
+mov [rbx + rbp + 32], rax
+\end{lstlisting}
+
+\subsection{Указание размера операнда}
+В \lstref{lst:sib_examples} ассемблер мог угадать размер операции (64 бита) по размеру регистра \texttt{rcx} или \texttt{rax}. Однако при работе с константами возникает неоднозначность.
+
+\begin{lstlisting}[language={[x86masm]Assembler}, caption={Неоднозначность размера}, label={lst:ambiguity}]
+mov [rax], 0 ; OSHIBKA: Neizvesten razmer: 1, 2, 4 ili 8 bayt?
+\end{lstlisting}
+
+Компилятор ассемблера не знает, какой размер данных вы намереваетесь записать. Для явного указания размера используются специальные директивы:
+\begin{itemize}
+    \item \texttt{BYTE PTR} — 8 бит (1 байт).
+    \item \texttt{WORD PTR} — 16 бит (2 байта).
+    \item \texttt{DWORD PTR} — 32 бита (4 байта).
+    \item \texttt{QWORD PTR} — 64 бита (8 байт).
+\end{itemize}
+
+\begin{lstlisting}[language={[x86masm]Assembler}, caption={Явное указание размера (32 бита)}, label={lst:dword_ptr}]
+; * (uint32_t*)rax = 0
+mov DWORD PTR [rax], 0
+\end{lstlisting}
+
+\begin{summarybox}
+\begin{itemize}
+    \item Адресация SIB ($[base + index \times scale + disp]$) — основной механизм доступа к памяти.
+    \item $scale$ ограничен значениями $\{1, 2, 4, 8\}$.
+    \item При неоднозначности (например, при записи константы) размер операции нужно указывать явно (e.g., \texttt{DWORD PTR}).
+\end{itemize}
+\end{summarybox}
+
+\section{Инструкция LEA (Load Effective Address)}
+Инструкция \gls{lea} — один из самых полезных и часто используемых инструментов в \gls{asm}.
+
+\begin{definitionbox}{LEA (Load Effective Address)}
+Инструкция \texttt{lea} \textbf{вычисляет} адрес, используя синтаксис SIB, но \textbf{не разыменовывает} его. Вместо этого она записывает вычисленный адрес в регистр-приемник.
+\end{definitionbox}
+
+\begin{lstlisting}[language={[x86masm]Assembler}, caption={Сравнение MOV и LEA}, label={lst:mov_vs_lea}]
+; MOV: Prochitat' 8 bayt po adresu [rax] i polozhit' v rdx
+; rdx = * (uint64_t*)rax
+mov rdx, [rax]
+
+; LEA: Vychislit' adres (v etom sluchae prosto rax) i polozhit' v rdx
+; rdx = rax
+lea rdx, [rax]
+\end{lstlisting}
+
+Основное применение \gls{lea} — это вычисление адресов, но благодаря своей способности выполнять сложение и умножение (на 1, 2, 4, 8), она стала мощным инструментом для арифметических вычислений.
+
+\begin{lstlisting}[language={[x86masm]Assembler}, caption={LEA для вычисления адреса}, label={lst:lea_arithmetic}]
+; rdx = rax + 4 * rbx + 16
+lea rdx, [rax + rbx * 4 + 0x10]
+\end{lstlisting}
+
+\subsection{LEA как оптимизация компилятора}
+Компиляторы часто используют \gls{lea} для выполнения простых арифметических операций, так как \gls{lea} часто выполняется быстрее, чем инструкции умножения (такие как \texttt{imul}).
+Например, для компиляции функции \texttt{a * 3}:
+\begin{lstlisting}[language=C, caption={C++ код для умножения на 3}, label={lst:mul3_cpp}]
+uint64_t Mul3(uint64_t a) {
+    return a * 3;
+}
+\end{lstlisting}
+
+Компилятор (\texttt{g++ -O2}) сгенерирует следующий код (\lstref{lst:mul3_asm}), используя \gls{lea} вместо умножения. В Linux (System V AMD64 ABI) первый аргумент (\texttt{a}) передается в регистре \texttt{rdi}, а возвращаемое значение — в \texttt{rax}.
+$$ a \times 3 = a \times (1 + 2) = a + a \times 2 $$
+Этот паттерн идеально ложится в SIB-адресацию: $[rdi + rdi \times 2]$.
+
+\begin{lstlisting}[language={[x86masm]Assembler}, caption={Результат компиляции Mul3 (objdump)}, label={lst:mul3_asm}]
+0000000000000000 <Mul3(unsigned long)>:
+   0: f3 0f 1e fa             endbr64            ; Zashchitnaya instruktsiya
+   4: 48 8d 04 7f             lea    rax,[rdi+rdi*2] ; rax = rdi + rdi * 2
+   8: c3                      ret
+\end{lstlisting}
+
+\begin{summarybox}
+\begin{itemize}
+    \item \texttt{lea} вычисляет адрес, но не читает память.
+    \item Это мощный инструмент для компактных арифметических вычислений, часто используемый компиляторами.
+\end{itemize}
+\end{summarybox}
+
+\section{Работа со стеком и локальными переменными}
+У процессора ограниченное количество регистров. При вызове функции (инструкция \texttt{call}) возникает проблема: как сохранить значения локальных переменных, если вызываемая функция может перезаписать ("испортить") регистры?
+
+\subsection{Проблема: Callee-clobbered регистры}
+Согласно соглашениям о вызовах (Calling Conventions), большинство регистров (как \texttt{rax}, \texttt{rdx}, \texttt{rdi} и т.д.) являются \textit{callee-clobbered} — вызываемая функция (\textit{callee}) имеет право изменять их без восстановления.
+
+Рассмотрим код, где мы храним \texttt{a} и \texttt{b} в регистрах:
+\begin{lstlisting}[language={[x86masm]Assembler}, caption={Проблема сохранения локальных переменных}, label={lst:local_vars_problem}]
+mov rax, 1   ; a = 1
+mov rdx, 2   ; b = 2
+call f       ; f()
+add rax, rdx ; ??? (rdx mozhet byt' isporchen funktsiey f)
+ret
+\end{lstlisting}
+После возврата из \texttt{f}, мы не можем полагаться на то, что в \texttt{rdx} все еще лежит 2.
+
+\subsection{Решение 1: Сохранение на стеке}
+Основной механизм для сохранения локальных переменных — это \gls{stack-frame}. Мы можем "зарезервировать" место на стеке, сдвинув указатель стека \gls{rsp}, и сохранить туда наши значения.
+
+\begin{lstlisting}[language={[x86masm]Assembler}, caption={Использование стека для локальных переменных}, label={lst:local_vars_stack}]
+mov rax, 1           ; a = 1
+mov rdx, 2           ; b = 2
+
+sub rsp, 16          ; Rezerviruem 16 bayt na steke
+mov [rsp + 8], rdx   ; Sokhranyaem b (po smeshcheniyu 8)
+mov [rsp], rax       ; Sokhranyaem a (na vershinu steka)
+
+call f               ; f()
+
+; VOSSTANOVLENIE
+mov rax, [rsp]       ; Vosstanavlivaem a
+mov rdx, [rsp + 8]   ; Vosstanavlivaem b
+add rsp, 16          ; Osvobozhdaem mesto na steke
+
+add rax, rdx         ; Teper' bezopasno
+ret
+\end{lstlisting}
+
+\subsection{Решение 2: Callee-saved регистры}
+Некоторые регистры, напротив, являются \textit{callee-saved} (например, \texttt{rbx}, \texttt{rbp}). Это означает, что если вызываемая функция хочет их использовать, она \textit{обязана} сохранить их значение (обычно на стеке) и восстановить перед выходом (\texttt{ret}).
+Компиляторы используют это для оптимизации.
+
+Рассмотрим C++ код:
+\begin{lstlisting}[language=C, caption={C++ код Sum()}, label={lst:sum_cpp}]
+uint64_t f();
+uint64_t g();
+uint64_t Sum() {
+    return f() + g();
+}
+\end{lstlisting}
+Чтобы вычислить \texttt{g()}, нужно сначала вызвать \texttt{f()}, но результат \texttt{f()} (который вернется в \texttt{rax}) будет перезаписан результатом \texttt{g()}.
+Компилятор (\lstref{lst:sum_asm}) решает эту проблему, сохраняя результат \texttt{f()} в callee-saved регистре \texttt{rbx}.
+
+\begin{lstlisting}[language={[x86masm]Assembler}, caption={Дизассемблированный код Sum() (g++ -O2)}, label={lst:sum_asm}]
+<Sum()>:
+   push   rbx            ; 1. Sokhranit' staroe znachenie rbx
+   call   <f()>          ; 2. Vyzvat' f(). Rezul'tat v rax
+   mov    rbx, rax       ; 3. Spryatat' rezul'tat f() v rbx
+   call   <g()>          ; 4. Vyzvat' g(). Rezul'tat v rax
+   add    rax, rbx       ; 5. rax = rax + rbx (rezul'tat g() + rezul'tat f())
+   pop    rbx            ; 6. Vosstanovit' staroe znachenie rbx
+   ret
+\end{lstlisting}
+
+\begin{notebox}
+В \lstref{lst:sum_asm} мы видим \texttt{call} на адрес вроде \texttt{<Sum()+0xa>} (в реальном \texttt{objdump} это часто \texttt{call 0}). Это \gls{relocation}. На этапе компиляции адрес функции \texttt{f} еще неизвестен. Компилятор оставляет "дырку" (часто 0), а компоновщик (linker) на финальном этапе сборки подставляет в это место реальный адрес функции.
+\end{notebox}
+
+\section{Фреймовые указатели (Frame Pointers)}
+В \lstref{lst:local_vars_stack} мы вручную двигали \gls{rsp} (\texttt{sub rsp, 16}) и обращались к переменным относительно \gls{rsp} (\texttt{[rsp + 8]}). Это работает, но усложняет отладку и трассировку стека.
+
+\begin{definitionbox}{Фреймовый указатель (RBP)}
+\gls{rbp} (Base Pointer) — это регистр, который по соглашению используется для хранения адреса \textit{начала} текущего \gls{stack-frame}. Это обеспечивает "стабильный" якорь для доступа к локальным переменным, даже если \gls{rsp} постоянно движется (например, при \texttt{push}/\texttt{pop}).
+\end{definitionbox}
+
+Для использования \gls{rbp} применяется стандартный \textbf{пролог} (в начале функции) и \textbf{эпилог} (в конце).
+
+\begin{lstlisting}[language={[x86masm]Assembler}, caption={Стандартный пролог и эпилог функции}, label={lst:rbp_prolog}]
+f:
+    ; --- PROLOG ---
+    push rbp         ; 1. Sokhranit' RBP predydushchey funktsii na stek
+    mov  rbp, rsp    ; 2. Zapomnit' tekushchuyu vershinu steka kak bazu (nachalo)
+                     ;    nashego freyma. Teper' RBP stabilen.
+    
+    ; --- Telo funktsii ---
+    ; Mesto dlya lokal'nykh peremennykh vydelyaetsya zdes'
+    ; sub rsp, 32    ; (vydelit' 32 bayta)
+    ; Dostup k peremennym idet otnositel'no RBP:
+    ; mov [rbp - 8], rax
+    
+    ; --- EPILOG ---
+    mov  rsp, rbp    ; 1. Osvobodit' vse lokal'nye peremennye, vernuv rsp k baze
+    pop  rbp         ; 2. Vosstanovit' RBP predydushchey funktsii
+    ret
+\end{lstlisting}
+
+\subsection{Структура стека с RBP}
+Когда каждая функция использует этот пролог, значения \gls{rbp} на стеке образуют \textbf{односвязный список}. Каждое сохраненное значение \gls{rbp} указывает на \gls{rbp} предыдущей (вызвавшей) функции.
+
+\begin{figure}[h]
+  \centering
+  \begin{tikzpicture}[node distance=0mm]
+    \node[membox] (frame3_locals) {Локальные переменные F3};
+    \node[fpbox, right=of frame3_locals] (frame3_fp) {RBP(F2)};
+    \node[retbox, right=of frame3_fp] (frame3_ret) {Адрес возврата в F2};
+    \node[membox, right=of frame3_ret] (frame2_locals) {...};
+    \node[fpbox, right=of frame2_locals] (frame2_fp) {RBP(F1)};
+    \node[retbox, right=of frame2_fp] (frame2_ret) {Адрес возврата в F1};
+    \node[membox, right=of frame2_ret] (frame1_locals) {...};
+    
+    % RBP Pointers
+    \draw[arrow, thick] (frame3_fp.south) .. controls +(south:1cm) and +(south:1cm) .. (frame2_fp.south);
+    
+    % RSP/RBP labels
+    \node[above=0.3cm of frame3_locals] (rsp_label) {\small \texttt{RSP} (растет влево)};
+    \draw[arrow, thick, AccentDark] (rsp_label) -- (frame3_locals.north);
+    
+    \node[above=0.8cm of frame3_fp] (rbp_label) {\small \texttt{RBP} (текущий)};
+    \draw[arrow, thick, AccentDark] (rbp_label) -- (frame3_fp.north);
+    
+    \node[below=1.6cm of frame3_ret] (list_label) {\small Связный список фреймов};
+  \end{tikzpicture}
+  \caption{Структура стека при использовании фреймовых указателей (\texttt{RBP})}
+  \label{fig:frame_pointers}
+\end{figure}
+
+Это позволяет отладчикам и другим инструментам легко "разматывать" стек (stack unwinding) и строить трассировку вызовов (stack trace).
+
+\begin{notebox}
+Использование \gls{rbp} как фреймового указателя — это \textit{соглашение}. Оно требует одного лишнего регистра и нескольких инструкций в прологе/эпилоге.
+Современные компиляторы (\texttt{g++ -O2}) по умолчанию часто отключают фреймовые указатели (\texttt{-fomit-frame-pointer}) для оптимизации. Вместо этого они генерируют специальную отладочную информацию (DWARF), которая позволяет разматывать стек, зная только \gls{rip}.
+\end{notebox}
+
+\section{Секции данных в ассемблере}
+Ассемблерный код и данные не хранятся вперемешку. Они организованы в секции, которые сообщают операционной системе, как их следует загружать в память.
+
+\begin{itemize}
+    \item \textbf{.text} — Код (инструкции). [cite: 216] Загружается с правами \texttt{Read-Only} и \texttt{Execute} (RX). [cite: 499]
+    \item \gls{rodata} — Данные только для чтения. [cite: 217] (e.g., строковые литералы, константы). Загружаются с правами \texttt{Read-Only} (R). [cite: 501]
+    \item \gls{data} — Инициализированные данные. [cite: 217] (e.g., глобальные переменные с начальным значением). Загружаются с правами \texttt{Read-Write} (RW). [cite: 505]
+    \item \gls{bss} — Неинициализированные данные. [cite: 218] (e.g., \texttt{int x;}). Эти данные \textit{не хранятся} в исполняемом файле, файл хранит только их размер. При загрузке ОС выделяет память и \textit{обнуляет} ее. [cite: 507]
+\end{itemize}
+
+\subsection{Директивы ассемблера для данных}
+Мы можем явно указать, в какую секцию помещать байты, с помощью директив.
+
+\begin{lstlisting}[language={[x86masm]Assembler}, caption={Пример секции .rodata (строка "Hello!")}, label={lst:rodata_example}]
+; Ob"yavlyaem sektsiyu .rodata
+.section .rodata
+
+.global s1  ; Delaem metku s1 vidimoy dlya linkera
+s1:
+    .byte 0x48, 0x65 ; 'H', 'e'
+    .ascii "ll"      ; 'l', 'l'
+    .asciz "o!"      ; 'o', '!', i nulevoy bayt (terminator)
+\end{lstlisting}
+В \lstref{lst:rodata_example} метка \texttt{s1} указывает на строку \texttt{"Hello!\textbackslash0"}.
+
+Другие директивы для инициализации данных в секциях \gls{data} или \gls{rodata}:
+\begin{lstlisting}[language={[x86masm]Assembler}, caption={Директивы .data и .bss}, label={lst:data_bss}]
+.data
+    val1: .byte 0x10                   ; 1 bayt
+    val2: .short 0x1234                ; 2 bayta
+    val3: .long 0x12345678             ; 4 bayta
+    val4: .quad 0x1122334455667788     ; 8 bayt
+    
+    ; Zapolnit' 32 bayta znacheniem 0xFF
+    buffer: .space 32, 0xFF
+
+.bss
+    ; Zarezervirovat' 1024 bayta (budut obnuleny)
+    big_buffer: .skip 1024
+\end{lstlisting}
+
+\begin{notebox}
+\textbf{Все есть байты.} В конечном счете, ассемблер просто транслирует мнемоники инструкций в байты в секции \texttt{.text}. Можно написать функцию, используя только директиву \texttt{.byte}, если знать машинные коды.
+\end{notebox}
+
+\section{Флаги процессора и условные переходы}
+Большинство арифметических и логических инструкций (ALU) изменяют специальный регистр флагов (EFLAGS/RFLAGS). Условные переходы (\texttt{jcc}) анализируют эти флаги.
+
+Основные флаги, интересующие нас:
+\begin{itemize}
+    \item \gls{cf} (Carry Flag) — Установлен, если произошел перенос/заём из старшего бита (индикатор \textbf{беззнакового} переполнения). [cite: 313, 545]
+    \item \gls{zf} (Zero Flag) — Установлен, если результат операции равен нулю. [cite: 314, 546]
+    \item \gls{sf} (Sign Flag) — Установлен, если старший бит результата равен 1 (индикатор \textbf{отрицательного} числа в знаковой интерпретации). [cite: 315, 546]
+    \item \gls{of} (Overflow Flag) — Установлен, если произошло \textbf{знаковое} переполнение (e.g., $100 + 100$ дало отрицательный результат в 8-битном знаковом представлении). [cite: 316, 547]
+\end{itemize}
+
+\begin{lstlisting}[language=bash, caption={Примеры установки флагов (4-битная арифметика)}, label={lst:flags_example}]
+# 0b0001 + 0b0111 = 0b1000 (1 + 7 = 8)
+# Rezul'tat (8) imeet bit znaka (SF=1).
+# Proizoshlo znakovoe perepolnenie (1+7 != -8) (OF=1).
+# Flagi: SF, OF
+
+# 0b1001 + 0b0111 = 0b0000 (s perenosom) (9 + 7 = 16)
+# Rezul'tat 0 (ZF=1).
+# Proizoshlo bezznakovoe perepolnenie (CF=1).
+# Flagi: ZF, CF
+
+# 0b0010 - 0b0011 = 0b1111 (s zaemom) (2 - 3 = -1)
+# Rezul'tat -1 (SF=1).
+# Proizoshel bezznakovyy zaem (CF=1).
+# Flagi: CF, SF
+\end{lstlisting}
+
+Инструкция \texttt{cmp} (compare) — это, по сути, \texttt{sub}, которая не сохраняет результат, а только устанавливает флаги.
+
+После \texttt{cmp} (или \texttt{add}, \texttt{sub}, \texttt{and}...) используются инструкции условного перехода \texttt{jcc}:
+\begin{itemize}
+    \item \texttt{je} / \texttt{jz} — Jump if Equal / Jump if Zero (проверяет \gls{zf}=1).
+    \item \texttt{jne} / \texttt{jnz} — Jump if Not Equal / Jump if Not Zero (\gls{zf}=0).
+    \item \texttt{js} — Jump if Sign (\gls{sf}=1).
+    \item \texttt{ja} — Jump if Above (беззнаковое "больше") (проверяет \gls{cf}=0 и \gls{zf}=0).
+    \item \texttt{jg} — Jump if Greater (знаковое "больше") (проверяет \gls{sf}=\gls{of} и \gls{zf}=0).
+\end{itemize}
+
+\section{Взаимодействие ассемблера и C/C++}
+Можно смешивать код на C/C++ и \gls{asm} в одной программе, если соблюдать соглашения.
+
+\subsection{Позиционно-независимый код (PIC) и RIP-адресация}
+При попытке получить доступ к глобальной переменной (e.g., из C++ или секции \gls{data}) возникает проблема:
+\begin{lstlisting}[language={[x86masm]Assembler}, caption={Наивный доступ к глобальной переменной}, label={lst:bad_global}]
+.data
+my_var: .quad 123
+
+.text
+; OSHIBKA: Ne budet rabotat' v sovremennykh OS
+mov rax, [my_var]
+\end{lstlisting}
+Проблема в том, что в современных ОС из соображений безопасности (ASLR — Address Space Layout Randomization) программа загружается в память по \textit{случайному} адресу. [cite: 587-589] Мы не знаем абсолютный адрес \texttt{my\_var} на этапе компиляции. [cite: 583]
+
+Решение — \gls{pic} (\gls{pic}). Код не должен полагаться на абсолютные адреса, а только на \textit{относительные}.
+
+\begin{definitionbox}{RIP-относительная адресация}
+В 64-битном режиме можно адресовать данные \textit{относительно указателя инструкции} (\gls{rip}). Так как \gls{rip} всегда указывает на следующую исполняемую инструкцию, а \texttt{my\_var} находится на \textit{неизменном} расстоянии от этой инструкции (весь код и данные сдвигаются вместе), этот сдвиг остается константой. [cite: 593-594]
+\end{definitionbox}
+
+\begin{lstlisting}[language={[x86masm]Assembler}, caption={Корректный доступ к глобальной переменной (PIC)}, label={lst:pic_global}]
+extern c ; Ob"yavlyaem metku 'c' vneshney (opredelena v C++)
+
+.text
+GetC:
+    ; Korrektno: zagruzit' znachenie po adresu [rip + smeshchenie do 'c']
+    mov rax, [c+rip]
+    ret
+\end{lstlisting}
+
+\subsection{Оптимизация хвостового вызова (TCO)}
+Рассмотрим функцию-обертку, которая просто вызывает другую функцию и немедленно возвращает ее результат.
+\begin{lstlisting}[language={[x86masm]Assembler}, caption={Неоптимальный хвостовой вызов}, label={lst:bad_tail_call}]
+MyFuncWrapper:
+    ; ... podgotovka argumentov ...
+    call OtherFunc ; 1. Zapisat' adres vozvrata (A) na stek
+    ret              ; 2. Snyat' adres (A) so steka i pereyti na nego
+\end{lstlisting}
+Здесь \texttt{call} кладет на стек адрес возврата (в \texttt{MyFuncWrapper}), а \texttt{ret} немедленно его снимает. Это лишняя работа.
+
+\gls{tco} (\gls{tco}) — это замена \texttt{call} + \texttt{ret} на один \texttt{jmp}.
+\begin{lstlisting}[language={[x86masm]Assembler}, caption={Оптимизированный хвостовой вызов (TCO)}, label={lst:good_tail_call}]
+MyFuncWrapper:
+    ; ... podgotovka argumentov ...
+    jmp OtherFunc ; Peredat' upravlenie OtherFunc
+\end{lstlisting}
+Когда \texttt{OtherFunc} выполнит \texttt{ret}, она вернет управление не в \texttt{MyFuncWrapper}, а тому, кто вызвал \texttt{MyFuncWrapper} (т.к. его адрес возврата все еще лежит на вершине стека). [cite: 608] Компиляторы (\texttt{-O1} и выше) активно применяют эту оптимизацию.
+
+\subsection{Вызов функций C (scanf / printf)}
+Пользоваться вводом-выводом C++ (\texttt{iostream}) из \gls{asm} почти невозможно из-за name mangling (искажения имен). [cite: 638-640]
+Гораздо проще использовать функции из C \texttt{<stdio.h>}, такие как \texttt{scanf} и \texttt{printf}. [cite: 643]
+
+При этом нужно строго соблюдать два правила соглашения о вызовах (ABI):
+\textbf{1. Аргументы:} Первые 6 целочисленных аргументов/указателей передаются через регистры (именно в таком порядке):
+\texttt{RDI}, \texttt{RSI}, \texttt{RDX}, \texttt{RCX}, \texttt{R8}, \texttt{R9}.
+
+\textbf{2. Выравнивание стека:} Перед инструкцией \texttt{call} \gls{rsp} (указатель стека) \textbf{должен быть выровнен по 16-байтной границе}. [cite: 602]
+
+\begin{notebox}
+\textbf{Ловушка выравнивания:} Когда нашу функцию \texttt{main} вызывают, \gls{rsp} уже выровнен по 16-байтной границе. \textit{Но} инструкция \texttt{call} (которая вызвала \texttt{main}) помещает на стек 8-байтный адрес возврата. [cite: 603]
+Это означает, что \textit{внутри} нашей функции \texttt{main} \gls{rsp} \textbf{не выровнен} (он равен $16N + 8$).
+Перед тем, как мы сами сделаем \texttt{call} (например, \texttt{call scanf}), мы должны "скомпенсировать" эти 8 байт, например, \texttt{sub rsp, 8}. [cite: 604, 733]
+\end{notebox}
+
+\begin{lstlisting}[language={[x86masm]Assembler}, caption={Пример: чтение числа (n) и вывод (n+1) на Assembler}, label={lst:scanf_printf}]
+.intel_syntax noprefix
+
+.section .rodata
+; Formatnaya stroka dlya chteniya ("%lld")
+read_fmt: .asciz "%lld"
+; Formatnaya stroka dlya zapisi ("%lld\n")
+write_fmt: .asciz "%lld\n"
+
+.text
+.global main
+main:
+    ; --- PROLOG ---
+    ; Vydelyaem 8 bayt dlya peremennoy 'n'
+    ; I zaoctno VYRAVNIVAEM stek (rsp byl 16N+8, stal 16N)
+    sub rsp, 8
+    
+    ; --- Vyzov scanf ---
+    ; scanf("%lld", &n);
+    ; &n teper' = adres [rsp]
+    
+    ; Arg 1 (RDI): Adres formatnoy stroki
+    lea rdi, [read_fmt+rip]
+    ; Arg 2 (RSI): Adres, kuda pisat' rezul'tat (vershina steka)
+    mov rsi, rsp
+    
+    ; Dlya variadic funktsiy (kak scanf) nuzhno obnulit' rax
+    xor rax, rax
+    call scanf
+    
+    ; --- Vyzov printf ---
+    ; printf("%lld\n", n + 1);
+    ; Zagruzhaem 'n' so steka
+    mov rsi, [rsp]
+    ; Uvelichivaem
+    add rsi, 1
+    
+    ; Arg 1 (RDI): Adres formatnoy stroki
+    lea rdi, [write_fmt+rip]
+    ; Arg 2 (RSI): Znachenie (n + 1)
+    ; (uzhe v rsi)
+    
+    xor rax, rax
+    call printf
+
+    ; --- EPILOG ---
+    ; "return 0;"
+    ; Po ABI, my vozvrashchaem znachenie iz main cherez RAX
+    xor rax, rax
+    
+    ; Osvobozhdaem mesto na steke
+    add rsp, 8
+    ret
+\end{lstlisting}
+
+\begin{summarybox}
+\begin{itemize}
+    \item Для доступа к глобальным данным используйте \textbf{RIP-относительную адресацию} (\texttt{[my\_var+rip]}).
+    \item \texttt{call func} + \texttt{ret} можно заменить на \texttt{jmp func} (TCO).
+    \item При вызове функций C (e.g., \texttt{printf}) стек \textbf{должен быть выровнен по 16 байт} \textit{до} инструкции \texttt{call}.
+    \item Аргументы передаются через \texttt{RDI}, \texttt{RSI}, \texttt{RDX}, \texttt{RCX}...
+    \item \texttt{scanf} ожидает \textit{указатель} (адрес) в \texttt{RSI}, \texttt{printf} — \textit{значение}.
+    \item Возвращаемое значение из \texttt{main} — это то, что лежит в \texttt{RAX} в момент \texttt{ret}.
+\end{itemize}
+\end{summarybox}
+
+\section{Синтаксисы ассемблера: Intel vs. AT\&T}
+Существует два доминирующих синтаксиса x86 \gls{asm}. 
+\begin{itemize}
+    \item \textbf{\gls{intel-syntax}:} (Используется в этой лекции, в документации Intel, Microsoft).
+    \item \textbf{\gls{att-syntax} (GNU):} (Используется по умолчанию в \texttt{objdump} и \texttt{gcc}). [cite: 688]
+\end{itemize}
+
+Ключевые отличия: 
+\begin{table}[h]
+  \centering
+  \caption{Сравнение синтаксисов Intel и AT\&T (GNU)}
+  \label{tab:syntax}
+  \begin{tabular}{@{}lll@{}}
+    \toprule
+    Аспект & \textbf{Intel (мы)} & \textbf{AT\&T (GNU)} \\
+    \midrule
+    Порядок операндов & \texttt{mov rax, rbx} & \texttt{mov \%rbx, \%rax} \\
+     & (Приемник, Источник) & (Источник, Приемник) \\
+    Регистры & \texttt{rax}, \texttt{rbx} & \texttt{\%rax}, \texttt{\%rbx} (с префиксом \texttt{\%}) \\
+    Константы & \texttt{16}, \texttt{0x10} & \texttt{\$16}, \texttt{\$0x10} (с префиксом \texttt{\$}) \\
+    Адресация & \texttt{[rax + rbx * 4 + 32]} & \texttt{32(\%rax, \%rbx, 4)} \\
+    Размер & \texttt{DWORD PTR [rax]} & \texttt{movl \$0, (\%rax)} (суффикс \texttt{l/q/w/b}) \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\begin{notebox}
+Полезно уметь читать оба синтаксиса. В \texttt{objdump} можно включить \gls{intel-syntax} с помощью флага \texttt{-M intel}.
+\end{notebox}
+
+% Печать глоссариев (требует: pdflatex -> makeglossaries -> pdflatex -> pdflatex)
+\clearpage
+\printglossaries
+
+% Финальный QC-комментарий (пример для LLM)
+% QC: Эстетика — единая цветовая тема, аккуратные заголовки, шапки/футеры, боксы и листинги.
+%     Совместимо с pdfLaTeX; minted не используется; TikZ готов; глоссарий печатается.
+%     Все окружения закрыты, метки уникальны.
+\end{document}

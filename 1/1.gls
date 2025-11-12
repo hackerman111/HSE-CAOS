@@ -1,0 +1,19 @@
+\glossarysection[\glossarytoctitle]{\glossarytitle}\glossarypreamble
+\begin{theglossary}\glossaryheader
+\glsgroupheading{E}\relax \glsresetentrylist %
+\glossentry{errno}{\glossaryentrynumbers{\relax 
+		\setentrycounter[]{page}\glsnumberformat{7\delimR 10}}}\glsgroupskip
+\glsgroupheading{F}\relax \glsresetentrylist %
+\glossentry{fd}{\glossaryentrynumbers{\relax 
+		\setentrycounter[]{page}\glsnumberformat{6\delimN 7}\delimN 
+		\setentrycounter[]{page}\glsnumberformat{9\delimR 11}}}\glsgroupskip
+\glsgroupheading{S}\relax \glsresetentrylist %
+\glossentry{syscall}{\glossaryentrynumbers{\relax 
+		\setentrycounter[]{page}\glsnumberformat{6}}}%
+\glossentry{stderr}{\glossaryentrynumbers{\relax 
+		\setentrycounter[]{page}\glsnumberformat{7}}}%
+\glossentry{stdin}{\glossaryentrynumbers{\relax 
+		\setentrycounter[]{page}\glsnumberformat{7}}}%
+\glossentry{stdout}{\glossaryentrynumbers{\relax 
+		\setentrycounter[]{page}\glsnumberformat{7}}}%
+\end{theglossary}\glossarypostamble

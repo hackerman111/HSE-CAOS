@@ -1,0 +1,17 @@
+\babel@toc {russian}{}\relax 
+\contentsline {section}{\numberline {1}Дополнительные инструменты для работы с файловой системой}{2}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Новые флаги для системного вызова \texttt {open}}{2}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Получение метаданных о файлах: семейство \texttt {stat}}{2}{subsection.1.2}%
+\contentsline {section}{\numberline {2}Управление памятью: виртуальная адресация}{3}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Проблема модели линейной памяти}{3}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Виртуальная и физическая память}{4}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Страничная организация памяти}{4}{subsection.2.3}%
+\contentsline {section}{\numberline {3}Системные вызовы для управления памятью: \texttt {mmap}}{5}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Аргументы и флаги \texttt {mmap}}{6}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Примеры использования \texttt {mmap}}{6}{subsection.3.2}%
+\contentsline {subsubsection}{\numberline {3.2.1}Анонимное отображение}{6}{subsubsection.3.2.1}%
+\contentsline {subsubsection}{\numberline {3.2.2}Отображение файла в память}{7}{subsubsection.3.2.2}%
+\contentsline {subsection}{\numberline {3.3}Освобождение памяти: \texttt {munmap}}{7}{subsection.3.3}%
+\contentsline {section}{\numberline {4}Аргументы командной строки и переменные окружения}{8}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Аргументы командной строки}{8}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Переменные окружения}{8}{subsection.4.2}%

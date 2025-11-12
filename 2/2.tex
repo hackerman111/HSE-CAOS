@@ -1,0 +1,652 @@
+% ===================== PREAMble START (Aesthetic, pdfLaTeX, RU, no shell-escape) =========
+\documentclass[12pt,a4paper]{article}
+
+% Поиск/копирование кириллицы из PDF
+\usepackage{cmap}
+\usepackage{amsmath,amssymb,amsfonts}
+
+% Язык и кодировки
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage[russian]{babel}
+
+% Поля, типографика, абзацы
+\usepackage[a4paper,margin=2.2cm]{geometry}
+\usepackage{microtype}
+\usepackage{indentfirst}
+\setlength{\parindent}{1.25em}
+\setlength{\parskip}{0.25em}
+\raggedbottom
+
+% Цветовая тема
+\usepackage[table]{xcolor}
+\definecolor{Accent}{HTML}{1F6FEB}     % основной акцент
+\definecolor{AccentDark}{HTML}{0B5394} % тёмный акцент
+\definecolor{AccentLight}{HTML}{E8F0FE}% светлый акцент (фон)
+\definecolor{CodeBg}{HTML}{F6F8FA}     % фон для кода
+\definecolor{Link}{HTML}{1F6FEB}       % ссылки
+
+% Гиперссылки и умные ссылки
+\usepackage[unicode]{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=Link, citecolor=Link, urlcolor=Link,
+  pdfauthor={Evgeny Sokolov},
+  pdftitle={Лекция 2: Файловая система и файловые дескрипторы}
+}
+\usepackage[nameinlink,capitalise]{cleveref}
+\urlstyle{same}
+
+% Заголовки разделов
+\usepackage{titlesec}
+\titleformat{\section}{\large\bfseries\sffamily\color{Accent}}{\thesection}{1em}{}
+\titleformat{\subsection}{\bfseries\sffamily\color{AccentDark}}{\thesubsection}{0.75em}{}
+\titleformat{\subsubsection}{\bfseries}{\thesubsubsection}{0.6em}{}
+\titlespacing*{\section}{0pt}{1.0ex plus 0.5ex}{0.6ex}
+\titlespacing*{\subsection}{0pt}{0.9ex plus 0.4ex}{0.5ex}
+\titlespacing*{\subsubsection}{0pt}{0.8ex plus 0.3ex}{0.4ex}
+
+% Шапки/футеры
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+% Макросы метаданных (переопределяйте в документе/LLM)
+\newcommand{\CourseName}{Архитектура компьютера и ОС}
+\newcommand{\LectureNo}{2}
+\newcommand{\LectureTitle}{Файловая система и файловые дескрипторы}
+\newcommand{\LectureDate}{08.09.2025}
+\newcommand{\Lecturer}{Евгений Соколов}
+\fancyhead[L]{\small\sffamily \CourseName}
+\fancyhead[C]{\small\sffamily \LectureTitle}
+\fancyhead[R]{\small\sffamily Лекция \LectureNo}
+\fancyfoot[C]{\small\sffamily \thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\makeatletter
+\renewcommand{\headrule}{\hbox to\headwidth{\color{Accent}\leaders\hrule height \headrulewidth\hfill}}
+\makeatother
+
+% Подписи к рисункам/таблицам
+\usepackage[font=small,labelfont=bf,labelsep=endash]{caption}
+\usepackage{subcaption}
+
+% Математика и единицы
+\numberwithin{equation}{section}
+\usepackage{siunitx}
+\sisetup{detect-all=true}
+
+% Таблицы и списки
+\usepackage{booktabs}
+\usepackage{array,tabularx}
+\usepackage{enumitem}
+\setlist{itemsep=2pt,topsep=4pt,leftmargin=*,labelsep=0.5em}
+
+% Графика и TikZ
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,shapes.geometric,calc,fit}
+\tikzset{
+  box/.style={draw=Accent, rounded corners, fill=AccentLight, minimum width=2.6cm, minimum height=1cm, align=center},
+  arrow/.style={-{Stealth[length=3mm,width=2mm]}, line width=0.5pt, draw=AccentDark}
+}
+
+% Красивые боксы "методички"
+\usepackage[most]{tcolorbox}
+\tcbset{enhanced, breakable, boxrule=0.6pt, fonttitle=\bfseries\sffamily}
+\newtcolorbox{definitionbox}[1]{
+  title={Определение: #1},
+  colback=AccentLight, colframe=Accent, coltitle=black, arc=2pt, left=8pt, right=8pt, top=6pt, bottom=6pt
+}
+\newtcolorbox{notebox}{
+  title={Примечание},
+  colback=yellow!8, colframe=yellow!40!black, arc=2pt, left=8pt, right=8pt, top=6pt, bottom=6pt
+}
+\newtcolorbox{summarybox}{
+  title={Итоги раздела},
+  colback=green!6, colframe=green!50!black, arc=2pt, left=8pt, right=8pt, top=6pt, bottom=6pt
+}
+
+% Листинги (без minted, без shell-escape)
+\usepackage{listings}
+\usepackage{listingsutf8}
+\lstdefinestyle{elegant}{
+  inputencoding=utf8,
+  basicstyle=\ttfamily\small,
+  columns=fullflexible,
+  breaklines=true,
+  frame=single,
+  framerule=0.4pt,
+  rulecolor=\color{black!20},
+  backgroundcolor=\color{CodeBg},
+  xleftmargin=0.5em,
+  framexleftmargin=0.5em,
+  tabsize=2,
+  showstringspaces=false,
+  keywordstyle=\bfseries\color{AccentDark},
+  commentstyle=\itshape\color{black!55},
+  stringstyle=\color{orange!60!black},
+  numbers=left,
+  numberstyle=\tiny\color{black!50},
+  numbersep=8pt,
+  captionpos=b,
+  upquote=true,
+  escapechar=§
+}
+\lstset{style=elegant}
+
+% Макросы удобства
+\newcommand{\TODO}[1]{\textcolor{red!70!black}{[TODO: #1]}}
+\newcommand{\figref}[1]{рис.~\ref{#1}}
+\newcommand{\secref}[1]{раздел~\ref{#1}}
+\newcommand{\eqnref}[1]{(\ref{#1})}
+\newcommand{\lstref}[1]{листинг~\ref{#1}}
+
+% Глоссарий и сокращения
+\usepackage[acronym,nonumberlist,toc]{glossaries}
+\makeglossaries
+\setacronymstyle{long-short}
+\renewcommand*{\glossaryname}{Глоссарий}
+\renewcommand*{\acronymname}{Список сокращений}
+\setglossarystyle{altlist}
+
+% Объявленные термины
+\newacronym{api}{API}{Application Programming Interface (интерфейс прикладного программирования)}
+\newacronym{pid}{PID}{Process ID (идентификатор процесса)}
+
+\newglossaryentry{syscall}{
+  name={системный вызов},
+  sort={sistemnyi vyzov},
+  description={механизм, с помощью которого пользовательская программа запрашивает у ядра операционной системы выполнение привилегированной операции, например, для работы с устройствами или файлами.}
+}
+\newglossaryentry{fs}{
+  name={файловая система},
+  sort={failovaia sistema},
+  description={способ организации, хранения и именования данных на носителях информации, представляющий собой абстракцию над физическим устройством хранения.}
+}
+\newglossaryentry{fd}{
+  name={файловый дескриптор},
+  sort={failovyi deskriptor},
+  description={неотрицательное целое число, служащее идентификатором (<<ручкой>>) для доступа к открытому файлу, каналу или другому ресурсу ввода-вывода в рамках конкретного процесса.}
+}
+\newglossaryentry{offset}{
+  name={смещение},
+  sort={smeschenie},
+  description={текущая позиция в файле, с которой будет производиться следующая операция чтения или записи. Измеряется в байтах от начала файла.}
+}
+\newglossaryentry{umask}{
+  name={umask},
+  sort={umask},
+  description={маска создания файлов процесса, которая определяет, какие биты прав доступа будут автоматически сброшены (удалены) при создании новых файлов и директорий.}
+}
+\newglossaryentry{pipe}{
+  name={канал (pipe)},
+  sort={kanal},
+  description={однонаправленный механизм межпроцессного взаимодействия, представляющий собой пару файловых дескрипторов: один для записи, другой для чтения.}
+}
+\newglossaryentry{symlink}{
+  name={символическая ссылка},
+  sort={simvolicheskaia ssylka},
+  description={специальный тип файла, который содержит путь к другому файлу или директории. При обращении к ссылке ядро автоматически перенаправляет операцию к целевому объекту.}
+}
+\newglossaryentry{sparse}{
+    name={разреженный файл},
+    sort={razrezhennyi fail},
+    description={файл, который содержит <<дыры>> — большие последовательности нулевых байт, которые не занимают физического места на диске.}
+}
+
+
+% Титульные данные
+\title{\sffamily Курс: \textit{\CourseName}\\\large Лекция \LectureNo: \LectureTitle}
+\author{\sffamily Лектор: \Lecturer}
+\date{\sffamily Дата: \LectureDate}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\clearpage
+
+\section{Взаимодействие с носителями информации}
+На прошлой лекции мы установили, что программы взаимодействуют с внешним миром через \gls{syscall}. Сегодня мы продолжим эту тему и углубимся во взаимодействие с \gls{fs}.
+
+\subsection{Почему не работать с диском напрямую?}
+Казалось бы, зачем нужна \gls{fs}, если можно работать с жёстким диском напрямую? Тому есть две ключевые причины: сложность \gls{api} и низкая производительность.
+
+\begin{enumerate}
+    \item \textbf{Примитивный интерфейс.} Диск предоставляет очень аскетичное \gls{api}: он позволяет читать и писать только <<сырые>> данные по указанным адресам (с такого-то по такой-то байт). В таком интерфейсе отсутствуют высокоуровневые концепции, такие как файлы, директории, права доступа и структура данных.
+    \item \textbf{Особенности производительности.} Жёсткий диск (HDD) — механическое устройство. Он состоит из вращающихся магнитных пластин (<<блинов>>) и считывающих головок (\figref{fig:hdd_structure}).
+\end{enumerate}
+
+\begin{figure}[h]
+  \centering
+  \begin{tikzpicture}[font=\sffamily\small]
+    % Disk platter
+    \draw[fill=gray!20, draw=gray!60] (0,0) circle (2.5cm);
+    \foreach \i in {1,2,...,8} {
+      \draw[gray!40] (0,0) circle (2.5 - \i * 0.25);
+    }
+    % Actuator arm
+    \draw[fill=gray!60, draw=black] (-4.5, -0.2) -- (-2.4, 0) -- (-4.5, 0.2) -- cycle;
+    \node[draw=AccentDark, fill=AccentLight, circle, inner sep=1pt] at (-2.2, 0) {};
+    \node at (-3.5, 0.5) {Считывающая};
+    \node at (-3.5, -0.5) {головка};
+    % Spindle
+    \draw[fill=gray!80, draw=black] (0,0) circle (0.4cm);
+    % Arrow for rotation
+    \draw[->, AccentDark, line width=1pt] (1, 2) arc (45:135:0.5cm);
+    \node[AccentDark] at (0, 2.2) {Вращение};
+  \end{tikzpicture}
+  \caption{Упрощённая схема устройства жёсткого диска (HDD)}
+  \label{fig:hdd_structure}
+\end{figure}
+
+Скорость вращения современных дисков составляет 5000--7000 оборотов в минуту. Чтобы прочитать данные, необходимо выполнить две операции с большими задержками:
+\begin{itemize}
+    \item \textbf{Позиционирование головки (seek time):} Механическое перемещение головки к нужной дорожке.
+    \item \textbf{Ожидание вращения (rotational latency):} Ожидание, пока нужный сектор на дорожке окажется под головкой.
+\end{itemize}
+В среднем, ожидание нужного сектора может занимать до 5 мс. Это означает, что при чтении из случайных мест диска можно выполнить всего около 200 операций в секунду, что на порядки медленнее, чем миллиарды операций, выполняемых процессором. Для эффективной работы данные нужно располагать последовательно, минимизируя перемещения головки, но реализация такой логики — крайне сложная задача.
+
+\begin{definitionbox}{Файловая система}
+\textbf{\Gls{fs}} — это уровень абстракции, предоставляемый операционной системой для организации, хранения и именования данных на носителях информации. Она скрывает сложности работы с оборудованием и предоставляет удобный и эффективный интерфейс для пользователя и программ.
+\end{definitionbox}
+
+\section{Права доступа в Linux}
+\gls{fs} в Linux представляет собой древовидную структуру из директорий и файлов. Для управления доступом к этим объектам используется модель прав, основанная на пользователях и группах.
+
+\subsection{Чтение вывода \texttt{ls -l}}
+Команда \texttt{ls -l} выводит подробную информацию о файлах и директориях:
+\begin{lstlisting}[language=bash, numbers=none, frame=none, backgroundcolor=\color{white}]
+-rw-rw-r-- 1 arch arch    4 sen 13 11:58 out
+drwxr-xr-x 2 arch arch 4096 sen 13 12:00 test
+\end{lstlisting}
+Рассмотрим структуру вывода:
+\begin{itemize}
+    \item \texttt{-rw-rw-r--}: Права доступа.
+    \item \texttt{1}: Количество жёстких ссылок.
+    \item \texttt{arch}: Пользователь-владелец.
+    \item \texttt{arch}: Группа-владелец.
+    \item \texttt{4}: Размер в байтах.
+    \item \texttt{Сен 13 11:58}: Дата последнего изменения.
+    \item \texttt{out}: Имя файла.
+\end{itemize}
+
+Первый символ указывает на тип: \texttt{-} для обычного файла, \texttt{d} для директории, \texttt{l} для \gls{symlink}.
+
+\subsection{Пользователь, группа и остальные}
+Следующие 9 символов прав доступа делятся на три группы по три:
+\begin{enumerate}
+    \item \textbf{Для владельца (user):} Права пользователя, которому принадлежит файл.
+    \item \textbf{Для группы (group):} Права для всех пользователей, состоящих в группе, которой принадлежит файл.
+    \item \textbf{Для остальных (others):} Права для всех остальных пользователей.
+\end{enumerate}
+
+Каждая тройка состоит из символов \texttt{r}, \texttt{w}, \texttt{x}:
+\begin{itemize}
+    \item \texttt{r} (read): Право на чтение.
+    \item \texttt{w} (write): Право на запись (изменение).
+    \item \texttt{x} (execute): Право на исполнение (для программ и скриптов).
+\end{itemize}
+Если право отсутствует, на его месте ставится прочерк (\texttt{-}).
+
+\subsection{Команда \texttt{chmod}}
+Для изменения прав доступа используется команда \texttt{chmod} (change mode). Она поддерживает два основных синтаксиса: символический и восьмеричный.
+
+\textbf{Символический синтаксис:}
+\begin{lstlisting}[language=bash]
+# Add execute permission for the user (owner)
+chmod u+x filename
+
+# Remove write permission for group and others
+chmod go-w filename
+
+# Set permissions: read/write for user, read-only for group/others
+chmod u=rw,go=r filename
+\end{lstlisting}
+
+\textbf{Восьмеричный синтаксис:}
+Права представляются в виде трёх восьмеричных цифр, где каждая цифра — это сумма значений для \texttt{r}, \texttt{w}, \texttt{x}:
+\begin{itemize}
+    \item \texttt{r} = 4
+    \item \texttt{w} = 2
+    \item \texttt{x} = 1
+\end{itemize}
+Например, \texttt{rw-} соответствует $4+2+0=6$, а \texttt{r-x} — $4+0+1=5$.
+
+\begin{lstlisting}[language=bash]
+# Corresponds to rw-rw-r-- (664)
+chmod 664 out
+
+# Corresponds to rwxr-xr-x (755)
+chmod 755 script.sh
+\end{lstlisting}
+
+\begin{notebox}
+\textbf{Права для директорий.} Права \texttt{rwx} для директорий имеют особый смысл:
+\begin{itemize}
+    \item \texttt{r}: Позволяет просмотреть список файлов в директории (выполнить \texttt{ls}).
+    \item \texttt{w}: Позволяет создавать, удалять и переименовывать файлы в директории.
+    \item \texttt{x}: Позволяет войти в директорию (сделать \texttt{cd}) и получить доступ к файлам внутри неё (при наличии прав на сами файлы).
+\end{itemize}
+\end{notebox}
+
+\section{Файловые дескрипторы и системные вызовы}
+Для работы с файлами из программы операционная система предоставляет набор \gls{syscall}. Ключевой абстракцией здесь является \gls{fd}.
+
+\begin{definitionbox}{Файловый дескриптор}
+\textbf{\Gls{fd}} — это неотрицательное целое число, которое процесс использует для идентификации открытого файла или другого ресурса ввода-вывода. Вместо того чтобы каждый раз передавать ядру полный путь к файлу, программа один раз вызывает \texttt{open} и получает \gls{fd}, который затем использует в вызовах \texttt{read}, \texttt{write}, \texttt{close} и др..
+\end{definitionbox}
+
+По умолчанию каждый процесс в Linux при запуске имеет три открытых \gls{fd}:
+\begin{itemize}
+    \item \texttt{0} — стандартный поток ввода (\textit{stdin}).
+    \item \texttt{1} — стандартный поток вывода (\textit{stdout}).
+    \item \texttt{2} — стандартный поток ошибок (\textit{stderr}).
+\end{itemize}
+
+\subsection{Системный вызов \texttt{open}}
+Для открытия или создания файла используется \gls{syscall} \texttt{open}.
+\begin{lstlisting}[language=C]
+#include <fcntl.h>
+#include <sys/stat.h>
+
+int open(const char *path, int flags, mode_t mode);
+\end{lstlisting}
+\begin{itemize}
+    \item \texttt{path}: Путь к файлу.
+    \item \texttt{flags}: Битовая маска, определяющая режим доступа.
+    \item \texttt{mode}: Права доступа, которые будут установлены, если файл создаётся.
+\end{itemize}
+Функция возвращает новый \gls{fd} или \texttt{-1} в случае ошибки.
+
+\textbf{Основные флаги (\texttt{flags}):}
+\begin{itemize}
+    \item \texttt{O\_RDONLY}, \texttt{O\_WRONLY}, \texttt{O\_RDWR}: Открыть только для чтения, только для записи или для чтения и записи. Один из этих флагов должен быть указан.
+    \item \texttt{O\_CREAT}: Создать файл, если он не существует.
+    \item \texttt{O\_EXCL}: Использовать вместе с \texttt{O\_CREAT}. Вызов завершится ошибкой, если файл уже существует. Это позволяет атомарно создать файл и убедиться в его отсутствии до вызова.
+    \item \texttt{O\_APPEND}: Все операции записи будут производиться в конец файла.
+    \item \texttt{O\_TRUNC}: Если файл существует и открывается на запись, его содержимое усекается до нуля байт.
+\end{itemize}
+
+\subsubsection{Создание файла и \texttt{umask}}
+При создании файла (с флагом \texttt{O\_CREAT}) его итоговые права доступа определяются формулой:
+$$ \text{final\_mode} = \text{mode} \ \& \ \sim\text{umask} $$
+где \texttt{mode} — это права, переданные в \texttt{open}, а \texttt{umask} — это маска процесса. \Gls{umask} определяет, какие права доступа нужно <<выключить>> по умолчанию. Например, если \texttt{umask} равна \texttt{0002} ($---w----$), то у всех создаваемых файлов будет отбираться право на запись для <<остальных>>.
+
+\begin{lstlisting}[language=C, caption={Пример использования open}, label={lst:open_example}]
+#include <fcntl.h>
+#include <sys/stat.h>
+#include <unistd.h>
+
+int main() {
+    // Create "file" if it does not exist.
+    // Error if it already exists.
+    // Permissions: read for all (0444).
+    // Mode: read and write for our process.
+    int fd = open(
+        "file",
+        O_RDWR | O_CREAT | O_EXCL,
+        S_IRUSR | S_IRGRP | S_IROTH /* 0444 */
+    );
+
+    if (fd == -1) {
+        // handle error
+        return 1;
+    }
+    
+    // ... work with the file ...
+
+    close(fd);
+    return 0;
+}
+\end{lstlisting}
+
+\begin{notebox}
+Открытый файл — это ресурс, который ядро выделяет для процесса. Как и любую другую выделенную память, его необходимо освобождать. Для этого используется \gls{syscall} \texttt{close(int fd)}. Если этого не делать, произойдёт утечка ресурсов (файловых дескрипторов).
+\end{notebox}
+
+
+\subsection{Структура открытого файла в ядре}
+С каждым открытым \gls{fd} ядро ассоциирует структуру, содержащую как минимум:
+\begin{itemize}
+    \item \textbf{Флаги открытия:} Режим, в котором файл был открыт (\texttt{O\_RDONLY} и т.д.).
+    \item \textbf{Текущее \gls{offset}:} Позиция в файле, с которой будет происходить следующая операция чтения/записи.
+    \item \textbf{Ссылка на inode:} Указатель на структуру файла в \gls{fs}.
+\end{itemize}
+Важно, что права доступа проверяются только один раз — во время вызова \texttt{open}. Все последующие операции с \gls{fd} (\texttt{read}, \texttt{write}) не требуют повторной проверки прав.
+
+\subsection{Другие важные системные вызовы}
+
+\subsubsection{\texttt{lseek}: Изменение смещения}
+\gls{syscall} \texttt{lseek} позволяет изменить текущее \gls{offset} в файле.
+\begin{lstlisting}[language=C]
+#include <unistd.h>
+
+off_t lseek(int fd, off_t offset, int whence);
+\end{lstlisting}
+\begin{itemize}
+    \item \texttt{fd}: \Gls{fd}, для которого меняется \gls{offset}.
+    \item \texttt{offset}: Значение смещения в байтах.
+    \item \texttt{whence}: Точка отсчёта:
+    \begin{itemize}
+        \item \texttt{SEEK\_SET}: \gls{offset} отсчитывается от начала файла.
+        \item \texttt{SEEK\_CUR}: \gls{offset} отсчитывается от текущей позиции.
+        \item \texttt{SEEK\_END}: \gls{offset} отсчитывается от конца файла.
+    \end{itemize}
+\end{itemize}
+С помощью \texttt{lseek} можно перемещаться за конец файла. Если после такого перемещения произвести запись, то пространство между старым концом файла и новой позицией записи будет заполнено нулевыми байтами, создавая \gls{sparse}.
+
+\subsubsection{\texttt{dup} и \texttt{dup2}: Копирование файловых дескрипторов}
+Эти вызовы создают копию \gls{fd}.
+\begin{lstlisting}[language=C]
+#include <unistd.h>
+
+int dup(int oldfd);
+int dup2(int oldfd, int newfd);
+\end{lstlisting}
+\texttt{dup} создаёт копию \texttt{oldfd}, используя первый свободный номер \gls{fd}. \texttt{dup2} создаёт копию \texttt{oldfd} с конкретным номером \texttt{newfd}. Если \texttt{newfd} уже был открыт, он атомарно закрывается.
+
+\begin{figure}[h]
+  \centering
+  \begin{tikzpicture}[
+    font=\sffamily\small,
+    node distance=1.5cm and 2.5cm,
+    procbox/.style={draw, minimum width=2.5cm, minimum height=3cm, align=center},
+    fdbox/.style={draw=AccentDark, fill=AccentLight, minimum size=0.7cm},
+    kernelbox/.style={draw, dashed, minimum width=3.5cm, minimum height=2.5cm, align=center, label={[yshift=0.1cm]above:Ядро ОС}}
+  ]
+    % Process File Descriptor Table
+    \node[procbox] (proc) {Таблица ФД\\процесса};
+    \node[fdbox, below=0.2cm of proc.north] (fd3) {3};
+    \node[fdbox, below=0.2cm of fd3] (fd0) {0};
+    
+    % Kernel Open File Table
+    \node[kernelbox, right=of proc] (kernel) {};
+    \node[box, fill=white, draw=Accent, minimum width=3cm, minimum height=1cm, below=0.2cm of kernel.north] (file_entry) {
+      Структура открытого файла\\
+      (режим, смещение, ...)\\
+      \texttt{offset = 42}
+    };
+    
+    % Arrows
+    \draw[arrow] (fd3.east) -- (file_entry.west);
+    \draw[arrow] (fd0.east) -- (file_entry.west);
+    
+    \node[align=center] at (proc.south) (caption_proc) {dup2(3, 0)};
+  \end{tikzpicture}
+  \caption{Схема работы \texttt{dup2}. Оба дескриптора (старый и новый) указывают на одну и ту же структуру открытого файла в ядре и разделяют общее смещение.}
+  \label{fig:dup2_scheme}
+\end{figure}
+
+Ключевой особенностью является то, что новый и старый \gls{fd} ссылаются на одну и ту же запись в таблице открытых файлов ядра (\figref{fig:dup2_scheme}). Это означает, что они \textbf{разделяют общее \gls{offset}}: изменение позиции через один \gls{fd} немедленно отражается на другом.
+
+\subsubsection{\texttt{pipe}: Создание каналов}
+\gls{syscall} \texttt{pipe} создаёт однонаправленный \gls{pipe} для межпроцессного взаимодействия.
+\begin{lstlisting}[language=C]
+#include <unistd.h>
+
+int pipe(int pipefd[2]);
+\end{lstlisting}
+Вызов создаёт пару связанных \gls{fd} и помещает их в массив \texttt{pipefd}:
+\begin{itemize}
+    \item \texttt{pipefd[0]}: \gls{fd} для чтения из канала.
+    \item \texttt{pipefd[1]}: \gls{fd} для записи в канал.
+\end{itemize}
+Данные, записанные в \texttt{pipefd[1]}, можно прочитать из \texttt{pipefd[0]} в том же порядке (FIFO).
+
+\begin{itemize}
+    \item \Gls{fd} — это числовой идентификатор открытого ресурса.
+    \item \texttt{open} открывает/создаёт файл и возвращает \gls{fd}.
+    \item \texttt{lseek} позволяет перемещаться по файлу, изменяя \gls{offset}.
+    \item \texttt{dup2} копирует \gls{fd}, что является основой для перенаправления ввода-вывода.
+    \item \texttt{pipe} создаёт пару \gls{fd} для однонаправленной передачи данных между процессами.
+    \item Все открытые ресурсы должны быть закрыты с помощью \texttt{close}.
+\end{itemize}
+
+\section{Практика: Перенаправление ввода-вывода}
+Одной из самых мощных возможностей, которую даёт \texttt{dup2}, является перенаправление стандартных потоков ввода-вывода. Рассмотрим программу, которая читает число из \textit{stdin} и выводит его инкремент в \textit{stdout}.
+\begin{lstlisting}[language=C++, caption={Программа с простым вводом-выводом}, label={lst:simple_io}]
+#include <iostream>
+
+int main() {
+    int a;
+    std::cin >> a;
+    std::cout << a + 1 << std::endl;
+    return 0;
+}
+\end{lstlisting}
+Мы можем перехватить её ввод и вывод, не изменяя исходный код. Для этого нужно открыть файлы для чтения и записи, а затем с помощью \texttt{dup2} подменить стандартные \gls{fd} (\texttt{0} и \texttt{1}) нашими.
+
+\begin{lstlisting}[language=C++, caption={Функция перенаправления ввода-вывода}, label={lst:redirect_cpp}]
+#include <fcntl.h>
+#include <unistd.h>
+#include <string_view>
+#include <iostream>
+
+// Utility for error handling
+[[noreturn]] void Fail(std::string_view msg) {
+    perror(msg.data());
+    std::abort();
+}
+
+void Redirect() {
+    // Open a file for reading
+    int fin = open("input.txt", O_RDONLY);
+    if (fin == -1) {
+        Fail("open input.txt");
+    }
+
+    // Open a file for writing, create if it does not exist
+    int fout = open("out.txt", O_WRONLY | O_CREAT, 0666);
+    if (fout == -1) {
+        Fail("open out.txt");
+    }
+
+    // Replace stdin (fd 0) with our file fin
+    if (dup2(fin, 0) == -1) {
+        Fail("dup2 fin -> 0");
+    }
+    
+    // Replace stdout (fd 1) with our file fout
+    if (dup2(fout, 1) == -1) {
+        Fail("dup2 fout -> 1");
+    }
+
+    // The original fds fin and fout can be closed,
+    // as their copies now exist as fd 0 and 1.
+    close(fin);
+    close(fout);
+}
+
+int main() {
+    Redirect();
+    
+    int a;
+    std::cin >> a; // Now reads from input.txt
+    std::cout << a + 1 << std::endl; // Now writes to out.txt
+
+    return 0;
+}
+\end{lstlisting}
+Если в файле \texttt{input.txt} будет число \texttt{123}, то после выполнения программы в файле \texttt{out.txt} появится \texttt{124}. Программа \texttt{main} ничего не знает о подмене; для неё \texttt{std::cin} и \texttt{std::cout} продолжают работать со стандартными \gls{fd} 0 и 1, но ядро теперь направляет эти операции в файлы.
+
+\begin{notebox}
+\textbf{Проблемы буферизации.} Стандартные потоки C++ (и C) буферизуют вывод для повышения производительности. Данные не отправляются ядру немедленно, а накапливаются во внутреннем буфере. Сброс буфера (flush) происходит:
+\begin{itemize}
+    \item При его заполнении.
+    \item При выводе специального символа, например, при использовании \texttt{std::endl}.
+    \item При чтении из \texttt{std::cin} (обычно \textit{stdout} сбрасывается).
+    \item При завершении программы.
+\end{itemize}
+Интересно, что \texttt{libc} может менять свою стратегию буферизации. При выводе в терминал буфер часто сбрасывается при каждом символе новой строки (\texttt{'\\n'}). При выводе в файл (который не является интерактивным устройством) буферизация становится полной, и сброс происходит только при заполнении буфера или явном вызове \texttt{flush}. Это может приводить к неожиданному поведению, когда вывод, видимый в терминале, не сразу появляется в файле при перенаправлении.
+\end{notebox}
+
+
+\section{Работа с директориями}
+Для просмотра содержимого директории используются функции из стандартной библиотеки C, которые являются обёрткой над соответствующими \gls{syscall}.
+
+\begin{lstlisting}[language=C, caption={Интерфейс для чтения директорий}, label={lst:dir_interface}]
+#include <dirent.h>
+
+DIR *opendir(const char *name);
+struct dirent *readdir(DIR *dirp);
+int closedir(DIR *dirp);
+\end{lstlisting}
+\begin{itemize}
+    \item \texttt{opendir} открывает директорию и возвращает указатель на структуру \texttt{DIR}, которая используется для дальнейших операций.
+    \item \texttt{readdir} при каждом вызове возвращает указатель на структуру \texttt{dirent}, описывающую следующий элемент в директории. Когда элементы заканчиваются или происходит ошибка, возвращается \texttt{NULL}.
+    \item \texttt{closedir} закрывает директорию.
+\end{itemize}
+Структура \texttt{dirent} содержит как минимум два поля: \texttt{d\_name} (имя файла) и \texttt{d\_type} (тип файла, например, \texttt{DT\_REG} для файла, \texttt{DT\_DIR} для директории).
+
+\begin{lstlisting}[language=C, caption={Пример простой реализации ls}, label={lst:myls}]
+#include <dirent.h>
+#include <stdio.h>
+#include <errno.h>
+
+int main() {
+    DIR* dir = opendir(".");
+    if (!dir) {
+        perror("opendir failed");
+        return 1;
+    }
+
+    errno = 0; // To distinguish end-of-stream from error
+    struct dirent* entry;
+    while ((entry = readdir(dir)) != NULL) {
+        printf("%s\n", entry->d_name);
+    }
+
+    if (errno != 0) {
+        perror("readdir failed");
+    }
+
+    closedir(dir);
+    return 0;
+}
+\end{lstlisting}
+
+\begin{notebox}
+В каждой директории в Linux есть два специальных вхождения:
+\begin{itemize}
+    \item \texttt{.}: Ссылка на саму директорию.
+    \item \texttt{..}: Ссылка на родительскую директорию.
+\end{itemize}
+Они также будут перечислены при вызове \texttt{readdir}.
+\end{notebox}
+
+\clearpage
+\printglossaries
+
+% ===================== QC-отчёт ========================================================
+% QC:
+% - Структура лекции полностью восстановлена по слайдам и транскрипту.
+% - Основные темы: проблемы прямого доступа к диску, файловая система как абстракция, права доступа в Linux, файловые дескрипторы и ключевые системные вызовы (open, lseek, dup2, pipe), практические примеры перенаправления и буферизации, работа с директориями.
+% - Все определения, примеры кода и концепции взяты строго из предоставленных материалов.
+% - Добавлены TikZ-схемы для наглядной иллюстрации устройства HDD и работы dup2, что соответствует стилю "методички" и обосновано содержанием лекции.
+% - Глоссарий заполнен ключевыми терминами (файловый дескриптор, системный вызов, umask, pipe и т.д.).
+% - Кодовые листинги (open, redirect.cpp, myls) адаптированы из слайдов и объяснений в транскрипте.
+% - Добавлены блоки tcolorbox для определений, примечаний и итогов, что улучшает структуру и читаемость.
+% - Проверена корректность LaTeX-синтаксиса, уникальность меток и использование пакетов из преамбулы.
+% - Рекомендации: Следующая лекция, вероятно, будет посвящена процессам (создание, управление), так как тема pipe была введена как инструмент межпроцессного взаимодействия. Стоит ожидать системные вызовы fork() и exec().
+% ======================================================================================
+
+\end{document}

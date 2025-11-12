@@ -1,0 +1,14 @@
+\babel@toc {russian}{}\relax 
+\contentsline {section}{\numberline {1}Углублённая работа с памятью}{2}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Механизм Page Fault и ленивое выделение памяти}{2}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Структура таблиц страниц (Page Tables)}{3}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Дополнительные системные вызовы для работы с памятью}{3}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.4}Swap (своп) и его проблемы}{4}{subsection.1.4}%
+\contentsline {section}{\numberline {2}Управление процессами}{6}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Подмена процесса: семейство \texttt {exec}}{6}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Создание процесса: \texttt {fork}}{6}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Жизненный цикл процесса}{7}{subsection.2.3}%
+\contentsline {subsubsection}{\numberline {2.3.1}Завершение процесса: \texttt {exit} vs \texttt {\_Exit}}{7}{subsubsection.2.3.1}%
+\contentsline {subsubsection}{\numberline {2.3.2}Ожидание дочерних процессов: \texttt {wait} и \texttt {waitpid}}{8}{subsubsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.4}Паттерн \texttt {fork-exec}}{8}{subsection.2.4}%
+\contentsline {section}{\numberline {3}Межпроцессное взаимодействие: Pipelines}{9}{section.3}%

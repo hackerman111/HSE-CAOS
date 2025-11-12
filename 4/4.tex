@@ -1,0 +1,550 @@
+% ===================== PREAMBLE START (Aesthetic, pdfLaTeX, RU, no shell-escape) =========
+\documentclass[12pt,a4paper]{article}
+
+% Поиск/копирование кириллицы из PDF
+\usepackage{cmap}
+\usepackage{amsmath,amssymb,amsfonts}
+
+% Язык и кодировки
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage[russian]{babel}
+
+% Поля, типографика, абзацы
+\usepackage[a4paper,margin=2.2cm]{geometry}
+\usepackage{microtype}
+\usepackage{indentfirst}
+\setlength{\parindent}{1.25em}
+\setlength{\parskip}{0.25em}
+\raggedbottom
+
+% Цветовая тема
+\usepackage[table]{xcolor}
+\definecolor{Accent}{HTML}{1F6FEB}     % основной акцент
+\definecolor{AccentDark}{HTML}{0B5394} % тёмный акцент
+\definecolor{AccentLight}{HTML}{E8F0FE}% светлый акцент (фон)
+\definecolor{CodeBg}{HTML}{F6F8FA}     % фон для кода
+\definecolor{Link}{HTML}{1F6FEB}       % ссылки
+
+% Гиперссылки и умные ссылки
+\usepackage[unicode]{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=Link, citecolor=Link, urlcolor=Link,
+  pdfauthor={Gemini},
+  pdftitle={Лекция 4: Работа с памятью и процессами}
+}
+\usepackage[nameinlink,capitalise]{cleveref}
+\urlstyle{same}
+
+% Заголовки разделов
+\usepackage{titlesec}
+\titleformat{\section}{\large\bfseries\sffamily\color{Accent}}{\thesection}{1em}{}
+\titleformat{\subsection}{\bfseries\sffamily\color{AccentDark}}{\thesubsection}{0.75em}{}
+\titleformat{\subsubsection}{\bfseries}{\thesubsubsection}{0.6em}{}
+\titlespacing*{\section}{0pt}{1.0ex plus 0.5ex}{0.6ex}
+\titlespacing*{\subsection}{0pt}{0.9ex plus 0.4ex}{0.5ex}
+\titlespacing*{\subsubsection}{0pt}{0.8ex plus 0.3ex}{0.4ex}
+
+% Шапки/футеры
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+% Макросы метаданных (переопределяйте в документе/LLM)
+\newcommand{\CourseName}{Архитектура компьютера и ОС}
+\newcommand{\LectureNo}{4}
+\newcommand{\LectureTitle}{Работа с памятью и процессами}
+\newcommand{\LectureDate}{05.10.2025}
+\newcommand{\Lecturer}{Имя Фамилия}
+\fancyhead[L]{\small\sffamily \CourseName}
+\fancyhead[C]{\small\sffamily \LectureTitle}
+\fancyhead[R]{\small\sffamily Лекция \LectureNo}
+\fancyfoot[C]{\small\sffamily \thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\makeatletter
+\renewcommand{\headrule}{\hbox to\headwidth{\color{Accent}\leaders\hrule height \headrulewidth\hfill}}
+\makeatother
+
+% Подписи к рисункам/таблицам
+\usepackage[font=small,labelfont=bf,labelsep=endash]{caption}
+\usepackage{subcaption}
+
+% Математика и единицы
+\numberwithin{equation}{section}
+\usepackage{siunitx}
+\sisetup{detect-all=true}
+
+% Таблицы и списки
+\usepackage{booktabs}
+\usepackage{array,tabularx}
+\usepackage{enumitem}
+\setlist{itemsep=2pt,topsep=4pt,leftmargin=*,labelsep=0.5em}
+
+% Графика и TikZ
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,shapes.geometric,calc,fit,shadows}
+\tikzset{
+  box/.style={draw=Accent, rounded corners, fill=AccentLight, minimum width=2.2cm, minimum height=0.9cm, align=center, drop shadow={opacity=0.1, shadow xshift=1pt, shadow yshift=-1pt}},
+  arrow/.style={-{Stealth[length=3mm,width=2mm]}, line width=0.5pt, draw=AccentDark},
+  addrbox/.style={draw, minimum height=0.7cm},
+  levelbox/.style={draw, rectangle, minimum width=2.5cm, minimum height=3cm, align=center}
+}
+
+% Красивые боксы "методички"
+\usepackage[most]{tcolorbox}
+\tcbset{enhanced, breakable, boxrule=0.6pt, fonttitle=\bfseries\sffamily}
+\newtcolorbox{definitionbox}[1]{
+  title={Определение: #1},
+  colback=AccentLight, colframe=Accent, coltitle=black, arc=2pt, left=8pt, right=8pt, top=6pt, bottom=6pt
+}
+\newtcolorbox{notebox}{
+  title={Примечание},
+  colback=yellow!8, colframe=yellow!40!black, arc=2pt, left=8pt, right=8pt, top=6pt, bottom=6pt
+}
+\newtcolorbox{summarybox}{
+  title={Итоги раздела},
+  colback=green!6, colframe=green!50!black, arc=2pt, left=8pt, right=8pt, top=6pt, bottom=6pt
+}
+
+% Листинги (без minted, без shell-escape)
+\usepackage{listings}
+\usepackage{listingsutf8}
+\lstdefinestyle{elegant}{
+  inputencoding=utf8,
+  basicstyle=\ttfamily\small,
+  columns=fullflexible,
+  breaklines=true,
+  frame=single,
+  framerule=0.4pt,
+  rulecolor=\color{black!20},
+  backgroundcolor=\color{CodeBg},
+  xleftmargin=0.5em,
+  framexleftmargin=0.5em,
+  tabsize=2,
+  showstringspaces=false,
+  keywordstyle=\bfseries\color{AccentDark},
+  commentstyle=\itshape\color{black!55},
+  stringstyle=\color{orange!60!black},
+  numbers=left,
+  numberstyle=\tiny\color{black!50},
+  numbersep=8pt,
+  captionpos=b,
+  upquote=true,
+  escapechar=§
+}
+\lstset{style=elegant}
+% Важно: русские комментарии в listings под pdfLaTeX могут отображаться некорректно — при проблемах используйте ASCII.
+
+% Макросы удобства
+\newcommand{\TODO}[1]{\textcolor{red!70!black}{[TODO: #1]}}
+\newcommand{\figref}[1]{рис.~\ref{#1}}
+\newcommand{\secref}[1]{раздел~\ref{#1}}
+\newcommand{\eqnref}[1]{(\ref{#1})}
+\newcommand{\lstref}[1]{листинг~\ref{#1}}
+
+% Глоссарий и сокращения (требует makeglossaries/makeindex на этапе сборки)
+\usepackage[acronym,nonumberlist,toc]{glossaries}
+\makeglossaries
+\setacronymstyle{long-short}
+\renewcommand*{\glossaryname}{Глоссарий}
+\renewcommand*{\acronymname}{Список сокращений}
+\setglossarystyle{altlist}
+
+% Пример заранее объявленных терминов (LLM может дополнять этот блок)
+\newacronym[sort=pid]{pid}{PID}{идентификатор процесса (Process ID)}
+\newacronym[sort=os]{os}{ОС}{операционная система}
+
+\newglossaryentry{vmem}{name={виртуальная память}, description={Абстракция памяти, которая предоставляет процессу иллюзию непрерывного и изолированного адресного пространства.}}
+\newglossaryentry{pmem}{name={физическая память}, description={Реальная оперативная память (RAM), установленная в компьютере.}}
+\newglossaryentry{pagefault}{name={страничная ошибка}, sort={stranichnaia oshibka}, description={Прерывание, генерируемое процессором при обращении программы к виртуальному адресу, который не отображён на физическую память.}}
+\newglossaryentry{ondemandpaging}{name={постраничная подкачка по требованию}, sort={postranichnaia podkachka}, description={Механизм, при котором физические страницы памяти выделяются процессу не в момент запроса (напр., \texttt{mmap}), а только при первом фактическом обращении к ним.}}
+\newglossaryentry{pagetable}{name={таблица страниц}, sort={tablitsa stranits}, description={Структура данных, используемая ОС и процессором для трансляции виртуальных адресов в физические.}}
+\newglossaryentry{fork}{name={fork}, description={Системный вызов для создания нового процесса путем дублирования текущего.}}
+\newglossaryentry{exec}{name={exec}, description={Семейство системных вызовов, которые заменяют образ текущего процесса новым.}}
+\newglossaryentry{zombie}{name={процесс-зомби}, sort={protsess-zombi}, description={Завершившийся процесс, запись о котором все еще хранится в таблице процессов, так как родительский процесс еще не получил его статус завершения через \texttt{wait}.}}
+\newglossaryentry{ororphan}{name={процесс-сирота}, sort={protsess-sirota}, description={Процесс, родитель которого завершился раньше. Такой процесс "усыновляется" специальным процессом \texttt{init} (PID 1).}}
+\newglossaryentry{pipe}{name={канал (pipe)}, sort={kanal}, description={Механизм межпроцессного взаимодействия, позволяющий перенаправлять стандартный вывод одного процесса на стандартный ввод другого.}}
+\newglossaryentry{swap}{name={своп (swap)}, sort={svop}, description={Механизм выгрузки неактивных страниц памяти из оперативной памяти на диск для освобождения физической памяти.}}
+
+% Титульные данные
+\title{\sffamily Курс: \textit{\CourseName}\\\large Лекция \LectureNo: \LectureTitle}
+\author{\sffamily Лектор: \Lecturer}
+\date{\sffamily Дата: \LectureDate}
+% ===================== PREAMBLE END =======================================================
+
+
+\begin{document}
+\maketitle
+\tableofcontents
+\clearpage
+
+\section{Углублённая работа с памятью}
+
+На прошлой лекции мы познакомились с концепцией \gls{vmem} и системным вызовом \texttt{mmap}, который управляет отображением виртуальных адресов на \gls{pmem}. Однако модель, в которой \texttt{mmap} немедленно выделяет реальные физические страницы, является упрощением. На практике современные \gls{os} используют более сложный и эффективный механизм.
+
+\subsection{Механизм Page Fault и ленивое выделение памяти}
+
+При попытке программы обратиться по виртуальному адресу, который не сопоставлен ни одной физической странице, процессор генерирует специальное прерывание.
+
+\begin{definitionbox}{Страничная ошибка (Page Fault)}
+\gls{pagefault} — это прерывание, которое генерируется аппаратно (процессором) при попытке доступа к странице \gls{vmem}, не имеющей корректного отображения в \gls{pmem}. При возникновении \gls{pagefault} исполнение текущего кода программы приостанавливается, и управление передаётся обработчику в \gls{os}.
+\end{definitionbox}
+
+\gls{os} анализирует причину \gls{pagefault}. Если обращение было к некорректному адресу (например, разыменование нулевого указателя), \gls{os} принудительно завершает программу, как правило, с ошибкой \textbf{Segmentation Fault}.
+
+Однако этот же механизм используется для реализации \textbf{ленивого выделения памяти} (\gls{ondemandpaging}).
+Когда программа вызывает \texttt{mmap}, \gls{os} на самом деле не выделяет физические страницы. Она лишь запоминает, что данный диапазон виртуальных адресов теперь является валидным для процесса. Реальное выделение физической страницы происходит только при \textbf{первом обращении} к ней. Это обращение вызывает \gls{pagefault}, который \gls{os} обрабатывает:
+\begin{enumerate}
+    \item Находит свободную физическую страницу.
+    \item Устанавливает отображение между виртуальной страницей, вызвавшей прерывание, и новой физической страницей.
+    \item Возобновляет исполнение программы с прерванной инструкции.
+\end{enumerate}
+Для программы этот процесс прозрачен, за исключением небольшой задержки.
+
+\begin{notebox}
+\textbf{Плюсы и минусы ленивого выделения:}
+\begin{itemize}
+    \item \textbf{Плюс:} Эффективное использование ресурсов. Программы часто запрашивают больше памяти, чем реально используют. Ленивый подход позволяет системе выделять только ту физическую память, которая действительно нужна, и поддерживать так называемый \textit{memory overcommitment} (когда суммарный объем запрошенной памяти превышает имеющуюся физическую).
+    \item \textbf{Минус:} Усложнение обработки ошибок нехватки памяти. Вместо проверки кода возврата \texttt{mmap}, программа может быть внезапно "убита" \gls{os} в произвольный момент при обращении к памяти, если свободные физические страницы закончились.
+    \item \textbf{Минус:} Непредсказуемые задержки. Обращение к "новой" странице памяти вызывает \gls{pagefault}, что приводит к задержке, так как управление передается \gls{os}. Это может быть критично для приложений реального времени.
+\end{itemize}
+\end{notebox}
+
+\subsection{Структура таблиц страниц (Page Tables)}
+Для трансляции виртуальных адресов в физические \gls{os} и процессор используют \gls{pagetable}. Хранить простое линейное отображение для всего 64-битного адресного пространства (даже с учётом реальных ограничений современных процессоров в 256 ТБ) неэффективно.
+
+В архитектуре x86-64 используется \textbf{четырехуровневая древовидная структура} таблиц страниц. Виртуальный адрес делится на несколько частей:
+\begin{itemize}
+    \item \textbf{Смещение (offset):} Младшие 12 бит, указывающие на байт внутри страницы ($2^{12} = 4096$ байт).
+    \item \textbf{Индексы в таблицах:} Четыре группы по 9 бит каждая, которые используются для последовательного обхода четырехуровневого дерева таблиц (L3, L2, L1, L0).
+\end{itemize}
+
+\begin{figure}[h!]
+  \centering
+  \begin{tikzpicture}[node distance=0.5cm and 1.5cm]
+    % Virtual Address
+    \node[addrbox, minimum width=2.5cm, fill=green!20] (l3idx) {9};
+    \node[addrbox, minimum width=2.5cm, fill=red!20, right=0 of l3idx] (l2idx) {9};
+    \node[addrbox, minimum width=2.5cm, fill=blue!20, right=0 of l2idx] (l1idx) {9};
+    \node[addrbox, minimum width=2.5cm, fill=orange!20, right=0 of l1idx] (l0idx) {9};
+    \node[addrbox, minimum width=3.2cm, fill=gray!20, right=0 of l0idx] (offset) {12};
+    \node[above=0.2 of l3idx.north] {\small Виртуальный адрес};
+
+    % Page Tables
+    \node[levelbox, below=1.5 of l3idx] (l3pt) {L3 Table};
+    \node[levelbox, below=1.5 of l2idx] (l2pt) {L2 Table};
+    \node[levelbox, below=1.5 of l1idx] (l1pt) {L1 Table};
+    \node[levelbox, below=1.5 of l0idx] (l0pt) {L0 Table};
+
+    % Entries
+    \fill[green!20] ($(l3pt.north west) + (0.1, -0.6)$) rectangle ($(l3pt.south east) - (0.1, 2.0)$);
+    \fill[red!20] ($(l2pt.north west) + (0.1, -1.2)$) rectangle ($(l2pt.south east) - (0.1, 1.4)$);
+    \fill[blue!20] ($(l1pt.north west) + (0.1, -1.8)$) rectangle ($(l1pt.south east) - (0.1, 0.8)$);
+    \fill[orange!20] ($(l0pt.north west) + (0.1, -2.4)$) rectangle ($(l0pt.south east) - (0.1, 0.2)$);
+    
+    % Arrows
+    \draw[arrow] (l3idx.south) -- (l3pt.north);
+    \draw[arrow] ($(l3pt.east) - (0, 1.05)$) -- node[above,font=\tiny] {физ. адрес L2} (l2pt.west);
+    \draw[arrow] (l2idx.south) .. controls +(south:1) and +(north:1) .. ($(l2pt.north) + (0.5, 0)$);
+    
+    \draw[arrow] ($(l2pt.east) - (0, 1.65)$) -- node[above,font=\tiny] {физ. адрес L1} (l1pt.west);
+    \draw[arrow] (l1idx.south) .. controls +(south:1) and +(north:1) .. (l1pt.north);
+    
+    \draw[arrow] ($(l1pt.east) - (0, 2.25)$) -- node[above,font=\tiny] {физ. адрес L0} (l0pt.west);
+    \draw[arrow] (l0idx.south) .. controls +(south:1) and +(north:1) .. ($(l0pt.north) - (0.5, 0)$);
+
+    \node[below=1.5 of l0pt, align=center] (physmem) {Физическая\\страница};
+    \draw[arrow] ($(l0pt.east) - (0, 2.85)$) -- (physmem.west);
+    \draw[arrow] (offset.south) -- (physmem.north);
+
+  \end{tikzpicture}
+  \caption{Трансляция виртуального адреса в физический через четырехуровневые таблицы страниц.}
+  \label{fig:page_tables}
+\end{figure}
+
+Процессор аппаратно выполняет обход этой структуры при каждом доступе к памяти: использует 9 бит адреса как индекс в таблице L3, находит там физический адрес таблицы L2, затем следующие 9 бит — как индекс в L2, и так далее, пока не дойдет до таблицы L0, где хранится адрес искомой физической страницы.
+
+\subsection{Дополнительные системные вызовы для работы с памятью}
+
+\begin{description}
+    \item[\texttt{mprotect(addr, size, prot)}] изменяет права доступа (чтение, запись, исполнение) для уже выделенного диапазона виртуальной памяти \texttt{[addr, addr+size)}.
+    
+    \item[\texttt{mremap(old\_addr, old\_size, new\_size, flags, ...)}] позволяет изменять размер существующего отображения, а также перемещать его на новое место в виртуальном адресном пространстве.
+    
+    \item[\texttt{mlock(addr, size)}] "закрепляет" указанный диапазон страниц в физической памяти, запрещая \gls{os} выгружать их в \gls{swap}. Это важно для приложений, работающих с чувствительными данными (пароли, ключи шифрования) или требующих предсказуемых задержек. \texttt{munlock} отменяет это действие.
+\end{description}
+
+Особый режим \texttt{mremap} позволяет создать "копию" участка памяти, где два разных диапазона виртуальных адресов указывают на \textbf{одни и те же физические страницы}. Любая запись в один диапазон немедленно видна в другом.
+
+\begin{lstlisting}[language=C++, caption={Пример использования mremap для создания разделяемого отображения.}, label={lst:mremap_shared}]
+// Allocate original mapping
+void* from = mmap(nullptr, PAGE_SIZE, PROT_READ | PROT_WRITE,
+                  MAP_ANONYMOUS | MAP_SHARED, -1, 0);
+
+// Reserve space for the "copy"
+void* to_placeholder = mmap(nullptr, PAGE_SIZE, PROT_NONE,
+                          MAP_ANONYMOUS | MAP_PRIVATE, -1, 0);
+
+// Create the shared mapping (remap `from` onto `to_placeholder`)
+// MREMAP_FIXED tells mremap to use the address we provide.
+// old_size = 0 is a special value for this copy operation.
+void* to = mremap(from, 0 /* old_size */, PAGE_SIZE,
+                  MREMAP_MAYMOVE | MREMAP_FIXED, to_placeholder);
+
+// Now, `from` and `to` point to the same physical page.
+volatile int* p_from = static_cast<volatile int*>(from);
+volatile int* p_to = static_cast<volatile int*>(to);
+
+*p_from = 123;
+// Reading from p_to will now yield 123.
+printf("Value at 'to': %d\n", *p_to); // Prints 123
+\end{lstlisting}
+
+\begin{notebox}
+В \lstref{lst:mremap_shared} используется ключевое слово \texttt{volatile}. Оно сообщает компилятору, что значение в памяти, на которую указывает указатель, может измениться в любой момент без его ведома (например, через другой указатель, как в нашем случае). Это запрещает компилятору кэшировать значение переменной в регистре и заставляет его каждый раз честно читать значение из памяти, предотвращая неверные оптимизации.
+\end{notebox}
+
+
+\subsection{Swap (своп) и его проблемы}
+Когда физическая память заканчивается, \gls{os} может использовать \gls{swap}: выгрузить содержимое некоторых "неактивных" физических страниц на жесткий диск, чтобы освободить место для более актуальных данных. Когда программа обратится к такой выгруженной странице, произойдет \gls{pagefault}, и \gls{os} загрузит её обратно с диска.
+
+\textbf{Проблемы свопинга}:
+\begin{itemize}
+    \item \textbf{Производительность:} Диск значительно медленнее оперативной памяти, что приводит к большим задержкам.
+    \item \textbf{Безопасность:} Секретные данные (ключи, пароли) могут оказаться на диске в незашифрованном виде и остаться там даже после выключения питания, создавая уязвимость.
+\end{itemize}
+
+\begin{summarybox}
+\begin{itemize}
+    \item Обращение к неотмеченной в \gls{pagetable} странице вызывает \gls{pagefault}.
+    \item \gls{os} использует \gls{pagefault} для реализации ленивого выделения памяти, что экономит физическую память.
+    \item Трансляция адресов в x86-64 реализована через многоуровневые таблицы страниц.
+    \item Системные вызовы \texttt{mprotect}, \texttt{mremap}, \texttt{mlock} предоставляют тонкий контроль над отображениями памяти.
+    \item \gls{swap} помогает при нехватке памяти, но ценой производительности и потенциальных рисков безопасности.
+\end{itemize}
+\end{summarybox}
+
+\clearpage
+\section{Управление процессами}
+
+До сих пор мы рассматривали работу в рамках одного процесса. Теперь изучим, как создавать новые процессы и управлять ими.
+
+\begin{definitionbox}{Процесс}
+\textbf{Процесс} — это экземпляр запущенной программы. Каждый процесс является изолированной сущностью и обладает собственными ресурсами:
+\begin{itemize}
+    \item Уникальным \gls{pid}.
+    \item Отдельным виртуальным адресным пространством.
+    \item Собственной таблицей файловых дескрипторов.
+\end{itemize}
+Процессы могут выполняться параллельно на многоядерных системах.
+\end{definitionbox}
+
+\subsection{Подмена процесса: семейство \texttt{exec}}
+Системные вызовы семейства \texttt{exec} (\texttt{execlp}, \texttt{execvpe} и др.) \textbf{не создают} новый процесс. Они полностью \textbf{заменяют} текущий процесс новым, загружая и запуская указанный исполняемый файл.
+
+\begin{lstlisting}[language=C++, caption={Запуск утилиты ls с помощью execlp.}, label={lst:execlp}]
+#include <unistd.h>
+#include <cstdio>
+
+int main() {
+    printf("Before exec...\n");
+    
+    // Replace the current process with "ls -l"
+    // The first argument is the command,
+    // subsequent args are for its argv.
+    // The list must be terminated by a NULL pointer.
+    execlp("ls", "ls", "-l", nullptr);
+    
+    // This line will never be reached if execlp succeeds.
+    perror("execlp failed");
+    return 1;
+}
+\end{lstlisting}
+При успешном вызове \texttt{execlp} код после него никогда не выполняется. Новый процесс (в данном случае, \texttt{ls}) наследует некоторые атрибуты старого, например, таблицу файловых дескрипторов, но получает новое адресное пространство.
+
+\begin{notebox}
+При запуске сторонних программ важно избегать утечки файловых дескрипторов. Если библиотека внутри вашего кода открыла файл, он останется открытым и в запущенном через \texttt{exec} процессе. Стандартное решение — открывать все файловые дескрипторы с флагом \texttt{O\_CLOEXEC}, который предписывает ядру автоматически закрыть этот дескриптор при вызове \texttt{exec}.
+\end{notebox}
+
+\subsection{Создание процесса: \texttt{fork}}
+Для создания нового процесса используется системный вызов \gls{fork}.
+
+\begin{definitionbox}{Системный вызов fork}
+\texttt{fork()} создаёт точную копию текущего процесса. Уникальность \gls{fork} в том, что он \textbf{вызывается один раз, а возвращается дважды}:
+\begin{itemize}
+    \item В \textbf{родительском} процессе \texttt{fork()} возвращает \gls{pid} нового (дочернего) процесса.
+    \item В \textbf{дочернем} процессе \texttt{fork()} возвращает \textbf{0}.
+    \item В случае ошибки возвращается -1.
+\end{itemize}
+
+\end{definitionbox}
+
+Дочерний процесс является почти полной копией родителя: он получает копию адресного пространства, стека вызовов и таблицы файловых дескрипторов. Исполнение в обоих процессах продолжается с точки сразу после вызова \texttt{fork}.
+
+\begin{lstlisting}[language=C++, caption={Базовое использование fork.}, label={lst:fork_basic}]
+#include <unistd.h>
+#include <sys/wait.h>
+#include <cstdio>
+
+int main() {
+    pid_t child_pid = fork();
+    
+    if (child_pid == -1) {
+        perror("fork failed");
+        return 1;
+    } else if (child_pid == 0) {
+        // We are in the child process
+        printf("I am the child! My PID is %d\n", getpid());
+    } else {
+        // We are in the parent process
+        printf("I am the parent! My child's PID is %d\n", child_pid);
+        wait(nullptr); // Wait for the child to finish
+        printf("Parent knows child has finished.\n");
+    }
+    
+    return 0;
+}
+\end{lstlisting}
+
+\subsection{Жизненный цикл процесса}
+
+\subsubsection{Завершение процесса: \texttt{exit} vs \texttt{\_Exit}}
+\begin{itemize}
+    \item \texttt{std::exit(code)} — функция стандартной библиотеки. Она не только завершает процесс с кодом \texttt{code}, но и выполняет ряд "очищающих" действий: сбрасывает буферы потоков ввода-вывода (например, \texttt{cout}), вызывает обработчики, зарегистрированные через \texttt{atexit}, и т.д..
+    \item \texttt{std::\_Exit(code)} (или системный вызов \texttt{\_exit}) — немедленно завершает процесс без какой-либо очистки. В дочерних процессах после \texttt{fork} предпочтительнее использовать именно \texttt{\_Exit}, чтобы избежать нежелательных побочных эффектов, например, двойного сброса буферов, которые были скопированы от родителя.
+\end{itemize}
+
+\subsubsection{Ожидание дочерних процессов: \texttt{wait} и \texttt{waitpid}}
+Родительский процесс обязан "собирать" информацию о завершении своих дочерних процессов с помощью \texttt{wait()} или \texttt{waitpid()}. Эти вызовы блокируют родителя до тех пор, пока один из его детей не завершится, и позволяют получить его код завершения.
+
+\begin{definitionbox}{Процесс-зомби}
+\gls{zombie} — это процесс, который уже завершил своё выполнение, но запись о нём (PID, код завершения) всё ещё остаётся в таблице процессов ядра. Он находится в этом состоянии до тех пор, пока родитель не "прочитает" его статус с помощью \texttt{wait}. Если родитель не делает \texttt{wait}, зомби накапливаются и "утекают" системные ресурсы (в частности, PID).
+\end{definitionbox}
+
+\begin{definitionbox}{Процесс-сирота}
+\gls{ororphan} — это процесс, родитель которого завершился раньше него. Такие процессы не остаются "бесхозными" — их "усыновляет" специальный системный процесс \texttt{init} (с \gls{pid} 1), который периодически вызывает \texttt{wait} и очищает зомби.
+\end{definitionbox}
+
+\subsection{Паттерн \texttt{fork-exec}}
+Комбинация \texttt{fork} и \texttt{exec} — это стандартный способ в Unix-системах запустить новую программу, не прекращая работу текущей.
+\begin{enumerate}
+    \item Родительский процесс вызывает \texttt{fork()}, создавая свою копию.
+    \item В дочернем процессе (где \texttt{fork()} вернул 0) выполняются необходимые настройки (например, перенаправление ввода-вывода с помощью \texttt{dup2}).
+    \item Дочерний процесс вызывает один из вызовов семейства \texttt{exec}, заменяя себя новой программой.
+    \item Родительский процесс (где \texttt{fork()} вернул PID > 0) может продолжить свою работу или дождаться завершения дочернего с помощью \texttt{waitpid()}.
+\end{enumerate}
+
+\begin{summarybox}
+\begin{itemize}
+    \item Процесс — это изолированный экземпляр запущенной программы.
+    \item \gls{exec} \textbf{заменяет} текущий процесс, \gls{fork} \textbf{создаёт} его копию.
+    \item Паттерн \texttt{fork-exec} является основой для запуска программ в Unix-подобных системах.
+    \item Родитель \textbf{обязан} дожидаться завершения дочерних процессов с помощью \texttt{wait} или \texttt{waitpid}, чтобы избежать появления \gls{zombie}.
+\end{itemize}
+\end{summarybox}
+\clearpage
+
+\section{Межпроцессное взаимодействие: Pipelines}
+Одним из самых мощных механизмов в Unix является \gls{pipe}, который позволяет связать стандартный вывод одного процесса со стандартным вводом другого. Рассмотрим, как реализовать аналог команды \texttt{ps aux | grep zsh} программно.
+
+Для этого нам понадобится системный вызов \texttt{pipe()}, который создаёт однонаправленный канал данных и возвращает два файловых дескриптора: \texttt{pipefd[0]} для чтения и \texttt{pipefd[1]} для записи.
+
+Алгоритм реализации пайплайна \texttt{cmd1 | cmd2}:
+\begin{enumerate}
+    \item Создать \gls{pipe} с помощью \texttt{pipe(pipefd)}.
+    \item Вызвать \texttt{fork()} для создания первого дочернего процесса (\texttt{child1} для \texttt{cmd1}).
+    \item \textbf{В \texttt{child1}:}
+        \begin{itemize}
+            \item Закрыть ненужный конец канала: \texttt{close(pipefd[0])}.
+            \item Перенаправить стандартный вывод на пишущий конец канала: \texttt{dup2(pipefd[1], STDOUT\_FILENO)}.
+            \item Закрыть оригинальный дескриптор: \texttt{close(pipefd[1])}.
+            \item Вызвать \texttt{exec} для запуска \texttt{cmd1}.
+        \end{itemize}
+    \item Вызвать \texttt{fork()} для создания второго дочернего процесса (\texttt{child2} для \texttt{cmd2}).
+    \item \textbf{В \texttt{child2}:}
+        \begin{itemize}
+            \item Закрыть ненужный конец канала: \texttt{close(pipefd[1])}.
+            \item Перенаправить стандартный ввод на читающий конец канала: \texttt{dup2(pipefd[0], STDIN\_FILENO)}.
+            \item Закрыть оригинальный дескриптор: \texttt{close(pipefd[0])}.
+            \item Вызвать \texttt{exec} для запуска \texttt{cmd2}.
+        \end{itemize}
+    \item \textbf{В родительском процессе:}
+        \begin{itemize}
+            \item \textbf{Критически важно:} закрыть \textbf{оба} конца канала: \texttt{close(pipefd[0])} и \texttt{close(pipefd[1])}. Если этого не сделать, читающий процесс никогда не получит EOF и зависнет.
+            \item Дождаться завершения обоих дочерних процессов с помощью \texttt{waitpid()}.
+        \end{itemize}
+\end{enumerate}
+
+\begin{lstlisting}[language=C++, caption={Программная реализация пайплайна ps aux | grep zsh.}, label={lst:pipeline_impl}]
+#include <unistd.h>
+#include <sys/wait.h>
+#include <cstdio>
+#include <cstdlib>
+
+int main() {
+    int pipefd[2];
+    if (pipe(pipefd) == -1) {
+        perror("pipe failed");
+        return 1;
+    }
+
+    pid_t child1 = fork();
+    if (child1 == 0) { // First child: ps aux
+        close(pipefd[0]); // Close read end
+        dup2(pipefd[1], STDOUT_FILENO);
+        close(pipefd[1]); // Close original write end
+        execlp("ps", "ps", "aux", nullptr);
+        _exit(1); // exit if exec fails
+    }
+
+    pid_t child2 = fork();
+    if (child2 == 0) { // Second child: grep zsh
+        close(pipefd[1]); // Close write end
+        dup2(pipefd[0], STDIN_FILENO);
+        close(pipefd[0]); // Close original read end
+        execlp("grep", "grep", "zsh", nullptr);
+        _exit(1); // exit if exec fails
+    }
+
+    // Parent process
+    close(pipefd[0]); // ESSENTIAL: close both pipe ends in parent
+    close(pipefd[1]);
+
+    waitpid(child1, nullptr, 0);
+    waitpid(child2, nullptr, 0);
+
+    return 0;
+}
+\end{lstlisting}
+
+\begin{notebox}
+\textbf{Что происходит, если читатель завершается раньше писателя?} (например, в \texttt{ps aux | head -n 5})
+Когда все читающие концы канала закрываются, а писатель пытается в него что-то записать, \gls{os} посылает писателю сигнал \textbf{\texttt{SIGPIPE}}. По умолчанию, действие для этого сигнала — аварийное завершение процесса. Это элегантно решает проблему "бесконечной" работы процессов в начале пайплайна, если их вывод больше никому не нужен.
+\end{notebox}
+
+\begin{summarybox}
+\begin{itemize}
+    \item \gls{pipe} создаёт однонаправленный канал для данных между процессами.
+    \item Комбинация \texttt{pipe}, \texttt{fork}, \texttt{dup2} и \texttt{exec} позволяет строить сложные конвейеры обработки данных.
+    \item В родительском процессе необходимо закрывать оба конца канала, чтобы избежать взаимоблокировок.
+    \item Сигнал \texttt{SIGPIPE} автоматически завершает процессы, которые пытаются писать в "сломанный" канал (без читателей).
+\end{itemize}
+\end{summarybox}
+
+
+% Печать глоссариев (требует: pdflatex → makeglossaries → pdflatex → pdflatex)
+\clearpage
+\printglossaries
+
+% Финальный QC-комментарий (пример для LLM)
+% QC: Конспект создан на основе транскрипции лекции №4 и сопутствующих слайдов.
+%     Структура: 1) Продвинутая работа с памятью (Page Fault, Page Tables, mremap, swap), 2) Управление процессами (fork, exec, жизненный цикл), 3) Пайплайны.
+%     Полнота: Все ключевые темы лекции, включая технические детали (lazy allocation, 4-уровневые таблицы страниц, зомби/сироты, реализация пайплайна, SIGPIPE), покрыты.
+%     Визуализация: Добавлена TikZ-схема трансляции адресов, основанная на описании в лекции и слайде.
+%     Примеры кода: Включены примеры для mremap, fork, execlp и полная реализация пайплайна, адаптированные из транскрипта.
+%     Стиль: Выдержан стиль "методички" с использованием tcolorbox для определений, примечаний и итогов.
+%     Совместимость: Код написан для pdfLaTeX, использует пакет listings, все окружения закрыты, метки уникальны. Внешние факты не использовались.
+
+\end{document}
+% ===================== EXAMPLE CONTENT END ===============================================

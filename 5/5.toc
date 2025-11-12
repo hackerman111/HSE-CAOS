@@ -1,0 +1,15 @@
+\babel@toc {russian}{}\relax 
+\contentsline {section}{\numberline {1}Управление процессами: группы и сигналы}{2}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Группы процессов (Process Groups)}{2}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Сигналы (Signals)}{2}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Отправка сигналов и ожидание процессов}{3}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.4}Управление памятью при \texttt {fork()}}{4}{subsection.1.4}%
+\contentsline {subsubsection}{\numberline {1.4.1}Общая память через \texttt {mmap}}{4}{subsubsection.1.4.1}%
+\contentsline {section}{\numberline {2}Представление данных}{5}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Текстовые и бинарные форматы}{5}{subsection.2.1}%
+\contentsline {subsubsection}{\numberline {2.1.1}Тонкости бинарных форматов: порядок байтов}{5}{subsubsection.2.1.1}%
+\contentsline {subsection}{\numberline {2.2}Кодировки текста: от ASCII до Unicode}{5}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Unicode и его кодировки}{6}{subsection.2.3}%
+\contentsline {subsubsection}{\numberline {2.3.1}Кодировка UTF-8}{7}{subsubsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.4}Работа с Unicode в C/C++}{7}{subsection.2.4}%
+\contentsline {subsubsection}{\numberline {2.4.1}Локали}{8}{subsubsection.2.4.1}%

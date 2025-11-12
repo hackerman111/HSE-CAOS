@@ -1,0 +1,79 @@
+\relax 
+\providecommand\hyper@newdestlabel[2]{}
+\@writefile{toc}{\contentsline {section}{\numberline {2.1}Взаимодействие с носителями информации}{17}{section.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1.1}Почему не работать с диском напрямую?}{17}{subsection.2.1.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2.1}{\ignorespaces Упрощённая схема устройства жёсткого диска (HDD)}}{17}{figure.caption.4}\protected@file@percent }
+\newlabel{fig:hdd_structure}{{2.1}{17}{Упрощённая схема устройства жёсткого диска (HDD)}{figure.caption.4}{}}
+\newlabel{fig:hdd_structure@cref}{{[figure][1][2]2.1}{[1][17][]17}{}{}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {2.2}Права доступа в Linux}{18}{section.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2.1}Чтение вывода \texttt  {ls -l}}{18}{subsection.2.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2.2}Пользователь, группа и остальные}{18}{subsection.2.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2.3}Команда \texttt  {chmod}}{18}{subsection.2.2.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2.3}Файловые дескрипторы и системные вызовы}{19}{section.2.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3.1}Системный вызов \texttt  {open}}{20}{subsection.2.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Создание файла и \texttt  {umask}}{20}{lstnumber.-4.4}\protected@file@percent }
+\newlabel{lst:open_example}{{2.1}{20}{Пример использования open}{lstlisting.2.1}{}}
+\newlabel{lst:open_example@cref}{{[lstlisting][1][2]2.1}{[1][20][]20}{}{}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {2.1}{\ignorespaces Пример использования open}}{20}{lstlisting.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3.2}Структура открытого файла в ядре}{21}{subsection.2.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3.3}Другие важные системные вызовы}{21}{subsection.2.3.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\texttt  {lseek}: Изменение смещения}{21}{subsection.2.3.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\texttt  {dup} и \texttt  {dup2}: Копирование файловых дескрипторов}{22}{lstnumber.-5.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2.2}{\ignorespaces Схема работы \texttt  {dup2}. Оба дескриптора (старый и новый) указывают на одну и ту же структуру открытого файла в ядре и разделяют общее смещение.}}{22}{figure.caption.5}\protected@file@percent }
+\newlabel{fig:dup2_scheme}{{2.2}{22}{Схема работы \texttt {dup2}. Оба дескриптора (старый и новый) указывают на одну и ту же структуру открытого файла в ядре и разделяют общее смещение}{figure.caption.5}{}}
+\newlabel{fig:dup2_scheme@cref}{{[figure][2][2]2.2}{[1][22][]22}{}{}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\texttt  {pipe}: Создание каналов}{22}{figure.caption.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2.4}Практика: Перенаправление ввода-вывода}{23}{section.2.4}\protected@file@percent }
+\newlabel{lst:simple_io}{{2.2}{23}{Программа с простым вводом-выводом}{lstlisting.2.2}{}}
+\newlabel{lst:simple_io@cref}{{[lstlisting][2][2]2.2}{[1][23][]23}{}{}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {2.2}{\ignorespaces Программа с простым вводом-выводом}}{23}{lstlisting.2.2}\protected@file@percent }
+\newlabel{lst:redirect_cpp}{{2.3}{23}{Функция перенаправления ввода-вывода}{lstlisting.2.3}{}}
+\newlabel{lst:redirect_cpp@cref}{{[lstlisting][3][2]2.3}{[1][23][]23}{}{}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {2.3}{\ignorespaces Функция перенаправления ввода-вывода}}{23}{lstlisting.2.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2.5}Работа с директориями}{24}{section.2.5}\protected@file@percent }
+\newlabel{lst:dir_interface}{{2.4}{25}{Интерфейс для чтения директорий}{lstlisting.2.4}{}}
+\newlabel{lst:dir_interface@cref}{{[lstlisting][4][2]2.4}{[1][25][]25}{}{}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {2.4}{\ignorespaces Интерфейс для чтения директорий}}{25}{lstlisting.2.4}\protected@file@percent }
+\newlabel{lst:myls}{{2.5}{25}{Пример простой реализации ls}{lstlisting.2.5}{}}
+\newlabel{lst:myls@cref}{{[lstlisting][5][2]2.5}{[1][25][]25}{}{}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {2.5}{\ignorespaces Пример простой реализации ls}}{25}{lstlisting.2.5}\protected@file@percent }
+\@setckpt{2}{
+\setcounter{page}{27}
+\setcounter{equation}{0}
+\setcounter{enumi}{3}
+\setcounter{enumii}{0}
+\setcounter{enumiii}{0}
+\setcounter{enumiv}{0}
+\setcounter{footnote}{0}
+\setcounter{mpfootnote}{0}
+\setcounter{part}{0}
+\setcounter{chapter}{2}
+\setcounter{section}{5}
+\setcounter{subsection}{0}
+\setcounter{subsubsection}{0}
+\setcounter{paragraph}{0}
+\setcounter{subparagraph}{0}
+\setcounter{figure}{2}
+\setcounter{table}{0}
+\setcounter{parentequation}{0}
+\setcounter{section@level}{0}
+\setcounter{Item}{9}
+\setcounter{Hfootnote}{0}
+\setcounter{bookmark@seq@number}{32}
+\setcounter{caption@flags}{2}
+\setcounter{continuedfloat}{0}
+\setcounter{subfigure}{0}
+\setcounter{subtable}{0}
+\setcounter{tcbbreakpart}{2}
+\setcounter{tcblayer}{0}
+\setcounter{tcolorbox@number}{16}
+\setcounter{tcbrastercolumn}{1}
+\setcounter{tcbrasterrow}{1}
+\setcounter{tcbrasternum}{1}
+\setcounter{tcbraster}{0}
+\setcounter{lstnumber}{25}
+\setcounter{tcblisting}{0}
+\setcounter{LT@tables}{0}
+\setcounter{LT@chunks}{0}
+\setcounter{lstlisting}{5}
+}

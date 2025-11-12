@@ -1,0 +1,158 @@
+\babel@toc {russian}{}\relax 
+\contentsline {chapter}{\numberline {1}1 Лекция}{5}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Введение и организационные моменты}{6}{section.1.1}%
+\contentsline {subsection}{\numberline {1.1.1}Формула оценки}{6}{subsection.1.1.1}%
+\contentsline {subsection}{\numberline {1.1.2}Работа с домашними заданиями}{6}{subsection.1.1.2}%
+\contentsline {section}{\numberline {1.2}Зачем нужна операционная система?}{6}{section.1.2}%
+\contentsline {subsection}{\numberline {1.2.1}Проблема прямого доступа к оборудованию}{7}{subsection.1.2.1}%
+\contentsline {subsection}{\numberline {1.2.2}Решение: операционная система как абстракция}{7}{subsection.1.2.2}%
+\contentsline {section}{\numberline {1.3}Работа с памятью в C++: краткое повторение}{9}{section.1.3}%
+\contentsline {subsection}{\numberline {1.3.1}Линейно адресуемая память и указатели}{9}{subsection.1.3.1}%
+\contentsline {subsection}{\numberline {1.3.2}Динамическая память}{9}{subsection.1.3.2}%
+\contentsline {subsection}{\numberline {1.3.3}Разделение аллокации и конструирования}{9}{subsection.1.3.3}%
+\contentsline {subsection}{\numberline {1.3.4}Арифметика указателей}{10}{subsection.1.3.4}%
+\contentsline {section}{\numberline {1.4}Взаимодействие с ОС: системные вызовы}{10}{section.1.4}%
+\contentsline {subsection}{\numberline {1.4.1}Системный вызов read}{10}{subsection.1.4.1}%
+\contentsline {subsection}{\numberline {1.4.2}Системный вызов write}{11}{subsection.1.4.2}%
+\contentsline {subsection}{\numberline {1.4.3}Обработка ошибок и частичных операций}{13}{subsection.1.4.3}%
+\contentsline {section}{\numberline {1.5}Работа с файлами}{13}{section.1.5}%
+\contentsline {subsection}{\numberline {1.5.1}Системные вызовы open и close}{14}{subsection.1.5.1}%
+\contentsline {subsection}{\numberline {1.5.2}Пример чтения из файла}{14}{subsection.1.5.2}%
+\contentsline {chapter}{\numberline {2}2 Лекция}{16}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Взаимодействие с носителями информации}{17}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}Почему не работать с диском напрямую?}{17}{subsection.2.1.1}%
+\contentsline {section}{\numberline {2.2}Права доступа в Linux}{18}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Чтение вывода \texttt {ls -l}}{18}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Пользователь, группа и остальные}{18}{subsection.2.2.2}%
+\contentsline {subsection}{\numberline {2.2.3}Команда \texttt {chmod}}{18}{subsection.2.2.3}%
+\contentsline {section}{\numberline {2.3}Файловые дескрипторы и системные вызовы}{19}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}Системный вызов \texttt {open}}{20}{subsection.2.3.1}%
+\contentsline {subsubsection}{Создание файла и \texttt {umask}}{20}{lstnumber.-4.4}%
+\contentsline {subsection}{\numberline {2.3.2}Структура открытого файла в ядре}{21}{subsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.3.3}Другие важные системные вызовы}{21}{subsection.2.3.3}%
+\contentsline {subsubsection}{\texttt {lseek}: Изменение смещения}{21}{subsection.2.3.3}%
+\contentsline {subsubsection}{\texttt {dup} и \texttt {dup2}: Копирование файловых дескрипторов}{22}{lstnumber.-5.3}%
+\contentsline {subsubsection}{\texttt {pipe}: Создание каналов}{22}{figure.caption.5}%
+\contentsline {section}{\numberline {2.4}Практика: Перенаправление ввода-вывода}{23}{section.2.4}%
+\contentsline {section}{\numberline {2.5}Работа с директориями}{24}{section.2.5}%
+\contentsline {chapter}{\numberline {3}3 Лекция}{27}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Дополнительные инструменты для работы с файловой системой}{28}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}Новые флаги для системного вызова \texttt {open}}{28}{subsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.1.2}Получение метаданных о файлах: семейство \texttt {stat}}{28}{subsection.3.1.2}%
+\contentsline {section}{\numberline {3.2}Управление памятью: виртуальная адресация}{29}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Проблема модели линейной памяти}{29}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Виртуальная и физическая память}{30}{subsection.3.2.2}%
+\contentsline {subsection}{\numberline {3.2.3}Страничная организация памяти}{30}{subsection.3.2.3}%
+\contentsline {section}{\numberline {3.3}Системные вызовы для управления памятью: \texttt {mmap}}{31}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}Аргументы и флаги \texttt {mmap}}{31}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2}Примеры использования \texttt {mmap}}{32}{subsection.3.3.2}%
+\contentsline {subsubsection}{Анонимное отображение}{32}{subsection.3.3.2}%
+\contentsline {subsubsection}{Отображение файла в память}{33}{lstnumber.3.5.22}%
+\contentsline {subsection}{\numberline {3.3.3}Освобождение памяти: \texttt {munmap}}{33}{subsection.3.3.3}%
+\contentsline {section}{\numberline {3.4}Аргументы командной строки и переменные окружения}{34}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}Аргументы командной строки}{34}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.4.2}Переменные окружения}{34}{subsection.3.4.2}%
+\contentsline {chapter}{\numberline {4}4 Лекция}{36}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Углублённая работа с памятью}{37}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Механизм Page Fault и ленивое выделение памяти}{37}{subsection.4.1.1}%
+\contentsline {subsection}{\numberline {4.1.2}Структура таблиц страниц (Page Tables)}{38}{subsection.4.1.2}%
+\contentsline {subsection}{\numberline {4.1.3}Дополнительные системные вызовы для работы с памятью}{38}{subsection.4.1.3}%
+\contentsline {subsection}{\numberline {4.1.4}Swap (своп) и его проблемы}{39}{subsection.4.1.4}%
+\contentsline {section}{\numberline {4.2}Управление процессами}{41}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Подмена процесса: семейство \texttt {exec}}{41}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}Создание процесса: \texttt {fork}}{41}{subsection.4.2.2}%
+\contentsline {subsection}{\numberline {4.2.3}Жизненный цикл процесса}{42}{subsection.4.2.3}%
+\contentsline {subsubsection}{Завершение процесса: \texttt {exit} vs \texttt {\_Exit}}{42}{subsection.4.2.3}%
+\contentsline {subsubsection}{Ожидание дочерних процессов: \texttt {wait} и \texttt {waitpid}}{43}{subsection.4.2.3}%
+\contentsline {subsection}{\numberline {4.2.4}Паттерн \texttt {fork-exec}}{43}{subsection.4.2.4}%
+\contentsline {section}{\numberline {4.3}Межпроцессное взаимодействие: Pipelines}{44}{section.4.3}%
+\contentsline {chapter}{\numberline {5}5 Лекция}{46}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Управление процессами: группы и сигналы}{47}{section.5.1}%
+\contentsline {subsection}{\numberline {5.1.1}Группы процессов (Process Groups)}{47}{subsection.5.1.1}%
+\contentsline {subsection}{\numberline {5.1.2}Сигналы (Signals)}{47}{subsection.5.1.2}%
+\contentsline {subsection}{\numberline {5.1.3}Отправка сигналов и ожидание процессов}{48}{subsection.5.1.3}%
+\contentsline {subsection}{\numberline {5.1.4}Управление памятью при \texttt {fork()}}{49}{subsection.5.1.4}%
+\contentsline {subsubsection}{Общая память через \texttt {mmap}}{49}{subsection.5.1.4}%
+\contentsline {section}{\numberline {5.2}Представление данных}{50}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}Текстовые и бинарные форматы}{50}{subsection.5.2.1}%
+\contentsline {subsubsection}{Тонкости бинарных форматов: порядок байтов}{50}{subsection.5.2.1}%
+\contentsline {subsection}{\numberline {5.2.2}Кодировки текста: от ASCII до Unicode}{50}{subsection.5.2.2}%
+\contentsline {subsection}{\numberline {5.2.3}Unicode и его кодировки}{51}{subsection.5.2.3}%
+\contentsline {subsubsection}{Кодировка UTF-8}{52}{subsection.5.2.3}%
+\contentsline {subsection}{\numberline {5.2.4}Работа с Unicode в C/C++}{52}{subsection.5.2.4}%
+\contentsline {subsubsection}{Локали}{53}{subsection.5.2.4}%
+\contentsline {chapter}{\numberline {6}6 Лекция}{55}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Представление целых чисел}{56}{section.6.1}%
+\contentsline {subsection}{\numberline {6.1.1}Беззнаковые числа}{56}{subsection.6.1.1}%
+\contentsline {subsection}{\numberline {6.1.2}Знаковые числа: Прямой код (Sign-Magnitude)}{56}{subsection.6.1.2}%
+\contentsline {subsection}{\numberline {6.1.3}Знаковые числа: Дополняющий код (Two's Complement)}{56}{subsection.6.1.3}%
+\contentsline {subsubsection}{Получение отрицательного числа}{57}{subsection.6.1.3}%
+\contentsline {section}{\numberline {6.2}Выравнивание данных в памяти}{58}{section.6.2}%
+\contentsline {subsection}{\numberline {6.2.1}Зачем нужно выравнивание?}{58}{subsection.6.2.1}%
+\contentsline {section}{\numberline {6.3}Процесс сборки программы}{58}{section.6.3}%
+\contentsline {subsection}{\numberline {6.3.1}Препроцессор и \texttt {\#include}}{58}{subsection.6.3.1}%
+\contentsline {subsubsection}{Проблема многократного включения}{59}{lstnumber.6.1.1}%
+\contentsline {subsection}{\numberline {6.3.2}Единицы трансляции и ускорение сборки}{59}{subsection.6.3.2}%
+\contentsline {subsection}{\numberline {6.3.3}Объектные файлы и символы}{60}{subsection.6.3.3}%
+\contentsline {subsection}{\numberline {6.3.4}Линковка и релокации}{60}{subsection.6.3.4}%
+\contentsline {subsection}{\numberline {6.3.5}Формат ELF}{60}{subsection.6.3.5}%
+\contentsline {section}{\numberline {6.4}Особенности C++: Имена и переменные}{61}{section.6.4}%
+\contentsline {subsection}{\numberline {6.4.1}Искажение имён (Name Mangling)}{61}{subsection.6.4.1}%
+\contentsline {subsection}{\numberline {6.4.2}Extern C}{61}{subsection.6.4.2}%
+\contentsline {subsection}{\numberline {6.4.3}Глобальные переменные: \texttt {extern} против \texttt {static}}{61}{subsection.6.4.3}%
+\contentsline {section}{\numberline {6.5}Основы ассемблера и архитектуры}{62}{section.6.5}%
+\contentsline {subsection}{\numberline {6.5.1}Архитектура фон Неймана}{62}{subsection.6.5.1}%
+\contentsline {subsection}{\numberline {6.5.2}Регистры и память}{62}{subsection.6.5.2}%
+\contentsline {subsection}{\numberline {6.5.3}Стек и вызовы функций}{62}{subsection.6.5.3}%
+\contentsline {subsection}{\numberline {6.5.4}Соглашение о вызовах (ABI)}{62}{subsection.6.5.4}%
+\contentsline {section}{\numberline {6.6}Практика: написание функций на ассемблере}{63}{section.6.6}%
+\contentsline {subsection}{\numberline {6.6.1}Пример 1: Возврат константы}{63}{subsection.6.6.1}%
+\contentsline {subsection}{\numberline {6.6.2}Пример 2: Identity (аргумент -> возврат)}{63}{subsection.6.6.2}%
+\contentsline {subsection}{\numberline {6.6.3}Пример 3: Сложение (два аргумента)}{64}{subsection.6.6.3}%
+\contentsline {subsection}{\numberline {6.6.4}Пример 4: Условный переход (If/Else)}{64}{subsection.6.6.4}%
+\contentsline {subsection}{\numberline {6.6.5}Пример 5: Цикл (Sum)}{64}{subsection.6.6.5}%
+\contentsline {chapter}{\numberline {7}7 Лекция}{66}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Адресация памяти в x86-64}{67}{section.7.1}%
+\contentsline {subsection}{\numberline {7.1.1}Синтаксис Scale-Index-Base (SIB)}{67}{subsection.7.1.1}%
+\contentsline {subsection}{\numberline {7.1.2}Указание размера операнда}{67}{subsection.7.1.2}%
+\contentsline {section}{\numberline {7.2}Инструкция LEA (Load Effective Address)}{68}{section.7.2}%
+\contentsline {subsection}{\numberline {7.2.1}LEA как оптимизация компилятора}{68}{subsection.7.2.1}%
+\contentsline {section}{\numberline {7.3}Работа со стеком и локальными переменными}{69}{section.7.3}%
+\contentsline {subsection}{\numberline {7.3.1}Проблема: Callee-clobbered регистры}{69}{subsection.7.3.1}%
+\contentsline {subsection}{\numberline {7.3.2}Решение 1: Сохранение на стеке}{69}{subsection.7.3.2}%
+\contentsline {subsection}{\numberline {7.3.3}Решение 2: Callee-saved регистры}{70}{subsection.7.3.3}%
+\contentsline {section}{\numberline {7.4}Фреймовые указатели (Frame Pointers)}{70}{section.7.4}%
+\contentsline {subsection}{\numberline {7.4.1}Структура стека с RBP}{71}{subsection.7.4.1}%
+\contentsline {section}{\numberline {7.5}Секции данных в ассемблере}{72}{section.7.5}%
+\contentsline {subsection}{\numberline {7.5.1}Директивы ассемблера для данных}{72}{subsection.7.5.1}%
+\contentsline {section}{\numberline {7.6}Флаги процессора и условные переходы}{73}{section.7.6}%
+\contentsline {section}{\numberline {7.7}Взаимодействие ассемблера и C/C++}{74}{section.7.7}%
+\contentsline {subsection}{\numberline {7.7.1}Позиционно-независимый код (PIC) и RIP-адресация}{74}{subsection.7.7.1}%
+\contentsline {subsection}{\numberline {7.7.2}Оптимизация хвостового вызова (TCO)}{74}{subsection.7.7.2}%
+\contentsline {subsection}{\numberline {7.7.3}Вызов функций C (scanf / printf)}{75}{subsection.7.7.3}%
+\contentsline {section}{\numberline {7.8}Синтаксисы ассемблера: Intel vs. AT\&T}{77}{section.7.8}%
+\contentsline {chapter}{\numberline {8}8 Лекция}{78}{chapter.8}%
+\contentsline {section}{\numberline {8.1}Оптимизация ассемблерного кода}{79}{section.8.1}%
+\contentsline {subsection}{\numberline {8.1.1}Проблема раздельной компиляции}{79}{subsection.8.1.1}%
+\contentsline {subsection}{\numberline {8.1.2}Встроенный ассемблер (GNU Inline Assembly)}{79}{subsection.8.1.2}%
+\contentsline {subsubsection}{Операнды и ограничения (Constraints)}{80}{lstnumber.8.1.13}%
+\contentsline {subsubsection}{Список порчи (Clobbers)}{80}{lstnumber.8.1.13}%
+\contentsline {subsection}{\numberline {8.1.3}Оптимизация на этапе компоновки (LTO)}{80}{subsection.8.1.3}%
+\contentsline {section}{\numberline {8.2}Взаимодействие с ядром и побочные эффекты}{82}{section.8.2}%
+\contentsline {subsection}{\numberline {8.2.1}Прямой вызов \texttt {syscall}}{82}{subsection.8.2.1}%
+\contentsline {subsection}{\numberline {8.2.2}\texttt {volatile} и побочные эффекты}{83}{subsection.8.2.2}%
+\contentsline {subsection}{\numberline {8.2.3}Использование \texttt {asm} для барьеров компиляции}{83}{subsection.8.2.3}%
+\contentsline {subsubsection}{Барьер оптимизации (\texttt {DoNotOptimize})}{83}{subsection.8.2.3}%
+\contentsline {subsubsection}{Барьер памяти (\texttt {Compiler Fence})}{84}{lstnumber.8.4.12}%
+\contentsline {section}{\numberline {8.3}Указатели, функции и полиморфизм}{85}{section.8.3}%
+\contentsline {subsection}{\numberline {8.3.1}Указатели на функции и косвенные переходы}{85}{subsection.8.3.1}%
+\contentsline {subsection}{\numberline {8.3.2}Защита от атак: \texttt {endbr64}}{85}{subsection.8.3.2}%
+\contentsline {subsection}{\numberline {8.3.3}Реализация виртуальных функций C++}{86}{subsection.8.3.3}%
+\contentsline {subsubsection}{Цена виртуализации}{87}{figure.caption.13}%
+\contentsline {subsection}{\numberline {8.3.4}JIT-компиляция (Just-in-Time)}{87}{subsection.8.3.4}%
+\contentsline {section}{\numberline {8.4}Динамическая компоновка}{89}{section.8.4}%
+\contentsline {subsection}{\numberline {8.4.1}Мотивация и основы (.so)}{89}{subsection.8.4.1}%
+\contentsline {subsubsection}{Позиционно-независимый код (PIC)}{89}{Item.55}%
+\contentsline {subsection}{\numberline {8.4.2}Механизмы PLT и GOT}{89}{subsection.8.4.2}%
+\contentsline {subsection}{\numberline {8.4.3}Перехват вызовов (LD\_PRELOAD)}{90}{subsection.8.4.3}%
+\contentsline {subsection}{\numberline {8.4.4}Ручная загрузка библиотек (dlopen)}{91}{subsection.8.4.4}%

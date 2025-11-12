@@ -1,0 +1,20 @@
+\babel@toc {russian}{}\relax 
+\contentsline {section}{\numberline {1}Введение и организационные моменты}{2}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Формула оценки}{2}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Работа с домашними заданиями}{2}{subsection.1.2}%
+\contentsline {section}{\numberline {2}Зачем нужна операционная система?}{2}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Проблема прямого доступа к оборудованию}{3}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Решение: операционная система как абстракция}{3}{subsection.2.2}%
+\contentsline {section}{\numberline {3}Работа с памятью в C++: краткое повторение}{5}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Линейно адресуемая память и указатели}{5}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Динамическая память}{5}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Разделение аллокации и конструирования}{5}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Арифметика указателей}{6}{subsection.3.4}%
+\contentsline {section}{\numberline {4}Взаимодействие с ОС: системные вызовы}{6}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Системный вызов read}{6}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Системный вызов write}{7}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Обработка ошибок и частичных операций}{9}{subsection.4.3}%
+\contentsline {section}{\numberline {5}Работа с файлами}{9}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Системные вызовы open и close}{10}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Пример чтения из файла}{10}{subsection.5.2}%
+\contentsline {section}{{\cyrillictext \CYRS \cyrl \cyro \cyrv \cyra \cyrr \cyrsftsn \ \cyrt \cyre \cyrr \cyrm \cyri \cyrn \cyro \cyrv }}{12}{section*.3}%

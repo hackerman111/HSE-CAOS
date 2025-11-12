@@ -1,0 +1,527 @@
+\documentclass[12pt,a4paper]{article}
+
+% ===================== PREAMBLE START (Aesthetic, pdfLaTeX, RU, no shell-escape) =========
+% Поиск/копирование кириллицы из PDF
+\usepackage{cmap}
+\usepackage{amsmath,amssymb,amsfonts}
+
+% Язык и кодировки
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage[russian]{babel}
+
+% Поля, типографика, абзацы
+\usepackage[a4paper,margin=2.2cm]{geometry}
+\usepackage{microtype}
+\usepackage{indentfirst}
+\setlength{\parindent}{1.25em}
+\setlength{\parskip}{0.25em}
+\raggedbottom
+
+% Цветовая тема
+\usepackage[table]{xcolor}
+\definecolor{Accent}{HTML}{1F6FEB}     % основной акцент
+\definecolor{AccentDark}{HTML}{0B5394} % тёмный акцент
+\definecolor{AccentLight}{HTML}{E8F0FE}% светлый акцент (фон)
+\definecolor{CodeBg}{HTML}{F6F8FA}     % фон для кода
+\definecolor{Link}{HTML}{1F6FEB}       % ссылки
+
+% Гиперссылки и умные ссылки
+\usepackage[unicode]{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=Link, citecolor=Link, urlcolor=Link,
+  pdfauthor={Евгений Соколов},
+  pdftitle={Управление памятью и файловой системой}
+}
+\usepackage[nameinlink,capitalise,russian]{cleveref}
+\urlstyle{same}
+
+% Заголовки разделов
+\usepackage{titlesec}
+\titleformat{\section}{\large\bfseries\sffamily\color{Accent}}{\thesection}{1em}{}
+\titleformat{\subsection}{\bfseries\sffamily\color{AccentDark}}{\thesubsection}{0.75em}{}
+\titleformat{\subsubsection}{\bfseries}{\thesubsubsection}{0.6em}{}
+\titlespacing*{\section}{0pt}{1.0ex plus 0.5ex}{0.6ex}
+\titlespacing*{\subsection}{0pt}{0.9ex plus 0.4ex}{0.5ex}
+\titlespacing*{\subsubsection}{0pt}{0.8ex plus 0.3ex}{0.4ex}
+
+% Шапки/футеры
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+% Макросы метаданных (переопределяйте в документе/LLM)
+\newcommand{\CourseName}{Архитектура компьютера и ОС}
+\newcommand{\LectureNo}{3}
+\newcommand{\LectureTitle}{Управление памятью}
+\newcommand{\LectureDate}{06.10.2025}
+\newcommand{\Lecturer}{Евгений Соколов}
+\fancyhead[L]{\small\sffamily \CourseName}
+\fancyhead[C]{\small\sffamily \LectureTitle}
+\fancyhead[R]{\small\sffamily Лекция \LectureNo}
+\fancyfoot[C]{\small\sffamily \thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\makeatletter
+\renewcommand{\headrule}{\hbox to\headwidth{\color{Accent}\leaders\hrule height \headrulewidth\hfill}}
+\makeatother
+
+% Подписи к рисункам/таблицам
+\usepackage[font=small,labelfont=bf,labelsep=endash]{caption}
+\usepackage{subcaption}
+
+% Математика и единицы
+\numberwithin{equation}{section}
+\usepackage{siunitx}
+\sisetup{detect-all=true}
+
+% Таблицы и списки
+\usepackage{booktabs}
+\usepackage{array,tabularx}
+\usepackage{enumitem}
+\setlist{itemsep=2pt,topsep=4pt,leftmargin=*,labelsep=0.5em}
+
+% Графика и TikZ
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,shapes.geometric,calc,fit}
+\tikzset{
+  box/.style={draw=Accent, rounded corners, fill=AccentLight, minimum width=2.2cm, minimum height=0.8cm, align=center, font=\sffamily\small},
+  membox/.style={draw=black!60, minimum width=2.5cm, minimum height=1.4cm, align=center, font=\ttfamily\small},
+  arrow/.style={-{Stealth[length=3mm,width=2mm]}, line width=0.5pt, draw=AccentDark}
+}
+
+% Красивые боксы "методички"
+\usepackage[most]{tcolorbox}
+\tcbset{enhanced, breakable, boxrule=0.6pt, fonttitle=\bfseries\sffamily}
+\newtcolorbox{definitionbox}[1]{
+  title={Определение: #1},
+  colback=AccentLight, colframe=Accent, coltitle=black, arc=2pt, left=8pt, right=8pt, top=6pt, bottom=6pt
+}
+\newtcolorbox{notebox}{
+  title={Примечание},
+  colback=yellow!8, colframe=yellow!40!black, arc=2pt, left=8pt, right=8pt, top=6pt, bottom=6pt
+}
+\newtcolorbox{summarybox}{
+  title={Итоги раздела},
+  colback=green!6, colframe=green!50!black, arc=2pt, left=8pt, right=8pt, top=6pt, bottom=6pt
+}
+
+% Листинги (без minted, без shell-escape)
+\usepackage{listings}
+\usepackage{listingsutf8}
+\lstdefinestyle{elegant}{
+  inputencoding=utf8,
+  basicstyle=\ttfamily\small,
+  columns=fullflexible,
+  breaklines=true,
+  frame=single,
+  framerule=0.4pt,
+  rulecolor=\color{black!20},
+  backgroundcolor=\color{CodeBg},
+  xleftmargin=0.5em,
+  framexleftmargin=0.5em,
+  tabsize=2,
+  showstringspaces=false,
+  keywordstyle=\bfseries\color{AccentDark},
+  commentstyle=\itshape\color{black!55},
+  stringstyle=\color{orange!60!black},
+  numbers=left,
+  numberstyle=\tiny\color{black!50},
+  numbersep=8pt,
+  captionpos=b,
+  upquote=true,
+  escapechar=§
+}
+\lstset{style=elegant}
+% Важно: русские комментарии в listings под pdfLaTeX могут отображаться некорректно — при проблемах используйте ASCII.
+
+% Макросы удобства
+\newcommand{\TODO}[1]{\textcolor{red!70!black}{[TODO: #1]}}
+\newcommand{\figref}[1]{рис.~\ref{#1}}
+\newcommand{\secref}[1]{раздел~\ref{#1}}
+\newcommand{\eqnref}[1]{(\ref{#1})}
+\newcommand{\lstref}[1]{листинг~\ref{#1}}
+
+% Глоссарий и сокращения (требует makeglossaries/makeindex на этапе сборки)
+\usepackage[acronym,nonumberlist,toc,section]{glossaries}
+\makeglossaries
+\setacronymstyle{long-short}
+\renewcommand*{\glossaryname}{Глоссарий}
+\renewcommand*{\acronymname}{Список сокращений}
+\setglossarystyle{altlist}
+
+% Объявленные термины
+\newglossaryentry{virtualmem}{
+  name={виртуальная память},
+  sort={virtualnaia pamiat},
+  description={Абстракция, предоставляемая операционной системой, которая создаёт для каждого процесса собственное непрерывное адресное пространство, изолированное от других процессов и физической памяти.}
+}
+\newglossaryentry{physicalmem}{
+  name={физическая память},
+  sort={fizicheskaia pamiat},
+  description={Реальная оперативная память (RAM), установленная в компьютере. Адресация в ней происходит напрямую аппаратными средствами.}
+}
+\newglossaryentry{mempage}{
+  name={страница памяти},
+  sort={stranitsa pamiati},
+  description={Блок памяти фиксированного размера, являющийся минимальной единицей для управления памятью в системах с виртуальной адресацией. Обычно размер страницы составляет 4 КБ.}
+}
+\newglossaryentry{mmap}{
+  name={\texttt{mmap}},
+  sort={mmap},
+  description={Системный вызов в POSIX-совместимых системах для отображения файлов или устройств в память, а также для создания анонимных областей памяти.}
+}
+\newglossaryentry{stack}{
+  name={стек},
+  sort={stek},
+  description={Область памяти, используемая для хранения локальных переменных, аргументов функций и адресов возврата. Память на стеке выделяется и освобождается автоматически по принципу LIFO (Last-In, First-Out).}
+}
+\newglossaryentry{heap}{
+  name={куча},
+  sort={kucha},
+  description={Область памяти для динамического выделения. Программист вручную управляет выделением и освобождением памяти в куче с помощью операторов \texttt{new}/\texttt{delete} или функций \texttt{malloc}/\texttt{free}.}
+}
+
+% Титульные данные
+\title{\sffamily Курс: \textit{\CourseName}\\\large Лекция \LectureNo: \LectureTitle}
+\author{\sffamily Лектор: \Lecturer}
+\date{\sffamily Дата: \LectureDate}
+% ===================== PREAMBLE END =======================================================
+
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+
+\section{Дополнительные инструменты для работы с файловой системой}
+
+На прошлом занятии мы рассмотрели основы работы с файловой системой. Сегодня мы завершим эту тему, изучив несколько оставшихся, но важных инструментов, которые могут пригодиться в практических задачах.
+
+\subsection{Новые флаги для системного вызова \texttt{open}}
+Системный вызов \texttt{open} имеет несколько полезных флагов, которые мы не обсуждали ранее.
+
+\begin{itemize}
+    \item \texttt{O\_TRUNC}: Этот флаг позволяет при открытии файла немедленно обрезать его размер до нуля. Это удобная альтернатива последовательному вызову \texttt{open} и \texttt{ftruncate}, если содержимое файла нужно полностью перезаписать.
+    \item \texttt{O\_PATH}: Позволяет получить файловый дескриптор, который ссылается не на сам файл, а на его путь в файловой системе. Такой дескриптор имеет ограниченное применение (например, из него нельзя читать или в него писать), но он полезен для передачи в другие системные вызовы, такие как \texttt{fstat}, для получения информации об объекте файловой системы (включая директории), не открывая его для операций ввода-вывода.
+    \item \texttt{O\_NOFOLLOW}: Если путь, передаваемый в \texttt{open}, является символической ссылкой, то с этим флагом вызов не будет переходить по ней, а вернёт ошибку. Это важно для безопасности, чтобы избежать работы с непредусмотренным файлом.
+\end{itemize}
+
+\subsection{Получение метаданных о файлах: семейство \texttt{stat}}
+Для получения подробной информации о файле или директории используется семейство системных вызовов \texttt{stat}. Они заполняют структуру \texttt{struct stat}, содержащую метаданные об объекте.
+
+\begin{lstlisting}[language=C, caption={Сигнатуры функций семейства \texttt{stat}}, label={lst:stat_family}]
+#include <sys/stat.h>
+
+int stat(const char* path, struct stat* statbuf);
+int lstat(const char* path, struct stat* statbuf);
+int fstat(int fd, struct stat* statbuf);
+\end{lstlisting}
+
+Ключевые различия между вызовами:
+\begin{itemize}
+    \item \texttt{stat}: Принимает путь к файлу. Если путь указывает на символическую ссылку, \texttt{stat} переходит по ней и возвращает информацию о файле, на который она указывает.
+    \item \texttt{lstat}: Аналогичен \texttt{stat}, но \textbf{не} переходит по символическим ссылкам. Вместо этого он возвращает информацию о самой ссылке.
+    \item \texttt{fstat}: Принимает файловый дескриптор, полученный ранее через \texttt{open}.
+\end{itemize}
+
+Структура \texttt{struct stat} содержит множество полезных полей:
+\begin{itemize}
+    \item \texttt{st\_mode}: Тип файла (обычный файл, директория, символическая ссылка и т.д.) и права доступа к нему (чтение, запись, исполнение для владельца, группы и остальных).
+    \item \texttt{st\_uid} и \texttt{st\_gid}: ID пользователя и группы-владельца файла.
+    \item \texttt{st\_size}: Размер файла в байтах.
+    \item \texttt{st\_blocks}: Количество дисковых блоков, занимаемых файлом.
+    \item \texttt{st\_atim}, \texttt{st\_mtim}, \texttt{st\_ctim}: Временные метки последнего доступа, последней модификации содержимого и последней модификации метаданных соответственно.
+\end{itemize}
+
+\begin{lstlisting}[language=C++, caption={Пример использования \texttt{fstat} для определения типа объекта}, label={lst:fstat_example}]
+#include <fcntl.h>
+#include <sys/stat.h>
+#include <unistd.h>
+
+// ...
+
+int fd = open(path, O_RDONLY | O_PATH | O_NOFOLLOW);
+if (fd == -1) { /* handle error */ }
+
+struct stat stats;
+if (fstat(fd, &stats) == -1) { /* handle error */ }
+
+close(fd);
+
+if (S_ISDIR(stats.st_mode)) {
+    // Это директория
+} else if (S_ISLNK(stats.st_mode)) {
+    // Это символическая ссылка
+} else if (S_ISREG(stats.st_mode)) {
+    // Это обычный файл
+}
+\end{lstlisting}
+В этом примере используется флаг \texttt{O\_PATH}, чтобы безопасно получить дескриптор для проверки типа объекта, не открывая его для полноценной работы.
+
+\section{Управление памятью: виртуальная адресация}
+
+\subsection{Проблема модели линейной памяти}
+Мы привыкли думать о памяти как о большом непрерывном массиве байтов. Однако эта модель не соответствует действительности. Проведём простой эксперимент: создадим две переменные — одну в \gls{heap} (через \texttt{new}), а другую на \gls{stack} (локальная переменная) — и выведем их адреса.
+
+\begin{lstlisting}[language=C++, caption={Сравнение адресов в стеке и куче}]
+#include <iostream>
+
+int main() {
+    int* heap_var = new int(10);
+    int stack_var = 20;
+
+    std::cout << "Heap address:  " << (void*)heap_var << std::endl;
+    std::cout << "Stack address: " << (void*)&stack_var << std::endl;
+
+    long long diff = (long long)&stack_var - (long long)heap_var;
+    std::cout << "Difference (bytes): " << diff << std::endl;
+    // На 64-битной системе разница может достигать десятков терабайт
+    
+    delete heap_var;
+    return 0;
+}
+\end{lstlisting}
+
+Разница между этими адресами может составлять десятки терабайт, что очевидно превышает объём физической оперативной памяти любого современного компьютера. Это наблюдение доказывает, что адреса, с которыми мы работаем в программе, не являются прямыми физическими адресами.
+
+\subsection{Виртуальная и физическая память}
+Для решения проблемы изоляции и безопасности процессов операционные системы вводят абстракцию — \gls{virtualmem}.
+
+\begin{definitionbox}{Виртуальная и физическая память}
+\begin{itemize}
+    \item \textbf{\gls{physicalmem}} — это реальные микросхемы оперативной памяти (RAM) в компьютере. Её адреса последовательны и ограничены её физическим объёмом.
+    \item \textbf{\gls{virtualmem}} — это логическое адресное пространство, которое ОС предоставляет каждому процессу. Каждый процесс «видит» свой собственный, изолированный массив памяти, начинающийся с нуля. Адреса в этом пространстве называются \textbf{виртуальными}.
+\end{itemize}
+\end{definitionbox}
+
+Процессор с помощью специального модуля (MMU — Memory Management Unit) и при содействии операционной системы преобразует виртуальные адреса в физические при каждом обращении к памяти. Это преобразование прозрачно для программиста.
+
+\subsection{Страничная организация памяти}
+Преобразование адресов происходит не для каждого байта в отдельности, а для блоков памяти фиксированного размера, называемых \textbf{\gls{mempage}}.
+
+\begin{notebox}
+На большинстве современных систем (x86-64) размер страницы составляет 4 килобайта ($\SI{4096}{bytes}$, или $0x1000$ в шестнадцатеричной системе). Узнать точный размер страницы в системе можно с помощью вызова \texttt{sysconf(\_SC\_PAGESIZE)}.
+\end{notebox}
+
+Операционная система поддерживает для каждого процесса таблицу страниц, которая устанавливает соответствие между страницами виртуальной и физической памяти.
+
+\begin{figure}[h!]
+  \centering
+  \begin{tikzpicture}[node distance=1.5cm and 2.5cm, font=\small]
+    % Virtual Memory
+    \node[align=center] (v_title) {Виртуальная память};
+    \node[membox, below=0.5cm of v_title] (v_page0) {Страница 0};
+    \node[membox, below=0.2cm of v_page0] (v_page1) {Страница 1};
+    \node[membox, below=0.2cm of v_page1] (v_page2) {Страница 2};
+    \node[membox, below=0.2cm of v_page2, fill=black!10, draw=black!30, text=black!50] (v_page3) {Страница 3\\(не выделена)};
+    \node[membox, below=0.2cm of v_page3] (v_page4) {Страница 4};
+    
+    % Physical Memory
+    \node[align=center, right=of v_title] (p_title) {Физическая память};
+    \node[membox, below=0.5cm of p_title] (p_pageA) {Фрейм A};
+    \node[membox, below=0.2cm of p_pageA] (p_pageB) {Фрейм B};
+    \node[membox, below=0.2cm of p_pageB] (p_pageC) {Фрейм C};
+    \node[membox, below=0.2cm of p_pageC] (p_pageD) {Фрейм D};
+    \node[membox, below=0.2cm of p_pageD] (p_pageE) {Фрейм E};
+    
+    % Arrows
+    \draw[arrow] (v_page0.east) -- (p_pageB.west);
+    \draw[arrow] (v_page1.east) -- (p_pageE.west);
+    \draw[arrow] (v_page2.east) -- (p_pageA.west);
+    \draw[arrow] (v_page4.east) -- (p_pageC.west);
+
+    \node[below=0.2cm of v_page4, align=center, text width=4cm] (v_comment) {Адреса идут\\последовательно};
+    \node[below=0.2cm of p_pageE, align=center, text width=4cm] (p_comment) {Страницы могут быть\\фрагментированы};
+  \end{tikzpicture}
+  \caption{Схема отображения виртуальных страниц на физические фреймы памяти. Две соседние виртуальные страницы не обязательно отображаются в соседние физические.}
+  \label{fig:virt_phys_mem}
+\end{figure}
+
+При обращении к адресу, например, \texttt{0x2345}:
+\begin{enumerate}
+    \item Процессор разделяет его на номер страницы и смещение. Для страниц размером $0x1000$ адрес \texttt{0x2345} — это смещение \texttt{0x345} внутри страницы \texttt{2}.
+    \item С помощью таблицы страниц находится физический фрейм, соответствующий виртуальной странице \texttt{2} (на \figref{fig:virt_phys_mem} это фрейм A).
+    \item Процессор обращается к физической памяти по адресу, равному начальному адресу фрейма A плюс смещение \texttt{0x345}.
+\end{enumerate}
+
+\begin{summarybox}
+Виртуальная память обеспечивает изоляцию процессов, позволяет программам работать с большим адресным пространством, чем доступно физической памяти, и упрощает управление памятью для ОС. Это достигается за счёт постраничного отображения виртуальных адресов на физические.
+\end{summarybox}
+
+
+\section{Системные вызовы для управления памятью: \texttt{mmap}}
+Для управления виртуальным адресным пространством процесса в POSIX-системах используется системный вызов \gls{mmap} и его пара \texttt{munmap}.
+
+\begin{lstlisting}[language=C, caption={Сигнатуры \texttt{mmap} и \texttt{munmap}}, label={lst:mmap_sig}]
+#include <sys/mman.h>
+
+void *mmap(void *addr, size_t length, int prot, int flags,
+           int fd, off_t offset);
+           
+int munmap(void *addr, size_t length);
+\end{lstlisting}
+
+\texttt{mmap} — это мощный, но сложный инструмент, который выполняет две основные функции:
+\begin{enumerate}
+    \item \textbf{Анонимное отображение}: выделение новых страниц оперативной памяти для процесса.
+    \item \textbf{Файловое отображение}: отображение содержимого файла (или его части) в виртуальное адресное пространство процесса.
+\end{enumerate}
+
+\subsection{Аргументы и флаги \texttt{mmap}}
+Рассмотрим ключевые параметры \texttt{mmap}:
+\begin{itemize}
+    \item \texttt{addr}: Желаемый стартовый адрес для отображения. Обычно передаётся \texttt{nullptr}, чтобы ОС сама выбрала подходящий адрес.
+    \item \texttt{length}: Размер отображаемой области в байтах.
+    \item \texttt{prot} (protection): Права доступа к памяти.
+    \begin{itemize}
+        \item \texttt{PROT\_READ}: память можно читать.
+        \item \texttt{PROT\_WRITE}: в память можно писать.
+        \item \texttt{PROT\_EXEC}: содержимое памяти можно исполнять как код.
+        \item \texttt{PROT\_NONE}: к памяти нет доступа.
+    \end{itemize}
+    \item \texttt{flags}: Определяют тип и поведение отображения.
+    \begin{itemize}
+        \item \texttt{MAP\_SHARED} или \texttt{MAP\_PRIVATE}: Один из этих флагов обязателен. \texttt{MAP\_SHARED} означает, что изменения, сделанные в памяти, будут видны другим процессам, отображающим тот же объект, и (в случае файла) будут записаны обратно в файл. \texttt{MAP\_PRIVATE} создаёт copy-on-write отображение: изменения видны только текущему процессу и не затрагивают исходный файл.
+        \item \texttt{MAP\_ANONYMOUS}: Создаёт анонимное отображение. Память инициализируется нулями и не связана ни с каким файлом. При использовании этого флага аргумент \texttt{fd} должен быть \texttt{-1}.
+        \item \texttt{MAP\_FIXED}: Требует от ОС использовать точно адрес, указанный в \texttt{addr}. Это опасный флаг, так как он может без предупреждения перезаписать существующие отображения.
+    \end{itemize}
+    \item \texttt{fd}, \texttt{offset}: Файловый дескриптор и смещение от начала файла для файловых отображений.
+\end{itemize}
+В случае успеха \texttt{mmap} возвращает указатель на начало выделенной области. В случае ошибки — \texttt{MAP\_FAILED}.
+
+\subsection{Примеры использования \texttt{mmap}}
+\subsubsection{Анонимное отображение}
+Это основной способ, которым аллокаторы (\texttt{malloc}, \texttt{new}) запрашивают большие блоки памяти у операционной системы.
+
+\begin{lstlisting}[language=C++, caption={Выделение одной страницы памяти с помощью \texttt{mmap}}, label={lst:mmap_anon}]
+#include <sys/mman.h>
+#include <unistd.h> // Для sysconf
+
+// ...
+
+// Запросим одну страницу памяти
+size_t page_size = sysconf(_SC_PAGESIZE); 
+void* raw_mem = mmap(nullptr, page_size,
+                     PROT_READ | PROT_WRITE,
+                     MAP_PRIVATE | MAP_ANONYMOUS,
+                     -1, 0);
+
+if (raw_mem == MAP_FAILED) {
+    // Обработка ошибки
+}
+
+char* data = static_cast<char*>(raw_mem);
+// Теперь с data можно работать как с обычным массивом
+data[0] = 'H';
+data[1] = 'i';
+
+// Освобождаем память
+munmap(raw_mem, page_size);
+\end{lstlisting}
+
+\subsubsection{Отображение файла в память}
+Отображение файла позволяет работать с его содержимым как с обычным массивом в памяти, что может быть эффективнее, чем многократные вызовы \texttt{read} и \texttt{write}, особенно при произвольном доступе.
+
+\begin{lstlisting}[language=C++, caption={Работа с файлом через \texttt{mmap}}, label={lst:mmap_file}]
+#include <sys/mman.h>
+#include <fcntl.h>
+#include <unistd.h>
+
+const size_t FILE_SIZE = 128;
+int fd = open("storage.bin", O_RDWR | O_CREAT, 0644);
+ftruncate(fd, FILE_SIZE); // Устанавливаем размер файла
+
+void* raw_mem = mmap(nullptr, FILE_SIZE,
+                     PROT_READ | PROT_WRITE,
+                     MAP_SHARED, // Изменения будут записаны в файл
+                     fd, 0);
+
+close(fd); // После mmap файловый дескриптор можно закрыть
+
+if (raw_mem == MAP_FAILED) { /* ... */ }
+
+char* data = static_cast<char*>(raw_mem);
+for (size_t i = 0; i < FILE_SIZE; ++i) {
+    data[i] = static_cast<char>(i);
+}
+
+// Операционная система запишет изменения на диск
+// (не обязательно мгновенно)
+
+munmap(raw_mem, FILE_SIZE);
+\end{lstlisting}
+
+\subsection{Освобождение памяти: \texttt{munmap}}
+Вызов \texttt{munmap} удаляет отображение для указанного диапазона виртуальных адресов. Крайне важно освобождать память, выделенную через \texttt{mmap}, чтобы избежать утечек ресурсов. Аналогично паре \texttt{new}/\texttt{delete}, каждому успешному вызову \texttt{mmap} должен соответствовать вызов \texttt{munmap}.
+
+\section{Аргументы командной строки и переменные окружения}
+Кроме ввода-вывода, программа может получать информацию извне при запуске. Рассмотрим два основных механизма: аргументы командной строки и переменные окружения.
+
+\subsection{Аргументы командной строки}
+При запуске программы из терминала можно передать ей параметры. Они доступны в функции \texttt{main} через её аргументы.
+
+\begin{lstlisting}[language=C++, caption={Интерфейс функции \texttt{main}}]
+int main(int argc, char* argv[]) {
+    // ...
+}
+\end{lstlisting}
+\begin{itemize}
+    \item \texttt{argc} (argument count): количество переданных аргументов.
+    \item \texttt{argv} (argument vector): массив указателей на C-строки.
+\end{itemize}
+Важно помнить, что \texttt{argv[0]} — это всегда имя самой запущенной программы. Реальные аргументы начинаются с \texttt{argv[1]}. Например, для команды \texttt{./myprog hello world} будет:
+\begin{itemize}
+    \item \texttt{argc} = 3
+    \item \texttt{argv[0]} = \texttt{"./myprog"}
+    \item \texttt{argv[1]} = \texttt{"hello"}
+    \item \texttt{argv[2]} = \texttt{"world"}
+\end{itemize}
+
+\subsection{Переменные окружения}
+Переменные окружения — это набор пар "ключ-значение", которые наследуются дочерними процессами от родительских. Они используются для передачи контекста и настроек программам (например, \texttt{PATH} для поиска исполняемых файлов, \texttt{HOME} для пути к домашней директории).
+
+В Linux переменные окружения физически располагаются в памяти процесса сразу после массива \texttt{argv}, отделённые от него указателем \texttt{nullptr}.
+
+Для безопасного доступа к ним из C++ используется функция \texttt{getenv}.
+
+\begin{lstlisting}[language=C++, caption={Чтение переменной окружения}]
+#include <iostream>
+#include <cstdlib> // Для getenv
+
+int main() {
+    const char* user = std::getenv("USER");
+    if (user != nullptr) {
+        std::cout << "Hello, " << user << "!" << std::endl;
+    } else {
+        std::cout << "USER environment variable is not set." << std::endl;
+    }
+    return 0;
+}
+\end{lstlisting}
+
+\begin{notebox}
+Переменные окружения часто используются для передачи конфиденциальной информации (ключей API, паролей), так как они, в отличие от аргументов командной строки, не видны другим пользователям системы через команды типа \texttt{ps}.
+\end{notebox}
+
+\begin{summarybox}
+\begin{itemize}
+    \item Аргументы командной строки (\texttt{argc}, \texttt{argv}) позволяют передавать простые параметры при запуске.
+    \item Переменные окружения — это наследуемые пары "ключ-значение" для передачи настроек и контекста.
+    \item Для доступа к переменным окружения следует использовать \texttt{getenv}, что является более безопасным и портируемым способом.
+\end{itemize}
+\end{summarybox}
+
+\clearpage
+\printglossaries
+
+\end{document}
+% ===================== QC-отчёт =======================================================
+% QC:
+% 1.  Структура: Документ структурирован по темам лекции: завершение работы с ФС (stat), введение в виртуальную память, системный вызов mmap и его применение, аргументы командной строки и переменные окружения.
+% 2.  Содержание: Вся информация извлечена из транскрипта и слайдов. Определения, примеры кода и объяснения соответствуют источникам. TikZ-схема для виртуальной памяти создана на основе диаграммы со слайдов.
+% 3.  Точность: Внешние знания не привлекались. Пояснения (например, про MMU или copy-on-write) даны в контексте объяснений лектора.
+% 4.  Стиль: Использованы LaTeX-окружения из шаблона (definitionbox, notebox, summarybox). Стиль изложения соответствует "методичке". Код оформлен в listings.
+% 5.  Компилируемость: Преамбула полная, все окружения закрыты, метки уникальны. Документ должен компилироваться с помощью pdflatex + makeglossaries.
+% 6.  Рекомендации: Лекция покрыта полностью. Следующая итерация может детализировать работу аллокаторов или создание процессов, если это будет темой следующей лекции.
+% ======================================================================================
+

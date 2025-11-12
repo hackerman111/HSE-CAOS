@@ -1,0 +1,402 @@
+\clearpage
+
+\section{Введение и организационные моменты}
+Этот курс посвящён изучению пользовательской части \gls{os} и архитектуры компьютера. Основная цель — понять, как программы выполняют свои действия на низком уровне, <<под капотом>> стандартных библиотечных функций. Курс рассчитан на один семестр и является обязательным, с возможностью выбрать продолжение во втором семестре.
+
+\subsection{Формула оценки}
+Итоговая оценка за курс формируется по следующей формуле:
+\begin{equation}
+\text{Оценка} = \min\left(10, 0.6 \cdot O_{\text{дз}} + 0.2 \cdot O_{\text{кр}} + 0.2 \cdot O_{\text{экз}} + 0.1 \cdot O_{\text{сем}}\right)
+\label{eq:grade_formula}
+\end{equation}
+где:
+\begin{itemize}
+    \item $O_{\text{дз}}$ — оценка за домашние задания.
+    \item $O_{\text{кр}}$ — оценка за контрольные работы.
+    \item $O_{\text{экз}}$ — оценка за экзамен.
+    \item $O_{\text{сем}}$ — оценка за работу на семинарах.
+\end{itemize}
+
+\begin{notebox}
+Сумма весовых коэффициентов в формуле \eqnref{eq:grade_formula} равна 1.1. Это означает, что с учётом бонусов за домашние задания можно набрать более 10 баллов, но итоговая оценка ограничивается 10 баллами.
+\end{notebox}
+
+\subsection{Работа с домашними заданиями}
+Домашние задания будут выдаваться примерно раз в неделю со сроком выполнения 1--2 недели. Дедлайны <<мягкие>>: баллы за задание начинают убывать постепенно и достигают 10--20\% от первоначальной стоимости через 3 недели после выдачи. Это сделано для того, чтобы студенты не жертвовали сном ради сдачи заданий в последний момент. Все задания будут выполняться в среде GEDLab.
+
+\section{Зачем нужна операционная система?}
+Рассмотрим простейшую программу на C++, которая считывает два числа и выводит их сумму (\lstref{lst:simple_sum}).
+\begin{lstlisting}[language=C++, caption={Программа для сложения двух чисел}, label={lst:simple_sum}]
+#include <iostream>
+
+int main() {
+    int a, b;
+    std::cin >> a >> b;
+    std::cout << a + b;
+    return 0;
+}
+\end{lstlisting}
+На первый взгляд, все операции ввода-вывода выполняются благодаря библиотеке \texttt{iostream}. Однако в самом языке C++ нет встроенных механизмов для прямого взаимодействия с устройствами, такими как экран или клавиатура. Как же тогда текст появляется на мониторе?
+
+\subsection{Проблема прямого доступа к оборудованию}
+Представим модель, в которой программа напрямую взаимодействует с аппаратными компонентами компьютера: \gls{cpu}, \gls{ram}, жестким диском, сетевой картой и т.д. (\figref{fig:direct_access}).
+
+\begin{figure}[h!]
+  \centering
+  \begin{tikzpicture}[node distance=1.2cm and 1.5cm]
+    \node[node_prog] (p1) at (-3, 1) {$>\_$};
+    \node[node_prog] (p2) at (-3, 0) {$>\_$};
+    \node[node_prog] (p3) at (-3,-1) {$>\_$};
+    \node[node_cpu] (cpu) {CPU};
+    
+    \draw[arrow] (p1) -- (cpu);
+    \draw[arrow] (p2) -- (cpu);
+    \draw[arrow] (p3) -- (cpu);
+    
+    \node[node_device, above right=0.5cm and 1cm of cpu] (ram) {RAM};
+    \node[node_device, right=of cpu, yshift=0.2cm] (drive) {Drive};
+    \node[node_device, below right=0.5cm and 1cm of cpu] (net) {Net};
+    
+    \draw[arrow] (cpu) -- (ram);
+    \draw[arrow] (cpu) -- (drive);
+    \draw[arrow] (cpu) -- (net);
+    
+    \node[node_device, right=of drive, yshift=1.5cm] (pata) {(P)ATA/IDE};
+    \node[node_device, right=of drive, yshift=0.5cm] (sata) {SATA};
+    \node[node_device, right=of drive, yshift=-0.5cm] (sas) {SAS};
+    \node[node_device, right=of drive, yshift=-1.5cm] (nvme) {NVMe};
+    
+    \draw[arrow] (drive) -- (pata);
+    \draw[arrow] (drive) -- (sata);
+    \draw[arrow] (drive) -- (sas);
+    \draw[arrow] (drive) -- (nvme);
+  \end{tikzpicture}
+  \caption{Модель прямого взаимодействия программы с оборудованием}
+  \label{fig:direct_access}
+\end{figure}
+
+Такая модель порождает две ключевые проблемы:
+\begin{enumerate}
+    \item \textbf{Сложность и непереносимость.} Существует множество протоколов для взаимодействия с одним и тем же типом устройств. Например, для работы с дисками программа должна была бы поддерживать интерфейсы PATA, SATA, SAS, NVMe и другие. Аналогично, каждый производитель сетевых карт может предлагать свой уникальный протокол. Чтобы программа работала на разных компьютерах, ей пришлось бы реализовывать поддержку всех этих интерфейсов, что практически невозможно.
+    \item \textbf{Разделение ресурсов.} В современных системах одновременно запущены сотни и тысячи программ, в то время как количество ядер \gls{cpu} ограничено единицами или десятками. Необходимо эффективно распределять процессорное время и другие ресурсы (память, доступ к дискам) между всеми программами. При прямом доступе программы к оборудованию сделать это было бы крайне затруднительно.
+\end{enumerate}
+
+\subsection{Решение: операционная система как абстракция}
+Для решения этих проблем была придумана \gls{os}.
+\begin{definitionbox}{Операционная система}
+\Gls{os} — это программный слой, который выступает посредником между пользовательскими программами и аппаратным обеспечением компьютера.
+\end{definitionbox}
+\Gls{os} решает обе проблемы:
+\begin{itemize}
+    \item Она \textbf{предоставляет унифицированный интерфейс} для работы с оборудованием. Программа работает не с конкретным жестким диском, а с абстракцией <<файловой системы>>. ОС сама берёт на себя реализацию всех низкоуровневых протоколов.
+    \item Она \textbf{управляет ресурсами}. ОС решает, какой программе и на какое время предоставить \gls{cpu}, распределяет память, организует доступ к устройствам, предотвращая конфликты.
+\end{itemize}
+Эта модель показана на \figref{fig:os_mediator}.
+
+\begin{figure}[h!]
+  \centering
+  \begin{tikzpicture}[node distance=1.5cm]
+    \node[node_prog] (p1) at (-3, 1) {$>\_$};
+    \node[node_prog] (p2) at (-3, 0) {$>\_$};
+    \node[node_prog] (p3) at (-3,-1) {$>\_$};
+    
+    \node[node_os] (os) {OS};
+    
+    \draw[arrow] (p1) -- (os);
+    \draw[arrow] (p2) -- (os);
+    \draw[arrow] (p3) -- (os);
+    
+    \node[node_device, right=of os, yshift=1.5cm] (cpu) {CPU};
+    \node[node_device, right=of os, yshift=0.5cm] (ram) {RAM};
+    \node[node_device, right=of os, yshift=-0.5cm] (drive) {Drive};
+    \node[node_device, right=of os, yshift=-1.5cm] (net) {Net};
+    
+    \draw[arrow] (os) -- (cpu);
+    \draw[arrow] (os) -- (ram);
+    \draw[arrow] (os) -- (drive);
+    \draw[arrow] (os) -- (net);
+  \end{tikzpicture}
+  \caption{Операционная система как посредник}
+  \label{fig:os_mediator}
+\end{figure}
+
+\begin{summarybox}
+\begin{itemize}
+    \item Прямое взаимодействие программ с оборудованием сложно, непереносимо и не позволяет эффективно разделять ресурсы.
+    \item \Gls{os} решает эти проблемы, предоставляя программам абстракции (файлы, сокеты) и управляя доступом к аппаратуре.
+\end{itemize}
+\end{summarybox}
+\clearpage
+
+\section{Работа с памятью в C++: краткое повторение}
+Взаимодействие с \gls{os} в значительной степени происходит через память. Программа записывает данные в свою область памяти и затем просит \gls{os} что-то с этими данными сделать. Поэтому важно освежить знания о модели памяти в C++.
+
+\subsection{Линейно адресуемая память и указатели}
+Память можно представить как большой массив байтов, где у каждого байта есть уникальный числовой адрес. Это называется моделью линейно адресуемой памяти.
+
+Для работы с памятью используются \textbf{указатели} — переменные, которые хранят адрес. Разыменование указателя (\texttt{*ptr}) означает обращение к данным, лежащим по этому адресу. Тип указателя определяет, сколько байт будет прочитано и как они будут интерпретированы. Например, указатель типа \texttt{int64\_t*} при разыменовании прочитает 8 байт и представит их как 64-битное целое число.
+
+\subsection{Динамическая память}
+Иногда память нужно выделить так, чтобы она <<пережила>> функцию, в которой была создана. Для этого используется динамическое выделение памяти в <<куче>> (heap).
+\begin{lstlisting}[language=C++, caption={Работа с динамической памятью}, label={lst:dynamic_mem}]
+// Allocating a single object
+// Operator `new` allocates sizeof(T) bytes and constructs an object
+T* ptr = new T{};
+
+// Deleting an object and freeing memory
+delete ptr;
+
+// Allocating an array of 10 objects
+T* arr = new T[10];
+
+// Deleting all objects in the array and freeing memory
+delete[] arr;
+\end{lstlisting}
+\begin{notebox}
+Важно соблюдать парность операторов: память, выделенную через \texttt{new}, нужно освобождать через \texttt{delete}. Память, выделенную через \texttt{new[]}, — через \texttt{delete[]}. Нарушение этого правила приводит к неопределённому поведению.
+\end{notebox}
+
+\subsection{Разделение аллокации и конструирования}
+Оператор \texttt{new T} на самом деле выполняет две операции:
+\begin{enumerate}
+    \item Выделение <<сырой>> (неинициализированной) памяти нужного размера.
+    \item Конструирование объекта типа \texttt{T} в этой памяти.
+\end{enumerate}
+Эти шаги можно выполнить раздельно.
+\begin{lstlisting}[language=C++, caption={Явное управление памятью и объектами}, label={lst:placement_new}]
+// 1. Allocate sizeof(T) raw bytes. operator new returns void*
+void* raw_ptr = operator new(sizeof(T));
+
+// 2. Construct an object of type T at the given address (placement new)
+T* ptr = new (raw_ptr) T{};
+
+// --- object `ptr` is ready to use ---
+
+// 3. Explicitly call the destructor to destroy the object
+ptr->~T();
+
+// 4. Free the raw memory
+operator delete(raw_ptr);
+\end{lstlisting}
+Такой подход даёт больше контроля, но требует аккуратного ручного управления временем жизни объекта и памяти.
+
+\subsection{Арифметика указателей}
+В C++ арифметика указателей типизирована. Прибавление к указателю \texttt{ptr} единицы (\texttt{ptr + 1}) сдвигает его адрес не на 1 байт, а на \texttt{sizeof(*ptr)} байт, то есть к адресу следующего элемента в массиве.
+\begin{itemize}
+    \item \texttt{ptr[i]} эквивалентно \texttt{*(ptr + i)}.
+    \item Разность двух указателей одного типа \texttt{ptr1 - ptr2} даёт количество элементов (а не байт) между ними.
+\end{itemize}
+
+\section{Взаимодействие с ОС: системные вызовы}
+Теперь, когда мы освежили знания о памяти, перейдём к основному механизму взаимодействия программы с \gls{os}.
+
+\begin{definitionbox}{Системный вызов}
+\Gls{syscall} — это основной интерфейс между пользовательскими программами и ядром \gls{os}. Программа использует \gls{syscall}, чтобы попросить ядро выполнить действие, которое она не может выполнить сама (например, работать с файлом или сетью).
+\end{definitionbox}
+
+Рассмотрим два базовых системных вызова для ввода-вывода: \texttt{read} и \texttt{write}.
+
+\subsection{Системный вызов read}
+Функция \texttt{read} читает данные из источника, идентифицируемого \gls{fd}, в буфер.
+\begin{lstlisting}[language=C, caption={Сигнатура и использование read}, label={lst:read_call}]
+#include <unistd.h>
+
+ssize_t read(int fd, void *buf, size_t count);
+
+// Example
+char buf[10];
+// Read from stdin (fd=0) into buf, at most 9 bytes
+ssize_t bytes_read = read(0, buf, 9); 
+
+if (bytes_read == -1) {
+    // Error occurred
+} else if (bytes_read == 0) {
+    // End of input (EOF)
+} else {
+    // Successfully read `bytes_read` bytes
+}
+\end{lstlisting}
+\textbf{Аргументы:}
+\begin{itemize}
+    \item \texttt{int fd}: \Gls{fd} источника данных. По соглашению, 0 — это \gls{stdin}.
+    \item \texttt{void *buf}: Указатель на буфер, куда будут записаны данные.
+    \item \texttt{size\_t count}: Максимальное количество байт для чтения.
+\end{itemize}
+\textbf{Возвращаемое значение (\texttt{ssize\_t}):}
+\begin{itemize}
+    \item Положительное число: количество успешно прочитанных байт. \textbf{Важно:} \texttt{read} не гарантирует, что прочитает ровно \texttt{count} байт, даже если они доступны. Он может прочитать меньше.
+    \item \texttt{0}: достигнут конец файла (EOF) или потока. Больше данных для чтения нет.
+    \item \texttt{-1}: произошла ошибка. Код ошибки сохраняется в глобальной переменной \gls{errno}.
+\end{itemize}
+
+\subsection{Системный вызов write}
+Функция \texttt{write} записывает данные из буфера в приёмник, идентифицируемый \gls{fd}.
+\begin{lstlisting}[language=C, caption={Сигнатура и использование write}, label={lst:write_call}]
+#include <unistd.h>
+
+ssize_t write(int fd, const void *buf, size_t count);
+
+// Example
+const char msg[] = "Hello, world!\n";
+// Write to stdout (fd=1), strlen(msg) bytes
+// We use sizeof(msg) - 1 to exclude the terminating null byte ('\0')
+ssize_t bytes_written = write(1, msg, sizeof(msg) - 1);
+
+// Write the same message to stderr (fd=2)
+write(2, msg, sizeof(msg) - 1);
+
+if (bytes_written == -1) {
+    // Error occurred
+}
+\end{lstlisting}
+\textbf{Аргументы:}
+\begin{itemize}
+    \item \texttt{int fd}: \Gls{fd} приёмника данных. 1 — \gls{stdout}, 2 — \gls{stderr}.
+    \item \texttt{const void *buf}: Указатель на буфер с данными для записи. Буфер константный, так как \texttt{write} его не изменяет.
+    \item \texttt{size\_t count}: Количество байт для записи.
+\end{itemize}
+\textbf{Возвращаемое значение:}
+\begin{itemize}
+    \item Положительное число: количество успешно записанных байт. Как и \texttt{read}, \texttt{write} может записать меньше байт, чем было запрошено (например, если на диске закончилось место).
+    \item \texttt{-1}: произошла ошибка, код которой записан в \gls{errno}.
+\end{itemize}
+\clearpage
+
+\subsection{Обработка ошибок и частичных операций}
+Поскольку \texttt{read} и \texttt{write} могут обработать меньше данных, чем запрошено, для надёжной передачи всего объёма данных необходимо использовать циклы.
+\begin{lstlisting}[language=C++, caption={Надёжная функция для записи всех данных}, label={lst:write_all}]
+// Writes exactly `count` bytes from `buf` to `fd`.
+// Returns `true` on success, `false` on error.
+bool WriteAll(int fd, const char* buf, size_t count) {
+    size_t written = 0;
+    while (written < count) {
+        ssize_t res = write(fd, buf + written, count - written);
+        if (res == -1) {
+            return false; // An error occurred
+        }
+        written += res;
+    }
+    return true;
+}
+\end{lstlisting}
+Аналогичная функция \texttt{ReadAll} должна быть реализована для чтения, но с дополнительной проверкой на возврат 0 (EOF).
+
+Для получения текстового описания ошибки по её коду из \gls{errno} можно использовать функцию \texttt{strerror} из заголовка \texttt{<cstring>}.
+\begin{lstlisting}[language=C++, caption={Обработка ошибок с выводом сообщения}, label={lst:error_handling}]
+#include <cerrno>
+#include <cstring>
+#include <iostream>
+
+// ... inside a function
+if (!WriteAll(1, "Hello", 5)) {
+    // errno is set by the last failed `write` call
+    std::cerr << "Error writing data: " << strerror(errno) << std::endl;
+    return 1; // Exit with error code
+}
+\end{lstlisting}
+
+\begin{summarybox}
+\begin{itemize}
+    \item Системные вызовы — это API операционной системы.
+    \item \texttt{read} и \texttt{write} — базовые вызовы для неформатированного ввода-вывода.
+    \item Файловые дескрипторы 0, 1, 2 зарезервированы для стандартных потоков stdin, stdout, stderr.
+    \item Всегда проверяйте возвращаемые значения системных вызовов на ошибки (-1) и обрабатывайте частичные операции.
+    \item Для получения информации об ошибке используйте переменную \gls{errno}.
+\end{itemize}
+\end{summarybox}
+
+\section{Работа с файлами}
+Стандартные потоки — это лишь частный случай. Основное применение \gls{fd} — работа с файлами на диске.
+
+\subsection{Системные вызовы open и close}
+Чтобы работать с файлом, его сначала нужно открыть с помощью системного вызова \texttt{open}.
+\begin{definitionbox}{Файловый дескриптор}
+\Gls{fd} — это неотрицательное целое число, которое \gls{os} возвращает процессу при открытии файла. Процесс использует этот дескриптор во всех последующих операциях с файлом (\texttt{read}, \texttt{write}, \texttt{close}).
+\end{definitionbox}
+
+\begin{lstlisting}[language=C, caption={Сигнатура системного вызова open}, label={lst:open_sig}]
+#include <fcntl.h> // For flags
+#include <unistd.h>
+
+int open(const char *pathname, int flags, ... /* mode_t mode */);
+\end{lstlisting}
+\textbf{Аргументы:}
+\begin{itemize}
+    \item \texttt{const char *pathname}: Путь к файлу.
+    \item \texttt{int flags}: Флаги, определяющие режим доступа (например, \texttt{O\_RDONLY} — только для чтения, \texttt{O\_WRONLY} — только для записи, \texttt{O\_RDWR} — для чтения и записи). Флаги можно комбинировать с помощью побитового ИЛИ (\texttt{|}).
+    \item \texttt{mode\_t mode}: (Опционально) Права доступа, которые устанавливаются, если файл создаётся с флагом \texttt{O\_CREAT}.
+\end{itemize}
+В случае успеха \texttt{open} возвращает новый \gls{fd} (обычно наименьший из доступных). В случае ошибки возвращается -1, а \gls{errno} устанавливается.
+
+После завершения работы с файлом его дескриптор необходимо освободить с помощью системного вызова \texttt{close}.
+\begin{lstlisting}[language=C, caption={Сигнатура системного вызова close}, label={lst:close_sig}]
+#include <unistd.h>
+
+int close(int fd);
+\end{lstlisting}
+Если не закрывать файлы, это приведёт к утечке ресурсов (файловых дескрипторов), так как их количество для одного процесса ограничено.
+
+\subsection{Пример чтения из файла}
+В \lstref{lst:file_read_example} показан полный цикл работы: открытие файла, чтение из него, вывод содержимого в стандартный поток и закрытие.
+\begin{lstlisting}[language=C++, caption={Чтение из файла и вывод в stdout}, label={lst:file_read_example}]
+#include <iostream>
+#include <fcntl.h>
+#include <unistd.h>
+#include <cerrno>
+#include <cstring>
+
+int main() {
+    const char* filename = "output.txt";
+    int fd = open(filename, O_RDONLY);
+    if (fd == -1) {
+        std::cerr << "Failed to open file " << filename << ": "
+                  << strerror(errno) << std::endl;
+        return 1;
+    }
+
+    char buffer[1024];
+    ssize_t bytes_read;
+
+    // Read from file in a loop until EOF
+    while ((bytes_read = read(fd, buffer, sizeof(buffer))) > 0) {
+        // Write the read data to stdout
+        if (!WriteAll(1, buffer, bytes_read)) {
+             std::cerr << "Failed to write to stdout: "
+                       << strerror(errno) << std::endl;
+             close(fd);
+             return 1;
+        }
+    }
+
+    if (bytes_read == -1) {
+        std::cerr << "Error reading from file: " << strerror(errno) << std::endl;
+    }
+
+    close(fd); // Don't forget to close the file!
+    return 0;
+}
+// Assume WriteAll is defined as in listing 4.4
+\end{lstlisting}
+
+\begin{summarybox}
+\begin{itemize}
+    \item Работа с файлом начинается с его открытия вызовом \texttt{open}, который возвращает \gls{fd}.
+    \item Полученный \gls{fd} используется в вызовах \texttt{read} и \texttt{write} для взаимодействия с файлом.
+    \item После окончания работы файл необходимо закрыть вызовом \texttt{close}, чтобы освободить ресурсы.
+    \item Каждый \texttt{open} должен иметь парный \texttt{close}, подобно паре \texttt{new}/\texttt{delete}.
+\end{itemize}
+\end{summarybox}
+% QC:
+% - Полнота: Конспект покрывает все ключевые темы лекции: организационные моменты (формула оценки, инструменты), мотивацию для создания ОС, краткое повторение работы с памятью в C++ и детальное введение в системные вызовы (read, write, open, close) с обработкой ошибок и частичных операций.
+% - Точность: Вся информация основана строго на предоставленной транскрипции и слайдах. Имя лектора (Олег), формула оценки и технические детали (например, возвращаемые значения системных вызовов, номера стандартных дескрипторов, обработка `errno`) соответствуют источнику.
+% - Структура и стиль: Документ выполнен в стиле "методички" с чёткими определениями в tcolorbox, итогами разделов, последовательным изложением материала от общего к частному. Структура логична: "зачем" (нужна ОС) -> "как было раньше" (работа с памятью) -> "как надо делать сейчас" (системные вызовы).
+% - Техническая реализация LaTeX:
+%   - Использованы все требуемые пакеты из шаблона.
+%   - Схемы (TikZ) иллюстрируют архитектурные концепции, обсуждаемые в лекции (прямой доступ vs. ОС-посредник).
+%   - Фрагменты кода оформлены с помощью `listings`, содержат комментарии и соответствуют примерам из лекции.
+%   - Метки и ссылки (`\label`, `\cref`) уникальны и корректны. Все окружения закрыты.
+%   - Подготовлен и выведен глоссарий ключевых терминов.
+% - Собственные допущения:
+%   - Дата лекции оставлена пустой, так как в источнике она не указана.
+%   - Код функции `WriteAll` в примере с чтением файла (`lst:file_read_example`) не дублируется, а даётся ссылка на его предыдущее определение, чтобы избежать избыточности.
+% - Рекомендации для следующей итерации: Можно добавить больше деталей о флагах для `open` (например, `O_CREAT`, `O_APPEND`), если эта тема будет развиваться в следующих лекциях.

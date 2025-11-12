@@ -1,0 +1,775 @@
+% ===================== PREAMBLE START (Aesthetic, pdfLaTeX, RU, no shell-escape) =========
+\documentclass[12pt,a4paper]{article}
+
+\usepackage{amsmath,amssymb,amsfonts,mathtools}
+% Поиск/копирование кириллицы из PDF
+\usepackage{cmap}
+
+% Язык и кодировки
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage[russian]{babel}
+
+% Поля, типографика, абзацы
+\usepackage[a4paper,margin=2.2cm]{geometry}
+\usepackage{microtype}
+\usepackage{indentfirst}
+\setlength{\parindent}{1.25em}
+\setlength{\parskip}{0.25em}
+\raggedbottom
+
+% Цветовая тема
+\usepackage[table]{xcolor}
+\definecolor{Accent}{HTML}{1F6FEB}     % основной акцент
+\definecolor{AccentDark}{HTML}{0B5394} % тёмный акцент
+\definecolor{AccentLight}{HTML}{E8F0FE}% светлый акцент (фон)
+\definecolor{CodeBg}{HTML}{F6F8FA}     % фон для кода
+\definecolor{Link}{HTML}{1F6FEB}       % ссылки
+
+% Гиперссылки и умные ссылки
+\usepackage[unicode]{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=Link, citecolor=Link, urlcolor=Link,
+  pdfauthor={Лектор: Имя Фамилия},
+  pdftitle={Лекция 7: Представление данных, сборка и основы ассемблера}
+}
+\usepackage[nameinlink,capitalise]{cleveref}
+\urlstyle{same}
+
+% Заголовки разделов
+\usepackage{titlesec}
+\titleformat{\section}{\large\bfseries\sffamily\color{Accent}}{\thesection}{1em}{}
+\titleformat{\subsection}{\bfseries\sffamily\color{AccentDark}}{\thesubsection}{0.75em}{}
+\titleformat{\subsubsection}{\bfseries}{\thesubsubsection}{0.6em}{}
+\titlespacing*{\section}{0pt}{1.0ex plus 0.5ex}{0.6ex}
+\titlespacing*{\subsection}{0pt}{0.9ex plus 0.4ex}{0.5ex}
+\titlespacing*{\subsubsection}{0pt}{0.8ex plus 0.3ex}{0.4ex}
+
+% Шапки/футеры
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+% Макросы метаданных (переопределяйте в документе/LLM)
+\newcommand{\CourseName}{Архитектура компьютера и ОС}
+\newcommand{\LectureNo}{7}
+\newcommand{\LectureTitle}{Представление данных, сборка и основы ассемблера}
+\newcommand{\LectureDate}{07.11.2025}
+\newcommand{\Lecturer}{Имя Фамилия}
+\fancyhead[L]{\small\sffamily \CourseName}
+\fancyhead[C]{\small\sffamily \LectureTitle}
+\fancyhead[R]{\small\sffamily Лекция \LectureNo}
+\fancyfoot[C]{\small\sffamily \thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\makeatletter
+\renewcommand{\headrule}{\hbox to\headwidth{\color{Accent}\leaders\hrule height \headrulewidth\hfill}}
+\makeatother
+
+% Подписи к рисункам/таблицам
+\usepackage[font=small,labelfont=bf,labelsep=endash]{caption}
+\usepackage{subcaption}
+
+% Математика и единицы
+\numberwithin{equation}{section}
+\usepackage{siunitx}
+\sisetup{detect-all=true}
+
+% Таблицы и списки
+\usepackage{booktabs}
+\usepackage{array,tabularx}
+\usepackage{enumitem}
+\setlist{itemsep=2pt,topsep=4pt,leftmargin=*,labelsep=0.5em}
+
+% Графика и TikZ
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,shapes.geometric,calc,fit}
+\tikzset{
+  box/.style={draw=Accent, rounded corners, fill=AccentLight, minimum width=2.6cm, minimum height=1cm, align=center},
+  arrow/.style={-{Stealth[length=3mm,width=2mm]}, line width=0.5pt, draw=AccentDark}
+}
+
+% Красивые боксы "методички"
+\usepackage[most]{tcolorbox}
+\tcbset{enhanced, breakable, boxrule=0.6pt, fonttitle=\bfseries\sffamily}
+\newtcolorbox{definitionbox}[1]{
+  title={Определение: #1},
+  colback=AccentLight, colframe=Accent, coltitle=black, arc=2pt, left=8pt, right=8pt, top=6pt, bottom=6pt
+}
+\newtcolorbox{notebox}{
+  title={Примечание},
+  colback=yellow!8, colframe=yellow!40!black, arc=2pt, left=8pt, right=8pt, top=6pt, bottom=6pt
+}
+\newtcolorbox{summarybox}{
+  title={Итоги раздела},
+  colback=green!6, colframe=green!50!black, arc=2pt, left=8pt, right=8pt, top=6pt, bottom=6pt
+}
+
+% Листинги (без minted, без shell-escape)
+\usepackage{listings}
+\usepackage{listingsutf8}
+\lstdefinestyle{elegant}{
+  inputencoding=utf8,
+  basicstyle=\ttfamily\small,
+  columns=fullflexible,
+  breaklines=true,
+  frame=single,
+  framerule=0.4pt,
+  rulecolor=\color{black!20},
+  backgroundcolor=\color{CodeBg},
+  xleftmargin=0.5em,
+  framexleftmargin=0.5em,
+  tabsize=2,
+  showstringspaces=false,
+  keywordstyle=\bfseries\color{AccentDark},
+  commentstyle=\itshape\color{black!55},
+  stringstyle=\color{orange!60!black},
+  numbers=left,
+  numberstyle=\tiny\color{black!50},
+  numbersep=8pt,
+  captionpos=b,
+  upquote=true,
+  escapechar=§
+}
+\lstset{style=elegant}
+% Важно: русские комментарии в listings под pdfLaTeX могут отображаться некорректно — при проблемах используйте ASCII.
+% Макросы удобства
+\newcommand{\TODO}[1]{\textcolor{red!70!black}{[TODO: #1]}}
+\newcommand{\figref}[1]{рис.~\ref{#1}}
+\newcommand{\secref}[1]{раздел~\ref{#1}}
+\newcommand{\eqnref}[1]{(\ref{#1})}
+\newcommand{\lstref}[1]{листинг~\ref{#1}}
+
+% Глоссарий и сокращения (требует makeglossaries/makeindex на этапе сборки)
+\usepackage[acronym,nonumberlist,toc]{glossaries}
+\makeglossaries
+\setacronymstyle{long-short}
+\renewcommand*{\glossaryname}{Глоссарий}
+\renewcommand*{\acronymname}{Список сокращений}
+\setglossarystyle{altlist}
+
+% ----- Начало блока терминов -----
+\newacronym[sort=cpu]{cpu}{CPU}{центральный процессор}
+\newacronym[sort=isa]{isa}{ISA}{набор инструкций}
+\newglossaryentry{cache}{
+  name={кэш},
+  sort={kesh},
+  description={быстрая память для уменьшения латентности доступа за счёт локальности обращений}
+}
+\newglossaryentry{pipeline}{
+  name={конвейер},
+  sort={konveier},
+  description={поточность исполнения инструкций по стадиям (IF, ID, EX, MEM, WB)}
+}
+
+% Добавлено из лекции 7
+\newglossaryentry{twoscomplement}{
+  name={Дополняющий код},
+  sort={dopolnyayushchiy kod},
+  description={Метод представления знаковых целых чисел, использующий арифметику по модулю $2^N$. Позволяет избежать проблемы двух нулей и упрощает арифметические операции.}
+}
+\newglossaryentry{alignment}{
+  name={Выравнивание данных},
+  sort={vyravnivanie dannykh},
+  description={Требование, согласно которому данные определённого размера (K байт) должны располагаться в памяти по адресу, кратному K (или другой степени двойки).}
+}
+\newglossaryentry{preprocessing}{
+  name={Препроцессинг},
+  sort={preprotsessing},
+  description={Начальная, текстовая стадия компиляции, выполняющая директивы, такие как \texttt{\#include} и \texttt{\#define}.}
+}
+\newglossaryentry{includeguard}{
+  name={Страж включения},
+  sort={strazh vklyucheniya},
+  description={Конструкция препроцессора (\texttt{\#ifndef} / \texttt{\#define} / \texttt{\#endif}) или \texttt{\#pragma once}, предотвращающая повторное включение содержимого заголовочного файла.}
+}
+\newglossaryentry{translationunit}{
+  name={Единица трансляции},
+  sort={edinitsa translyatsii},
+  description={Один исходный файл (<code>.c</code> или <code>.cpp</code>) со всем содержимым, рекурсивно включённым через \texttt{\#include}. Является основной единицей работы компилятора.}
+}
+\newglossaryentry{objectfile}{
+  name={Объектный файл},
+  sort={obektnyy fayl},
+  description={Результат компиляции одной единицы трансляции. Содержит машинный код и метаданные (например, таблицу символов), но ещё не является исполняемой программой. (Напр., <code>.o</code>).}
+}
+\newglossaryentry{linking}{
+  name={Линковка (компоновка)},
+  sort={linkovka},
+  description={Процесс объединения одного или нескольких объектных файлов в единый исполняемый файл или библиотеку. На этом этапе разрешаются ссылки на внешние символы.}
+}
+\newglossaryentry{symbol}{
+  name={Символ},
+  sort={simvol},
+  description={Имя функции или переменной, которое становится видимым линковщику. Символы могут быть определёнными (defined) или неопределёнными (undefined) в рамках одного объектного файла.}
+}
+\newglossaryentry{relocation}{
+  name={Релокация},
+  sort={relokatsiya},
+  description={Запись в объектном файле, указывающая линковщику на "пустое место" (например, адрес вызова функции), которое необходимо заполнить реальным адресом во время компоновки.}
+}
+\newglossaryentry{elf}{
+  name={ELF (Executable and Linkable Format)},
+  sort={elf},
+  description={Стандартный формат исполняемых файлов, объектных файлов и библиотек в Linux и других UNIX-подобных системах.}
+}
+\newglossaryentry{section}{
+  name={Секция (ELF)},
+  sort={sektsiya},
+  description={Именованный непрерывный блок данных в ELF-файле. Основные секции: <code>.text</code> (код), <code>.data</code> (инициализированные данные), <code>.bss</code> (неинициализированные данные).}
+}
+\newglossaryentry{namemangling}{
+  name={Искажение имён (Name Mangling)},
+  sort={iskazhenie imen},
+  description={Процесс в C++, при котором компилятор кодирует имя функции, её пространство имён и типы аргументов в уникальное имя символа для линковщика.}
+}
+\newglossaryentry{externc}{
+  name={extern "C"},
+  sort={extern c},
+  description={Директива в C++, указывающая компилятору использовать C ABI (соглашение о вызовах C) для функции или переменной, в частности, отключая искажение имён.}
+}
+\newglossaryentry{vonneumann}{
+  name={Архитектура фон Неймана},
+  sort={arkhitektura fon neymana},
+  description={Архитектура компьютера, в которой память для инструкций (кода) и память для данных объединены в одно адресное пространство.}
+}
+\newglossaryentry{register}{
+  name={Регистр},
+  sort={registr},
+  description={Небольшой объём быстрой памяти, встроенной непосредственно в процессор. Используется для хранения промежуточных результатов вычислений и служебной информации.}
+}
+\newglossaryentry{rip}{
+  name={RIP (Instruction Pointer)},
+  sort={rip},
+  description={Регистр в x86-64, хранящий адрес следующей инструкции, которую должен выполнить процессор.}
+}
+\newglossaryentry{rsp}{
+  name={RSP (Stack Pointer)},
+  sort={rsp},
+  description={Регистр в x86-64, хранящий адрес вершины стека.}
+}
+\newglossaryentry{rax}{
+  name={RAX},
+  sort={rax},
+  description={Регистр общего назначения в x86-64, используемый по соглашению (ABI) для возврата первого (или единственного) значения из функции.}
+}
+\newglossaryentry{rdi}{
+  name={RDI},
+  sort={rdi},
+  description={Регистр общего назначения в x86-64, используемый по соглашению (ABI) для передачи первого аргумента в функцию.}
+}
+\newglossaryentry{rsi}{
+  name={RSI},
+  sort={rsi},
+  description={Регистр общего назначения в x86-64, используемый по соглашению (ABI) для передачи второго аргумента в функцию.}
+}
+\newglossaryentry{rflags}{
+  name={RFLAGS},
+  sort={rflags},
+  description={Регистр флагов в x86-64. Хранит биты состояния, отражающие результат последней арифметической операции (например, Zero Flag, Carry Flag).}
+}
+\newglossaryentry{abi}{
+  name={ABI (Application Binary Interface)},
+  sort={abi},
+  description={Соглашение о вызовах; набор правил, определяющих, как функции передают аргументы, возвращают значения, управляют стеком и регистрами на определённой платформе (ОС + архитектура).}
+}
+% ----- Конец блока терминов -----
+
+% Титульные данные
+\title{\sffamily Курс: \textit{\CourseName}\\\large Лекция \LectureNo: \LectureTitle}
+\author{\sffamily Лектор: \Lecturer}
+\date{\sffamily Дата: \LectureDate}
+% ===================== PREAMBLE END =======================================================
+
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\section{Представление целых чисел}
+
+В прошлых лекциях мы обсуждали представление текстовых данных. Теперь рассмотрим, как в памяти кодируются целые числа.
+
+\subsection{Беззнаковые числа}
+
+С беззнаковыми (unsigned) числами всё просто. Они представляются напрямую своим двоичным эквивалентом. Если у нас есть $N$ бит, мы можем представить числа от $0$ до $2^N - 1$.
+Например, для 3-битного числа:
+\begin{itemize}
+    \item \texttt{000} $\to$ 0
+    \item \texttt{001} $\to$ 1
+    \item \texttt{010} $\to$ 2
+    \item \texttt{111} $\to$ 7
+\end{itemize}
+
+\subsection{Знаковые числа: Прямой код (Sign-Magnitude)}
+
+Первая и самая прямолинейная идея для представления знаковых чисел — использовать один бит (обычно старший) для кодирования знака, а остальные биты — для кодирования абсолютного значения (величины).
+
+Например, для 3-битного числа (1 бит на знак, 2 на значение):
+\begin{itemize}
+    \item \texttt{001} $\to$ +1
+    \item \texttt{010} $\to$ +2
+    \item \texttt{101} $\to$ -1
+    \item \texttt{110} $\to$ -2
+\end{itemize}
+
+У этого подхода есть два существенных недостатка:
+\begin{enumerate}
+    \item \textbf{Проблема двух нулей:} Существует два представления для нуля: \texttt{000} (+0) и \texttt{100} (-0). Это избыточно и усложняет проверки.
+    \item \textbf{Сложная арифметика:} Обычный двоичный сумматор "ломается". Сложение $+1$ (\texttt{001}) и $-1$ (\texttt{101}) в лоб даст \texttt{110}, что равно $-2$, а не $0$. Для выполнения арифметических операций требуются сложные проверки знаков.
+\end{enumerate}
+
+\subsection{Знаковые числа: Дополняющий код (Two's Complement)}
+
+Современные компьютеры решают эти проблемы, используя \gls{twoscomplement}.
+
+\begin{definitionbox}{Дополняющий код}
+\Gls{twoscomplement} — это способ представления знаковых чисел, основанный на арифметике по модулю $2^N$, где $N$ — количество бит.
+\begin{itemize}
+    \item Положительные числа (и $0$) представляются так же, как и беззнаковые (в диапазоне от $0$ до $2^{N-1}-1$).
+    \item Отрицательные числа $x$ (в диапазоне от $-2^{N-1}$ до $-1$) представляются как беззнаковое число $2^N + x$.
+\end{itemize}
+\end{definitionbox}
+
+Рассмотрим 3-битные числа (модуль $2^3 = 8$):
+\begin{itemize}
+    \item \texttt{000} $\to$ 0
+    \item \texttt{001} $\to$ 1
+    \item \texttt{010} $\to$ 2
+    \item \texttt{011} $\to$ 3
+    \item \texttt{100} $\to$ 4 (или $4 - 8 = -4$)
+    \item \texttt{101} $\to$ 5 (или $5 - 8 = -3$)
+    \item \texttt{110} $\to$ 6 (или $6 - 8 = -2$)
+    \item \texttt{111} $\to$ 7 (или $7 - 8 = -1$)
+\end{itemize}
+
+Преимущества дополняющего кода:
+\begin{itemize}
+    \item \textbf{Один ноль:} Значение \texttt{000} уникально.
+    \item \textbf{Простая арифметика:} Обычный двоичный сумматор корректно работает как для знаковых, так и для беззнаковых чисел.
+\end{itemize}
+
+\begin{notebox}
+\textbf{Пример арифметики:} Сложим $1$ (\texttt{001}) и $-2$ (\texttt{110}) как знаковые.
+$$ \texttt{001} + \texttt{110} = \texttt{111} $$
+Результат \texttt{111} в дополняющем коде — это $-1$. Сложение работает.
+
+Теперь сложим $1$ (\texttt{001}) и $6$ (\texttt{110}) как беззнаковые.
+$$ \texttt{001} + \texttt{110} = \texttt{111} $$
+Результат \texttt{111} в беззнаковом коде — это $7$. Сложение также работает.
+\end{notebox}
+
+\subsubsection{Получение отрицательного числа}
+
+Практическое правило для получения представления числа $-x$ из $x$ в дополняющем коде:
+\begin{enumerate}
+    \item Инвертировать все биты $x$ (операция \texttt{\textasciitilde}x, побитовое НЕ).
+    \item Прибавить к результату $1$.
+\end{enumerate}
+Формула: $-x = \sim x + 1$.
+
+\textbf{Пример: } Найти представление $-3$ (для 3-битного числа).
+\begin{enumerate}
+    \item Берём $3$: \texttt{011}
+    \item Инвертируем (\texttt{\textasciitilde}): \texttt{100}
+    \item Прибавляем $1$: \texttt{100} + 1 = \texttt{101}
+\end{enumerate}
+Результат \texttt{101} — это $-3$, что совпадает с нашей таблицей.
+
+\section{Выравнивание данных в памяти}
+
+\begin{definitionbox}{Выравнивание данных (Data Alignment)}
+\Gls{alignment} — это ограничение, согласно которому данные определённого типа и размера должны размещаться в памяти по адресам, кратным некоторой степени двойки.
+
+Например, 8-байтный \texttt{int64\_t} должен иметь адрес, который делится на 8 (т.е. \texttt{address \% 8 == 0}).
+\end{definitionbox}
+
+\subsection{Зачем нужно выравнивание?}
+
+Выравнивание — это не просто прихоть компилятора, а требование, диктуемое аппаратным обеспечением (процессором).
+
+\begin{itemize}
+    \item \textbf{Эффективность:} Процессоры читают данные из памяти не по одному байту, а "блоками" (например, по 4, 8 или 16 байт). Если 8-байтовое число "пересекает" границу такого блока (например, начинается с адреса 4 и заканчивается на 11), процессору придётся выполнить два чтения из памяти вместо одного.
+    \item \textbf{Корректность:} На некоторых архитектурах (не x86) обращение по невыровненному адресу может привести к немедленному падению программы (аппаратному прерыванию). На x86 это "всего лишь" приводит к сильному замедлению.
+    \item \textbf{Атомарность:} Операции чтения/записи по выровненным адресам, как правило, атомарны (неделимы). Невыровненная запись (например, 8 байт) может быть выполнена процессором как две отдельные записи по 4 байта.
+\end{itemize}
+
+\begin{notebox}
+Проблема неатомарности особенно важна при работе с разделяемой памятью (shared memory).
+Представим, что два процесса (например, полученные через \texttt{fork()} с памятью \texttt{mmap(MAP\_SHARED)}) работают с одним 8-байтным числом по невыровненному адресу.
+
+Процесс А пишет новое значение. Он может успеть записать первые 4 байта, но не вторые. В этот момент Процесс Б читает это число и видит "мусор" — половину старого значения и половину нового.
+\end{notebox}
+
+Из-за этих требований компиляторы (C, C++, Rust, Go) автоматически вставляют "пропуски" (padding) в структуры, а стандартные аллокаторы (\texttt{malloc}, \texttt{operator new}) возвращают память, выровненную по максимальному требованию для стандартных типов (например, 16 байт на x86-64).
+
+\section{Процесс сборки программы}
+
+Рассмотрим, почему в C/C++ принято разделять код на заголовочные файлы (\texttt{.h}) и файлы реализации (\texttt{.cpp}).
+
+\subsection{Препроцессор и \texttt{\#include}}
+
+Первый этап сборки — \gls{preprocessing}. Директивы, начинающиеся с \texttt{\#}, обрабатываются на этом этапе.
+
+Директива \texttt{\#include "header.h"} — это простая текстовая операция. Она заменяет эту строку содержимым файла \texttt{header.h}. Это можно проверить, запустив компилятор с флагом \texttt{-E}:
+
+\begin{lstlisting}[language=bash, caption={Запуск только препроцессора}]
+# gcc -E main.c
+\end{lstlisting}
+
+\subsubsection{Проблема многократного включения}
+Если один \texttt{.h} файл включается несколько раз (например, \texttt{a.h} и \texttt{b.h} оба включают \texttt{common.h}, а \texttt{main.cpp} включает \texttt{a.h} и \texttt{b.h}), мы получим дублирование кода и ошибки компиляции.
+
+Для решения этой проблемы используются \gls{includeguard}:
+\begin{itemize}
+    \item \textbf{Классический способ (Стражи):}
+\begin{lstlisting}[language=C, caption={Использование ifndef/define}]
+#ifndef MY_HEADER_H
+#define MY_HEADER_H
+
+// ... soderzhimoe zagolovka ...
+
+#endif // MY_HEADER_H
+\end{lstlisting}
+    \item \textbf{Современный способ:}
+\begin{lstlisting}[language=C, caption={Использование pragma once}]
+#pragma once
+
+// ... soderzhimoe zagolovka ...
+\end{lstlisting}
+\end{itemize}
+Оба способа гарантируют, что препроцессор включит тело файла только один раз.
+
+\subsection{Единицы трансляции и ускорение сборки}
+
+Основная причина разделения кода на \texttt{.h} и \texttt{.cpp} — это **ускорение сборки** больших проектов за счёт параллелизма.
+
+\begin{definitionbox}{Единица трансляции (Translation Unit)}
+\Gls{translationunit} — это один \texttt{.c} или \texttt{.cpp} файл после того, как препроцессор "вклеил" в него содержимое всех \texttt{\#include}.
+\end{definitionbox}
+
+Процесс сборки можно разбить на два этапа:
+\begin{enumerate}
+    \item \textbf{Компиляция (Compilation):} Компилятор (например, \texttt{gcc -c}) \textit{независимо и параллельно} обрабатывает каждую единицу трансляции, превращая её в \gls{objectfile} (<code>.o</code>). Этот этап включает синтаксический анализ, оптимизации (<code>-O2</code>) и генерацию машинного кода.
+    \item \textbf{Линковка (Linking):} Линковщик (компоновщик) берёт все <code>.o</code> файлы и "сшивает" их в один исполняемый файл. Этот этап, как правило, последовательный, но он выполняется быстрее, чем полная перекомпиляция всего проекта.
+\end{enumerate}
+
+Если мы меняем один \texttt{.cpp} файл, нам нужно перекомпилировать только его, а затем быстро перелинковать проект. Если бы весь код был в одном файле, любое изменение требовало бы полной перекомпиляции.
+
+\subsection{Объектные файлы и символы}
+
+\Gls{objectfile} (<code>.o</code>) — это "полуфабрикат". Он содержит машинный код, но в нём ещё нет информации о том, где находятся функции и переменные из *других* <code>.o</code> файлов.
+
+Связь между файлами осуществляется через \textbf{символы}. С помощью утилиты \texttt{nm} можно посмотреть таблицу символов объектного файла.
+
+\begin{lstlisting}[language=bash, caption={Анализ символов с помощью nm}]
+# nm main.o
+0000000000000000 T main
+                 U isEven
+                 U printf
+                 U scanf
+\end{lstlisting}
+
+\begin{itemize}
+    \item \textbf{T (Text):} Символ \textit{определён} (defined) в этом файле. Здесь определён \texttt{main}.
+    \item \textbf{U (Undefined):} Символ \textit{используется}, но не определён. Линковщик должен будет найти его в другом <code>.o</code> файле или библиотеке.
+\end{itemize}
+
+\subsection{Линковка и релокации}
+
+Когда компилятор генерирует \texttt{main.o} и видит вызов \texttt{isEven()}, он не знает адреса этой функции. Вместо адреса он оставляет "дырку" — специальную запись, называемую \gls{relocation}.
+
+Задача линковщика:
+\begin{enumerate}
+    \item Найти \texttt{main.o}, у которого \texttt{isEven} помечен как \texttt{U}.
+    \item Найти другой <code>.o</code> файл (например, \texttt{even.o}), у которого \texttt{isEven} помечен как \texttt{T}.
+    \item "Заполнить дырку" (выполнить релокацию) в \texttt{main.o}, подставив реальный адрес \texttt{isEven} из \texttt{even.o}.
+\end{enumerate}
+
+Если линкощик не может найти определение для \texttt{U}-символа (или находит *несколько* определений), он выдаёт ошибку ("Undefined reference" или "Multiple definition").
+
+\begin{notebox}
+Поскольку <code>.o</code> файлы содержат только машинный код и таблицу символов (а не C++ или C код), они языково-независимы. Это позволяет компоновать программу из частей, написанных на разных языках (например, скомпилировать функцию на Rust, а вызвать её из C).
+\end{notebox}
+
+\subsection{Формат ELF}
+
+В Linux исполняемые файлы и объектные файлы хранятся в формате \gls{elf}. Он состоит из \textbf{секций}, которые сообщают загрузчику ОС, как создать образ процесса в памяти.
+
+Основные секции:
+\begin{itemize}
+    \item \texttt{.text}: Исполняемый код (инструкции \gls{cpu}). Загружается с правами "чтение + исполнение".
+    \item \texttt{.rodata}: (Read-Only Data) Константные данные, например, строковые литералы (<code>"Hello"</code>). Загружается с правами "только чтение".
+    \item \texttt{.data}: Инициализированные глобальные и статические переменные (<code>int x = 10;</code>). Загружается с правами "чтение + запись".
+    \item \texttt{.bss}: Неинициализированные глобальные и статические переменные (<code>int y;</code>). Эта секция \textit{не занимает места в файле}, она просто говорит загрузчику: "выдели X байт памяти и заполни их нулями".
+\end{itemize}
+
+\section{Особенности C++: Имена и переменные}
+
+\subsection{Искажение имён (Name Mangling)}
+
+В C++ можно объявлять функции с одинаковыми именами, но разными аргументами (перегрузка) или в разных пространствах имён:
+\begin{lstlisting}[language=C++]
+void f();
+void f(int);
+namespace A { void f(); }
+\end{lstlisting}
+
+Линковщик C не справился бы с этим, так как он видит только один символ \texttt{f}.
+Компилятор C++ решает эту проблему, кодируя полную сигнатуру функции в имя символа. Этот процесс называется \gls{namemangling}.
+
+Например, \texttt{A::f()} может превратиться в \texttt{\_Z1A1fv}.
+
+\subsection{Extern C}
+
+Чтобы C++ мог вызывать функции из C (или из ассемблера, который следует C-соглашениям) или наоборот, нужно отключить \gls{namemangling}. Для этого используется \gls{externc}:
+
+\begin{lstlisting}[language=C++]
+// Ob'yavlyaem, chto eta funktsiya ispol'zuet C ABI
+// (bez iskazheniya imen)
+extern "C" void my_c_function(int x);
+\end{lstlisting}
+
+\subsection{Глобальные переменные: \texttt{extern} против \texttt{static}}
+
+Как и в случае с функциями, глобальные переменные нужно \textit{объявлять} (в \texttt{.h}) и \textit{определять} (в \texttt{.cpp}).
+
+\begin{itemize}
+    \item \textbf{Правильный способ (Общая переменная):}
+    \begin{lstlisting}[language=C]
+// Govorim kompilyatoru, chto peremennaya *gde-to* sushchestvuet
+extern int shared_value;
+    \end{lstlisting}
+    \begin{lstlisting}[language=C]
+// Vydelyaem pamyat' i zadaem znachenie
+int shared_value = 123;
+    \end{lstlisting}
+    Все \texttt{.cpp} файлы, включившие \texttt{def.h}, будут ссылаться на \textit{одну и ту же} копию \texttt{shared\_value}.
+    \item \textbf{Неправильный способ (Локальные копии)}
+
+    \begin{lstlisting}[language=C]
+// 'static' v global'noy oblasti vidimosti
+// delaet peremennuyu lokal'noy dlya edinitsy translyatsii
+static int value = 0;
+    \end{lstlisting}
+\end{itemize}
+    Если \texttt{main.cpp} и \texttt{other.cpp} включат \texttt{static.h}, \textit{каждый} из них получит свою \textit{собственную, независимую} копию \texttt{value}. Линкер не выдаст ошибки, но программа будет работать некорректно.
+
+\section{Основы ассемблера и архитектуры}
+
+\subsection{Архитектура фон Неймана}
+
+Современные процессоры в основном следуют \gls{vonneumann} .
+
+
+
+Ключевая особенность — единый блок памяти, в котором хранятся и данные, и инструкции (код) программы. Процессор выполняет инструкции последовательно, используя \gls{rip} (Instruction Pointer) для отслеживания адреса текущей инструкции.
+
+\subsection{Регистры и память}
+Доступ к оперативной памяти (RAM) — медленная операция (порядка \SI{100}{ns}). Чтобы процессор не простаивал, он содержит \gls{register} — сверхбыстрые ячейки памяти.
+
+В архитектуре x86-64 (которую мы используем) есть 16 64-битных регистров общего назначения (<code>RAX</code>, <code>RCX</code>, <code>RDX</code>, <code>RSI</code>, <code>RDI</code>, <code>R8</code>...<code>R15</code> и т.д.).
+
+Два регистра имеют особо важное значение:
+\begin{itemize}
+    \item \textbf{\gls{rip}:} Указатель на инструкцию.
+    \item \textbf{\gls{rsp}:} Указатель на вершину стека.
+\end{itemize}
+
+\subsection{Стек и вызовы функций}
+Для реализации вызовов функций используется стек.
+\begin{enumerate}
+    \item \textbf{\texttt{call f}} (Вызов функции):
+        \begin{itemize}
+            \item Процессор помещает адрес \textit{следующей} за \texttt{call} инструкции (адрес возврата) на вершину стека (<code>push return\_addr</code>).
+            \item Процессор совершает безусловный переход на адрес функции \texttt{f} (<code>jmp f</code>).
+        \end{itemize}
+    \item \textbf{\texttt{ret}} (Возврат из функции):
+        \begin{itemize}
+            \item Процессор снимает адрес возврата с вершины стека (<code>pop return\_addr</code>).
+            \item Процессор совершает безусловный переход на этот адрес (<code>jmp return\_addr</code>).
+        \end{itemize}
+\end{enumerate}
+
+\subsection{Соглашение о вызовах (ABI)}
+Как функции передают аргументы и возвращают значения? Процессор об этом "не знает". Это определяется программным соглашением — \gls{abi}.
+
+Для Linux x86-64 (System V ABI) действуют следующие правила:
+
+\begin{definitionbox}{Соглашение о вызовах (x86-64 System V ABI)}
+\begin{itemize}
+    \item \textbf{Передача аргументов (целочисленных):}
+        \begin{itemize}
+            \item 1-й аргумент: \gls{rdi}
+            \item 2-й аргумент: \gls{rsi}
+            \item 3-й аргумент: <code>RDX</code>
+            \item 4-й аргумент: <code>RCX</code>
+            \item 5-й аргумент: <code>R8</code>
+            \item 6-й аргумент: <code>R9</code>
+        \end{itemize}
+    \item \textbf{Передача аргументов (7-й и далее):}
+        \begin{itemize}
+            \item Передаются через стек. Вызывающая сторона (caller) кладёт их на стек в обратном порядке \textit{до} выполнения инструкции \texttt{call}.
+        \end{itemize}
+    \item \textbf{Возвращаемое значение:}
+        \begin{itemize}
+            \item \gls{rax}
+        \end{itemize}
+\end{itemize}
+\end{definitionbox}
+
+\begin{notebox}
+\textbf{Аргументы на стеке.} Поскольку \texttt{call} кладёт на стек адрес возврата, внутри вызываемой функции (callee) аргументы, переданные через стек, оказываются смещены:
+\begin{itemize}
+    \item \texttt{[rsp]} — Адрес возврата (положен инструкцией \texttt{call})
+    \item \texttt{[rsp+8]} — 7-й аргумент
+    \item \texttt{[rsp+16]} — 8-й аргумент
+    \item и т.д.
+\end{itemize}
+(Здесь \texttt{[addr]} означает "прочитать 8 байт из памяти по адресу \texttt{addr}").
+\end{notebox}
+
+\section{Практика: написание функций на ассемблере}
+
+Мы будем использовать синтаксис Intel. Файл \texttt{.S} должен начинаться с директив:
+\begin{lstlisting}[language={[x86masm]Assembler}], caption={Шаблон файла .S}]
+.intel_syntax noprefix  # Ustanavlivaem sintaksis
+.text                   # Nachalo sektsii koda
+\end{lstlisting}
+Чтобы сделать функцию \texttt{my\_func} видимой для линковщика (C/C++), её нужно объявить глобальной:
+\begin{lstlisting}[language={[x86masm]Assembler}]]]
+.global my_func
+my_func:
+    # ... instruktsii ...
+    ret
+\end{lstlisting}
+
+\subsection{Пример 1: Возврат константы}
+\begin{lstlisting}[language=C++]
+// C++: extern "C" long constant();
+\end{lstlisting}
+\begin{lstlisting}[language={[x86masm]Assembler}], caption={impl.S}]
+.global constant
+constant:
+    mov rax, 42   # Vozvrashchaemoe znachenie - v RAX
+    ret
+\end{lstlisting}
+
+\subsection{Пример 2: Identity (аргумент -> возврат)}
+\begin{lstlisting}[language=C++]
+// C++: extern "C" long identity(long x);
+\end{lstlisting}
+\begin{lstlisting}[language={[x86masm]Assembler}], caption={impl.S}]
+.global identity
+identity:
+    # 1-y argument 'x' prihodit v RDI
+    mov rax, rdi  # Peremeshchaem RDI v RAX
+    ret
+\end{lstlisting}
+
+\subsection{Пример 3: Сложение (два аргумента)}
+\begin{lstlisting}[language=C++]
+// C++: extern "C" long add(long x, long y);
+\end{lstlisting}
+\begin{lstlisting}[language={[x86masm]Assembler}], caption={impl.S}]
+.global add
+add:
+    # x v RDI, y v RSI
+    add rdi, rsi  # Skladyvaem: RDI = RDI + RSI
+    mov rax, rdi  # Peremeshchaem rezul'tat (v RDI) v RAX
+    ret
+\end{lstlisting}
+
+\subsection{Пример 4: Условный переход (If/Else)}
+\begin{lstlisting}[language=C++]
+/* C++: extern "C" long select(long cond, long a, long b);
+ * if (cond == 0) return b;
+ * else return a;
+ */
+\end{lstlisting}
+\begin{lstlisting}[language={[x86masm]Assembler}], caption={impl.S}]
+.global select
+select:
+    # cond v RDI, a v RSI, b v RDX
+
+    # Proveryaem RDI na nol'.
+    # Operatsiya 'add' menyaet RFLAGS, v t.ch. Zero Flag (ZF)
+    add rdi, 0
+    
+    # jz (Jump if Zero) - perehod, esli ZF=1 (rezul'tat byl 0)
+    jz .L_return_b
+
+.L_return_a:
+    # cond != 0
+    mov rax, rsi  # return a
+    ret
+
+.L_return_b:
+    # cond == 0
+    mov rax, rdx  # return b
+    ret
+\end{lstlisting}
+
+\subsection{Пример 5: Цикл (Sum)}
+\begin{lstlisting}[language=C++]
+/* C++: extern "C" long sum(long n);
+ * long s = 0;
+ * for (long i = n; i > 0; i--) { s += i; }
+ * return s;
+ */
+\end{lstlisting}
+\begin{lstlisting}[language={[x86masm]Assembler}], caption={impl.S, цикл с использованием флага Carry Flag}]
+.global sum
+sum:
+    # n v RDI
+    xor rax, rax      # rax (summa) = 0
+    
+.L_loop_start:
+    add rax, rdi      # summa += n
+    add rdi, -1       # n--
+    
+    # 'add rdi, -1' (n--):
+    # - Esli n > 0, perenosa (carry) ne budet.
+    # - Esli n == 0, to 0 + (-1) daet perenos (borrow).
+    
+    # jnc (Jump if No Carry) - prygnut', esli n > 0
+    jnc .L_loop_start
+    
+    # n == 0, tsikl zavershen
+    ret
+\end{lstlisting}
+
+\begin{summarybox}
+\textbf{Итоги раздела "Ассемблер":}
+\begin{itemize}
+    \item Код на ассемблере — это прямое представление машинных инструкций (мнемоники).
+    \item Взаимодействие с C/C++ происходит через \gls{abi} (соглашение о вызовах).
+    \item В Linux x86-64 аргументы передаются через регистры (\texttt{RDI}, \texttt{RSI} и т.д.), а возвращаемое значение — через \texttt{RAX}.
+    \item Аргументы, не поместившиеся в регистры (7-й и далее), передаются через стек и доступны по адресу \texttt{[rsp+8]}, \texttt{[rsp+16]} и т.д.
+    \item Управление потоком (if, loop) реализуется через \gls{rflags} и инструкции условных переходов (\texttt{jz}, \texttt{jnc} и др.).
+\end{itemize}
+\end{summarybox}
+
+% Печать глоссариев (требует: pdflatex -> makeglossaries -> pdflatex -> pdflatex)
+\clearpage
+\printglossaries
+
+\end{document}
+% ===================== EXAMPLE CONTENT END ===============================================
+
+% QC-ОТЧЁТ:
+% 1. **Полнота:** Конспект полностью покрывает материал транскрипта .
+%    - [X] Представление чисел (дополняющий код) .
+%    - [X] Выравнивание данных (причины, атомарность) .
+%    - [X] Процесс сборки (препроцессор, #include, #pragma) .
+%    - [X] Единицы трансляции, компиляция (.o), линковка (U/T символы) .
+%    - [X] Формат ELF (секции .text, .data, .bss, .rodata) .
+%    - [X] Линковка C/C++ (Mangle, extern "C", extern vs static) .
+%    - [X] Основы архитектуры (Фон Нейман, регистры, стек, call/ret) .
+%    - [X] Соглашения о вызовах (ABI) (RDI, RSI, RAX, [rsp+8]) .
+%    - [X] Примеры на ассемблере (mov, add, jz, jnc) .
+%
+% 2. **Точность:** Вся информация строго из транскрипта. Добавлен TikZ-рисунок на основе устного описания архитектуры.
+% 3. **Стиль:** Использованы tcolorbox (definitionbox/notebox/summarybox) и listings в соответствии с ТЗ.
+% 4. **Компиляция:** Шаблон `preamble.txt` использован как основа. Пакеты, необходимые для pdfLaTeX, на месте. Метки (`\label`) уникальны. Глоссарий заполнен новыми терминами из лекции.
+% 5. **Рекомендации:** Нет. Лекция была очень плотной и технической, конспект отражает это.

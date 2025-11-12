@@ -1,0 +1,17 @@
+\babel@toc {russian}{}\relax 
+\contentsline {section}{\numberline {1}Взаимодействие с носителями информации}{2}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Почему не работать с диском напрямую?}{2}{subsection.1.1}%
+\contentsline {section}{\numberline {2}Права доступа в Linux}{3}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Чтение вывода \texttt {ls -l}}{3}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Пользователь, группа и остальные}{3}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Команда \texttt {chmod}}{3}{subsection.2.3}%
+\contentsline {section}{\numberline {3}Файловые дескрипторы и системные вызовы}{4}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Системный вызов \texttt {open}}{5}{subsection.3.1}%
+\contentsline {subsubsection}{\numberline {3.1.1}Создание файла и \texttt {umask}}{5}{subsubsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.2}Структура открытого файла в ядре}{6}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Другие важные системные вызовы}{6}{subsection.3.3}%
+\contentsline {subsubsection}{\numberline {3.3.1}\texttt {lseek}: Изменение смещения}{6}{subsubsection.3.3.1}%
+\contentsline {subsubsection}{\numberline {3.3.2}\texttt {dup} и \texttt {dup2}: Копирование файловых дескрипторов}{7}{subsubsection.3.3.2}%
+\contentsline {subsubsection}{\numberline {3.3.3}\texttt {pipe}: Создание каналов}{7}{subsubsection.3.3.3}%
+\contentsline {section}{\numberline {4}Практика: Перенаправление ввода-вывода}{8}{section.4}%
+\contentsline {section}{\numberline {5}Работа с директориями}{9}{section.5}%

@@ -1,0 +1,30 @@
+\babel@toc {russian}{}\relax 
+\contentsline {section}{\numberline {1}Представление целых чисел}{2}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Беззнаковые числа}{2}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Знаковые числа: Прямой код (Sign-Magnitude)}{2}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Знаковые числа: Дополняющий код (Two's Complement)}{2}{subsection.1.3}%
+\contentsline {subsubsection}{\numberline {1.3.1}Получение отрицательного числа}{3}{subsubsection.1.3.1}%
+\contentsline {section}{\numberline {2}Выравнивание данных в памяти}{4}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Зачем нужно выравнивание?}{4}{subsection.2.1}%
+\contentsline {section}{\numberline {3}Процесс сборки программы}{4}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Препроцессор и \texttt {\#include}}{4}{subsection.3.1}%
+\contentsline {subsubsection}{\numberline {3.1.1}Проблема многократного включения}{5}{subsubsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.2}Единицы трансляции и ускорение сборки}{5}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Объектные файлы и символы}{6}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Линковка и релокации}{6}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.5}Формат ELF}{6}{subsection.3.5}%
+\contentsline {section}{\numberline {4}Особенности C++: Имена и переменные}{7}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Искажение имён (Name Mangling)}{7}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Extern C}{7}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Глобальные переменные: \texttt {extern} против \texttt {static}}{7}{subsection.4.3}%
+\contentsline {section}{\numberline {5}Основы ассемблера и архитектуры}{8}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Архитектура фон Неймана}{8}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Регистры и память}{8}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Стек и вызовы функций}{8}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.4}Соглашение о вызовах (ABI)}{8}{subsection.5.4}%
+\contentsline {section}{\numberline {6}Практика: написание функций на ассемблере}{9}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Пример 1: Возврат константы}{9}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Пример 2: Identity (аргумент -> возврат)}{9}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}Пример 3: Сложение (два аргумента)}{10}{subsection.6.3}%
+\contentsline {subsection}{\numberline {6.4}Пример 4: Условный переход (If/Else)}{10}{subsection.6.4}%
+\contentsline {subsection}{\numberline {6.5}Пример 5: Цикл (Sum)}{10}{subsection.6.5}%
