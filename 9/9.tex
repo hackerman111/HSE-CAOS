@@ -1,0 +1,587 @@
+% ===================== PREAMBLE START (Aesthetic, pdfLaTeX, RU, no shell-escape) =========
+\documentclass[12pt,a4paper]{article}
+
+% Поиск/копирование кириллицы из PDF
+\usepackage{cmap}
+\usepackage{amsmath,amssymb,amsfonts,mathtools}
+% Язык и кодировки
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage[russian]{babel}
+
+% Поля, типографика, абзацы
+\usepackage[a4paper,margin=2.2cm]{geometry}
+\usepackage{microtype}
+\usepackage{indentfirst}
+\setlength{\parindent}{1.25em}
+\setlength{\parskip}{0.25em}
+\raggedbottom
+
+% Цветовая тема
+\usepackage[table]{xcolor}
+\definecolor{Accent}{HTML}{1F6FEB}     % основной акцент
+\definecolor{AccentDark}{HTML}{0B5394} % тёмный акцент
+\definecolor{AccentLight}{HTML}{E8F0FE}% светлый акцент (фон)
+\definecolor{CodeBg}{HTML}{F6F8FA}     % фон для кода
+\definecolor{Link}{HTML}{1F6FEB}       % ссылки
+
+% Гиперссылки и умные ссылки
+\usepackage[unicode]{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=Link, citecolor=Link, urlcolor=Link,
+  pdfauthor={Евгений Соколов},
+  pdftitle={Оптимизации CPU, числа с плавающей запятой и многопоточность}
+}
+\usepackage[nameinlink,capitalise]{cleveref}
+\urlstyle{same}
+
+% Заголовки разделов
+\usepackage{titlesec}
+\titleformat{\section}{\large\bfseries\sffamily\color{Accent}}{\thesection}{1em}{}
+\titleformat{\subsection}{\bfseries\sffamily\color{AccentDark}}{\thesubsection}{0.75em}{}
+\titleformat{\subsubsection}{\bfseries}{\thesubsubsection}{0.6em}{}
+\titlespacing*{\section}{0pt}{1.0ex plus 0.5ex}{0.6ex}
+\titlespacing*{\subsection}{0pt}{0.9ex plus 0.4ex}{0.5ex}
+\titlespacing*{\subsubsection}{0pt}{0.8ex plus 0.3ex}{0.4ex}
+
+% Шапки/футеры
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+% Макросы метаданных (переопределяйте в документе/LLM)
+\newcommand{\CourseName}{Архитектура компьютера и ОС}
+\newcommand{\LectureNo}{2}
+\newcommand{\LectureTitle}{Оптимизации CPU, числа с плавающей запятой и многопоточность}
+\newcommand{\LectureDate}{08.09.2025}
+\newcommand{\Lecturer}{Евгений Соколов}
+\fancyhead[L]{\small\sffamily \CourseName}
+\fancyhead[C]{\small\sffamily \LectureTitle}
+\fancyhead[R]{\small\sffamily Лекция \LectureNo}
+\fancyfoot[C]{\small\sffamily \thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\makeatletter
+\renewcommand{\headrule}{\hbox to\headwidth{\color{Accent}\leaders\hrule height \headrulewidth\hfill}}
+\makeatother
+
+% Подписи к рисункам/таблицам
+\usepackage[font=small,labelfont=bf,labelsep=endash]{caption}
+\usepackage{subcaption}
+
+% Математика и единицы
+\numberwithin{equation}{section}
+\usepackage{siunitx}
+\sisetup{detect-all=true}
+
+% Таблицы и списки
+\usepackage{booktabs}
+\usepackage{array,tabularx}
+\usepackage{enumitem}
+\setlist{itemsep=2pt,topsep=4pt,leftmargin=*,labelsep=0.5em}
+
+% Графика и TikZ
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,shapes.geometric,calc,fit}
+\tikzset{
+  box/.style={draw=Accent, rounded corners, fill=AccentLight, minimum width=2.6cm, minimum height=1cm, align=center},
+  arrow/.style={-{Stealth[length=3mm,width=2mm]}, line width=0.5pt, draw=AccentDark}
+}
+
+% Красивые боксы "методички"
+\usepackage[most]{tcolorbox}
+\tcbset{enhanced, breakable, boxrule=0.6pt, fonttitle=\bfseries\sffamily}
+\newtcolorbox{definitionbox}[1]{
+  title={Определение: #1},
+  colback=AccentLight, colframe=Accent, coltitle=black, arc=2pt, left=8pt, right=8pt, top=6pt, bottom=6pt
+}
+\newtcolorbox{notebox}{
+  title={Примечание},
+  colback=yellow!8, colframe=yellow!40!black, arc=2pt, left=8pt, right=8pt, top=6pt, bottom=6pt
+}
+\newtcolorbox{summarybox}{
+  title={Итоги раздела},
+  colback=green!6, colframe=green!50!black, arc=2pt, left=8pt, right=8pt, top=6pt, bottom=6pt
+}
+
+% Листинги (без minted, без shell-escape)
+\usepackage{listings}
+\usepackage{listingsutf8}
+\lstdefinestyle{elegant}{
+  inputencoding=utf8,
+  basicstyle=\ttfamily\small,
+  columns=fullflexible,
+  breaklines=true,
+  frame=single,
+  framerule=0.4pt,
+  rulecolor=\color{black!20},
+  backgroundcolor=\color{CodeBg},
+  xleftmargin=0.5em,
+  framexleftmargin=0.5em,
+  tabsize=2,
+  showstringspaces=false,
+  keywordstyle=\bfseries\color{AccentDark},
+  commentstyle=\itshape\color{black!55},
+  stringstyle=\color{orange!60!black},
+  numbers=left,
+  numberstyle=\tiny\color{black!50},
+  numbersep=8pt,
+  captionpos=b,
+  upquote=true,
+  escapechar=§
+}
+\lstset{style=elegant}
+% Важно: русские комментарии в listings под pdfLaTeX могут отображаться некорректно — при проблемах используйте ASCII.
+
+% Макросы удобства
+\newcommand{\TODO}[1]{\textcolor{red!70!black}{[TODO: #1]}}
+\newcommand{\figref}[1]{рис.~\ref{#1}}
+\newcommand{\secref}[1]{раздел~\ref{#1}}
+\newcommand{\eqnref}[1]{(\ref{#1})}
+\newcommand{\lstref}[1]{листинг~\ref{#1}}
+
+% Глоссарий и сокращения (требует makeglossaries/makeindex на этапе сборки)
+\usepackage[acronym,nonumberlist,toc]{glossaries}
+\makeglossaries
+\setacronymstyle{long-short}
+\renewcommand*{\glossaryname}{Глоссарий}
+\renewcommand*{\acronymname}{Список сокращений}
+\setglossarystyle{altlist}
+
+% Пример заранее объявленных терминов (LLM может дополнять этот блок)
+\newacronym[sort=cpu]{cpu}{CPU}{центральный процессор}
+\newacronym[sort=isa]{isa}{ISA}{набор инструкций}
+\newacronym{oooe}{OoOE}{внеочередное исполнение инструкций (Out-of-Order Execution)}
+\newacronym{ieee754}{IEEE 754}{стандарт двоичной арифметики с плавающей запятой}
+\newacronym{nan}{NaN}{<<не число>> (Not a Number)}
+\newacronym{ub}{UB}{неопределённое поведение (Undefined Behavior)}
+
+
+\newglossaryentry{cache}{
+  name={кэш},
+  sort={kesh},
+  description={быстрая память для уменьшения латентности доступа за счёт локальности обращений}
+}
+\newglossaryentry{pipeline}{
+  name={конвейер},
+  sort={konveier},
+  description={поточность исполнения инструкций по стадиям (IF, ID, EX, MEM, WB)}
+}
+\newglossaryentry{mutex}{
+  name={мьютекс},
+  sort={miuteks},
+  description={примитив синхронизации для обеспечения взаимного исключения доступа к общему ресурсу}
+}
+\newglossaryentry{deadlock}{
+  name={взаимоблокировка},
+  sort={vzaimoblokirovka},
+  description={ситуация в многопоточной системе, при которой несколько потоков находятся в состоянии бесконечного ожидания ресурсов, захваченных другими потоками из этой же группы}
+}
+
+
+% Титульные данные
+\title{\sffamily Курс: \textit{\CourseName}\\\large Лекция \LectureNo: \LectureTitle}
+\author{\sffamily Лектор: \Lecturer}
+\date{\sffamily Дата: \LectureDate}
+% ===================== PREAMBLE END =======================================================
+
+\begin{document}
+\maketitle
+\tableofcontents
+\clearpage
+
+\section{Оптимизации в современных процессорах}
+
+Современные \gls{cpu} применяют множество сложных оптимизаций для достижения высокой производительности. Рассмотрим ключевые из них: организацию кэш-памяти, внеочередное и спекулятивное исполнение инструкций, а также предсказание ветвлений.
+
+\subsection{Ассоциативность кэша и её влияние на производительность}
+
+\Gls{cache} — это небольшая, но очень быстрая память, расположенная близко к вычислительным ядрам процессора. Она хранит копии часто используемых данных из основной, более медленной памяти. Эффективность кэша напрямую влияет на скорость работы программ.
+
+\begin{definitionbox}{Ассоциативность кэша}
+Ассоциативность определяет, в скольких возможных местах (слотах) кэша может быть размещена определённая строка данных (кэш-линия) из основной памяти. Кэш-линии группируются в множества (sets). В $N$-ассоциативном кэше каждая кэш-линия может быть помещена в любое из $N$ мест внутри своего множества.
+\end{definitionbox}
+
+Типичные значения ассоциативности: 2, 4, 8 или 16. Прямо-отображаемый кэш (1-ассоциативный) прост, но страдает от коллизий: две кэш-линии, претендующие на одно и то же место, будут постоянно вытеснять друг друга. Увеличение ассоциативности снижает вероятность коллизий, но усложняет аппаратуру.
+
+\begin{figure}[h!]
+  \centering
+  \begin{tikzpicture}[
+    node distance=0.2cm and 3cm, 
+    font=\small,
+    set_title/.style={minimum width=2.8cm, align=center},
+    slot/.style={draw, minimum width=2.8cm, minimum height=0.6cm, align=center, fill=AccentLight!50},
+    mem_block/.style={draw, minimum width=2.8cm, minimum height=0.6cm, align=center, fill=gray!20}
+  ]
+    % --- Cache Column ---
+    \node (cache_label) {Кэш-память};
+    
+    % Set 0
+    \node[set_title, below=0.3cm of cache_label] (set0_label) {Множество 0};
+    \node[slot, below=of set0_label] (slot00) {Слот 0};
+    \node[slot, below=of slot00] (slot01) {Слот 1};
+    
+    % Set 1
+    \node[set_title, below=0.7cm of slot01] (set1_label) {Множество 1};
+    \node[slot, below=of set1_label] (slot10) {Слот 0};
+    \node[slot, below=of slot10] (slot11) {Слот 1};
+    
+    % Vertical dots
+    \node[below=0.3cm of slot11] (dots) {\vdots};
+
+    % --- Main Memory Column ---
+    \node[right=of cache_label] (mem_label) {Основная память};
+    
+    \node[mem_block, below=0.3cm of mem_label] (block0) {Блок 0};
+    \node[mem_block, below=of block0] (block1) {Блок 1};
+    \node[below=0.3cm of block1] (mem_dots1) {\vdots};
+    \node[mem_block, below=0.3cm of mem_dots1] (blockN) {Блок N};
+
+    % --- Outer Boxes ---
+    \node[draw, fit=(cache_label)(dots), inner sep=0.3cm] {};
+    \node[draw, fit=(mem_label)(blockN), inner sep=0.3cm] {};
+
+    % --- Arrows ---
+    \draw[arrow, dashed] (slot00.east) -- (block0.west);
+    \draw[arrow, dashed] (slot01.east) -- (block0.west);
+    \draw[arrow, dashed] (slot00.east) -- (blockN.west);
+    \draw[arrow, dashed] (slot01.east) -- (blockN.west);
+
+    % --- Explanation Text ---
+    \path (slot01.east) -- (mem_dots1.west) node[midway, below=2cm, align=center] {Блоки памяти, \\ отображаемые \\ на Множество 0};
+
+  \end{tikzpicture}
+  \caption{Схема 2-ассоциативного кэша: любой блок памяти, чей адрес отображается на Множество 0, может быть помещён в любой из двух слотов этого множества.}
+  \label{fig:cache_assoc}
+\end{figure}
+
+
+Неправильный паттерн доступа к памяти может привести к <<отравлению>> кэша. Рассмотрим пример транспонирования матрицы. При обходе матрицы по столбцам адреса соседних элементов отстоят друг от друга на размер строки. Если размер строки кратен большой степени двойки, адреса элементов из разных строк, но одного столбца, могут отображаться на одно и то же или на малое подмножество множеств в кэше.
+
+Это приводит к постоянным промахам (cache miss), так как кэш-линии вытесняют друг друга. Эксперименты показывают, что транспонирование матрицы $512 \times 512$ (где $512=2^9$) выполняется значительно медленнее, чем матриц $511 \times 511$ или $513 \times 513$, именно по этой причине.
+
+\subsection{Конвейерное и внеочередное исполнение}
+
+Для ускорения обработки инструкций \gls{cpu} использует \gls{pipeline}. Выполнение каждой инструкции разбивается на стадии (выборка, декодирование, исполнение, доступ к памяти, запись результата). Это позволяет одновременно обрабатывать несколько инструкций на разных стадиях.
+
+\begin{figure}[h!]
+  \centering
+  \begin{tikzpicture}[node distance=8mm]
+    \node[box] (if)  {IF};
+    \node[box, right=of if] (id)  {ID};
+    \node[box, right=of id] (ex)  {EX};
+    \node[box, right=of ex] (mem) {MEM};
+    \node[box, right=of mem] (wb)  {WB};
+    \draw[arrow] (if) -- (id);
+    \draw[arrow] (id) -- (ex);
+    \draw[arrow] (ex) -- (mem);
+    \draw[arrow] (mem) -- (wb);
+  \end{tikzpicture}
+  \caption{Классический 5-стадийный конвейер обработки инструкций}
+  \label{fig:pipeline_simple}
+\end{figure}
+
+Современные процессоры идут дальше и реализуют \gls{oooe}.
+
+\begin{definitionbox}{Внеочередное исполнение (Out-of-Order Execution)}
+Это способность \gls{cpu} исполнять инструкции не в том порядке, в котором они указаны в программе, а в порядке готовности их операндов. Это позволяет обходить задержки (например, при ожидании данных из памяти) и лучше загружать исполнительные устройства процессора.
+\end{definitionbox}
+
+Процессор анализирует зависимости по данным между инструкциями. Если две инструкции не зависят друг от друга, они могут быть выполнены параллельно или в обратном порядке. Для разрешения конфликтов по регистрам используется \textbf{переименование регистров}: архитектурным регистрам (видимым программисту) ставятся в соответствие физические регистры внутри \gls{cpu}. Это позволяет устранить ложные зависимости.
+
+\subsection{Спекулятивное исполнение и уязвимости}
+\Gls{oooe} тесно связано со спекулятивным исполнением. Процессор может не только переупорядочивать, но и <<угадывать>> результат условных переходов (ветвлений) и начинать выполнять инструкции из наиболее вероятной ветки кода ещё до того, как условие будет вычислено.
+
+\begin{notebox}
+Спекулятивное исполнение может оставлять следы в кэше. Если процессор спекулятивно выполнил чтение из памяти, к которой у программы нет доступа, данные могут попасть в кэш. Хотя результат операции будет отброшен после обнаружения ошибки доступа, наличие данных в кэше можно определить по времени доступа к ним. На этом принципе были основаны уязвимости класса \textbf{Meltdown} и \textbf{Spectre}.
+\end{notebox}
+
+\subsection{Предсказание ветвлений (Branch Prediction)}
+Эффективность спекулятивного исполнения зависит от точности предсказания ветвлений. Ошибка предсказания (branch misprediction) очень дорога: \gls{cpu} должен сбросить \gls{pipeline}, отменить результаты спекулятивно выполненных инструкций и начать выполнение с правильной ветки.
+
+Рассмотрим пример: подсчёт элементов в массиве, которые меньше определённого порога.
+\begin{itemize}
+    \item \textbf{Отсортированный массив}: Предсказатель легко угадывает результат сравнения. Сначала все элементы будут меньше порога, потом — больше. Переход будет только один. Производительность высокая.
+    \item \textbf{Неотсортированный (случайный) массив}: Результат сравнения непредсказуем. Процент ошибок предсказания высок ($\approx 50\%$), что приводит к значительному падению производительности.
+\end{itemize}
+
+Компиляторы знают об этой проблеме и могут применять оптимизации, чтобы избежать ветвлений. Например, условное приращение счётчика `if (x < 128) sum++;` может быть заменено на инструкцию условного перемещения (conditional move), которая не содержит прыжка и не нагружает предсказатель ветвлений.
+
+\begin{summarybox}
+\begin{itemize}
+    \item \textbf{Ассоциативность кэша} помогает бороться с коллизиями, но паттерны доступа к памяти с шагом, кратным степени двойки, могут снизить её эффективность.
+    \item \textbf{Конвейер} и \textbf{\gls{oooe}} позволяют исполнять несколько инструкций параллельно, скрывая задержки.
+    \item \textbf{Спекулятивное исполнение} на основе предсказания ветвлений ускоряет код, но ошибки предсказания дорого обходятся.
+    \item Компиляторы могут преобразовывать код для минимизации ветвлений и улучшения производительности.
+\end{itemize}
+\end{summarybox}
+
+\clearpage
+\section{Представление нецелых чисел}
+
+Целочисленные типы не могут представлять дробные значения. Для этого в вычислительной технике используются два основных подхода: числа с фиксированной и с плавающей запятой.
+
+\subsection{Числа с фиксированной точкой (Fixed-Point)}
+Идея проста: хранить число как целое, но считать, что дробная точка находится в заранее определённой позиции. Фактически это целое число, делённое на фиксированную степень двойки.
+
+\begin{itemize}
+    \item \textbf{Преимущества}: Арифметика быстрая, так как используются целочисленные операции.
+    \item \textbf{Недостатки}: Ограниченный и фиксированный диапазон значений. Сложно представлять одновременно очень большие и очень маленькие числа. Точность постоянна по всему диапазону.
+\end{itemize}
+
+Например, число $5.125_{10}$ в двоичном виде равно $101.001_2$. Если мы договоримся хранить 3 знака после запятой, то это число будет храниться как целое $101001_2$.
+
+\subsection{Стандарт IEEE 754: числа с плавающей запятой}
+Для гибкого представления широкого диапазона чисел был разработан стандарт \gls{ieee754}. Число представляется в научном формате:
+\begin{equation}
+    \text{fp} = S \cdot M \cdot 2^E
+\end{equation}
+где:
+\begin{itemize}
+    \item $S$ — знак (+1 или -1).
+    \item $M$ — мантисса (значащая часть), нормализованное число в диапазоне $[1.0, 2.0)$.
+    \item $E$ — экспонента (показатель степени).
+\end{itemize}
+В двоичном представлении это выглядит так:
+\begin{center}
+    \begin{tabular}{|c|c|c|}
+        \hline
+        \textbf{Знак (1 бит)} & \textbf{Экспонента (несколько бит)} & \textbf{Мантисса (остальные биты)} \\
+        \hline
+    \end{tabular}
+\end{center}
+Поскольку нормализованная мантисса всегда начинается с единицы ($1.\text{...}$), эта единица не хранится явно (<<скрытый бит>>), что даёт дополнительный бит точности.
+
+Для хранения отрицательных экспонент используется \textbf{смещение (bias)}. Хранимое значение экспоненты — это беззнаковое целое, из которого вычитается bias для получения реального показателя степени.
+\begin{equation}
+    E_{\text{real}} = E_{\text{stored}} - \text{bias}
+\end{equation}
+
+\subsection{Специальные случаи}
+Стандарт \gls{ieee754} определяет кодирование для особых значений:
+\begin{itemize}
+    \item \textbf{Денормализованные числа}: Если все биты экспоненты равны 0, скрытый бит считается равным 0 (а не 1). Это позволяет плавно представлять числа, очень близкие к нулю, заполняя <<дыру>> между нулём и наименьшим нормализованным числом.
+    \item \textbf{Бесконечность ($\pm\infty$)}: Если все биты экспоненты равны 1, а все биты мантиссы равны 0. Получается при переполнении или делении на ноль ($1.0 / 0.0$).
+    \item \textbf{Не-число (\gls{nan})}: Если все биты экспоненты равны 1, а мантисса не равна нулю. Результат некорректных операций, таких как $\infty - \infty$ или $\sqrt{-1}$.
+\end{itemize}
+\begin{notebox}
+\Gls{nan} обладает особым свойством: любое сравнение с \gls{nan}, даже `NaN == NaN`, возвращает `false`. Это требует особой осторожности при проверках.
+\end{notebox}
+
+\subsection{Погрешности и работа в C++}
+Арифметика с плавающей запятой неточна. Это приводит к нарушению привычных математических законов:
+\begin{itemize}
+    \item \textbf{Неассоциативность сложения}: $(a+b)+c$ может не равняться $a+(b+c)$, особенно если числа сильно различаются по величине.
+    \item \textbf{Недистрибутивность}: $a \cdot (b+c)$ может не равняться $a \cdot b + a \cdot c$.
+\end{itemize}
+Для минимизации ошибок при суммировании большого количества чисел их рекомендуется сортировать и складывать от меньших по модулю к большим.
+
+В C++ есть три основных типа с плавающей запятой:
+\begin{table}[h!]
+  \centering
+  \caption{Типы данных с плавающей запятой в C++}
+  \label{tab:fp-types}
+  \begin{tabular}{@{}lccc@{}}
+    \toprule
+    Тип & Размер (байты) & Биты экспоненты & Биты мантиссы \\
+    \midrule
+    \texttt{float}      & 4 & 8 & 23 \\
+    \texttt{double}     & 8 & 11 & 52 \\
+    \texttt{long double} & 10 & 15 & 64 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+Для доступа к битовому представлению числа можно использовать 'reinterpret\_cast', 'std::bit\_cast' (в C++ 20) или структуры с битовыми полями, помня об обратном порядке полей на little-endian архитектурах.
+
+\begin{lstlisting}[language=C++, caption={Доступ к битам double через структуру с битовыми полями}, label={lst:double_bits}]
+#include <cstdint>
+
+// Order is reversed for little-endian systems
+struct DoubleBits {
+    uint64_t mantissa : 52;
+    uint64_t exponent : 11;
+    uint64_t sign : 1;
+};
+
+double d = 1.234;
+// In C++20, prefer std::bit_cast
+DoubleBits bits = *reinterpret_cast<DoubleBits*>(&d);
+// Now bits.sign, bits.exponent, bits.mantissa can be accessed
+\end{lstlisting}
+
+\begin{summarybox}
+\begin{itemize}
+    \item Числа с \textbf{фиксированной точкой} просты и быстры, но имеют ограниченный диапазон.
+    \item Стандарт \textbf{\gls{ieee754}} определяет представление чисел с \textbf{плавающей запятой} (знак, экспонента, мантисса), позволяя работать с огромным диапазоном значений.
+    \item Существуют специальные значения: \textbf{денормализованные числа}, \textbf{бесконечности} и \textbf{\gls{nan}}.
+    \item Арифметика с плавающей запятой неточна и требует аккуратного обращения для минимизации погрешностей.
+\end{itemize}
+\end{summarybox}
+
+\clearpage
+\section{Основы многопоточности}
+Многопоточность — это способ организации вычислений, при котором программа состоит из нескольких потоков управления, выполняющихся параллельно.
+
+\subsection{Процессы и потоки}
+\begin{definitionbox}{Процесс и Поток}
+\textbf{Процесс} — это экземпляр программы, выполняемый операционной системой. Процессы сильно изолированы друг от друга: у каждого своё адресное пространство, свои файловые дескрипторы и т.д. Коммуникация между ними сложна (требует IPC: pipes, shared memory).
+
+\textbf{Поток} (thread) — это минимальная единица исполнения внутри процесса. Все потоки одного процесса разделяют общее адресное пространство, файловые дескрипторы и другие ресурсы. Это делает коммуникацию между ними простой, но создаёт проблемы с синхронизацией.
+\end{definitionbox}
+
+В C++ для создания потоков используется класс `std::thread`.
+\begin{lstlisting}[language=C++, caption={Создание и запуск потока в C++}, label={lst:thread_create}]
+#include <iostream>
+#include <thread>
+
+void worker_function() {
+    std::cout << "Worker thread is running.\n";
+}
+
+int main() {
+    std::thread t(worker_function); // Create and start a new thread
+    // ... main thread continues execution ...
+    t.join(); // Wait for the worker thread to finish
+    return 0;
+}
+\end{lstlisting}
+
+\subsection{Синхронизация и доступ к общей памяти}
+Основная сложность в многопоточном программировании — корректная работа с общими данными. Когда несколько потоков одновременно читают и пишут в одну и ту же ячейку памяти, возникает \textbf{состояние гонки (race condition)}.
+
+Проблема усугубляется тем, что и компилятор, и процессор могут переупорядочивать операции для оптимизации. В однопоточной программе это незаметно, но в многопоточной может привести к непредсказуемому поведению.
+
+\begin{notebox}
+Одновременный доступ (хотя бы одна из операций — запись) к обычной (неатомарной) переменной из разных потоков без синхронизации является \textbf{неопределённым поведением (\gls{ub})} в C++.
+\end{notebox}
+
+\subsection{Атомарные операции (\texttt{std::atomic})}
+Для безопасной работы с разделяемыми переменными без блокировок используются атомарные типы (`std::atomic`).
+
+\begin{definitionbox}{Атомарная операция}
+Это операция, которая выполняется как единое, неделимое целое. Никакой другой поток не может наблюдать её в промежуточном состоянии.
+\end{definitionbox}
+
+Например, операция `value++` неатомарна. Она состоит из трёх шагов: чтение, инкремент, запись. Другой поток может вмешаться между этими шагами. Атомарная операция `value.fetch\_add(1)` выполняет то же самое, но гарантированно неделимо.
+
+\begin{lstlisting}[language=C++, caption={Безопасный инкремент с помощью std::atomic}, label={lst:atomic_inc}]
+#include <atomic>
+#include <thread>
+#include <vector>
+
+std::atomic<int> counter = 0;
+
+void increment() {
+    for (int i = 0; i < 1000000; ++i) {
+        counter.fetch_add(1); // Atomic increment
+    }
+}
+
+int main() {
+    std::vector<std::thread> threads;
+    for (int i = 0; i < 10; ++i) {
+        threads.emplace_back(increment);
+    }
+    for (auto& t : threads) {
+        t.join();
+    }
+    // counter will be exactly 10,000,000
+    return 0;
+}
+\end{lstlisting}
+
+\subsection{Примитивы блокирующей синхронизации}
+
+Когда требуется защитить не одну переменную, а целый блок кода (критическую секцию), используются блокирующие примитивы.
+
+\subsubsection{Мьютекс (\texttt{std::mutex})}
+\Gls{mutex} обеспечивает взаимное исключение. Только один поток может владеть мьютексом в любой момент времени.
+\begin{itemize}
+    \item `mutex.lock()`: Захватывает \gls{mutex}. Если он уже захвачен другим потоком, текущий поток блокируется (<<засыпает>>) до его освобождения.
+    \item `mutex.unlock()`: Освобождает \gls{mutex}.
+\end{itemize}
+Для безопасного использования рекомендуется RAII-обёртка `std::lock\_guard`, которая автоматически вызывает `unlock` в своём деструкторе.
+
+\subsubsection{Спинлок (Spinlock)}
+Альтернатива мьютексу, реализованная на атомарных операциях. Вместо блокировки потока (передачи управления ядру), спинлок входит в цикл активного ожидания (busy-wait), постоянно проверяя, не освободился ли ресурс.
+\begin{itemize}
+    \item \textbf{Эффективен}, когда ожидание короткое (меньше, чем накладные расходы на переключение контекста потока).
+    \item \textbf{Расточителен}, если ожидание долгое, так как впустую тратит процессорное время.
+\end{itemize}
+
+\subsubsection{Условные переменные (\texttt{std::condition\_variable})}
+Позволяют одному потоку ждать, пока не выполнится некоторое условие, которое устанавливается другим потоком. Они работают в паре с мьютексом.
+\begin{itemize}
+    \item `cv.wait(lock, predicate)`: Атомарно освобождает \gls{mutex} (`lock`) и блокирует поток до тех пор, пока другой поток не вызовет `notify` и `predicate` не станет истинным. Перед выходом из `wait` \gls{mutex} снова захватывается.
+    \item `cv.notify\_one()`: <<Будит>> один из ожидающих потоков.
+\end{itemize}
+Использование предиката в `wait` обязательно для борьбы с <<ложными пробуждениями>> (spurious wakeups).
+
+\begin{summarybox}
+\begin{itemize}
+    \item Потоки разделяют память, что требует \textbf{синхронизации} для избежания гонок и \gls{ub}.
+    \item \textbf{Атомарные операции} (`std::atomic`) обеспечивают неделимый доступ к одиночным переменным.
+    \item \textbf{Мьютекс} (`std::mutex`) защищает критические секции кода, блокируя потоки при ожидании.
+    \item \textbf{Условные переменные} (`std::condition\_variable`) позволяют потокам эффективно ожидать выполнения произвольных условий.
+\end{itemize}
+\end{summarybox}
+
+\clearpage
+\section{Классическая проблема: обедающие философы}
+
+Эта задача иллюстрирует проблему \gls{deadlock} в системах с разделяемыми ресурсами.
+
+\subsection{Постановка задачи}
+Пять философов сидят за круглым столом. Перед каждым — тарелка спагетти, а между каждыми двумя соседними философами лежит по одной вилке. Итого 5 философов и 5 вилок.
+
+Каждый философ попеременно то думает, то ест. Чтобы поесть, ему нужны обе вилки: левая и правая.
+
+\begin{figure}[h!]
+  \centering
+  \begin{tikzpicture}[font=\small]
+    % Table
+    \node[draw, circle, minimum size=3.5cm] (table) at (0,0) {};
+    % Philosophers and Forks
+    \foreach \i in {0,1,2,3,4} {
+      \node[box, fill=AccentLight!70] (p\i) at (90+72*\i:2.5cm) {Философ \i};
+      \node[draw, circle, inner sep=1pt, fill=yellow!50] (f\i) at (90+36+72*\i:1.75cm) {Вилка \i};
+    }
+    % Arrows
+    \draw[arrow, bend left=15] (p0.south) to node[midway, below left] {нужна} (f0.north east);
+    \draw[arrow, bend right=15] (p0.south) to node[midway, below right] {нужна} (f4.north west);
+    \draw[arrow, bend left=15] (p1.west) to node[midway, above left] {нужна} (f1.east);
+    \draw[arrow, bend right=15] (p1.west) to node[midway, below left] {нужна} (f0.south east);
+  \end{tikzpicture}
+  \caption{Схема расположения философов и вилок. Каждому философу для еды нужны две соседние вилки.}
+  \label{fig:philosophers}
+\end{figure}
+
+\subsection{Взаимоблокировка (Deadlock)}
+Рассмотрим наивный алгоритм поведения для каждого философа:
+\begin{enumerate}
+    \item Взять левую вилку.
+    \item Взять правую вилку.
+    \item Поесть.
+    \item Положить левую вилку.
+    \item Положить правую вилку.
+    \item Подумать.
+\end{enumerate}
+
+\begin{notebox}
+Что произойдёт, если все философы одновременно решат поесть и каждый возьмёт свою левую вилку? Каждый из них будет вечно ждать, пока его сосед справа освободит правую для него вилку. Но сосед справа тоже ждёт. Возникает \textbf{цикл ожидания}, и ни один из потоков не может продолжить выполнение. Это и есть \gls{deadlock}.
+\end{notebox}
+
+Проблема \gls{deadlock} — одна из фундаментальных в многопоточном программировании. Для её решения существуют различные подходы, например, нарушение одного из условий возникновения взаимоблокировки (в данном случае, введение строгого порядка захвата ресурсов: например, все философы сначала берут вилку с меньшим номером, а потом с большим).
+
+\clearpage
+\printglossaries
+
+% QC:
+% - Структура: Конспект разбит на три основные темы лекции: оптимизации CPU, числа с плавающей запятой, многопоточность. В конце добавлен классический пример на дедлок.
+% - Полнота: Отражены все ключевые концепции из транскрипта: ассоциативность кэша и пример с матрицей, OoOE, спекулятивное исполнение и Meltdown, branch prediction, IEEE 754 (включая денормалы, NaN, Inf), типы в C++, разница процессов и потоков, std::thread, race conditions, UB, std::atomic, mutex, spinlock, condition variable, проблема обедающих философов.
+% - Точность: Вся информация основана на транскрипте. Добавлены TikZ-схемы для наглядности (кэш, конвейер, философы), что соответствует требованию. Кодовые примеры адаптированы из обсуждения в лекции.
+% - Стиль: Использованы tcolorbox-окружения для определений, примечаний и итогов, что соответствует стилю "методички". Глоссарий заполнен.
+% - Компиляция: Все метки уникальны, окружения закрыты. Шаблон преамбулы использован корректно.
+% - Самодополнение: структура лекции была выстроена на основе логики повествования лектора. Некоторые кодовые примеры были немного "причёсаны" для лучшей читаемости, но их суть сохранена. TikZ-схемы созданы на основе словесного описания и общих представлений о предмете, так как в исходном материале были только слайды, а не их код.
+\end{document}

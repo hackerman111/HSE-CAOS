@@ -309,6 +309,10 @@
 \newacronym[sort=sf]{sf}{SF}{Sign Flag, флаг знака (установлен старший бит результата)}
 \newacronym[sort=of]{of}{OF}{Overflow Flag, флаг переполнения (знаковое переполнение)}
 
+\newacronym{ieee754}{IEEE 754}{стандарт двоичной арифметики с плавающей запятой}
+\newacronym{nan}{NaN}{<<не число>> (Not a Number)}
+\newacronym{ub}{UB}{неопределённое поведение (Undefined Behavior)}
+
 \newglossaryentry{rodata}{
   name={.rodata},
   sort={rodata},
@@ -543,6 +547,17 @@
   sort={predskazanie vetvleniy},
   description={механизм \gls{cpu}, который пытается угадать результат условного перехода (\gls{control-hazard}) и спекулятивно исполняет код по предсказанной ветке}
 }
+
+\newglossaryentry{mutex}{
+  name={мьютекс},
+  sort={miuteks},
+  description={примитив синхронизации для обеспечения взаимного исключения доступа к общему ресурсу}
+}
+\newglossaryentry{deadlock}{
+  name={взаимоблокировка},
+  sort={vzaimoblokirovka},
+  description={ситуация в многопоточной системе, при которой несколько потоков находятся в состоянии бесконечного ожидания ресурсов, захваченных другими потоками из этой же группы}
+}
 % Титульные данные
 \title{\sffamily Курс: \textit{\CourseName}\\\large Лекция \LectureNo: \LectureTitle}
 \author{\sffamily Лектор: \Lecturer}
@@ -572,7 +587,11 @@
 \chapter{8 Лекция}
 \include{8.tex}
 
+\chapter{9 Лекция}
+\include{9.tex}
+
 \clearpage
+\chapter{Глоссарий}
 \printglossaries
 
 \end{document}
