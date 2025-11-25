@@ -1,0 +1,616 @@
+\documentclass[12pt,a4paper]{report}
+
+% Поиск/копирование кириллицы из PDF
+\usepackage{cmap}
+
+\usepackage{import}
+\usepackage{amsmath,amssymb,amsfonts}
+% Язык и кодировки
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage[russian]{babel}
+
+% Поля, типографика, абзацы
+\usepackage[a4paper,margin=2.2cm]{geometry}
+\usepackage{microtype}
+\usepackage{indentfirst}
+\setlength{\parindent}{1.25em}
+\setlength{\parskip}{0.25em}
+\raggedbottom
+
+% Цветовая тема
+\usepackage[table]{xcolor}
+\definecolor{Accent}{HTML}{1F6FEB}     % основной акцент
+\definecolor{AccentDark}{HTML}{0B5394} % тёмный акцент
+\definecolor{AccentLight}{HTML}{E8F0FE}% светлый акцент (фон)
+\definecolor{CodeBg}{HTML}{F6F8FA}     % фон для кода
+\definecolor{Link}{HTML}{1F6FEB}       % ссылки
+
+% Гиперссылки и умные ссылки
+\usepackage[unicode]{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=Link, citecolor=Link, urlcolor=Link,
+  pdfauthor={Олег},
+  pdftitle={Лекция 1: Введение в ОС и системные вызовы}
+}
+\usepackage[nameinlink,capitalise]{cleveref}
+\urlstyle{same}
+
+% Заголовки разделов
+\usepackage{titlesec}
+\titleformat{\section}{\large\bfseries\sffamily\color{Accent}}{\thesection}{1em}{}
+\titleformat{\subsection}{\bfseries\sffamily\color{AccentDark}}{\thesubsection}{0.75em}{}
+\titleformat{\subsubsection}{\bfseries}{\thesubsubsection}{0.6em}{}
+\titlespacing*{\section}{0pt}{1.0ex plus 0.5ex}{0.6ex}
+\titlespacing*{\subsection}{0pt}{0.9ex plus 0.4ex}{0.5ex}
+\titlespacing*{\subsubsection}{0pt}{0.8ex plus 0.3ex}{0.4ex}
+
+% Шапки/футеры
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+% Макросы метаданных (переопределяйте в документе/LLM)
+\newcommand{\CourseName}{Архитектура компьютера и ОС}
+\newcommand{\LectureNo}{1}
+\newcommand{\LectureTitle}{Введение в ОС и системные вызовы}
+\newcommand{\LectureDate}{}
+\newcommand{\Lecturer}{Олег}
+\fancyhead[L]{\small\sffamily \CourseName}
+\fancyhead[C]{\small\sffamily \LectureTitle}
+\fancyhead[R]{\small\sffamily Лекция \LectureNo}
+\fancyfoot[C]{\small\sffamily \thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\makeatletter
+\renewcommand{\headrule}{\hbox to\headwidth{\color{Accent}\leaders\hrule height \headrulewidth\hfill}}
+\makeatother
+
+% Подписи к рисункам/таблицам
+\usepackage[font=small,labelfont=bf,labelsep=endash]{caption}
+\usepackage{subcaption}
+
+% Математика и единицы
+\numberwithin{equation}{section}
+\usepackage{siunitx}
+\sisetup{detect-all=true}
+
+% Таблицы и списки
+\usepackage{booktabs}
+\usepackage{array,tabularx}
+\usepackage{enumitem}
+\setlist{itemsep=2pt,topsep=4pt,leftmargin=*,labelsep=0.5em}
+
+% Графика и TikZ
+\usepackage{graphicx}
+\usepackage{tikz}
+
+% Графика и TikZ
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,shapes.geometric,calc,fit,shadows,decorations.pathreplacing,patterns}
+\tikzset{
+  arrow/.style={-{Stealth[length=3mm,width=2mm]}, line width=0.5pt, draw=AccentDark},
+  box/.style={draw=Accent, rounded corners, fill=AccentLight, minimum width=2.2cm, minimum height=0.8cm, align=center},
+  node_cpu/.style={box, minimum width=1.5cm, drop shadow},
+  node_device/.style={box, minimum width=2cm, fill=AccentLight!60},
+  node_os/.style={draw=AccentDark, fill=AccentLight, rectangle, rounded corners=3pt, minimum height=4cm, minimum width=1.2cm, drop shadow},
+  node_prog/.style={draw=black!60, rectangle, minimum width=0.8cm, minimum height=0.6cm, fill=white, font=\small},
+  membox/.style={draw=black!60, minimum width=2.5cm, minimum height=1.4cm, align=center, font=\ttfamily\small},
+  addrbox/.style={draw, minimum height=0.7cm},
+  levelbox/.style={draw, rectangle, minimum width=2.5cm, minimum height=3cm, align=center},
+  fpbox/.style={membox, fill=red!20},
+  retbox/.style={membox, fill=blue!15},
+  codebox/.style={draw=AccentDark, fill=CodeBg, rounded corners, font=\ttfamily\small, align=left, minimum width=3cm, inner sep=4pt}
+}
+
+
+% Красивые боксы "методички"
+\usepackage[most]{tcolorbox}
+\tcbset{enhanced, breakable, boxrule=0.6pt, fonttitle=\bfseries\sffamily}
+\newtcolorbox{definitionbox}[1]{
+  title={Определение: #1},
+  colback=AccentLight, colframe=Accent, coltitle=black, arc=2pt, left=8pt, right=8pt, top=6pt, bottom=6pt
+}
+\newtcolorbox{notebox}{
+  title={Примечание},
+  colback=yellow!8, colframe=yellow!40!black, arc=2pt, left=8pt, right=8pt, top=6pt, bottom=6pt
+}
+\newtcolorbox{summarybox}{
+  title={Итоги раздела},
+  colback=green!6, colframe=green!50!black, arc=2pt, left=8pt, right=8pt, top=6pt, bottom=6pt
+}
+
+% Листинги (без minted, без shell-escape)
+\usepackage{listings}
+\usepackage{listingsutf8}
+\lstdefinestyle{elegant}{
+  inputencoding=utf8,
+  basicstyle=\ttfamily\small,
+  columns=fullflexible,
+  breaklines=true,
+  frame=single,
+  framerule=0.4pt,
+  rulecolor=\color{black!20},
+  backgroundcolor=\color{CodeBg},
+  xleftmargin=0.5em,
+  framexleftmargin=0.5em,
+  tabsize=2,
+  showstringspaces=false,
+  keywordstyle=\bfseries\color{AccentDark},
+  commentstyle=\itshape\color{black!55},
+  stringstyle=\color{orange!60!black},
+  numbers=left,
+  numberstyle=\tiny\color{black!50},
+  numbersep=8pt,
+  captionpos=b,
+  upquote=true,
+  escapechar=§
+}
+\lstset{style=elegant}
+
+% Макросы удобства
+\newcommand{\TODO}[1]{\textcolor{red!70!black}{[TODO: #1]}}
+\newcommand{\figref}[1]{рис.~\ref{#1}}
+\newcommand{\secref}[1]{раздел~\ref{#1}}
+\newcommand{\eqnref}[1]{(\ref{#1})}
+\newcommand{\lstref}[1]{листинг~\ref{#1}}
+
+% Глоссарий и сокращения
+\usepackage[acronym,nonumberlist,toc]{glossaries}
+\makeglossaries
+\setacronymstyle{long-short}
+\renewcommand*{\glossaryname}{Глоссарий}
+\renewcommand*{\acronymname}{Список сокращений}
+\setglossarystyle{altlist}
+
+\newacronym[sort=os]{os}{ОС}{Операционная система}
+\newacronym[sort=cpu]{cpu}{CPU}{Центральный процессор}
+\newacronym[sort=ram]{ram}{RAM}{Оперативная память}
+
+\newglossaryentry{syscall}{
+  name={Системный вызов},
+  sort={sistemnyj vyzov},
+  description={Обращение пользовательской программы к ядру операционной системы для выполнения какой-либо привилегированной операции.}
+}
+\newglossaryentry{fd}{
+  name={Файловый дескриптор},
+  sort={fajlovyj deskriptor},
+  description={Неотрицательное целое число, служащее идентификатором для доступа к файлу или другому ресурсу ввода-вывода в рамках одного процесса.}
+}
+\newglossaryentry{stdin}{
+  name={Стандартный поток ввода},
+  sort={standartnyj potok vvoda},
+  description={Поток ввода данных по умолчанию, обычно связанный с файловым дескриптором 0.}
+}
+\newglossaryentry{stdout}{
+  name={Стандартный поток вывода},
+  sort={standartnyj potok vyvoda},
+  description={Поток вывода данных по умолчанию, обычно связанный с файловым дескриптором 1.}
+}
+\newglossaryentry{pipeline}{
+  name={конвейер},
+  sort={konveier},
+  description={поточность исполнения инструкций по стадиям (IF, ID, EX, MEM, WB)}
+}
+\newglossaryentry{stderr}{
+  name={Стандартный поток ошибок},
+  sort={standartnyj potok oshibok},
+  description={Отдельный поток для вывода сообщений об ошибках, обычно связанный с файловым дескриптором 2.}
+}
+\newglossaryentry{errno}{
+  name={errno},
+  sort={errno},
+  description={Глобальная переменная в C/C++, в которую системные вызовы записывают код последней произошедшей ошибки.}
+}
+\newglossaryentry{cache}{
+  name={кэш},
+  sort={kesh},
+  description={быстрая память для уменьшения латентности доступа за счёт локальности обращений}
+}
+
+% Объявленные термины
+\newacronym{api}{API}{Application Programming Interface (интерфейс прикладного программирования)}
+\newacronym{pid}{PID}{Process ID (идентификатор процесса)}
+
+
+\newglossaryentry{fs}{
+  name={файловая система},
+  sort={failovaia sistema},
+  description={способ организации, хранения и именования данных на носителях информации, представляющий собой абстракцию над физическим устройством хранения.}
+}
+
+\newglossaryentry{offset}{
+  name={смещение},
+  sort={smeschenie},
+  description={текущая позиция в файле, с которой будет производиться следующая операция чтения или записи. Измеряется в байтах от начала файла.}
+}
+\newglossaryentry{umask}{
+  name={umask},
+  sort={umask},
+  description={маска создания файлов процесса, которая определяет, какие биты прав доступа будут автоматически сброшены (удалены) при создании новых файлов и директорий.}
+}
+\newglossaryentry{pipe}{
+  name={канал (pipe)},
+  sort={kanal},
+  description={однонаправленный механизм межпроцессного взаимодействия, представляющий собой пару файловых дескрипторов: один для записи, другой для чтения.}
+}
+\newglossaryentry{symlink}{
+  name={символическая ссылка},
+  sort={simvolicheskaia ssylka},
+  description={специальный тип файла, который содержит путь к другому файлу или директории. При обращении к ссылке ядро автоматически перенаправляет операцию к целевому объекту.}
+}
+\newglossaryentry{sparse}{
+    name={разреженный файл},
+    sort={razrezhennyi fail},
+    description={файл, который содержит <<дыры>> — большие последовательности нулевых байт, которые не занимают физического места на диске.}
+}
+
+
+% Объявленные термины
+\newglossaryentry{virtualmem}{
+  name={виртуальная память},
+  sort={virtualnaia pamiat},
+  description={Абстракция, предоставляемая операционной системой, которая создаёт для каждого процесса собственное непрерывное адресное пространство, изолированное от других процессов и физической памяти.}
+}
+\newglossaryentry{physicalmem}{
+  name={физическая память},
+  sort={fizicheskaia pamiat},
+  description={Реальная оперативная память (RAM), установленная в компьютере. Адресация в ней происходит напрямую аппаратными средствами.}
+}
+\newglossaryentry{mempage}{
+  name={страница памяти},
+  sort={stranitsa pamiati},
+  description={Блок памяти фиксированного размера, являющийся минимальной единицей для управления памятью в системах с виртуальной адресацией. Обычно размер страницы составляет 4 КБ.}
+}
+\newglossaryentry{mmap}{
+  name={\texttt{mmap}},
+  sort={mmap},
+  description={Системный вызов в POSIX-совместимых системах для отображения файлов или устройств в память, а также для создания анонимных областей памяти.}
+}
+\newglossaryentry{stack}{
+  name={стек},
+  sort={stek},
+  description={Область памяти, используемая для хранения локальных переменных, аргументов функций и адресов возврата. Память на стеке выделяется и освобождается автоматически по принципу LIFO (Last-In, First-Out).}
+}
+\newglossaryentry{heap}{
+  name={куча},
+  sort={kucha},
+  description={Область памяти для динамического выделения. Программист вручную управляет выделением и освобождением памяти в куче с помощью операторов \texttt{new}/\texttt{delete} или функций \texttt{malloc}/\texttt{free}.}
+}
+\newglossaryentry{pagefault}{name={страничная ошибка}, sort={stranichnaia oshibka}, description={Прерывание, генерируемое процессором при обращении программы к виртуальному адресу, который не отображён на физическую память.}}
+\newglossaryentry{ondemandpaging}{name={постраничная подкачка по требованию}, sort={postranichnaia podkachka}, description={Механизм, при котором физические страницы памяти выделяются процессу не в момент запроса (напр., \texttt{mmap}), а только при первом фактическом обращении к ним.}}
+\newglossaryentry{pagetable}{name={таблица страниц}, sort={tablitsa stranits}, description={Структура данных, используемая ОС и процессором для трансляции виртуальных адресов в физические.}}
+\newglossaryentry{fork}{name={fork}, description={Системный вызов для создания нового процесса путем дублирования текущего.}}
+\newglossaryentry{exec}{name={exec}, description={Семейство системных вызовов, которые заменяют образ текущего процесса новым.}}
+\newglossaryentry{zombie}{name={процесс-зомби}, sort={protsess-zombi}, description={Завершившийся процесс, запись о котором все еще хранится в таблице процессов, так как родительский процесс еще не получил его статус завершения через \texttt{wait}.}}
+\newglossaryentry{ororphan}{name={процесс-сирота}, sort={protsess-sirota}, description={Процесс, родитель которого завершился раньше. Такой процесс "усыновляется" специальным процессом \texttt{init} (PID 1).}}
+\newglossaryentry{swap}{name={своп (swap)}, sort={svop}, description={Механизм выгрузки неактивных страниц памяти из оперативной памяти на диск для освобождения физической памяти.}}
+\newglossaryentry{pgid}{name={PGID (Process Group ID)}, sort={pgid}, description={Числовой идентификатор группы процессов, позволяющий управлять несколькими процессами как единым целым.}}
+\newglossaryentry{sid}{name={SID (Session ID)}, sort={sid}, description={Числовой идентификатор сессии, объединяющей одну или несколько групп процессов.}}
+\newglossaryentry{signal}{name={сигнал}, sort={signal}, description={Асинхронное уведомление, отправляемое процессу для сообщения о событии. Является одним из механизмов межпроцессного взаимодействия (IPC).}}
+\newglossaryentry{coredump}{name={core dump}, sort={coredump}, description={Файл, содержащий снимок (образ) адресного пространства процесса в момент его аварийного завершения. Используется для отладки.}}
+\newglossaryentry{cow}{name={Copy-on-Write (копирование при записи)}, sort={cow}, description={Техника оптимизации, при которой полное копирование данных (например, адресного пространства при \texttt{fork}) откладывается до момента, когда один из процессов пытается изменить эти данные.}}
+\newglossaryentry{ipc}{name={IPC (Inter-Process Communication)}, sort={ipc}, description={Межпроцессное взаимодействие; механизмы, позволяющие процессам обмениваться данными и синхронизировать свою работу.}}
+\newglossaryentry{endianness}{name={порядок байтов (endianness)}, sort={endianness}, description={Определяет, в каком порядке байты многобайтового числа располагаются в памяти. Основные типы: Little-endian (младший байт по младшему адресу) и Big-endian (старший байт по младшему адресу).}}
+\newglossaryentry{ascii}{name={ASCII (American Standard Code for Information Interchange)}, sort={ascii}, description={7-битная кодировка символов, включающая латинский алфавит, цифры, знаки препинания и управляющие символы.}}
+\newglossaryentry{unicode}{name={Unicode}, sort={unicode}, description={Международный стандарт кодирования символов, который присваивает уникальный числовой код (code point) практически каждому символу из существующих письменностей.}}
+\newglossaryentry{utf8}{name={UTF-8 (Unicode Transformation Format, 8-bit)}, sort={utf8}, description={Наиболее распространённая кодировка Unicode, использующая переменное количество байт (от 1 до 4) для представления символа и обратно совместимая с ASCII.}}
+\newglossaryentry{locale}{name={локаль}, sort={locale}, description={Набор параметров, определяющих региональные и языковые настройки программы, включая кодировку символов, формат даты и времени, разделители чисел и т.д.}}
+
+\newacronym[sort=asm]{asm}{Ассемблер}{низкоуровневый язык программирования, близкий к машинному коду}
+\newacronym[sort=rip]{rip}{RIP}{Instruction Pointer, регистр-указатель на следующую инструкцию}
+\newacronym[sort=rsp]{rsp}{RSP}{Stack Pointer, регистр-указатель на вершину стека}
+\newacronym[sort=rbp]{rbp}{RBP}{Base Pointer, регистр-указатель на базу стекового фрейма}
+\newacronym[sort=lea]{lea}{LEA}{Load Effective Address, инструкция загрузки вычисленного адреса}
+\newacronym[sort=pic]{pic}{PIC}{Position-Independent Code, позиционно-независимый код}
+\newacronym[sort=tco]{tco}{TCO}{Tail Call Optimization, оптимизация хвостового вызова}
+\newacronym[sort=cf]{cf}{CF}{Carry Flag, флаг переноса (беззнаковое переполнение)}
+\newacronym[sort=zf]{zf}{ZF}{Zero Flag, флаг нуля (результат равен нулю)}
+\newacronym[sort=sf]{sf}{SF}{Sign Flag, флаг знака (установлен старший бит результата)}
+\newacronym[sort=of]{of}{OF}{Overflow Flag, флаг переполнения (знаковое переполнение)}
+
+\newacronym{ieee754}{IEEE 754}{стандарт двоичной арифметики с плавающей запятой}
+\newacronym{nan}{NaN}{<<не число>> (Not a Number)}
+\newacronym{ub}{UB}{неопределённое поведение (Undefined Behavior)}
+
+\newglossaryentry{rodata}{
+  name={.rodata},
+  sort={rodata},
+  description={Секция данных, доступных только для чтения (read-only data).}
+}
+\newglossaryentry{data}{
+  name={.data},
+  sort={data},
+  description={Секция инициализированных данных, доступных для чтения и записи.}
+}
+\newglossaryentry{bss}{
+  name={.bss},
+  sort={bss},
+  description={Секция неинициализированных (обнуляемых) данных, доступных для чтения и записи.}
+}
+\newglossaryentry{relocation}{
+  name={релокация},
+  sort={relokatsiya},
+  description={Процесс (или запись) исправления адресов символов на этапе компоновки (линковки).}
+}
+\newglossaryentry{intel-syntax}{
+  name={Intel-синтаксис},
+  sort={intel},
+  description={Синтаксис ассемблера, где приемник (destination) указывается перед источником (source).}
+}
+\newglossaryentry{att-syntax}{
+  name={AT\&T-синтаксис},
+  sort={att},
+  description={Синтаксис ассемблера (GNU), где источник (source) указывается перед приемником (destination).}
+}
+\newglossaryentry{stack-frame}{
+  name={стековый фрейм},
+  sort={stack-frame},
+  description={Область на стеке, выделяемая для одной функции (локальные переменные, адрес возврата и т.д.).}
+}
+
+
+\newglossaryentry{twoscomplement}{
+  name={Дополняющий код},
+  sort={dopolnyayushchiy kod},
+  description={Метод представления знаковых целых чисел, использующий арифметику по модулю $2^N$. Позволяет избежать проблемы двух нулей и упрощает арифметические операции.}
+}
+\newglossaryentry{alignment}{
+  name={Выравнивание данных},
+  sort={vyravnivanie dannykh},
+  description={Требование, согласно которому данные определённого размера (K байт) должны располагаться в памяти по адресу, кратному K (или другой степени двойки).}
+}
+\newglossaryentry{preprocessing}{
+  name={Препроцессинг},
+  sort={preprotsessing},
+  description={Начальная, текстовая стадия компиляции, выполняющая директивы, такие как \texttt{\#include} и \texttt{\#define}.}
+}
+\newglossaryentry{includeguard}{
+  name={Страж включения},
+  sort={strazh vklyucheniya},
+  description={Конструкция препроцессора (\texttt{\#ifndef} / \texttt{\#define} / \texttt{\#endif}) или \texttt{\#pragma once}, предотвращающая повторное включение содержимого заголовочного файла.}
+}
+\newglossaryentry{translationunit}{
+  name={Единица трансляции},
+  sort={edinitsa translyatsii},
+  description={Один исходный файл (<code>.c</code> или <code>.cpp</code>) со всем содержимым, рекурсивно включённым через \texttt{\#include}. Является основной единицей работы компилятора.}
+}
+\newglossaryentry{objectfile}{
+  name={Объектный файл},
+  sort={obektnyy fayl},
+  description={Результат компиляции одной единицы трансляции. Содержит машинный код и метаданные (например, таблицу символов), но ещё не является исполняемой программой. (Напр., <code>.o</code>).}
+}
+\newglossaryentry{linking}{
+  name={Линковка (компоновка)},
+  sort={linkovka},
+  description={Процесс объединения одного или нескольких объектных файлов в единый исполняемый файл или библиотеку. На этом этапе разрешаются ссылки на внешние символы.}
+}
+\newglossaryentry{symbol}{
+  name={Символ},
+  sort={simvol},
+  description={Имя функции или переменной, которое становится видимым линковщику. Символы могут быть определёнными (defined) или неопределёнными (undefined) в рамках одного объектного файла.}
+}
+
+\newglossaryentry{elf}{
+  name={ELF (Executable and Linkable Format)},
+  sort={elf},
+  description={Стандартный формат исполняемых файлов, объектных файлов и библиотек в Linux и других UNIX-подобных системах.}
+}
+\newglossaryentry{section}{
+  name={Секция (ELF)},
+  sort={sektsiya},
+  description={Именованный непрерывный блок данных в ELF-файле. Основные секции: <code>.text</code> (код), <code>.data</code> (инициализированные данные), <code>.bss</code> (неинициализированные данные).}
+}
+\newglossaryentry{namemangling}{
+  name={Искажение имён (Name Mangling)},
+  sort={iskazhenie imen},
+  description={Процесс в C++, при котором компилятор кодирует имя функции, её пространство имён и типы аргументов в уникальное имя символа для линковщика.}
+}
+\newglossaryentry{externc}{
+  name={extern "C"},
+  sort={extern c},
+  description={Директива в C++, указывающая компилятору использовать C ABI (соглашение о вызовах C) для функции или переменной, в частности, отключая искажение имён.}
+}
+\newglossaryentry{vonneumann}{
+  name={Архитектура фон Неймана},
+  sort={arkhitektura fon neymana},
+  description={Архитектура компьютера, в которой память для инструкций (кода) и память для данных объединены в одно адресное пространство.}
+}
+\newglossaryentry{register}{
+  name={Регистр},
+  sort={registr},
+  description={Небольшой объём быстрой памяти, встроенной непосредственно в процессор. Используется для хранения промежуточных результатов вычислений и служебной информации.}
+}
+
+\newglossaryentry{rax}{
+  name={RAX},
+  sort={rax},
+  description={Регистр общего назначения в x86-64, используемый по соглашению (ABI) для возврата первого (или единственного) значения из функции.}
+}
+\newglossaryentry{rdi}{
+  name={RDI},
+  sort={rdi},
+  description={Регистр общего назначения в x86-64, используемый по соглашению (ABI) для передачи первого аргумента в функцию.}
+}
+\newglossaryentry{rsi}{
+  name={RSI},
+  sort={rsi},
+  description={Регистр общего назначения в x86-64, используемый по соглашению (ABI) для передачи второго аргумента в функцию.}
+}
+\newglossaryentry{rflags}{
+  name={RFLAGS},
+  sort={rflags},
+  description={Регистр флагов в x86-64. Хранит биты состояния, отражающие результат последней арифметической операции (например, Zero Flag, Carry Flag).}
+}
+\newglossaryentry{abi}{
+  name={ABI (Application Binary Interface)},
+  sort={abi},
+  description={Соглашение о вызовах; набор правил, определяющих, как функции передают аргументы, возвращают значения, управляют стеком и регистрами на определённой платформе (ОС + архитектура).}
+}
+\newacronym[sort=lto]{lto}{LTO}{Link Time Optimization (оптимизация на этапе компоновки)}
+\newacronym[sort=llvm]{llvm}{LLVM}{Low Level Virtual Machine (инфраструктура для построения компиляторов)}
+\newacronym[sort=ir]{ir}{IR}{Intermediate Representation (промежуточное представление)}
+\newacronym[sort=jit]{jit}{JIT}{Just-in-Time (компиляция «на лету»)}
+\newacronym[sort=plt]{plt}{PLT}{Procedure Linkage Table (таблица компоновки процедур)}
+\newacronym[sort=got]{got}{GOT}{Global Offset Table (глобальная таблица смещений)}
+\newacronym[sort=tlb]{tlb}{TLB}{Translation Lookaside Buffer (буфер ассоциативной трансляции)}
+\newacronym[sort=oooe]{oooe}{OoOE}{Out-of-Order Execution (внеочередное исполнение)}
+
+\newglossaryentry{inline-asm}{
+  name={встроенный ассемблер},
+  sort={vstroenniy assembler},
+  description={конструкция компилятора (GNU Inline Assembly) для вставки ассемблерного кода непосредственно в C/C++ код}
+}
+\newglossaryentry{clobbers}{
+  name={clobbers (список порчи)},
+  sort={klobbers},
+  description={секция в inline asm, указывающая компилятору, какие регистры или состояния (напр. "cc" для флагов, "memory" для памяти) изменяются ассемблерной вставкой}
+}
+
+\newglossaryentry{volatile}{
+  name={volatile},
+  sort={volatile},
+  description={ключевое слово, указывающее компилятору, что операция (чтение/запись переменной или \texttt{asm} вставка) имеет побочные эффекты и не должна удаляться или переупорядочиваться}
+}
+\newglossaryentry{indirect-jump}{
+  name={косвенный переход},
+  sort={kosvenniy perehod},
+  description={инструкция перехода (\texttt{jmp} или \texttt{call}), адрес которой определяется во время исполнения (например, берётся из регистра или памяти), в отличие от прямого перехода с зашитым адресом}
+}
+\newglossaryentry{endbr64}{
+  name={endbr64},
+  sort={endbr64},
+  description={инструкция (End Branch 64-bit), используемая для защиты Control-Flow Enforcement (CET). Она помечает легитимную цель для косвенного перехода}
+}
+\newglossaryentry{vptr}{
+  name={vptr},
+  sort={vptr},
+  description={скрытый указатель в объекте C++, имеющем виртуальные функции, который указывает на \gls{vtable} для данного класса}
+}
+\newglossaryentry{vtable}{
+  name={vtable},
+  sort={vtable},
+  description={таблица виртуальных методов. Массив указателей на функции, используемый для реализации динамического полиморфизма (виртуальных вызовов)}
+}
+\newglossaryentry{shared-object}{
+  name={динамическая библиотека (.so)},
+  sort={dinamicheskaya biblioteka},
+  description={Shared Object. Код, который компонуется с программой не на этапе сборки, а на этапе её запуска (или позже вручную)}
+}
+\newglossaryentry{lazy-binding}{
+  name={ленивое связывание},
+  sort={lenivoe svyazivanie},
+  description={механизм динамической компоновки, при котором адрес функции из .so определяется (разрешается) не при загрузке, а при первом её вызове, используя \gls{plt} и \gls{got}}
+}
+\newglossaryentry{dlopen}{
+  name={dlopen/dlsym},
+  sort={dlopen},
+  description={API (в \texttt{libdl}) для ручной загрузки динамических библиотек и поиска символов в них во время выполнения}
+}
+\newglossaryentry{freestanding}{
+  name={freestanding},
+  sort={freestanding},
+  description={режим C/C++, в котором программа не зависит от стандартной библиотеки (\texttt{stdlib}) и окружения ОС. Используется для ядер ОС, прошивок, микроконтроллеров}
+}
+\newglossaryentry{start-label}{
+  name={_start},
+  sort={start},
+  description={стандартная точка входа в исполняемый ELF-файл, с которой ядро ОС начинает исполнение. \texttt{main} является лишь соглашением \texttt{stdlib}}
+}
+\newglossaryentry{movsx}{
+  name={movsx / movzx},
+  sort={movsx},
+  description={инструкции ассемблера (Move with Sign/Zero Extend) для загрузки значения меньшего размера в регистр большего размера с расширением знакового бита (\texttt{sx}) или нулями (\texttt{zx})}
+}
+\newglossaryentry{cache-line}{
+  name={кэш-линия},
+  sort={kesh-linia},
+  description={минимальная единица данных, передаваемая между основной памятью и \gls{cache}. На x86-64 обычно 64 байта}
+}
+\newglossaryentry{set-associative}{
+  name={ассоциативный кэш},
+  sort={associativniy kesh},
+  description={организация кэша (N-way set-associative), в которой адрес памяти отображается в «набор» (set), содержащий N \gls{cache-line}. Компромисс между прямым отображением и полным ассоциативным кэшем}
+}
+\newglossaryentry{data-hazard}{
+  name={конфликт по данным},
+  sort={konflikt po dannim},
+  description={ситуация в \gls{pipeline}, когда инструкция зависит от результата предыдущей, ещё не завершённой, инструкции}
+}
+\newglossaryentry{control-hazard}{
+  name={конфликт по управлению},
+  sort={konflikt po upravleniyu},
+  description={ситуация в \gls{pipeline}, возникающая из-за инструкций перехода (ветвлений), когда процессор не знает, какую инструкцию загружать следующей}
+}
+\newglossaryentry{branch-prediction}{
+  name={предсказание ветвлений},
+  sort={predskazanie vetvleniy},
+  description={механизм \gls{cpu}, который пытается угадать результат условного перехода (\gls{control-hazard}) и спекулятивно исполняет код по предсказанной ветке}
+}
+
+\newglossaryentry{mutex}{
+  name={мьютекс},
+  sort={miuteks},
+  description={примитив синхронизации для обеспечения взаимного исключения доступа к общему ресурсу}
+}
+\newglossaryentry{deadlock}{
+  name={взаимоблокировка},
+  sort={vzaimoblokirovka},
+  description={ситуация в многопоточной системе, при которой несколько потоков находятся в состоянии бесконечного ожидания ресурсов, захваченных другими потоками из этой же группы}
+}
+
+
+\newglossaryentry{Hyperthreading}{name={Hyper-threading}, description={технология Intel, позволяющая одному физическому ядру процессора исполнять два потока одновременно, разделяя исполнительные устройства}}
+\newglossaryentry{Amdahl}{name={Закон Амдала}, description={формула, определяющая предельное ускорение системы при распараллеливании вычислений}}
+\newglossaryentry{TLS}{name={TLS}, description={Thread Local Storage — локальное хранилище потока, данные, уникальные для каждого потока}}
+\newglossaryentry{CAS}{name={CAS}, description={Compare-And-Swap — атомарная инструкция, сравнивающая значение в памяти с ожидаемым и заменяющая его на новое при совпадении}}
+\newglossaryentry{Futex}{name={Futex}, description={Fast Userspace Mutex — механизм ядра Linux для реализации быстрой синхронизации в пространстве пользователя}}
+\newglossaryentry{FalseSharing}{name={False Sharing}, description={ложное разделение данных — ситуация, когда разные потоки изменяют разные переменные, находящиеся на одной кэш-линии, вызывая постоянную инвалидацию кэша}}
+
+% Титульные данные
+\title{\sffamily Курс: \textit{\CourseName}\\\large Лекция \LectureNo: \LectureTitle}
+\author{\sffamily Лектор: \Lecturer}
+\date{}
+% ===================== PREAMBLE END =======================================================
+
+\begin{document}
+\maketitle
+\thispagestyle{fancy}
+\tableofcontents
+\clearpage
+
+\chapter{1 Лекция}
+\include{1.tex}
+
+\chapter{2 Лекция}
+\include{2.tex}
+
+\chapter{3 Лекция}
+\include{3.tex}
+
+\chapter{4 Лекция}
+\include{4.tex}
+
+\chapter{5 Лекция}
+\include{5.tex}
+
+\chapter{6 Лекция}
+\include{6.tex}
+
+\chapter{7 Лекция}
+\include{7.tex}
+
+\chapter{8 Лекция}
+\include{8.tex}
+
+\chapter{9 Лекция}
+\include{9.tex}
+
+\chapter{10 Лекция}
+\include{10.tex}
+\clearpage
+\chapter{Глоссарий}
+\printglossaries
+
+\end{document}
+

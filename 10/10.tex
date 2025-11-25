@@ -1,0 +1,469 @@
+% ===================== PREAMBLE START (Aesthetic, pdfLaTeX, RU, no shell-escape) =========
+\documentclass[12pt,a4paper]{article}
+
+% Поиск/копирование кириллицы из PDF
+\usepackage{cmap}
+\usepackage{amsmath,amssymb,amsfonts,mathtools}
+
+% Язык и кодировки
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage[russian]{babel}
+
+% Поля, типографика, абзацы
+\usepackage[a4paper,margin=2.2cm]{geometry}
+\usepackage{microtype}
+\usepackage{indentfirst}
+\setlength{\parindent}{1.25em}
+\setlength{\parskip}{0.25em}
+\raggedbottom
+
+% Цветовая тема
+\usepackage[table]{xcolor}
+\definecolor{Accent}{HTML}{1F6FEB}     % основной акцент (синий)
+\definecolor{AccentDark}{HTML}{0B5394} % тёмный акцент
+\definecolor{AccentLight}{HTML}{E8F0FE}% светлый акцент (фон)
+\definecolor{CodeBg}{HTML}{F6F8FA}     % фон для кода
+\definecolor{Link}{HTML}{1F6FEB}       % ссылки
+
+% Гиперссылки и умные ссылки
+\usepackage[unicode]{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=Link, citecolor=Link, urlcolor=Link,
+  pdfauthor={Methodist},
+  pdftitle={Конспект лекции: Параллелизм и синхронизация}
+}
+\usepackage[nameinlink,capitalise]{cleveref}
+\urlstyle{same}
+
+% Заголовки разделов
+\usepackage{titlesec}
+\titleformat{\section}{\large\bfseries\sffamily\color{Accent}}{\thesection}{1em}{}
+\titleformat{\subsection}{\bfseries\sffamily\color{AccentDark}}{\thesubsection}{0.75em}{}
+\titleformat{\subsubsection}{\bfseries}{\thesubsubsection}{0.6em}{}
+\titlespacing*{\section}{0pt}{1.0ex plus 0.5ex}{0.6ex}
+\titlespacing*{\subsection}{0pt}{0.9ex plus 0.4ex}{0.5ex}
+\titlespacing*{\subsubsection}{0pt}{0.8ex plus 0.3ex}{0.4ex}
+
+% Шапки/футеры
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+% Макросы метаданных
+\newcommand{\CourseName}{Архитектура компьютера и ОС}
+\newcommand{\LectureNo}{10} % Условный номер продолжения
+\newcommand{\LectureTitle}{Параллелизм и синхронизация (часть 2)}
+\newcommand{\LectureDate}{25.11.2025}
+\newcommand{\Lecturer}{Евгений Соколов}
+\fancyhead[L]{\small\sffamily \CourseName}
+\fancyhead[C]{\small\sffamily \LectureTitle}
+\fancyhead[R]{\small\sffamily Лекция \LectureNo}
+\fancyfoot[C]{\small\sffamily \thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\makeatletter
+\renewcommand{\headrule}{\hbox to\headwidth{\color{Accent}\leaders\hrule height \headrulewidth\hfill}}
+\makeatother
+
+% Подписи к рисункам/таблицам
+\usepackage[font=small,labelfont=bf,labelsep=endash]{caption}
+\usepackage{subcaption}
+
+% Математика и единицы
+\numberwithin{equation}{section}
+\usepackage{siunitx}
+\sisetup{detect-all=true}
+
+% Таблицы и списки
+\usepackage{booktabs}
+\usepackage{array,tabularx}
+\usepackage{enumitem}
+\setlist{itemsep=2pt,topsep=4pt,leftmargin=*,labelsep=0.5em}
+
+% Графика и TikZ
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,shapes.geometric,calc,fit,patterns}
+\tikzset{
+  box/.style={draw=Accent, rounded corners, fill=AccentLight, minimum width=2.6cm, minimum height=1cm, align=center},
+  process/.style={draw=AccentDark, fill=white, minimum width=2cm, minimum height=0.8cm},
+  arrow/.style={-{Stealth[length=3mm,width=2mm]}, line width=0.5pt, draw=AccentDark}
+}
+
+% Красивые боксы "методички"
+\usepackage[most]{tcolorbox}
+\tcbset{enhanced, breakable, boxrule=0.6pt, fonttitle=\bfseries\sffamily}
+\newtcolorbox{definitionbox}[1]{
+  title={Определение: #1},
+  colback=AccentLight, colframe=Accent, coltitle=black, arc=2pt, left=8pt, right=8pt, top=6pt, bottom=6pt
+}
+\newtcolorbox{notebox}{
+  title={Примечание},
+  colback=yellow!8, colframe=yellow!40!black, arc=2pt, left=8pt, right=8pt, top=6pt, bottom=6pt
+}
+\newtcolorbox{summarybox}{
+  title={Итоги раздела},
+  colback=green!6, colframe=green!50!black, arc=2pt, left=8pt, right=8pt, top=6pt, bottom=6pt
+}
+
+% Листинги
+\usepackage{listings}
+\usepackage{listingsutf8}
+\lstdefinestyle{elegant}{
+  inputencoding=utf8,
+  basicstyle=\ttfamily\small,
+  columns=fullflexible,
+  breaklines=true,
+  frame=single,
+  framerule=0.4pt,
+  rulecolor=\color{black!20},
+  backgroundcolor=\color{CodeBg},
+  xleftmargin=0.5em,
+  framexleftmargin=0.5em,
+  tabsize=2,
+  showstringspaces=false,
+  keywordstyle=\bfseries\color{AccentDark},
+  commentstyle=\itshape\color{gray},
+  stringstyle=\color{orange!60!black},
+  numbers=left,
+  numberstyle=\tiny\color{black!50},
+  numbersep=8pt,
+  captionpos=b,
+  upquote=true,
+  escapechar=§
+}
+\lstset{style=elegant}
+
+% Глоссарий
+\usepackage[acronym,nonumberlist,toc]{glossaries}
+\makeglossaries
+\newglossaryentry{Hyperthreading}{name={Hyper-threading}, description={технология Intel, позволяющая одному физическому ядру процессора исполнять два потока одновременно, разделяя исполнительные устройства}}
+\newglossaryentry{Amdahl}{name={Закон Амдала}, description={формула, определяющая предельное ускорение системы при распараллеливании вычислений}}
+\newglossaryentry{TLS}{name={TLS}, description={Thread Local Storage — локальное хранилище потока, данные, уникальные для каждого потока}}
+\newglossaryentry{CAS}{name={CAS}, description={Compare-And-Swap — атомарная инструкция, сравнивающая значение в памяти с ожидаемым и заменяющая его на новое при совпадении}}
+\newglossaryentry{Futex}{name={Futex}, description={Fast Userspace Mutex — механизм ядра Linux для реализации быстрой синхронизации в пространстве пользователя}}
+\newglossaryentry{FalseSharing}{name={False Sharing}, description={ложное разделение данных — ситуация, когда разные потоки изменяют разные переменные, находящиеся на одной кэш-линии, вызывая постоянную инвалидацию кэша}}
+
+% Титульные данные
+\title{\sffamily Курс: \textit{\CourseName}\\\large Лекция \LectureNo: \LectureTitle}
+\author{\sffamily Лектор: \Lecturer}
+\date{\sffamily Дата: \LectureDate}
+% ===================== PREAMBLE END =======================================================
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\section{Введение: Сигналы и наблюдаемый параллелизм}
+
+В начале лекции был затронут вопрос о сигналах: существует ли для них очередь?
+\begin{notebox}
+По умолчанию \textbf{очереди сигналов не существует}. Операционная система поддерживает маску ожидающих (pending) сигналов. Если приходит два одинаковых сигнала (например, от пользователя и от системы), а обработчик ещё не вызван, то в маске просто выставляется бит. Второй сигнал того же типа может быть потерян.
+\end{notebox}
+
+\subsection{Наблюдаемый параллелизм и квантование}
+Даже на одноядерных системах пользователи наблюдают иллюзию параллельного исполнения множества потоков. Это достигается за счёт \textbf{Time Slicing} (квантования времени).
+
+\begin{itemize}
+    \item Операционная система нарезает исполнение потоков на небольшие интервалы — \textit{кванты} (единицы или десятки миллисекунд).
+    \item По истечении кванта таймер прерывает исполнение, планировщик ОС сохраняет контекст текущего потока и загружает следующий.
+    \item Для пользователя переключение происходит незаметно, создавая видимость одновременной работы.
+\end{itemize}
+
+Однако увеличение количества потоков сверх физических возможностей процессора не даёт прироста производительности, а лишь увеличивает накладные расходы на переключение контекста.
+
+\section{Аппаратная поддержка многопоточности}
+
+\subsection{Hyper-threading}
+Процессоры часто простаивают в ожидании данных из памяти (cache miss, $\sim$500 тактов) или при выполнении долгих арифметических операций. Чтобы утилизировать эти ресурсы, была разработана технология \gls{Hyperthreading}.
+
+\begin{definitionbox}{Hyper-threading}
+Технология, позволяющая одному \textit{физическому} ядру процессора представляться операционной системе как два \textit{логических} ядра.
+\end{definitionbox}
+
+\begin{itemize}
+    \item \textbf{Дублируются:} регистры (архитектурное состояние).
+    \item \textbf{Разделяются:} исполнительные устройства (ALU), кэши, шина.
+\end{itemize}
+
+Если один логический поток простаивает (ждет память), физическое ядро переключается на инструкции второго потока. Это увеличивает пропускную способность (throughput), но производительность одного отдельного потока может снизиться из-за конкуренции за ресурсы ядра.
+
+\subsection{Привязка к ядрам (CPU Affinity)}
+Мы можем программно управлять тем, на каких ядрах исполняется поток, используя системные вызовы семейства \texttt{sched\_}.
+
+Пример закрепления потока за нулевым ядром:
+\begin{lstlisting}[language=C++]
+cpu_set_t cpuset;
+CPU_ZERO(&cpuset);
+CPU_SET(0, &cpuset); // Allow execution only on Core 0
+
+pthread_setaffinity_np(thread.native_handle(), sizeof(cpu_set_t), &cpuset);
+\end{lstlisting}
+
+Если запустить два вычислительно тяжёлых потока и привязать их к одному физическому ядру, время выполнения увеличится вдвое по сравнению с их запуском на разных ядрах.
+
+\subsection{Закон Амдала}
+Существует теоретический предел ускорения программы при распараллеливании. Он описывается \gls{Amdahl}.
+
+Пусть:
+\begin{itemize}
+    \item $P$ — доля программы, которую можно распараллелить (parallelizable).
+    \item $S$ — доля программы, исполняемая последовательно (serial), $S = 1 - P$.
+    \item $T$ — количество потоков.
+\end{itemize}
+
+Ускорение при использовании $T$ потоков:
+\begin{equation}
+\text{Speedup}(T) = \frac{1}{S + \frac{P}{T}}
+\end{equation}
+
+Максимально возможное ускорение (при $T \to \infty$):
+\begin{equation}
+\text{Max Speedup} = \frac{1}{S} = 1 + \frac{P}{S}
+\end{equation}
+Даже если $P=0.95$ (95\% кода параллелится), максимальное ускорение не превысит 20 раз.
+
+\section{Thread Safety (Потокобезопасность)}
+
+Основная проблема многопоточности — доступ к общим данным.
+
+\begin{definitionbox}{Конфликтующая операция (Conflicting Operation)}
+Операция над одной ячейкой памяти, где участвуют как минимум два потока, и хотя бы один из них выполняет \textbf{запись}.
+\end{definitionbox}
+Стандарт C++ гласит: конфликтующие операции, выполняемые одновременно без синхронизации, приводят к \textbf{Data Race} и Undefined Behavior.
+
+\subsection{Контракты стандартной библиотеки C++}
+Для контейнеров (например, \texttt{std::vector}, \texttt{std::map}) действуют следующие правила:
+\begin{enumerate}
+    \item \textbf{Константные методы} (`const`) считаются потокобезопасными (можно вызывать одновременно из разных потоков). Например: `v.size()`, `v.capacity()`.
+    \item \textbf{Неконстантные методы} не являются потокобезопасными. Нельзя вызывать `v.push\_back()` одновременно с `v.size()` или другим `push\_back()`.
+    \item Разные экземпляры объектов независимы.
+\end{enumerate}
+
+\textbf{Исключения (thread-safe mutable):}
+\begin{itemize}
+    \item \texttt{std::atomic} — все методы потокобезопасны.
+    \item \texttt{std::mutex} — `lock()`/`unlock()` меняют состояние, но безопасны.
+    \item \texttt{std::cin}, \texttt{std::cout} — операторы `<<`, `>>` потокобезопасны (не упадут, но вывод может перемешаться).
+\end{itemize}
+
+\subsection{Свободные функции}
+\begin{itemize}
+    \item \texttt{printf}, \texttt{scanf}: Thread-safe (внутри есть глобальные блокировки).
+    \item \texttt{getenv}: Помечена как \textit{MT-Safe env}. Безопасна, если никто одновременно не вызывает модифицирующие функции вроде \texttt{setenv}, \texttt{clearenv}.
+\end{itemize}
+
+\section{Примитивы синхронизации}
+
+Помимо `std::mutex` и `std::condition\_variable`, существуют специализированные примитивы.
+
+\subsection{Семафор (Semaphore)}
+Счётчик разрешений (permits). Не имеет владельца (в отличие от мьютекса, который должен освобождать тот же поток, что и захватил).
+
+\begin{itemize}
+    \item \textbf{Wait (acquire):} Декрементирует счётчик. Если 0 — блокирует поток.
+    \item \textbf{Signal (release):} Инкрементирует счётчик, будит ждущий поток.
+\end{itemize}
+Применение: ограничение количества одновременных доступов (rate limiting), очереди.
+В C++20: \texttt{std::counting\_semaphore}, \texttt{std::binary\_semaphore}.
+
+\subsection{RWLock (Read-Write Lock)}
+Позволяет множеству читателей работать одновременно, но писателю дает эксклюзивный доступ.
+В C++: \texttt{std::shared\_mutex}.
+
+\begin{itemize}
+    \item \texttt{lock\_shared()}: Захват для чтения (несколько потоков могут держать одновременно).
+    \item \texttt{lock()}: Захват для записи (эксклюзивно: ни читателей, ни писателей).
+\end{itemize}
+\textbf{Проблема:} Возможен \textit{starvation} (голодание) писателей, если поток читателей непрерывен, или читателей, если приоритет у писателей.
+
+\subsection{Барьер (Barrier)}
+Синхронизирует прохождение $N$ потоками определённой точки.
+Пример: нейросети. Нужно посчитать слой $i$ полностью всеми потоками, прежде чем переходить к слою $i+1$.
+
+\begin{lstlisting}[language=C++]
+// Example of using std::barrier
+std::barrier sync_point(num_threads);
+
+// In the worker thread code:
+for (int l = 0; l < layers; ++l) {
+    ProcessLayerPart(l);
+    sync_point.arrive_and_wait(); // Wait for others
+}
+\end{lstlisting}
+
+\section{Thread Local Storage (TLS)}
+
+Иногда каждому потоку нужна своя копия глобальной переменной (например, буфер или код ошибки).
+Используется ключевое слово \texttt{thread\_local}.
+
+\begin{lstlisting}[language=C++]
+thread_local int value; // Each thread has its own instance
+\end{lstlisting}
+
+Классический пример: \texttt{errno}. В однопоточных системах это была глобальная переменная. В многопоточных она реализована как макрос, возвращающий разыменованный указатель на TLS-переменную:
+\begin{lstlisting}[language=C]
+#define errno (*__errno_location())
+\end{lstlisting}
+Это позволяет разным потокам иметь разные коды ошибок одновременно.
+
+\begin{summarybox}
+\textbf{Итоги по инструментам:}
+\begin{itemize}
+    \item Используйте \texttt{const} методы для параллельного чтения.
+    \item Для специфичных задач используйте \texttt{semaphore} (лимиты), \texttt{shared\_mutex} (read-heavy), \texttt{barrier} (этапы).
+    \item \texttt{thread\_local} для изоляции данных потока.
+\end{itemize}
+\end{summarybox}
+
+\section{Shared Pointer и безопасность}
+
+Вопрос: является ли \texttt{std::shared\_ptr} потокобезопасным?
+\textbf{Ответ:} Частично.
+\begin{itemize}
+    \item \textbf{Control Block (счётчик ссылок):} Потокобезопасен. Инкремент/декремент счётчика атомарен (используются атомарные инструкции). Можно копировать/удалять `shared\_ptr` из разных потоков.
+    \item \textbf{Указываемый объект:} НЕ защищён. Если два потока пишут в данные через разные `shared\_ptr`, указывающие на один объект — будет гонка.
+\end{itemize}
+
+Для отладки гонок полезен инструмент \textbf{ThreadSanitizer (TSan)}. Он ловит:
+\begin{itemize}
+    \item Write-Read races.
+    \item Write-Write races.
+\end{itemize}
+Запуск: компиляция с `-fsanitize=thread`.
+
+\section{Атомики и модель памяти}
+
+\subsection{Compare-And-Swap (CAS)}
+Мощная атомарная операция для реализации lock-free алгоритмов.
+В C++: \texttt{compare\_exchange\_strong} и \texttt{compare\_exchange\_weak}.
+
+Логика работы:
+\begin{lstlisting}[language=C++]
+// CAS Pseudocode
+bool CAS(atomic<int>& obj, int& expected, int desired) {
+    if (obj == expected) {
+        obj = desired;
+        return true;
+    } else {
+        expected = obj; // Updates 'expected' with actual value
+        return false;
+    }
+}
+\end{lstlisting}
+
+Использование в цикле (CAS-loop) для реализации `fetch\_add`:
+\begin{lstlisting}[language=C++]
+std::atomic<int> atom;
+int expected = atom.load();
+while (!atom.compare_exchange_weak(expected, expected + 1)) {
+    // If failed, 'expected' is automatically updated inside the function
+    // Loop repeats with new 'expected'
+}
+\end{lstlisting}
+
+\textbf{Weak vs Strong:}
+\begin{itemize}
+    \item \texttt{Weak}: Может вернуть `false` (спонтанный сбой), даже если значение равно ожидаемому. На платформах вроде ARM/PowerPC это эффективнее (нет вложенного цикла). На x86 (Intel/AMD) разницы в ассемблере нет (обе транслируются в `LOCK CMPXCHG`).
+    \item \texttt{Strong}: Гарантирует успех, если значение совпало. Обычно содержит цикл внутри себя на RISC-архитектурах.
+\end{itemize}
+
+\section{Кэши и когерентность}
+
+\subsection{Иерархия памяти и протокол MESI}
+У каждого ядра есть свои L1/L2 кэши. Если одно ядро пишет в переменную, другие должны узнать об этом, чтобы не читать устаревшие данные. Для этого используется протокол когерентности, например, \textbf{MESI}:
+\begin{itemize}
+    \item \textbf{M (Modified):} Данные изменены, есть только в этом кэше.
+    \item \textbf{E (Exclusive):} Данные только в этом кэше, совпадают с памятью.
+    \item \textbf{S (Shared):} Данные есть в нескольких кэшах (только чтение).
+    \item \textbf{I (Invalid):} Данные устарели.
+\end{itemize}
+Коммуникация между ядрами для поддержки когерентности стоит дорого.
+
+\subsection{False Sharing (Ложное разделение)}
+Проблема возникает, когда независимые переменные попадают в одну \textbf{кэш-линию} (обычно 64 байта).
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}
+    % Cache line representation
+    \node[draw, minimum width=6cm, minimum height=1cm, fill=gray!20] (cl) {Cache Line (64 bytes)};
+    \node[draw, fill=red!30, minimum width=1.5cm] at ($(cl.west)+(1,0)$) (varA) {Var A};
+    \node[draw, fill=blue!30, minimum width=1.5cm] at ($(cl.east)+(-1,0)$) (varB) {Var B};
+
+    % Cores
+    \node[above=1cm of varA] (core1) {Core 1 (writes A)};
+    \node[above=1cm of varB] (core2) {Core 2 (writes B)};
+
+    \draw[->, thick] (core1) -- (varA);
+    \draw[->, thick] (core2) -- (varB);
+    
+    \node[below=0.2cm of cl, text=red] {Constant cache line invalidation between cores!};
+\end{tikzpicture}
+\caption{Иллюстрация False Sharing}
+\label{fig:falsesharing}
+\end{figure}
+
+Если Thread 1 пишет в `Var A`, а Thread 2 пишет в `Var B`, и они лежат рядом, ядра будут бесконечно передавать друг другу права на владение всей кэш-линией. Это катастрофически снижает производительность.
+
+\textbf{Решение:} Выравнивание (padding).
+\begin{lstlisting}[language=C++]
+struct alignas(64) AlignedData {
+    int value;
+    // Compiler adds padding up to 64 bytes
+};
+\end{lstlisting}
+
+\section{Процессы и Fork в многопоточной среде}
+
+Системный вызов \texttt{fork()} создаёт копию процесса.
+\textbf{Правило:} В дочернем процессе продолжает исполнение \textit{только тот поток}, который вызвал \texttt{fork}. Остальные потоки исчезают.
+
+\textbf{Проблема:} Если исчезнувший поток держал мьютекс (например, внутри `malloc`), этот мьютекс останется навечно заблокированным в дочернем процессе. Любая попытка вызвать `malloc` в "ребёнке" приведёт к дедлоку.
+
+\textbf{Решение:} Использовать `pthread\_atfork` для регистрации хуков, которые захватывают нужные блокировки перед форком и отпускают их после (в обоих процессах), обеспечивая консистентное состояние.
+
+\section{Futex (Fast Userspace Mutex)}
+
+Системный вызов Linux, на котором строятся эффективные мьютексы.
+Идея: избегать входа в ядро (syscall), если нет конкуренции (fast path). В ядро идем только чтобы уснуть (wait).
+
+\begin{itemize}
+    \item \texttt{futex\_wait(addr, val)}: "Если по адресу \texttt{addr} лежит значение \texttt{val}, то усыпи меня". Проверка атомарна внутри ядра.
+    \item \texttt{futex\_wake(addr, count)}: Разбуди \texttt{count} потоков, ждущих на этом адресе.
+\end{itemize}
+
+Пример примитивного мьютекса на атомике и фьютексе:
+\begin{lstlisting}[language=C++]
+std::atomic<int> flag{0}; // 0 - free, 1 - locked
+
+void lock() {
+    while (flag.exchange(1) != 0) { // Try to acquire
+        // If busy, go to wait state
+        syscall(SYS_futex, &flag, FUTEX_WAIT, 1, ...);
+    }
+}
+
+void unlock() {
+    flag.store(0);
+    syscall(SYS_futex, &flag, FUTEX_WAKE, 1, ...);
+}
+\end{lstlisting}
+\begin{notebox}
+В реальных реализациях (`std::mutex`) используется более сложная логика с тремя состояниями (свободен, занят, занят+есть ждущие), чтобы избежать лишних системных вызовов `wake`.
+\end{notebox}
+
+\begin{summarybox}
+\textbf{Итоги лекции:}
+\begin{enumerate}
+    \item Параллелизм ограничивается не только числом ядер, но и синхронизацией (Закон Амдала) и аппаратными эффектами (False Sharing).
+    \item Hyper-threading позволяет утилизировать простои ядра, но делит ресурсы.
+    \item Вызов \texttt{fork()} в многопоточной программе опасен из-за состояния блокировок.
+    \item Современные блокировки строятся на атомиках + Futex для эффективного ожидания.
+\end{enumerate}
+\end{summarybox}
+
+\clearpage
+\printglossaries
+
+\end{document}

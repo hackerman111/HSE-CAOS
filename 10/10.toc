@@ -1,0 +1,23 @@
+\babel@toc {russian}{}\relax 
+\contentsline {section}{\numberline {1}Введение: Сигналы и наблюдаемый параллелизм}{2}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Наблюдаемый параллелизм и квантование}{2}{subsection.1.1}%
+\contentsline {section}{\numberline {2}Аппаратная поддержка многопоточности}{2}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Hyper-threading}{2}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Привязка к ядрам (CPU Affinity)}{2}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Закон Амдала}{3}{subsection.2.3}%
+\contentsline {section}{\numberline {3}Thread Safety (Потокобезопасность)}{3}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Контракты стандартной библиотеки C++}{3}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Свободные функции}{4}{subsection.3.2}%
+\contentsline {section}{\numberline {4}Примитивы синхронизации}{4}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Семафор (Semaphore)}{4}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}RWLock (Read-Write Lock)}{4}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Барьер (Barrier)}{4}{subsection.4.3}%
+\contentsline {section}{\numberline {5}Thread Local Storage (TLS)}{5}{section.5}%
+\contentsline {section}{\numberline {6}Shared Pointer и безопасность}{5}{section.6}%
+\contentsline {section}{\numberline {7}Атомики и модель памяти}{5}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Compare-And-Swap (CAS)}{5}{subsection.7.1}%
+\contentsline {section}{\numberline {8}Кэши и когерентность}{6}{section.8}%
+\contentsline {subsection}{\numberline {8.1}Иерархия памяти и протокол MESI}{6}{subsection.8.1}%
+\contentsline {subsection}{\numberline {8.2}False Sharing (Ложное разделение)}{6}{subsection.8.2}%
+\contentsline {section}{\numberline {9}Процессы и Fork в многопоточной среде}{7}{section.9}%
+\contentsline {section}{\numberline {10}Futex (Fast Userspace Mutex)}{7}{section.10}%
