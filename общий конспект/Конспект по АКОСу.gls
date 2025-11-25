@@ -58,6 +58,9 @@
 		\setentrycounter[]{page}\glsnumberformat{38}}}%
 \glossentry{fork}{\glossaryentrynumbers{\relax 
 		\setentrycounter[]{page}\glsnumberformat{42\delimR 44}}}\glsgroupskip
+\glsgroupheading{H}\relax \glsresetentrylist %
+\glossentry{Hyperthreading}{\glossaryentrynumbers{\relax 
+		\setentrycounter[]{page}\glsnumberformat{112}}}\glsgroupskip
 \glsgroupheading{I}\relax \glsresetentrylist %
 \glossentry{intel-syntax}{\glossaryentrynumbers{\relax 
 		\setentrycounter[]{page}\glsnumberformat{68}\delimN 
@@ -205,5 +208,8 @@
 \glossentry{alignment}{\glossaryentrynumbers{\relax 
 		\setentrycounter[]{page}\glsnumberformat{59}}}%
 \glossentry{deadlock}{\glossaryentrynumbers{\relax 
-		\setentrycounter[]{page}\glsnumberformat{110}}}%
+		\setentrycounter[]{page}\glsnumberformat{110}}}\glsgroupskip
+\glsgroupheading{Ğ}\relax \glsresetentrylist %
+\glossentry{Amdahl}{\glossaryentrynumbers{\relax 
+		\setentrycounter[]{page}\glsnumberformat{113}}}%
 \end{theglossary}\glossarypostamble

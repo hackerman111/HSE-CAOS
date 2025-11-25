@@ -558,6 +558,15 @@
   sort={vzaimoblokirovka},
   description={ситуация в многопоточной системе, при которой несколько потоков находятся в состоянии бесконечного ожидания ресурсов, захваченных другими потоками из этой же группы}
 }
+
+
+\newglossaryentry{Hyperthreading}{name={Hyper-threading}, description={технология Intel, позволяющая одному физическому ядру процессора исполнять два потока одновременно, разделяя исполнительные устройства}}
+\newglossaryentry{Amdahl}{name={Закон Амдала}, description={формула, определяющая предельное ускорение системы при распараллеливании вычислений}}
+\newglossaryentry{TLS}{name={TLS}, description={Thread Local Storage — локальное хранилище потока, данные, уникальные для каждого потока}}
+\newglossaryentry{CAS}{name={CAS}, description={Compare-And-Swap — атомарная инструкция, сравнивающая значение в памяти с ожидаемым и заменяющая его на новое при совпадении}}
+\newglossaryentry{Futex}{name={Futex}, description={Fast Userspace Mutex — механизм ядра Linux для реализации быстрой синхронизации в пространстве пользователя}}
+\newglossaryentry{FalseSharing}{name={False Sharing}, description={ложное разделение данных — ситуация, когда разные потоки изменяют разные переменные, находящиеся на одной кэш-линии, вызывая постоянную инвалидацию кэша}}
+
 % Титульные данные
 \title{\sffamily Курс: \textit{\CourseName}\\\large Лекция \LectureNo: \LectureTitle}
 \author{\sffamily Лектор: \Lecturer}
@@ -572,24 +581,33 @@
 
 \chapter{1 Лекция}
 \include{1.tex}
+
 \chapter{2 Лекция}
 \include{2.tex}
+
 \chapter{3 Лекция}
 \include{3.tex}
+
 \chapter{4 Лекция}
 \include{4.tex}
+
 \chapter{5 Лекция}
 \include{5.tex}
+
 \chapter{6 Лекция}
 \include{6.tex}
+
 \chapter{7 Лекция}
 \include{7.tex}
+
 \chapter{8 Лекция}
 \include{8.tex}
 
 \chapter{9 Лекция}
 \include{9.tex}
 
+\chapter{10 Лекция}
+\include{10.tex}
 \clearpage
 \chapter{Глоссарий}
 \printglossaries

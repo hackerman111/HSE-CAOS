@@ -232,9 +232,11 @@
 \glossaryentry{vzaimoblokirovka?\glossentry{deadlock}|setentrycounter[]{page}"\glsnumberformat}{110}
 \glossaryentry{vzaimoblokirovka?\glossentry{deadlock}|setentrycounter[]{page}"\glsnumberformat}{110}
 \glossaryentry{vzaimoblokirovka?\glossentry{deadlock}|setentrycounter[]{page}"\glsnumberformat}{110}
-\glossaryentry{kesh-linia?\glossentry{cache-line}|setentrycounter[]{page}"\glsnumberformat}{112}
-\glossaryentry{kesh?\glossentry{cache}|setentrycounter[]{page}"\glsnumberformat}{114}
-\glossaryentry{konveier?\glossentry{pipeline}|setentrycounter[]{page}"\glsnumberformat}{114}
-\glossaryentry{konveier?\glossentry{pipeline}|setentrycounter[]{page}"\glsnumberformat}{114}
-\glossaryentry{konflikt po upravleniyu?\glossentry{control-hazard}|setentrycounter[]{page}"\glsnumberformat}{115}
-\glossaryentry{vtable?\glossentry{vtable}|setentrycounter[]{page}"\glsnumberformat}{118}
+\glossaryentry{Hyper-threading?\glossentry{Hyperthreading}|setentrycounter[]{page}"\glsnumberformat}{112}
+\glossaryentry{Закон Амдала?\glossentry{Amdahl}|setentrycounter[]{page}"\glsnumberformat}{113}
+\glossaryentry{kesh-linia?\glossentry{cache-line}|setentrycounter[]{page}"\glsnumberformat}{120}
+\glossaryentry{kesh?\glossentry{cache}|setentrycounter[]{page}"\glsnumberformat}{122}
+\glossaryentry{konveier?\glossentry{pipeline}|setentrycounter[]{page}"\glsnumberformat}{122}
+\glossaryentry{konveier?\glossentry{pipeline}|setentrycounter[]{page}"\glsnumberformat}{122}
+\glossaryentry{konflikt po upravleniyu?\glossentry{control-hazard}|setentrycounter[]{page}"\glsnumberformat}{123}
+\glossaryentry{vtable?\glossentry{vtable}|setentrycounter[]{page}"\glsnumberformat}{126}

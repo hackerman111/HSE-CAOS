@@ -193,5 +193,28 @@
 \contentsline {section}{\numberline {9.4}Классическая проблема: обедающие философы}{110}{section.9.4}%
 \contentsline {subsection}{\numberline {9.4.1}Постановка задачи}{110}{subsection.9.4.1}%
 \contentsline {subsection}{\numberline {9.4.2}Взаимоблокировка (Deadlock)}{110}{subsection.9.4.2}%
-\contentsline {chapter}{\numberline {10}Глоссарий}{111}{chapter.10}%
-\contentsline {chapter}{{\cyrillictext \CYRS \cyrl \cyro \cyrv \cyra \cyrr \cyrsftsn \ \cyrt \cyre \cyrr \cyrm \cyri \cyrn \cyro \cyrv }}{112}{section*.20}%
+\contentsline {chapter}{\numberline {10}10 Лекция}{111}{chapter.10}%
+\contentsline {section}{\numberline {10.1}Введение: Сигналы и наблюдаемый параллелизм}{112}{section.10.1}%
+\contentsline {subsection}{\numberline {10.1.1}Наблюдаемый параллелизм и квантование}{112}{subsection.10.1.1}%
+\contentsline {section}{\numberline {10.2}Аппаратная поддержка многопоточности}{112}{section.10.2}%
+\contentsline {subsection}{\numberline {10.2.1}Hyper-threading}{112}{subsection.10.2.1}%
+\contentsline {subsection}{\numberline {10.2.2}Привязка к ядрам (CPU Affinity)}{112}{subsection.10.2.2}%
+\contentsline {subsection}{\numberline {10.2.3}Закон Амдала}{113}{subsection.10.2.3}%
+\contentsline {section}{\numberline {10.3}Thread Safety (Потокобезопасность)}{113}{section.10.3}%
+\contentsline {subsection}{\numberline {10.3.1}Контракты стандартной библиотеки C++}{113}{subsection.10.3.1}%
+\contentsline {subsection}{\numberline {10.3.2}Свободные функции}{114}{subsection.10.3.2}%
+\contentsline {section}{\numberline {10.4}Примитивы синхронизации}{114}{section.10.4}%
+\contentsline {subsection}{\numberline {10.4.1}Семафор (Semaphore)}{114}{subsection.10.4.1}%
+\contentsline {subsection}{\numberline {10.4.2}RWLock (Read-Write Lock)}{114}{subsection.10.4.2}%
+\contentsline {subsection}{\numberline {10.4.3}Барьер (Barrier)}{114}{subsection.10.4.3}%
+\contentsline {section}{\numberline {10.5}Thread Local Storage (TLS)}{115}{section.10.5}%
+\contentsline {section}{\numberline {10.6}Shared Pointer и безопасность}{115}{section.10.6}%
+\contentsline {section}{\numberline {10.7}Атомики и модель памяти}{115}{section.10.7}%
+\contentsline {subsection}{\numberline {10.7.1}Compare-And-Swap (CAS)}{115}{subsection.10.7.1}%
+\contentsline {section}{\numberline {10.8}Кэши и когерентность}{116}{section.10.8}%
+\contentsline {subsection}{\numberline {10.8.1}Иерархия памяти и протокол MESI}{116}{subsection.10.8.1}%
+\contentsline {subsection}{\numberline {10.8.2}False Sharing (Ложное разделение)}{116}{subsection.10.8.2}%
+\contentsline {section}{\numberline {10.9}Процессы и Fork в многопоточной среде}{117}{section.10.9}%
+\contentsline {section}{\numberline {10.10}Futex (Fast Userspace Mutex)}{117}{section.10.10}%
+\contentsline {chapter}{\numberline {11}Глоссарий}{119}{chapter.11}%
+\contentsline {chapter}{{\cyrillictext \CYRS \cyrl \cyro \cyrv \cyra \cyrr \cyrsftsn \ \cyrt \cyre \cyrr \cyrm \cyri \cyrn \cyro \cyrv }}{120}{section*.21}%
