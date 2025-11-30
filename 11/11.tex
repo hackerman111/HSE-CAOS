@@ -1,0 +1,397 @@
+% ===================== PREAMBLE START (Aesthetic, pdfLaTeX, RU, no shell-escape) =========
+\documentclass[12pt,a4paper]{article}
+
+% Search/copy Cyrillic from PDF
+\usepackage{cmap}
+\usepackage{amsmath,amssymb,amsfonts,mathtools}
+
+% Language and encodings
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage[russian]{babel}
+
+% Margins, typography, paragraphs
+\usepackage[a4paper,margin=2.2cm]{geometry}
+\usepackage{microtype}
+\usepackage{indentfirst}
+\setlength{\parindent}{1.25em}
+\setlength{\parskip}{0.25em}
+\raggedbottom
+
+% Color theme
+\usepackage[table]{xcolor}
+\definecolor{Accent}{HTML}{1F6FEB}     % main accent
+\definecolor{AccentDark}{HTML}{0B5394} % dark accent
+\definecolor{AccentLight}{HTML}{E8F0FE}% light accent (background)
+\definecolor{CodeBg}{HTML}{F6F8FA}     % background for code
+\definecolor{Link}{HTML}{1F6FEB}       % links
+
+% Hyperlinks and clever references
+\usepackage[unicode]{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=Link, citecolor=Link, urlcolor=Link,
+  pdfauthor={Academic Composer},
+  pdftitle={Lecture 11: Computer Networks}
+}
+\usepackage[nameinlink,capitalise]{cleveref}
+\urlstyle{same}
+
+% Section headers
+\usepackage{titlesec}
+\titleformat{\section}{\large\bfseries\sffamily\color{Accent}}{\thesection}{1em}{}
+\titleformat{\subsection}{\bfseries\sffamily\color{AccentDark}}{\thesubsection}{0.75em}{}
+\titleformat{\subsubsection}{\bfseries}{\thesubsubsection}{0.6em}{}
+\titlespacing*{\section}{0pt}{1.0ex plus 0.5ex}{0.6ex}
+\titlespacing*{\subsection}{0pt}{0.9ex plus 0.4ex}{0.5ex}
+\titlespacing*{\subsubsection}{0pt}{0.8ex plus 0.3ex}{0.4ex}
+
+% Headers/footers
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+
+% Metadata macros
+\newcommand{\CourseName}{Архитектура компьютера и ОС}
+\newcommand{\LectureNo}{11}
+\newcommand{\LectureTitle}{Компьютерные сети}
+\newcommand{\LectureDate}{30.11.2025}
+\newcommand{\Lecturer}{Евгений Соколов}
+
+\fancyhead[L]{\small\sffamily \CourseName}
+\fancyhead[C]{\small\sffamily \LectureTitle}
+\fancyhead[R]{\small\sffamily Лекция \LectureNo}
+\fancyfoot[C]{\small\sffamily \thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\makeatletter
+\renewcommand{\headrule}{\hbox to\headwidth{\color{Accent}\leaders\hrule height \headrulewidth\hfill}}
+\makeatother
+
+% Captions for figures/tables
+\usepackage[font=small,labelfont=bf,labelsep=endash]{caption}
+\usepackage{subcaption}
+
+% Math and units
+\numberwithin{equation}{section}
+\usepackage{siunitx}
+\sisetup{detect-all=true}
+
+% Tables and lists
+\usepackage{booktabs}
+\usepackage{array,tabularx}
+\usepackage{enumitem}
+\setlist{itemsep=2pt,topsep=4pt,leftmargin=*,labelsep=0.5em}
+
+% Graphics and TikZ
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,shapes.geometric,calc,fit}
+\tikzset{
+  box/.style={draw=Accent, rounded corners, fill=AccentLight, minimum width=2.6cm, minimum height=1cm, align=center, font=\small\sffamily},
+  arrow/.style={-{Stealth[length=3mm,width=2mm]}, line width=0.5pt, draw=AccentDark}
+}
+
+% Beautiful "textbook" boxes
+\usepackage[most]{tcolorbox}
+\tcbset{enhanced, breakable, boxrule=0.6pt, fonttitle=\bfseries\sffamily}
+\newtcolorbox{definitionbox}[1]{
+  title={Определение: #1},
+  colback=AccentLight, colframe=Accent, coltitle=black, arc=2pt, left=8pt, right=8pt, top=6pt, bottom=6pt
+}
+\newtcolorbox{notebox}{
+  title={Примечание},
+  colback=yellow!8, colframe=yellow!40!black, arc=2pt, left=8pt, right=8pt, top=6pt, bottom=6pt
+}
+\newtcolorbox{summarybox}{
+  title={Итоги раздела},
+  colback=green!6, colframe=green!50!black, arc=2pt, left=8pt, right=8pt, top=6pt, bottom=6pt
+}
+
+% Listings (no minted, no shell-escape)
+\usepackage{listings}
+\usepackage{listingsutf8}
+\lstdefinestyle{elegant}{
+  inputencoding=utf8,
+  basicstyle=\ttfamily\small,
+  columns=fullflexible,
+  breaklines=true,
+  frame=single,
+  framerule=0.4pt,
+  rulecolor=\color{black!20},
+  backgroundcolor=\color{CodeBg},
+  xleftmargin=0.5em,
+  framexleftmargin=0.5em,
+  tabsize=2,
+  showstringspaces=false,
+  keywordstyle=\bfseries\color{AccentDark},
+  commentstyle=\itshape\color{black!55},
+  stringstyle=\color{orange!60!black},
+  numbers=left,
+  numberstyle=\tiny\color{black!50},
+  numbersep=8pt,
+  captionpos=b,
+  upquote=true,
+  escapechar=§
+}
+\lstset{style=elegant}
+
+% Glossary and acronyms
+\usepackage[acronym,nonumberlist,toc]{glossaries}
+\makeglossaries
+\setacronymstyle{long-short}
+\renewcommand*{\glossaryname}{Глоссарий}
+\renewcommand*{\acronymname}{Список сокращений}
+\setglossarystyle{altlist}
+
+% Terms
+\newglossaryentry{mac}{name={MAC-адрес}, description={уникальный идентификатор сетевого интерфейса (Media Access Control), назначаемый производителем}}
+\newglossaryentry{ethernet}{name={Ethernet}, description={семейство технологий пакетной передачи данных для локальных сетей (LAN)}}
+\newglossaryentry{ip}{name={IP}, description={Internet Protocol — маршрутизируемый протокол сетевого уровня}}
+\newglossaryentry{nat}{name={NAT}, description={Network Address Translation — механизм преобразования транзитных пакетов путём подмены IP-адресов}}
+\newglossaryentry{tcp}{name={TCP}, description={Transmission Control Protocol — протокол транспортного уровня с гарантией доставки и порядка}}
+\newglossaryentry{udp}{name={UDP}, description={User Datagram Protocol — протокол транспортного уровня без гарантий доставки}}
+\newglossaryentry{socket}{name={сокет}, description={программный интерфейс (API) для обеспечения обмена данными между процессами}}
+\newglossaryentry{epoll}{name={epoll}, description={механизм масштабируемого ввода-вывода в Linux для мониторинга множества файловых дескрипторов}}
+\newglossaryentry{dns}{name={DNS}, description={Domain Name System — распределённая система для получения информации о доменах}}
+
+% Title data
+\title{\sffamily Курс: \textit{\CourseName}\\\large Лекция \LectureNo: \LectureTitle}
+\author{\sffamily Лектор: \Lecturer}
+\date{\sffamily Дата: \LectureDate}
+% ===================== PREAMBLE END =======================================================
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\section{Введение}
+В рамках данной лекции рассматривается стек сетевых технологий: от физических принципов передачи сигнала до реализации высоконагруженных серверов с использованием механизмов мультиплексирования ввода-вывода. Основное внимание уделяется архитектурным ограничениям (trade-offs) различных протоколов и системных вызовов.
+
+\section{Физический и Канальный уровни}
+
+\subsection{Принципы передачи сигнала}
+Фундаментальной задачей сетевого взаимодействия является передача информации между двумя физически соединёнными узлами. На физическом уровне это реализуется посредством модуляции напряжения в проводнике. Выделяют два типа сигналов:
+\begin{enumerate}
+    \item \textbf{Аналоговый сигнал.} Обладает непрерывным спектром значений. Позволяет передавать больший объём информации, однако критически подвержен зашумлению, что делает его непригодным для точной передачи данных в современных компьютерных сетях.
+    \item \textbf{Цифровой сигнал.} Использует дискретный набор значений напряжения (например, высокий и низкий уровень). Значения, выходящие за пределы порогов, округляются, что обеспечивает устойчивость к помехам.
+\end{enumerate}
+
+При передаче последовательности бит (например, длинной серии единиц) возникает проблема синхронизации: получатель (Receiver) может рассинхронизироваться с отправителем (Sender) относительно частоты тактов. Для решения данной проблемы применяется \textbf{Манчестерское кодирование}.
+
+\begin{definitionbox}{Манчестерское кодирование}
+Метод кодирования, при котором данные логически объединяются (операция XOR) с тактовым сигналом (Clock). Это гарантирует наличие перепада напряжения (фронта) в середине каждого битового интервала, что позволяет получателю синхронизировать частоту по самому сигналу.
+\end{definitionbox}
+
+\begin{figure}[h]
+  \centering
+  \begin{tikzpicture}[x=0.8cm,y=0.8cm]
+    % Clock
+    \draw[->] (0,3) -- (10,3) node[right] {Time};
+    \node at (-1.5, 3.5) {\small Clock};
+    \foreach \x in {0,1,...,9} \draw[thick, Accent] (\x,3) -- (\x,4) -- (\x+0.5,4) -- (\x+0.5,3) -- (\x+1,3);
+    
+    % Data: 1 0 1 1
+    \node at (-1.5, 1.5) {\small Data (1011)};
+    \draw[thick, AccentDark] (0,1) -- (1,1) -- (1,2) -- (2,2) -- (2,1) -- (3,1) -- (3,1) -- (4,1); 
+    
+    % Manchester (XOR approximation visually)
+    \node at (-1.5, -0.5) {\small Signal};
+    \draw[thick] (0,-1) -- (0.5,-1) -- (0.5,0) -- (1,0) -- (1,0) -- (1.5,0) -- (1.5,-1) -- (2,-1); 
+    \node[align=left, font=\small, right] at (4.5, -0.5) {$\rightarrow$ Переход (фронт)\\в центре каждого бита};
+  \end{tikzpicture}
+  \caption{Принцип Манчестерского кодирования (схематично)}
+  \label{fig:manchester}
+\end{figure}
+
+\subsection{Протокол Ethernet и MAC-адресация}
+Для структурирования потока бит используется протокол \gls{ethernet}, оперирующий единицами данных, называемыми фреймами (frames). 
+
+\begin{table}[h]
+  \centering
+  \caption{Структура Ethernet-фрейма}
+  \label{tab:ethernet-frame}
+  \begin{tabularx}{\textwidth}{@{}l|X|l@{}}
+    \toprule
+    \textbf{Поле} & \textbf{Описание} & \textbf{Размер} \\
+    \midrule
+    Preamble & Синхронизация & 8 байт \\
+    Destination MAC & \gls{mac} получателя & 6 байт \\
+    Source MAC & \gls{mac} отправителя & 6 байт \\
+    EtherType & Тип инкапсулированного протокола (IPv4/IPv6) & 2 байта \\
+    Payload & Полезная нагрузка (например, IP-пакет) & 46-1500 байт \\
+    FCS & Контрольная сумма (CRC) для проверки целостности & 4 байта \\
+    \bottomrule
+  \end{tabularx}
+\end{table}
+
+Адресация на канальном уровне осуществляется посредством \gls{mac}-адресов. Предполагается глобальная уникальность MAC-адресов, обеспечиваемая распределением диапазонов (OUI) между производителями оборудования (например, Intel, Cisco).
+
+\section{Сетевой уровень (Network Layer)}
+
+\subsection{Протокол IP и маршрутизация}
+Протокол \gls{ip} (Internet Protocol) обеспечивает глобальную адресацию и маршрутизацию пакетов между сетями. Наиболее распространённая версия IPv4 использует 32-битные адреса, записываемые в виде четырёх октетов (например, \texttt{192.168.0.1}).
+
+Ввиду ограниченности адресного пространства IPv4 (всего $2^{32} \approx 4.3$ млрд адресов), широко применяется технология \gls{nat}.
+
+\begin{definitionbox}{NAT (Network Address Translation)}
+Механизм, позволяющий устройствам из локальной сети (с приватными адресами) выходить в глобальную сеть, используя один публичный IP-адрес маршрутизатора. Маршрутизатор подменяет адрес источника и порт, сохраняя состояние соединения в таблице трансляции.
+\end{definitionbox}
+
+\subsection{Подсети и маски (CIDR)}
+Для логического разделения сетей используется бесклассовая адресация (CIDR). Адрес сети определяется префиксом, а маска подсети указывает количество бит, отведённых под адрес сети.
+
+\begin{lstlisting}[caption={Пример расчета диапазона подсети /23}, label={lst:cidr}]
+IP: 88.99.146.0
+CIDR: /23 (23 bits network, 9 bits host)
+
+Netmask:   11111111.11111111.11111110.00000000 (255.255.254.0)
+Wildcard:  00000000.00000000.00000001.11111111 (0.0.1.255)
+
+Network:   88.99.146.0
+HostMin:   88.99.146.1
+HostMax:   88.99.147.254
+Broadcast: 88.99.147.255
+Hosts/Net: 510 (2^9 - 2)
+\end{lstlisting}
+
+\begin{notebox}
+Адреса, у которых хостовая часть состоит из всех нулей (адрес сети) или всех единиц (Broadcast), зарезервированы и не могут быть назначены конкретному интерфейсу.
+\end{notebox}
+
+Для предотвращения бесконечной циркуляции пакетов при ошибках маршрутизации используется поле \textbf{TTL} (Time To Live), значение которого уменьшается на единицу при прохождении каждого промежуточного узла (хопа).
+
+\section{Транспортный уровень (Transport Layer)}
+
+Сетевой уровень доставляет данные до хоста. Транспортный уровень (L4) отвечает за мультиплексирование потоков данных для конкретных приложений, используя абстракцию \textbf{порта} (16-битное число).
+
+\subsection{Сравнение TCP и UDP}
+\begin{table}[h]
+  \centering
+  \caption{Сравнение транспортных протоколов}
+  \begin{tabularx}{\textwidth}{@{}l|X|X@{}}
+    \toprule
+    \textbf{Характеристика} & \textbf{TCP (Stream)} & \textbf{UDP (Datagram)} \\
+    \midrule
+    \textbf{Гарантии} & Гарантирует доставку и порядок байт. & Не гарантирует доставку и порядок. \\
+    \textbf{Соединение} & Требует установки соединения (handshake). & Отправка данных без установки соединения ("fire and forget"). \\
+    \textbf{Поток данных} & Непрерывный поток байт. & Дискретные сообщения (датаграммы). \\
+    \textbf{Overhead} & Высокий (заголовки, подтверждения). & Низкий (минимальный заголовок). \\
+    \textbf{Применение} & Web (HTTP), Email, File transfer. & DNS, Streaming, VoIP, Gaming. \\
+    \bottomrule
+  \end{tabularx}
+\end{table}
+
+\subsection{Порядок байт (Endianness)}
+Сетевые протоколы исторически используют порядок байт \textbf{Big-Endian} (старший байт по младшему адресу). Архитектура x86 использует \textbf{Little-Endian}. Для корректной интерпретации многобайтовых чисел (например, порта или IP-адреса) необходима конвертация:
+\begin{lstlisting}[language=C, caption={Конвертация порядка байт}, label={lst:endian}]
+#include <arpa/inet.h>
+
+uint16_t host_port = 8080;
+// Host TO Network Short (conversion for sending)
+uint16_t net_port = htons(host_port); 
+// Network TO Host Short (conversion on receipt)
+uint16_t back_port = ntohs(net_port); 
+\end{lstlisting}
+
+\section{Прикладной уровень (Application Layer)}
+
+Прикладные протоколы (L7) определяют семантику передаваемых данных.
+
+\subsection{HTTP и DNS}
+Протокол HTTP — текстовый протокол, работающий поверх \gls{tcp}. Сообщения состоят из стартовой строки, заголовков и опционального тела. В качестве разделителя строк используется последовательность \texttt{CRLF} (\texttt{\textbackslash r\textbackslash n}).
+
+Система \gls{dns} выполняет трансляцию доменных имён (например, \texttt{google.com}) в IP-адреса. Для получения адреса в языке C используется функция \texttt{getaddrinfo}, возвращающая список структур \texttt{addrinfo}.
+
+\begin{notebox}
+Один домен может разрешаться (resolve) в несколько IP-адресов для балансировки нагрузки на уровне DNS (DNS Round Robin) и обеспечения географической близости к клиенту (CDN).
+\end{notebox}
+
+\section{Socket API и Модели конкурентности}
+
+\subsection{Базовый жизненный цикл TCP-сервера}
+Интерфейс сокетов (\gls{socket}) в POSIX-системах реализует файловую абстракцию для сетевого взаимодействия.
+
+\begin{figure}[h]
+  \centering
+  \begin{tikzpicture}[node distance=1.0cm]
+    \node[box] (socket) {\texttt{socket()}\\Создание дескриптора};
+    \node[box, below=of socket] (bind) {\texttt{bind()}\\Привязка к адресу};
+    \node[box, below=of bind] (listen) {\texttt{listen()}\\Перевод в режим ожидания};
+    \node[box, below=of listen] (accept) {\texttt{accept()}\\Блокирующее ожидание};
+    \node[box, right=2cm of accept] (conn) {\texttt{read()/write()}\\Обмен данными};
+    
+    \draw[arrow] (socket) -- (bind);
+    \draw[arrow] (bind) -- (listen);
+    \draw[arrow] (listen) -- (accept);
+    \draw[arrow] (accept) -- (conn) node[midway, above, font=\scriptsize] {Новое соед.};
+    \draw[arrow] (conn) to[out=270,in=270, looseness=2] (conn) node[midway, below, font=\scriptsize] {Loop};
+  \end{tikzpicture}
+  \caption{Системные вызовы TCP-сервера}
+  \label{fig:socket-lifecycle}
+\end{figure}
+
+Критическая проблема базовой модели: вызов \texttt{read()} является блокирующим. Если сервер обслуживает одного клиента, остальные клиенты ожидают в очереди (backlog), создаваемой ядром ОС.
+
+\subsection{Эволюция моделей ввода-вывода}
+
+\subsubsection{Thread-per-connection (Поток на соединение)}
+Создание отдельного потока ОС (pthread) для каждого клиента.
+\begin{itemize}
+    \item \textbf{Преимущество:} Простота реализации, линейный код.
+    \item \textbf{Цена (Trade-off):} Высокие накладные расходы. Каждый поток требует аллокации стека (по умолчанию 2-8 МБ) и структур ядра. Переключение контекста (Context Switch) при тысячах потоков приводит к существенной деградации производительности (CPU тратится на планировщик, а не на полезную работу).
+\end{itemize}
+
+\subsubsection{Non-blocking I/O (Неблокирующий ввод-вывод)}
+Файловый дескриптор переводится в неблокирующий режим (\texttt{O\_NONBLOCK}). Системные вызовы \texttt{read}/\texttt{write} возвращают ошибку \texttt{EAGAIN}, если данные не готовы. Это позволяет одному потоку опрашивать множество сокетов, но приводит к проблеме \textbf{Busy Wait} (100\% загрузка CPU при пустых циклах опроса).
+
+\subsubsection{I/O Multiplexing (epoll)}
+Механизм \gls{epoll} (Linux) позволяет потоку «заснуть» до возникновения события на одном из множества наблюдаемых дескрипторов.
+
+\begin{definitionbox}{Event Loop}
+Архитектурный паттерн, в котором единый поток циклически ожидает событий от мультиплексора (epoll) и вызывает соответствующие обработчики (callbacks). Это позволяет обрабатывать десятки тысяч соединений (проблема C10k) с минимальными накладными расходами памяти и отсутствием лишних переключений контекста.
+\end{definitionbox}
+
+\begin{lstlisting}[language=C, caption={Скелет Event Loop на epoll}, label={lst:epoll}]
+int epfd = epoll_create1(0);
+struct epoll_event ev, events[MAX_EVENTS];
+
+// Register server socket
+ev.events = EPOLLIN;
+ev.data.fd = server_socket;
+epoll_ctl(epfd, EPOLL_CTL_ADD, server_socket, &ev);
+
+while (1) {
+    // Wait for events (blocking)
+    int nfds = epoll_wait(epfd, events, MAX_EVENTS, -1);
+    
+    for (int i = 0; i < nfds; ++i) {
+        if (events[i].data.fd == server_socket) {
+            // handle new connection (accept)
+        } else {
+            // handle data (read/write)
+        }
+    }
+}
+\end{lstlisting}
+
+\section{Итоги раздела}
+\begin{summarybox}
+\begin{itemize}
+    \item Сетевое взаимодействие представляет собой иерархию абстракций: от модуляции напряжения до прикладных протоколов (OSI Model).
+    \item Протоколы TCP и UDP предоставляют различные гарантии (надёжность против скорости), что диктует их области применения.
+    \item Прямое использование потоков (Thread-per-connection) неэффективно для I/O-bound задач с большим числом соединений из-за накладных расходов на память и планирование.
+    \item Современные высоконагруженные серверы используют неблокирующий ввод-вывод и механизм \gls{epoll} для мультиплексирования событий в едином цикле (Event Loop).
+\end{itemize}
+\end{summarybox}
+
+\clearpage
+\printglossaries
+
+% QC REPORT:
+% 1. Document Structure: Full compilation (preamble + body).
+% 2. Graphics: Included TikZ schemes for Manchester encoding and socket lifecycle.
+% 3. Code: Used listings with ASCII comments for safety.
+% 4. Style: Complies with "Technical Essentialist" (dense text, focus on trade-offs).
+% 5. Terminology: Glossary is populated and printed at the end.
+
+\end{document}

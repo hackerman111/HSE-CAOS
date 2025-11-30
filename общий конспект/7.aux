@@ -1,92 +1,92 @@
 \relax 
 \providecommand\hyper@newdestlabel[2]{}
-\@writefile{toc}{\contentsline {section}{\numberline {7.1}Адресация памяти в x86-64}{68}{section.7.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.1.1}Синтаксис Scale-Index-Base (SIB)}{68}{subsection.7.1.1}\protected@file@percent }
-\newlabel{lst:sib_examples}{{7.1}{68}{Примеры SIB-адресации}{lstlisting.7.1}{}}
-\newlabel{lst:sib_examples@cref}{{[lstlisting][1][7]7.1}{[1][68][]68}{}{}{}}
-\@writefile{lol}{\contentsline {lstlisting}{\numberline {7.1}{\ignorespaces Примеры SIB-адресации}}{68}{lstlisting.7.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.1.2}Указание размера операнда}{68}{subsection.7.1.2}\protected@file@percent }
-\newlabel{lst:ambiguity}{{7.2}{68}{Неоднозначность размера}{lstlisting.7.2}{}}
-\newlabel{lst:ambiguity@cref}{{[lstlisting][2][7]7.2}{[1][68][]68}{}{}{}}
-\@writefile{lol}{\contentsline {lstlisting}{\numberline {7.2}{\ignorespaces Неоднозначность размера}}{68}{lstlisting.7.2}\protected@file@percent }
-\newlabel{lst:dword_ptr}{{7.3}{69}{Явное указание размера (32 бита)}{lstlisting.7.3}{}}
-\newlabel{lst:dword_ptr@cref}{{[lstlisting][3][7]7.3}{[1][68][]69}{}{}{}}
-\@writefile{lol}{\contentsline {lstlisting}{\numberline {7.3}{\ignorespaces Явное указание размера (32 бита)}}{69}{lstlisting.7.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {7.2}Инструкция LEA (Load Effective Address)}{69}{section.7.2}\protected@file@percent }
-\newlabel{lst:mov_vs_lea}{{7.4}{69}{Сравнение MOV и LEA}{lstlisting.7.4}{}}
-\newlabel{lst:mov_vs_lea@cref}{{[lstlisting][4][7]7.4}{[1][69][]69}{}{}{}}
-\@writefile{lol}{\contentsline {lstlisting}{\numberline {7.4}{\ignorespaces Сравнение MOV и LEA}}{69}{lstlisting.7.4}\protected@file@percent }
-\newlabel{lst:lea_arithmetic}{{7.5}{69}{LEA для вычисления адреса}{lstlisting.7.5}{}}
-\newlabel{lst:lea_arithmetic@cref}{{[lstlisting][5][7]7.5}{[1][69][]69}{}{}{}}
-\@writefile{lol}{\contentsline {lstlisting}{\numberline {7.5}{\ignorespaces LEA для вычисления адреса}}{69}{lstlisting.7.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.2.1}LEA как оптимизация компилятора}{69}{subsection.7.2.1}\protected@file@percent }
-\newlabel{lst:mul3_cpp}{{7.6}{69}{C++ код для умножения на 3}{lstlisting.7.6}{}}
-\newlabel{lst:mul3_cpp@cref}{{[lstlisting][6][7]7.6}{[1][69][]69}{}{}{}}
-\@writefile{lol}{\contentsline {lstlisting}{\numberline {7.6}{\ignorespaces C++ код для умножения на 3}}{69}{lstlisting.7.6}\protected@file@percent }
-\newlabel{lst:mul3_asm}{{7.7}{70}{Результат компиляции Mul3 (objdump)}{lstlisting.7.7}{}}
-\newlabel{lst:mul3_asm@cref}{{[lstlisting][7][7]7.7}{[1][70][]70}{}{}{}}
-\@writefile{lol}{\contentsline {lstlisting}{\numberline {7.7}{\ignorespaces Результат компиляции Mul3 (objdump)}}{70}{lstlisting.7.7}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {7.3}Работа со стеком и локальными переменными}{70}{section.7.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.3.1}Проблема: Callee-clobbered регистры}{70}{subsection.7.3.1}\protected@file@percent }
-\newlabel{lst:local_vars_problem}{{7.8}{70}{Проблема сохранения локальных переменных}{lstlisting.7.8}{}}
-\newlabel{lst:local_vars_problem@cref}{{[lstlisting][8][7]7.8}{[1][70][]70}{}{}{}}
-\@writefile{lol}{\contentsline {lstlisting}{\numberline {7.8}{\ignorespaces Проблема сохранения локальных переменных}}{70}{lstlisting.7.8}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.3.2}Решение 1: Сохранение на стеке}{70}{subsection.7.3.2}\protected@file@percent }
-\newlabel{lst:local_vars_stack}{{7.9}{70}{Использование стека для локальных переменных}{lstlisting.7.9}{}}
-\newlabel{lst:local_vars_stack@cref}{{[lstlisting][9][7]7.9}{[1][70][]70}{}{}{}}
-\@writefile{lol}{\contentsline {lstlisting}{\numberline {7.9}{\ignorespaces Использование стека для локальных переменных}}{70}{lstlisting.7.9}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.3.3}Решение 2: Callee-saved регистры}{71}{subsection.7.3.3}\protected@file@percent }
-\newlabel{lst:sum_cpp}{{7.10}{71}{C++ код Sum()}{lstlisting.7.10}{}}
-\newlabel{lst:sum_cpp@cref}{{[lstlisting][10][7]7.10}{[1][71][]71}{}{}{}}
-\@writefile{lol}{\contentsline {lstlisting}{\numberline {7.10}{\ignorespaces C++ код Sum()}}{71}{lstlisting.7.10}\protected@file@percent }
-\newlabel{lst:sum_asm}{{7.11}{71}{Дизассемблированный код Sum() (g++ -O2)}{lstlisting.7.11}{}}
-\newlabel{lst:sum_asm@cref}{{[lstlisting][11][7]7.11}{[1][71][]71}{}{}{}}
-\@writefile{lol}{\contentsline {lstlisting}{\numberline {7.11}{\ignorespaces Дизассемблированный код Sum() (g++ -O2)}}{71}{lstlisting.7.11}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {7.4}Фреймовые указатели (Frame Pointers)}{71}{section.7.4}\protected@file@percent }
-\newlabel{lst:rbp_prolog}{{7.12}{72}{Стандартный пролог и эпилог функции}{lstlisting.7.12}{}}
-\newlabel{lst:rbp_prolog@cref}{{[lstlisting][12][7]7.12}{[1][72][]72}{}{}{}}
-\@writefile{lol}{\contentsline {lstlisting}{\numberline {7.12}{\ignorespaces Стандартный пролог и эпилог функции}}{72}{lstlisting.7.12}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.4.1}Структура стека с RBP}{72}{subsection.7.4.1}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {7.1}{\ignorespaces Структура стека при использовании фреймовых указателей (\texttt  {RBP})}}{72}{figure.caption.11}\protected@file@percent }
-\newlabel{fig:frame_pointers}{{7.1}{72}{Структура стека при использовании фреймовых указателей (\texttt {RBP})}{figure.caption.11}{}}
-\newlabel{fig:frame_pointers@cref}{{[figure][1][7]7.1}{[1][72][]72}{}{}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {7.5}Секции данных в ассемблере}{73}{section.7.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.5.1}Директивы ассемблера для данных}{73}{subsection.7.5.1}\protected@file@percent }
-\newlabel{lst:rodata_example}{{7.13}{73}{Пример секции .rodata (строка "Hello!")}{lstlisting.7.13}{}}
-\newlabel{lst:rodata_example@cref}{{[lstlisting][13][7]7.13}{[1][73][]73}{}{}{}}
-\@writefile{lol}{\contentsline {lstlisting}{\numberline {7.13}{\ignorespaces Пример секции .rodata (строка "Hello!")}}{73}{lstlisting.7.13}\protected@file@percent }
-\newlabel{lst:data_bss}{{7.14}{73}{Директивы .data и .bss}{lstlisting.7.14}{}}
-\newlabel{lst:data_bss@cref}{{[lstlisting][14][7]7.14}{[1][73][]73}{}{}{}}
-\@writefile{lol}{\contentsline {lstlisting}{\numberline {7.14}{\ignorespaces Директивы .data и .bss}}{73}{lstlisting.7.14}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {7.6}Флаги процессора и условные переходы}{74}{section.7.6}\protected@file@percent }
-\newlabel{lst:flags_example}{{7.15}{74}{Примеры установки флагов (4-битная арифметика)}{lstlisting.7.15}{}}
-\newlabel{lst:flags_example@cref}{{[lstlisting][15][7]7.15}{[1][74][]74}{}{}{}}
-\@writefile{lol}{\contentsline {lstlisting}{\numberline {7.15}{\ignorespaces Примеры установки флагов (4-битная арифметика)}}{74}{lstlisting.7.15}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {7.7}Взаимодействие ассемблера и C/C++}{75}{section.7.7}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.7.1}Позиционно-независимый код (PIC) и RIP-адресация}{75}{subsection.7.7.1}\protected@file@percent }
-\newlabel{lst:bad_global}{{7.16}{75}{Наивный доступ к глобальной переменной}{lstlisting.7.16}{}}
-\newlabel{lst:bad_global@cref}{{[lstlisting][16][7]7.16}{[1][75][]75}{}{}{}}
-\@writefile{lol}{\contentsline {lstlisting}{\numberline {7.16}{\ignorespaces Наивный доступ к глобальной переменной}}{75}{lstlisting.7.16}\protected@file@percent }
-\newlabel{lst:pic_global}{{7.17}{75}{Корректный доступ к глобальной переменной (PIC)}{lstlisting.7.17}{}}
-\newlabel{lst:pic_global@cref}{{[lstlisting][17][7]7.17}{[1][75][]75}{}{}{}}
-\@writefile{lol}{\contentsline {lstlisting}{\numberline {7.17}{\ignorespaces Корректный доступ к глобальной переменной (PIC)}}{75}{lstlisting.7.17}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.7.2}Оптимизация хвостового вызова (TCO)}{75}{subsection.7.7.2}\protected@file@percent }
-\newlabel{lst:bad_tail_call}{{7.18}{75}{Неоптимальный хвостовой вызов}{lstlisting.7.18}{}}
-\newlabel{lst:bad_tail_call@cref}{{[lstlisting][18][7]7.18}{[1][75][]75}{}{}{}}
-\@writefile{lol}{\contentsline {lstlisting}{\numberline {7.18}{\ignorespaces Неоптимальный хвостовой вызов}}{75}{lstlisting.7.18}\protected@file@percent }
-\newlabel{lst:good_tail_call}{{7.19}{76}{Оптимизированный хвостовой вызов (TCO)}{lstlisting.7.19}{}}
-\newlabel{lst:good_tail_call@cref}{{[lstlisting][19][7]7.19}{[1][76][]76}{}{}{}}
-\@writefile{lol}{\contentsline {lstlisting}{\numberline {7.19}{\ignorespaces Оптимизированный хвостовой вызов (TCO)}}{76}{lstlisting.7.19}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.7.3}Вызов функций C (scanf / printf)}{76}{subsection.7.7.3}\protected@file@percent }
-\newlabel{lst:scanf_printf}{{7.20}{76}{Пример: чтение числа (n) и вывод (n+1) на Assembler}{lstlisting.7.20}{}}
-\newlabel{lst:scanf_printf@cref}{{[lstlisting][20][7]7.20}{[1][76][]76}{}{}{}}
-\@writefile{lol}{\contentsline {lstlisting}{\numberline {7.20}{\ignorespaces Пример: чтение числа (n) и вывод (n+1) на Assembler}}{76}{lstlisting.7.20}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {7.8}Синтаксисы ассемблера: Intel vs. AT\&T}{78}{section.7.8}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {7.1}{\ignorespaces Сравнение синтаксисов Intel и AT\&T (GNU)}}{78}{table.caption.12}\protected@file@percent }
-\newlabel{tab:syntax}{{7.1}{78}{Сравнение синтаксисов Intel и AT\&T (GNU)}{table.caption.12}{}}
-\newlabel{tab:syntax@cref}{{[table][1][7]7.1}{[1][78][]78}{}{}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {7.1}Адресация памяти в x86-64}{69}{section.7.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.1.1}Синтаксис Scale-Index-Base (SIB)}{69}{subsection.7.1.1}\protected@file@percent }
+\newlabel{lst:sib_examples}{{7.1}{69}{Примеры SIB-адресации}{lstlisting.7.1}{}}
+\newlabel{lst:sib_examples@cref}{{[lstlisting][1][7]7.1}{[1][69][]69}{}{}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {7.1}{\ignorespaces Примеры SIB-адресации}}{69}{lstlisting.7.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.1.2}Указание размера операнда}{69}{subsection.7.1.2}\protected@file@percent }
+\newlabel{lst:ambiguity}{{7.2}{69}{Неоднозначность размера}{lstlisting.7.2}{}}
+\newlabel{lst:ambiguity@cref}{{[lstlisting][2][7]7.2}{[1][69][]69}{}{}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {7.2}{\ignorespaces Неоднозначность размера}}{69}{lstlisting.7.2}\protected@file@percent }
+\newlabel{lst:dword_ptr}{{7.3}{70}{Явное указание размера (32 бита)}{lstlisting.7.3}{}}
+\newlabel{lst:dword_ptr@cref}{{[lstlisting][3][7]7.3}{[1][69][]70}{}{}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {7.3}{\ignorespaces Явное указание размера (32 бита)}}{70}{lstlisting.7.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {7.2}Инструкция LEA (Load Effective Address)}{70}{section.7.2}\protected@file@percent }
+\newlabel{lst:mov_vs_lea}{{7.4}{70}{Сравнение MOV и LEA}{lstlisting.7.4}{}}
+\newlabel{lst:mov_vs_lea@cref}{{[lstlisting][4][7]7.4}{[1][70][]70}{}{}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {7.4}{\ignorespaces Сравнение MOV и LEA}}{70}{lstlisting.7.4}\protected@file@percent }
+\newlabel{lst:lea_arithmetic}{{7.5}{70}{LEA для вычисления адреса}{lstlisting.7.5}{}}
+\newlabel{lst:lea_arithmetic@cref}{{[lstlisting][5][7]7.5}{[1][70][]70}{}{}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {7.5}{\ignorespaces LEA для вычисления адреса}}{70}{lstlisting.7.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.2.1}LEA как оптимизация компилятора}{70}{subsection.7.2.1}\protected@file@percent }
+\newlabel{lst:mul3_cpp}{{7.6}{70}{C++ код для умножения на 3}{lstlisting.7.6}{}}
+\newlabel{lst:mul3_cpp@cref}{{[lstlisting][6][7]7.6}{[1][70][]70}{}{}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {7.6}{\ignorespaces C++ код для умножения на 3}}{70}{lstlisting.7.6}\protected@file@percent }
+\newlabel{lst:mul3_asm}{{7.7}{71}{Результат компиляции Mul3 (objdump)}{lstlisting.7.7}{}}
+\newlabel{lst:mul3_asm@cref}{{[lstlisting][7][7]7.7}{[1][71][]71}{}{}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {7.7}{\ignorespaces Результат компиляции Mul3 (objdump)}}{71}{lstlisting.7.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {7.3}Работа со стеком и локальными переменными}{71}{section.7.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.3.1}Проблема: Callee-clobbered регистры}{71}{subsection.7.3.1}\protected@file@percent }
+\newlabel{lst:local_vars_problem}{{7.8}{71}{Проблема сохранения локальных переменных}{lstlisting.7.8}{}}
+\newlabel{lst:local_vars_problem@cref}{{[lstlisting][8][7]7.8}{[1][71][]71}{}{}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {7.8}{\ignorespaces Проблема сохранения локальных переменных}}{71}{lstlisting.7.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.3.2}Решение 1: Сохранение на стеке}{71}{subsection.7.3.2}\protected@file@percent }
+\newlabel{lst:local_vars_stack}{{7.9}{71}{Использование стека для локальных переменных}{lstlisting.7.9}{}}
+\newlabel{lst:local_vars_stack@cref}{{[lstlisting][9][7]7.9}{[1][71][]71}{}{}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {7.9}{\ignorespaces Использование стека для локальных переменных}}{71}{lstlisting.7.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.3.3}Решение 2: Callee-saved регистры}{72}{subsection.7.3.3}\protected@file@percent }
+\newlabel{lst:sum_cpp}{{7.10}{72}{C++ код Sum()}{lstlisting.7.10}{}}
+\newlabel{lst:sum_cpp@cref}{{[lstlisting][10][7]7.10}{[1][72][]72}{}{}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {7.10}{\ignorespaces C++ код Sum()}}{72}{lstlisting.7.10}\protected@file@percent }
+\newlabel{lst:sum_asm}{{7.11}{72}{Дизассемблированный код Sum() (g++ -O2)}{lstlisting.7.11}{}}
+\newlabel{lst:sum_asm@cref}{{[lstlisting][11][7]7.11}{[1][72][]72}{}{}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {7.11}{\ignorespaces Дизассемблированный код Sum() (g++ -O2)}}{72}{lstlisting.7.11}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {7.4}Фреймовые указатели (Frame Pointers)}{72}{section.7.4}\protected@file@percent }
+\newlabel{lst:rbp_prolog}{{7.12}{73}{Стандартный пролог и эпилог функции}{lstlisting.7.12}{}}
+\newlabel{lst:rbp_prolog@cref}{{[lstlisting][12][7]7.12}{[1][73][]73}{}{}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {7.12}{\ignorespaces Стандартный пролог и эпилог функции}}{73}{lstlisting.7.12}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.4.1}Структура стека с RBP}{73}{subsection.7.4.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {7.1}{\ignorespaces Структура стека при использовании фреймовых указателей (\texttt  {RBP})}}{73}{figure.caption.11}\protected@file@percent }
+\newlabel{fig:frame_pointers}{{7.1}{73}{Структура стека при использовании фреймовых указателей (\texttt {RBP})}{figure.caption.11}{}}
+\newlabel{fig:frame_pointers@cref}{{[figure][1][7]7.1}{[1][73][]73}{}{}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {7.5}Секции данных в ассемблере}{74}{section.7.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.5.1}Директивы ассемблера для данных}{74}{subsection.7.5.1}\protected@file@percent }
+\newlabel{lst:rodata_example}{{7.13}{74}{Пример секции .rodata (строка "Hello!")}{lstlisting.7.13}{}}
+\newlabel{lst:rodata_example@cref}{{[lstlisting][13][7]7.13}{[1][74][]74}{}{}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {7.13}{\ignorespaces Пример секции .rodata (строка "Hello!")}}{74}{lstlisting.7.13}\protected@file@percent }
+\newlabel{lst:data_bss}{{7.14}{74}{Директивы .data и .bss}{lstlisting.7.14}{}}
+\newlabel{lst:data_bss@cref}{{[lstlisting][14][7]7.14}{[1][74][]74}{}{}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {7.14}{\ignorespaces Директивы .data и .bss}}{74}{lstlisting.7.14}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {7.6}Флаги процессора и условные переходы}{75}{section.7.6}\protected@file@percent }
+\newlabel{lst:flags_example}{{7.15}{75}{Примеры установки флагов (4-битная арифметика)}{lstlisting.7.15}{}}
+\newlabel{lst:flags_example@cref}{{[lstlisting][15][7]7.15}{[1][75][]75}{}{}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {7.15}{\ignorespaces Примеры установки флагов (4-битная арифметика)}}{75}{lstlisting.7.15}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {7.7}Взаимодействие ассемблера и C/C++}{76}{section.7.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.7.1}Позиционно-независимый код (PIC) и RIP-адресация}{76}{subsection.7.7.1}\protected@file@percent }
+\newlabel{lst:bad_global}{{7.16}{76}{Наивный доступ к глобальной переменной}{lstlisting.7.16}{}}
+\newlabel{lst:bad_global@cref}{{[lstlisting][16][7]7.16}{[1][76][]76}{}{}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {7.16}{\ignorespaces Наивный доступ к глобальной переменной}}{76}{lstlisting.7.16}\protected@file@percent }
+\newlabel{lst:pic_global}{{7.17}{76}{Корректный доступ к глобальной переменной (PIC)}{lstlisting.7.17}{}}
+\newlabel{lst:pic_global@cref}{{[lstlisting][17][7]7.17}{[1][76][]76}{}{}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {7.17}{\ignorespaces Корректный доступ к глобальной переменной (PIC)}}{76}{lstlisting.7.17}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.7.2}Оптимизация хвостового вызова (TCO)}{76}{subsection.7.7.2}\protected@file@percent }
+\newlabel{lst:bad_tail_call}{{7.18}{76}{Неоптимальный хвостовой вызов}{lstlisting.7.18}{}}
+\newlabel{lst:bad_tail_call@cref}{{[lstlisting][18][7]7.18}{[1][76][]76}{}{}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {7.18}{\ignorespaces Неоптимальный хвостовой вызов}}{76}{lstlisting.7.18}\protected@file@percent }
+\newlabel{lst:good_tail_call}{{7.19}{77}{Оптимизированный хвостовой вызов (TCO)}{lstlisting.7.19}{}}
+\newlabel{lst:good_tail_call@cref}{{[lstlisting][19][7]7.19}{[1][77][]77}{}{}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {7.19}{\ignorespaces Оптимизированный хвостовой вызов (TCO)}}{77}{lstlisting.7.19}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.7.3}Вызов функций C (scanf / printf)}{77}{subsection.7.7.3}\protected@file@percent }
+\newlabel{lst:scanf_printf}{{7.20}{77}{Пример: чтение числа (n) и вывод (n+1) на Assembler}{lstlisting.7.20}{}}
+\newlabel{lst:scanf_printf@cref}{{[lstlisting][20][7]7.20}{[1][77][]77}{}{}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {7.20}{\ignorespaces Пример: чтение числа (n) и вывод (n+1) на Assembler}}{77}{lstlisting.7.20}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {7.8}Синтаксисы ассемблера: Intel vs. AT\&T}{79}{section.7.8}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {7.1}{\ignorespaces Сравнение синтаксисов Intel и AT\&T (GNU)}}{79}{table.caption.12}\protected@file@percent }
+\newlabel{tab:syntax}{{7.1}{79}{Сравнение синтаксисов Intel и AT\&T (GNU)}{table.caption.12}{}}
+\newlabel{tab:syntax@cref}{{[table][1][7]7.1}{[1][79][]79}{}{}{}}
 \@setckpt{7}{
-\setcounter{page}{79}
+\setcounter{page}{80}
 \setcounter{equation}{0}
 \setcounter{enumi}{2}
 \setcounter{enumii}{0}

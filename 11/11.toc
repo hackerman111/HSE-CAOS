@@ -1,0 +1,20 @@
+\babel@toc {russian}{}\relax 
+\contentsline {section}{\numberline {1}Введение}{1}{section.1}%
+\contentsline {section}{\numberline {2}Физический и Канальный уровни}{2}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Принципы передачи сигнала}{2}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Протокол Ethernet и MAC-адресация}{2}{subsection.2.2}%
+\contentsline {section}{\numberline {3}Сетевой уровень (Network Layer)}{2}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Протокол IP и маршрутизация}{2}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Подсети и маски (CIDR)}{3}{subsection.3.2}%
+\contentsline {section}{\numberline {4}Транспортный уровень (Transport Layer)}{4}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Сравнение TCP и UDP}{4}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Порядок байт (Endianness)}{4}{subsection.4.2}%
+\contentsline {section}{\numberline {5}Прикладной уровень (Application Layer)}{4}{section.5}%
+\contentsline {subsection}{\numberline {5.1}HTTP и DNS}{4}{subsection.5.1}%
+\contentsline {section}{\numberline {6}Socket API и Модели конкурентности}{5}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Базовый жизненный цикл TCP-сервера}{5}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Эволюция моделей ввода-вывода}{5}{subsection.6.2}%
+\contentsline {subsubsection}{\numberline {6.2.1}Thread-per-connection (Поток на соединение)}{5}{subsubsection.6.2.1}%
+\contentsline {subsubsection}{\numberline {6.2.2}Non-blocking I/O (Неблокирующий ввод-вывод)}{5}{subsubsection.6.2.2}%
+\contentsline {subsubsection}{\numberline {6.2.3}I/O Multiplexing (epoll)}{6}{subsubsection.6.2.3}%
+\contentsline {section}{\numberline {7}Итоги раздела}{6}{section.7}%
