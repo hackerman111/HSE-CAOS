@@ -1,0 +1,875 @@
+% ===================== PREAMBLE START (Aesthetic, pdfLaTeX, RU, no shell-escape) =========
+\documentclass[12pt,a4paper]{article}
+
+% Поиск/копирование кириллицы из PDF
+\usepackage{cmap}
+
+% Математика и единицы
+\usepackage{amsmath,amssymb,amsfonts,mathtools}
+\numberwithin{equation}{section}
+\usepackage{siunitx}
+\sisetup{detect-all=true}
+% Язык и кодировки
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage[russian]{babel}
+
+% Поля, типографика, абзацы
+\usepackage[a4paper,margin=2.2cm]{geometry}
+\usepackage{microtype}
+\usepackage{indentfirst}
+\setlength{\parindent}{1.25em}
+\setlength{\parskip}{0.25em}
+\raggedbottom
+
+% Цветовая тема
+\usepackage[table]{xcolor}
+\definecolor{Accent}{HTML}{1F6FEB}     % основной акцент
+\definecolor{AccentDark}{HTML}{0B5394} % тёмный акцент
+\definecolor{AccentLight}{HTML}{E8F0FE}% светлый акцент (фон)
+\definecolor{CodeBg}{HTML}{F6F8FA}     % фон для кода
+\definecolor{Link}{HTML}{1F6FEB}       % ссылки
+
+% Гиперссылки и умные ссылки
+\usepackage[unicode]{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=Link, citecolor=Link, urlcolor=Link,
+  pdfauthor={System Architect},
+  pdftitle={Deep Dive into Systems}
+}
+\usepackage[nameinlink,capitalise]{cleveref}
+\urlstyle{same}
+
+% Заголовки разделов
+\usepackage{titlesec}
+\titleformat{\section}{\large\bfseries\sffamily\color{Accent}}{\thesection}{1em}{}
+\titleformat{\subsection}{\bfseries\sffamily\color{AccentDark}}{\thesubsection}{0.75em}{}
+\titleformat{\subsubsection}{\bfseries}{\thesubsubsection}{0.6em}{}
+\titlespacing*{\section}{0pt}{1.0ex plus 0.5ex}{0.6ex}
+\titlespacing*{\subsection}{0pt}{0.9ex plus 0.4ex}{0.5ex}
+\titlespacing*{\subsubsection}{0pt}{0.8ex plus 0.3ex}{0.4ex}
+
+% Шапки/футеры
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+% Макросы метаданных
+\newcommand{\CourseName}{Deep Dive into Systems}
+\newcommand{\LectureNo}{1}
+\newcommand{\LectureTitle}{Signals \& Event Loops}
+\newcommand{\LectureDate}{\today}
+\newcommand{\Lecturer}{Expert System}
+\fancyhead[L]{\small\sffamily \CourseName}
+\fancyhead[C]{\small\sffamily \LectureTitle}
+\fancyhead[R]{\small\sffamily Глава \LectureNo}
+\fancyfoot[C]{\small\sffamily \thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\makeatletter
+\renewcommand{\headrule}{\hbox to\headwidth{\color{Accent}\leaders\hrule height \headrulewidth\hfill}}
+\makeatother
+
+% Подписи к рисункам/таблицам
+\usepackage[font=small,labelfont=bf,labelsep=endash]{caption}
+\usepackage{subcaption}
+
+
+% Таблицы и списки
+\usepackage{booktabs}
+\usepackage{array,tabularx}
+\usepackage{enumitem}
+\setlist{itemsep=2pt,topsep=4pt,leftmargin=*,labelsep=0.5em}
+
+% Графика и TikZ
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,shapes.geometric,calc,fit,shapes.multipart,patterns}
+\tikzset{
+  box/.style={draw=Accent, rounded corners, fill=AccentLight, minimum width=2.6cm, minimum height=1cm, align=center},
+  arrow/.style={-{Stealth[length=3mm,width=2mm]}, line width=0.5pt, draw=AccentDark},
+  process/.style={rectangle, draw=AccentDark, fill=white, text centered, minimum height=2em},
+  kernel/.style={rectangle, draw=red!70!black, fill=red!10, text centered, minimum height=2em, rounded corners}
+}
+
+% Красивые боксы "методички"
+\usepackage[most]{tcolorbox}
+\tcbset{enhanced, breakable, boxrule=0.6pt, fonttitle=\bfseries\sffamily}
+\newtcolorbox{definitionbox}[1]{
+  title={Определение: #1},
+  colback=AccentLight, colframe=Accent, coltitle=black, arc=2pt, left=8pt, right=8pt, top=6pt, bottom=6pt
+}
+\newtcolorbox{notebox}{
+  title={Примечание},
+  colback=yellow!8, colframe=yellow!40!black, arc=2pt, left=8pt, right=8pt, top=6pt, bottom=6pt
+}
+\newtcolorbox{summarybox}{
+  title={Итоги раздела},
+  colback=green!6, colframe=green!50!black, arc=2pt, left=8pt, right=8pt, top=6pt, bottom=6pt
+}
+\newtcolorbox{warningbox}{
+  title={Предупреждение},
+  colback=red!5, colframe=red!60!black, arc=2pt, left=8pt, right=8pt, top=6pt, bottom=6pt
+}
+
+% Листинги (без minted, без shell-escape)
+\usepackage{listings}
+\usepackage{listingsutf8}
+\lstdefinestyle{elegant}{
+  inputencoding=utf8,
+  basicstyle=\ttfamily\small,
+  columns=fullflexible,
+  breaklines=true,
+  frame=single,
+  framerule=0.4pt,
+  rulecolor=\color{black!20},
+  backgroundcolor=\color{CodeBg},
+  xleftmargin=0.5em,
+  framexleftmargin=0.5em,
+  tabsize=2,
+  showstringspaces=false,
+  keywordstyle=\bfseries\color{AccentDark},
+  commentstyle=\itshape\color{black!55},
+  stringstyle=\color{orange!60!black},
+  numbers=left,
+  numberstyle=\tiny\color{black!50},
+  numbersep=8pt,
+  captionpos=b,
+  upquote=true,
+  escapechar=§
+}
+\lstset{style=elegant}
+
+% Макросы удобства
+\newcommand{\TODO}[1]{\textcolor{red!70!black}{[TODO: #1]}}
+\newcommand{\figref}[1]{рис.~\ref{#1}}
+\newcommand{\secref}[1]{раздел~\ref{#1}}
+\newcommand{\eqnref}[1]{(\ref{#1})}
+\newcommand{\lstref}[1]{листинг~\ref{#1}}
+
+% Глоссарий и сокращения
+\usepackage[acronym,nonumberlist,toc]{glossaries}
+\makeglossaries
+\setacronymstyle{long-short}
+\renewcommand*{\glossaryname}{Глоссарий}
+\renewcommand*{\acronymname}{Список сокращений}
+\setglossarystyle{altlist}
+
+\newacronym{pid}{PID}{идентификатор процесса}
+\newacronym{fd}{FD}{файловый дескриптор}
+\newacronym{tlb}{TLB}{буфер ассоциативной трансляции}
+\newglossaryentry{signal}{name={сигнал}, description={механизм межпроцессного взаимодействия для уведомления процесса о событии}}
+\newglossaryentry{syscall}{name={системный вызов}, description={интерфейс взаимодействия между процессом user-space и ядром ОС}}
+
+% Титульные данные
+\title{\sffamily Курс: \textit{\CourseName}\\\large Глава \LectureNo: \LectureTitle}
+\author{\sffamily Автор курса: \Lecturer}
+\date{\sffamily Дата: \LectureDate}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\section{Асинхронная модель и Системные события: Signals, Timers, inotify}
+
+\subsection{Введение в асинхронность и доставку сигналов}
+
+Работа с сигналами в UNIX-подобных системах представляет собой один из старейших механизмов межпроцессного взаимодействия (IPC) и обработки исключительных ситуаций. Ключевая особенность сигналов — их асинхронная природа.
+
+\begin{definitionbox}{Сигнал}
+Программное прерывание, доставляемое процессу операционной системой. Обработчик сигнала (signal handler) может быть вызван в произвольный момент времени, прерывая нормальное исполнение инструкций пользовательского кода (user-space).
+\end{definitionbox}
+
+В момент доставки сигнала ядро приостанавливает выполнение основного потока инструкций, сохраняет контекст процессора, модифицирует стек пользователя (или переключается на альтернативный стек сигналов) и передает управление функции-обработчику. Это накладывает строгие ограничения на код обработчика.
+
+\begin{warningbox}
+Из-за асинхронности вызова, компилятор не может предсказать момент изменения переменных внутри обработчика. Если переменная используется в основном цикле и модифицируется в обработчике, она должна быть объявлена как \texttt{volatile sig\_atomic\_t}. Без спецификатора \texttt{volatile} оптимизатор может закэшировать значение в регистре и никогда не увидеть изменений («бесконечный цикл ожидания»).
+\end{warningbox}
+
+\subsubsection{Процесс Init и иммунитет к сигналам}
+В иерархии процессов Linux особую роль играет процесс с \gls{pid} 1, известный как \texttt{init}. Он является корнем дерева процессов и имеет специфическую защиту на уровне ядра.
+
+Процессу \texttt{init} нельзя отправить сигнал, на который у него явно не установлен обработчик. Это «костыль» ядра (kernel workaround), предназначенный для предотвращения случайного завершения системы. Из этого следует важный вывод: процессу \texttt{init} невозможно отправить сигналы \texttt{SIGKILL} (9) и \texttt{SIGSTOP}, так как эти сигналы технически невозможно перехватить (установить на них обработчик). Следовательно, ядро просто игнорирует их доставку для PID 1, если только сам \texttt{init} не был написан с учетом их обработки (что невозможно для данных сигналов).
+
+\subsection{Классификация сигналов: Синхронные и Асинхронные}
+
+Источники сигналов можно разделить на две фундаментальные категории в зависимости от их происхождения относительно исполняемого потока.
+
+\subsubsection{Асинхронные сигналы}
+Генерируются внешними событиями или другими процессами. Примером служит системный вызов \texttt{kill}, который отправляет сигнал от одного процесса другому (с проверкой прав доступа). Пользовательское действие \texttt{Ctrl+Z} в терминале отправляет \texttt{SIGSTOP}, который переводит процесс в состояние «stopped» (исключает из планировщика ОС), а \texttt{SIGCONT} возобновляет его исполнение.
+
+\subsubsection{Синхронные сигналы (Traps)}
+Являются прямым следствием выполнения конкретной инструкции процессора.
+\begin{itemize}
+    \item \textbf{SIGSEGV (Segmentation Fault):} Доступ к невалидной области памяти (отсутствует маппинг в таблице страниц или нарушение прав доступа).
+    \item \textbf{SIGBUS:} Ошибка шины, часто возникающая при невыровненном доступе к памяти на архитектурах, не поддерживающих его, или при доступе к файлу через \texttt{mmap}, если файл был усечен.
+    \item \textbf{SIGFPE:} Ошибка арифметической операции (деление на ноль, переполнение).
+\end{itemize}
+
+Самый простой способ вызвать синхронный сигнал программно — функция \texttt{raise()}, которая, по сути, реализует \texttt{kill(getpid(), sig)}. Стандарт POSIX гарантирует, что сигнал от \texttt{raise} будет доставлен синхронно: обработчик вызовется до возврата из функции.
+
+\begin{figure}[h]
+  \centering
+  \begin{tikzpicture}[node distance=1cm, auto]
+    % Nodes
+    \node[process] (cpu) {CPU: Instruction Execution};
+    \node[kernel, right=of cpu, xshift=1cm] (trap) {Kernel Trap Handler};
+    \node[process, right=of trap, xshift=1cm] (handler) {User Signal Handler};
+    \node[process, below=of cpu] (kill) {Other Process (kill)};
+
+    % Arrows
+    \draw[arrow, dashed] (cpu) -- node[above] {\small Exception (e.g., div/0)} (trap);
+    \draw[arrow] (kill) -- node[below] {\small Async Signal} (trap);
+    \draw[arrow] (trap) -- node[above] {\small Context Switch} (handler);
+    \draw[arrow] (handler) to[bend left=45] node[below] {\small sigreturn} (cpu);
+  \end{tikzpicture}
+  \caption{Пути доставки синхронных и асинхронных сигналов}
+  \label{fig:signal_path}
+\end{figure}
+
+\subsection{Обработка синхронных ошибок памяти}
+
+Обычно обработка синхронных сигналов вроде \texttt{SIGSEGV} бессмысленна — нельзя просто вернуться к инструкции, вызвавшей сбой (она снова вызовет сбой). Однако существуют архитектурные паттерны, использующие это поведение.
+
+\subsubsection{Lazy Process Migration}
+Один из продвинутых сценариев — «ленивая» миграция процессов между машинами.
+\begin{enumerate}
+    \item На целевой машине создается процесс-пустышка.
+    \item При попытке исполнения кода или доступа к данным происходит \texttt{SIGSEGV} (память не выделена).
+    \item Установленный обработчик \texttt{SIGSEGV} перехватывает управление.
+    \item Обработчик определяет адрес сбоя, подгружает нужную страницу памяти по сети с исходной машины, выполняет \texttt{mmap}.
+    \item Обработчик завершается, и инструкция перезапускается — теперь уже успешно.
+\end{enumerate}
+
+\subsubsection{Блокировка синхронных сигналов}
+Возникает вопрос: что произойдет, если заблокировать \texttt{SIGSEGV} с помощью \texttt{sigprocmask}, а затем вызвать ошибку сегментации?
+
+\begin{notebox}
+Операционная система не может отложить доставку синхронного сигнала (в отличие от асинхронного), так как продолжение исполнения невозможно. Ядро Linux в такой ситуации принудительно завершает процесс («убивает»), даже если сигнал заблокирован. Это компромисс реализации: программа считается некорректной.
+\end{notebox}
+
+Если же попытаться разблокировать сигнал внутри его собственного обработчика и вызвать ошибку снова, возникнет бесконечная рекурсия. Каждый новый вызов обработчика создает новый стековый фрейм, что неизбежно приведет к исчерпанию стека (Stack Overflow) и аварийному завершению.
+
+\subsection{Эволюция API: signalfd и Event Loop}
+
+Асинхронные обработчики сигналов сложны в отладке и ограничены в возможностях (можно использовать только \textit{async-signal-safe} функции). Современный подход в Linux — интеграция сигналов в общий цикл событий (Event Loop) через файловые дескрипторы.
+
+Механизм \texttt{signalfd} позволяет принимать сигналы синхронно, вычитывая их как данные из специального \gls{fd}.
+
+\begin{lstlisting}[language=C, caption={Использование signalfd с блокировкой}, label={lst:signalfd}]
+#include <sys/signalfd.h>
+#include <signal.h>
+#include <unistd.h>
+
+int main() {
+    sigset_t mask;
+    sigemptyset(&mask);
+    sigaddset(&mask, SIGINT);
+    sigaddset(&mask, SIGQUIT);
+
+    // 1. Block signals so they are not delivered via standard async handlers
+    if (sigprocmask(SIG_BLOCK, &mask, NULL) == -1)
+        handle_error("sigprocmask");
+
+    // 2. Create a file descriptor for reading signals
+    int sfd = signalfd(-1, &mask, 0);
+    if (sfd == -1)
+        handle_error("signalfd");
+
+    // The sfd can now be added to epoll or read via blocking read()
+    struct signalfd_siginfo fdsi;
+    ssize_t s = read(sfd, &fdsi, sizeof(struct signalfd_siginfo));
+    // ...
+}
+\end{lstlisting}
+
+При чтении из \texttt{signalfd} возвращается структура \texttt{signalfd\_siginfo}. В ней содержится детальная информация о сигнале: \gls{pid} отправителя, \texttt{uid}, код завершения (для \texttt{SIGCHLD}) и т.д.
+
+Любопытная деталь реализации структуры — наличие в конце поля-заполнителя (padding):
+\begin{lstlisting}[language=C]
+uint8_t __pad[28]; // Pad to 128 bytes
+\end{lstlisting}
+Размер 28 байт (вместе с остальными полями доводит размер структуры до 128 байт) оставлен для прямой совместимости (forward compatibility). Если в будущем ядру потребуется передавать дополнительные данные с сигналом, они займут место этого паддинга, и старые программы (скомпилированные с текущим размером структуры) продолжат корректно работать, просто не читая новые поля.
+
+\subsection{Управление процессами: pidfd}
+
+Традиционный системный вызов \texttt{waitpid} имеет архитектурный недостаток, связанный с переиспользованием PID. Поскольку идентификаторы процессов — это ограниченный ресурс (обычно 16-битное число), после завершения процесса и вызова \texttt{wait} его PID освобождается. Операционная система может сразу же назначить этот PID новому процессу.
+
+Если родительский процесс "промедлит" с ожиданием, он может случайно вызвать \texttt{waitpid} или отправить сигнал (\texttt{kill}) уже новому, ни в чем не повинному процессу, который занял тот же номер. Это состояние гонки (Race Condition).
+
+Для решения этой проблемы в Linux 5.3+ введен механизм \texttt{pidfd}.
+
+\begin{definitionbox}{pidfd}
+Файловый дескриптор, ссылающийся на конкретный экземпляр процесса, а не на его числовой идентификатор. Даже если процесс завершится и его PID будет переиспользован, \texttt{pidfd} будет гарантированно указывать на "старый" (уже мертвый) процесс, предотвращая ошибочную отправку сигналов.
+\end{definitionbox}
+
+\texttt{pidfd} также интегрируется с \texttt{epoll}: дескриптор становится доступным для чтения (readable), когда процесс завершается. Это позволяет унифицировать ожидание сетевых событий, сигналов и завершения дочерних процессов в одном цикле.
+
+\subsection{Мониторинг файловой системы: inotify}
+
+Для отслеживания изменений в файловой системе (создание, удаление, запись) вместо неэффективного поллинга (периодического вызова \texttt{stat}) используется механизм \texttt{inotify}.
+
+При работе с \texttt{inotify} возникает сложность: события имеют переменный размер. Структура \texttt{inotify\_event} содержит поле имени файла, длина которого заранее неизвестна.
+
+\begin{figure}[h]
+  \centering
+  \shorthandoff{"} % Отключаем активную кавычку babel
+  \begin{tikzpicture}
+    \tikzstyle{block} = [draw, fill=AccentLight, minimum height=1.5em, minimum width=1.5cm, align=center]
+    \tikzstyle{vla} = [draw, fill=yellow!10, minimum height=1.5em, minimum width=2.5cm, pattern=north east lines, pattern color=gray!30, align=center]
+
+    \node[block] (h1) {Header 1};
+    \node[block, right=0cm of h1] (wd1) {wd, mask};
+    \node[block, right=0cm of wd1] (len1) {len=5};
+    % Исправлено: \textbackslash 0 вместо \0
+    \node[vla, right=0cm of len1] (name1) {\texttt{"fileA\textbackslash 0"}};
+    
+    \node[block, right=0.2cm of name1] (h2) {Header 2};
+    \node[block, right=0cm of h2] (wd2) {wd, mask};
+    \node[block, right=0cm of wd2] (len2) {len=12};
+    \node[vla, right=0cm of len2] (name2) {\texttt{"longname.txt\textbackslash 0"}};
+
+    \draw[->, thick, AccentDark] ($(h1.north)+(0,0.3)$) -- (h1.north);
+    \draw[->, thick, AccentDark] ($(h2.north)+(0,0.3)$) -- (h2.north);
+    \node[above=0.4cm of h1] {ptr};
+    \node[above=0.4cm of h2] {ptr + sizeof + len};
+  \end{tikzpicture}
+  \shorthandon{"} % Возвращаем кавычку обратно
+  \caption{Буфер чтения inotify с записями переменной длины}
+  \label{fig:inotify_buffer}
+\end{figure}
+
+Поле \texttt{name} в конце структуры является массивом переменной длины (Variable Length Array concept). При чтении из дескриптора \texttt{inotify} программа получает буфер с последовательностью таких структур. Итерирование по ним требует ручного смещения указателя:
+\[ \text{next\_ptr} = \text{current\_ptr} + \text{sizeof(struct inotify\_event)} + \text{event->len} \]
+
+Еще один нюанс \texttt{inotify} — атомарность переименования. Операция \texttt{mv A B} генерирует два события: \texttt{MOVED\_FROM} и \texttt{MOVED\_TO}. Чтобы связать их между собой (понять, что файл не просто исчез и появился, а был переименован), ядро заполняет поле \texttt{cookie} одинаковым уникальным значением для обоих событий.
+
+\begin{summarybox}
+\begin{itemize}
+    \item Сигналы обрабатываются асинхронно, что требует защиты общих данных (\texttt{volatile sig\_atomic\_t}).
+    \item Синхронные сигналы (Traps) нельзя отложить; их блокировка может привести к аварийному завершению ядра.
+    \item Современные Linux API (\texttt{signalfd}, \texttt{pidfd}, \texttt{inotify}) уходят от концепции callbacks/interrupts к концепции дескрипторов, интегрируемых в единый Event Loop (\texttt{epoll}).
+    \item \texttt{pidfd} решает критическую проблему безопасности (гонки PID) при управлении процессами.
+\end{itemize}
+\end{summarybox}
+\section{Семантика памяти в C++: Pointer Provenance и Абстрактная машина}
+
+В низкоуровневом системном программировании существует фундаментальный разрыв между тем, как память видит процессор (CPU), и тем, как её представляет компилятор языка C/C++. Для процессора память — это плоский линейный массив байтов, а адрес — простое целое число, с которым можно производить любые арифметические операции. Однако для оптимизирующего компилятора C++ (опирающегося на стандарт Abstract Machine) указатель — это гораздо более сложная сущность.
+
+Игнорирование этой разницы приводит к тому, что код, выглядящий абсолютно корректным с точки зрения ассемблера, становится некорректным (Undefined Behavior) с точки зрения стандарта языка, позволяя компилятору удалять проверки безопасности или генерировать нерабочий код.
+
+\subsection{Концепция Pointer Provenance}
+
+Ключевым понятием, объясняющим поведение современных компиляторов при работе с памятью, является \textit{происхождение указателя} (Provenance).
+
+\begin{definitionbox}{Pointer Provenance (Происхождение указателя)}
+Абстрактное свойство указателя, связывающее его с конкретным объектом аллокации (allocation site). Указатель в семантике C++ можно представить не как число \texttt{uint64\_t address}, а как кортеж:
+\[ \text{ptr} = (\text{Allocation\_ID}, \text{Offset}) \]
+Любая арифметика над указателем изменяет только \texttt{Offset}, но не \texttt{Allocation\_ID}. Доступ к памяти валиден тогда и только тогда, когда адрес физически попадает в диапазон аллокации \textbf{и} \texttt{Allocation\_ID} совпадает с ID объекта по этому адресу.
+\end{definitionbox}
+
+Рассмотрим классический пример, демонстрирующий эту концепцию. Пусть у нас есть два массива, расположенных в памяти друг за другом (что часто случается на стеке).
+
+\begin{lstlisting}[language=C++, caption={Выход за границы массива с точки зрения ассемблера и C++}, label={lst:ch2_provenance_example}]
+int* f() {
+    int a[3] = {1, 1, 1};
+    int b[3] = {2, 2, 2};
+    
+    // Assume stack grows downwards and 'b' is placed right after 'a'
+    // Address-wise: &a[3] == &b[0]
+    int* p = &a[0];
+    p += 3; // Formally this is &a[3], a past-the-end iterator
+    
+    // Attempting dereference
+    // Asm: reads b[0] (value 2)
+    // C++: Undefined Behavior
+    return *p; 
+}
+\end{lstlisting}
+
+Компилятор, анализируя этот код, рассуждает следующим образом: указатель \texttt{p} происходит от объекта \texttt{a} (Provenance: \texttt{a}). Арифметика \texttt{p += 3} создает указатель со смещением 3, но с тем же происхождением. Поскольку доступ \texttt{*p} выходит за границы объекта \texttt{a}, компилятор вправе считать этот код «мертвым» или невозможным (unreachable), даже если физически по этому адресу расположены данные массива \texttt{b}.
+
+\begin{notebox}
+Стандарт разрешает вычислять указатель на элемент, следующий за последним (\textit{past-the-end pointer}), например \texttt{\&arr[size]}, для использования в итераторах и сравнениях. Однако \textbf{разыменовывать} такой указатель запрещено, даже если за массивом есть валидная память.
+\end{notebox}
+
+\subsection{Оптимизация аллокаций: Dead Allocation Elimination}
+
+Понимание provenance позволяет объяснить агрессивные оптимизации. Рассмотрим функцию, которая выделяет память, но использует её специфическим образом.
+
+\begin{lstlisting}[language=C++, caption={Удаление "неиспользуемой" аллокации}, label={lst:ch2_dead_alloc}]
+int example() {
+    int* p = new int(42); // Allocation A
+    int* q = new int(42); // Allocation B
+    
+    // Comparison of pointers from different allocations
+    bool equal = (p == q); 
+    
+    delete p;
+    delete q;
+    
+    return equal; // Always false
+}
+\end{lstlisting}
+
+В этом примере компилятор видит, что \texttt{p} и \texttt{q} имеют разный provenance (разные вызовы \texttt{new}). Стандарт гласит, что указатели на разные живые объекты не могут быть равны. Следовательно, выражение \texttt{p == q} всегда ложно.
+
+Далее вступает в силу \textit{Dead Allocation Elimination}: раз содержимое памяти по адресам \texttt{p} и \texttt{q} никак не влияет на наблюдаемое поведение программы (кроме самого факта их существования, который мы только что оптимизировали до \texttt{false}), вызовы \texttt{new} и \texttt{delete} можно полностью удалить.
+
+В результирующем ассемблерном коде не будет вызовов аллокатора \texttt{malloc/new}, функция просто вернет 0. Это контринтуитивно, так как \texttt{new} имеет побочный эффект (выделение памяти), но компилятор имеет право его удалить, если этот эффект не наблюдаем в рамках абстрактной машины.
+
+\subsection{Проблема Roundtrip Casting и XOR Linked List}
+
+Преобразование указателя в целое число (\texttt{reinterpret\_cast<uintptr\_t>}) и обратно — это операция, поддерживаемая компиляторами, но с нюансами.
+
+Стандарт гарантирует, что \texttt{ptr -> int -> ptr} вернет исходный указатель с исходным provenance. Однако, если над числом была произведена арифметика, provenance теряется.
+
+\[ \text{ptr} \xrightarrow{\text{cast}} \text{int} \xrightarrow{\text{math}} \text{new\_int} \xrightarrow{\text{cast}} \text{new\_ptr (Provenance: ???)} \]
+
+Это ставит под угрозу такие классические структуры данных, как \textbf{XOR Linked List}.
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[node distance=2cm]
+  \node[box] (nodeA) {Node A\\addr: $A$};
+  \node[box, right=of nodeA] (nodeB) {Node B\\addr: $B$\\link: $A \oplus C$};
+  \node[box, right=of nodeB] (nodeC) {Node C\\addr: $C$};
+  
+  \draw[arrow] (nodeA) -- (nodeB);
+  \draw[arrow] (nodeB) -- (nodeC);
+  \draw[arrow] (nodeB) -- (nodeA);
+  \draw[arrow] (nodeC) -- (nodeB);
+\end{tikzpicture}
+\caption{Концепция XOR Linked List}
+\label{fig:xor_list}
+\end{figure}
+
+В XOR-списке (\figref{fig:xor_list}) вместо хранения двух указателей \texttt{prev} и \texttt{next}, хранится их побитовое исключающее ИЛИ: \texttt{link = prev \^{} next}. Чтобы перейти к следующему элементу, зная предыдущий, выполняется операция:
+\[ \text{next} = \text{link} \oplus \text{prev} \]
+
+С точки зрения C++, мы берем целое число, выполняем над ним операцию XOR и кастуем результат в указатель. Полученный указатель не имеет provenance (он «создан из воздуха» с точки зрения компилятора). Доступ по такому указателю формально является Undefined Behavior, хотя на большинстве платформ это работает. Тем не менее, теоретически компилятор может сломать этот код, решив, что раз указатель не получен от аллокатора, то он не может указывать ни на один валидный объект.
+
+\subsection{Конфликт оптимизаций LLVM: Case Study (2018)}
+
+В 2018 году исследователи обнаружили, что в компиляторе LLVM (используется в Clang, Rust, Swift) комбинация трех корректных по отдельности оптимизаций приводила к некорректной генерации кода.
+
+Рассмотрим следующий код (упрощенная модель):
+
+\begin{lstlisting}[language=C++, caption={Код, ломающий оптимизатор LLVM}, label={lst:ch2_llvm_bug}]
+void bug_demo(int *p, int *q) {
+    // p and q point to different objects (different provenance)
+    // But physically they might be equal after arithmetic logic
+    
+    uintptr_t ip = (uintptr_t)p;
+    uintptr_t iq = (uintptr_t)q;
+    
+    if (ip == iq) {
+        // If addresses match numerically, write to p
+        *p = 10; 
+    }
+}
+\end{lstlisting}
+
+Цепочка преобразований, которую выполнял компилятор:
+
+\begin{enumerate}
+    \item \textbf{Gvn (Global Value Numbering) / Constant Propagation:}
+    Компилятор видит условие \texttt{if (ip == iq)}. Внутри ветки \texttt{then} он знает, что \texttt{ip} равно \texttt{iq}. Следовательно, он может заменить использование \texttt{p} на \texttt{q} (или наоборот), так как их числовые представления равны.
+    \textit{Результат:} замена \texttt{*p = 10} на \texttt{*q = 10} (или создание эквивалентного указателя из \texttt{iq}).
+
+    \item \textbf{IntToPtr Cast Folding:}
+    Если мы привели \texttt{q} к \texttt{int}, а потом обратно, это эквивалентно исходному \texttt{q}.
+
+    \item \textbf{Dead Store Elimination (на основе Provenance):}
+    Это критический шаг. Компилятор анализирует запись \texttt{*q = 10}. Он знает, что в этой функции (по условиям вызова) мы работаем с объектом \texttt{p}. Указатель \texttt{q} имеет другой provenance. Стандарт говорит, что доступ к объекту \texttt{p} через указатель с provenance \texttt{q} невозможен (они не алиасятся).
+    \textit{Вывод компилятора:} запись \texttt{*q = 10} недостижима или не влияет на \texttt{p}. Инструкция удаления записи удаляется.
+\end{enumerate}
+
+\textbf{Итог:} В исходном коде, если адреса совпадали, запись должна была произойти. В скомпилированном коде запись исчезла. Корректная программа сломалась. Это привело к пересмотру модели памяти в LLVM и ограничению оптимизаций при работе с \texttt{inttoptr} кастами.
+
+\subsection{Практический пример: Hazard Pointers и Placement New}
+
+В высокопроизводительных базах данных (например, YDB) часто используются кастомные аллокаторы. Рассмотрим структуру, где заголовок и данные аллоцируются одним куском памяти:
+
+\begin{lstlisting}[language=C++, caption={Опасная арифметика с placement new}, label={lst:ch2_hazard_ptr}]
+struct Chunk {
+    int header;
+    // Data starts right here, after the header
+};
+
+void* mem = malloc(sizeof(Chunk) + sizeof(Data));
+Chunk* chunk = new (mem) Chunk(); // Placement new
+
+// Attempting to access data via pointer arithmetic from the header
+char* data_ptr = reinterpret_cast<char*>(chunk) + sizeof(Chunk);
+Data* data = reinterpret_cast<Data*>(data_ptr);
+
+// Constructing data in place
+new (data) Data(); 
+\end{lstlisting}
+
+Проблема здесь заключается в том, как компилятор видит объект \texttt{chunk}. Он был создан как объект типа \texttt{Chunk}. Получение указателя на \texttt{Data}, который лежит за пределами \texttt{sizeof(Chunk)}, формально является выходом за границы объекта \texttt{Chunk}.
+Хотя физически память выделена одним блоком \texttt{malloc}, с точки зрения C++ \texttt{chunk} — это указатель на объект конкретного размера. Попытка "шагнуть" за его пределы и обратиться к памяти может быть расценена как UB, если компилятор не увидит связь с исходным \texttt{malloc}.
+
+\begin{summarybox}
+\begin{itemize}
+    \item Указатель в C++ — это \textbf{адрес + provenance} (информация о происхождении).
+    \item Арифметическое равенство адресов (\texttt{0x1000 == 0x1000}) не гарантирует возможность взаимозаменяемости указателей, если они имеют разный provenance.
+    \item Компилятор имеет право удалять «мертвые» аллокации (\texttt{new} без использования), даже если это меняет наблюдаемые побочные эффекты.
+    \item Преобразование указателей в целые числа и обратно стирает provenance, что может мешать оптимизатору отслеживать зависимости (alias analysis) и приводить к удалению «лишних» записей в память.
+    \item Для написания корректных аллокаторов и низкоуровневых структур данных необходимо использовать \texttt{std::launder} (C++17) или специальные атрибуты компилятора, чтобы «отмыть» указатель и начать новый цикл жизни объекта.
+\end{itemize}
+\end{summarybox}
+
+\section{Каталог Undefined Behavior и Агрессивные Оптимизации}
+
+В основе философии языков C и C++ лежит принцип «Trust the Programmer» (Доверяй программисту). Компилятор исходит из предположения, что программист никогда не пишет некорректный код, не допускает переполнений и не выходит за границы массивов. Это позволяет отказаться от дорогостоящих проверок в рантайме (bounds checking, overflow checking) и применять агрессивные оптимизации.
+
+Однако обратной стороной этой медали является \textit{неопределенное поведение} (Undefined Behavior, UB). Если программа нарушает правила абстрактной машины, стандарт перестает гарантировать что-либо, и компилятор получает право трансформировать код любым образом, полагая, что данная ситуация недостижима.
+
+\subsection{Нарушение потока управления (Control Flow UB)}
+
+Одним из самых опасных видов UB является нарушение контрактов функций, возвращающих значение.
+
+\subsubsection{Отсутствие return в не-void функции}
+
+Согласно стандарту, если поток исполнения достигает конца функции, возвращающей значение (не \texttt{void}), и не встречает инструкции \texttt{return}, возникает Undefined Behavior.
+
+\begin{lstlisting}[language=C++, caption={Отсутствие return и генерация кода}, label={lst:ch3_missing_return}]
+int process_data(bool cond) {
+    if (cond) {
+        return 42;
+    }
+    // Missing return for the case cond == false
+}
+
+int main() {
+    process_data(false); 
+}
+\end{lstlisting}
+
+При компиляции с оптимизациями (например, \texttt{-O2}) компилятор может рассуждать так:
+\begin{enumerate}
+    \item Вызов \texttt{process\_data(false)} приведет к исполнению пути без \texttt{return}.
+    \item Этот путь является UB.
+    \item Программа, содержащая UB, некорректна.
+    \item Следовательно, случай \texttt{cond == false} невозможен.
+    \item Можно удалить проверку \texttt{if (cond)} и считать, что \texttt{cond} всегда истинно, или просто сгенерировать пустую функцию.
+\end{enumerate}
+
+На уровне ассемблера это часто приводит к тому, что функция не содержит инструкции возврата (\texttt{ret}) или восстановления стека для "невозможной" ветки. Процессор продолжает исполнение инструкций, следующих сразу за телом функции в памяти (fallthrough). Это может быть код следующей функции, данные (интерпретируемые как инструкции) или невыровненный мусор. Часто это заканчивается сигналом \texttt{SIGILL} (Illegal Instruction) или \texttt{SIGSEGV}.
+
+\begin{notebox}
+Единственным исключением является функция \texttt{main}. Стандарт C++ разрешает не писать \texttt{return 0;} в конце \texttt{main} — в этом случае компилятор подставляет его автоматически. Для всех остальных функций это строгое UB.
+\end{notebox}
+
+\subsubsection{Бесконечные циклы без побочных эффектов}
+
+Еще один контринтуитивный аспект оптимизации связан с завершаемостью программ. Стандарт C++ (до C++11 и в определенных контекстах после) гласит, что бесконечный цикл без побочных эффектов (side effects) является UB. Под побочными эффектами понимаются операции ввода-вывода, доступ к \texttt{volatile} переменным или атомикам.
+
+Если компилятор видит цикл, который просто вычисляет что-то в регистрах и никогда не завершается, он имеет право удалить этот цикл целиком, считая, что программа не должна застревать навечно.
+
+\begin{lstlisting}[language=C++, caption={«Доказательство» Великой теоремы Ферма через UB}, label={lst:ch3_fermat}]
+bool check_fermat() {
+    // Brute-force a, b, c to infinity or overflow
+    for (int a = 1; ; ++a) {
+        for (int b = 1; b <= a; ++b) {
+            for (int c = 1; c <= a + b; ++c) {
+                if (a*a*a + b*b*b == c*c*c) {
+                    return true; // Counter-example found!
+                }
+            }
+        }
+    }
+    // Execution never reaches here
+    return false;
+}
+\end{lstlisting}
+
+Компилятор анализирует этот код:
+\begin{enumerate}
+    \item В цикле нет побочных эффектов (IO, volatile).
+    \item Если цикл бесконечен, это UB. Значит, цикл \textbf{должен} завершиться.
+    \item Единственный штатный выход из цикла — \texttt{return true}.
+    \item Следовательно, функция всегда возвращает \texttt{true}.
+\end{enumerate}
+
+Оптимизатор заменяет все тело функции на инструкцию \texttt{mov eax, 1; ret}, тем самым "опровергая" теорему Ферма.
+
+\begin{notebox}
+В языке Rust конструкция \texttt{loop \{\}} является легитимным способом остановить программу или организовать вечный цикл. Однако, так как Rust использует бэкенд LLVM (общий с Clang), в прошлом возникали баги, когда LLVM удалял такие циклы, считая их UB по правилам C++. Это приводило к крашам в абсолютно безопасном (memory safe) коде на Rust.
+\end{notebox}
+
+\subsection{Арифметика и Типы данных}
+
+\subsubsection{Переполнение знаковых целых (Signed Integer Overflow)}
+
+В C++ переполнение знаковых типов (\texttt{int}, \texttt{long}) является UB. Переполнение беззнаковых (\texttt{unsigned}) определено как арифметика по модулю $2^N$.
+
+Компилятор полагается на то, что переполнения не происходит. Это позволяет делать следующие упрощения:
+\begin{itemize}
+    \item \texttt{if (x + 1 > x)} $\rightarrow$ всегда \texttt{true}.
+    \item \texttt{for (int i = 0; i < N; ++i)} $\rightarrow$ можно использовать 64-битный счетчик или векторизовать цикл, не беспокоясь о том, что \texttt{i} станет отрицательным после \texttt{INT\_MAX}.
+\end{itemize}
+
+Это может приводить к неожиданным бесконечным циклам:
+\begin{lstlisting}[language=C++, caption={Оптимизация цикла с переполнением}, label={lst:ch3_signed_overflow}]
+void check(int n) {
+    // If n = INT_MAX, theoretically loop should be infinite upon overflow
+    for (int i = 0; i < n + 100; ++i) {
+        printf("%d\n", i);
+    }
+}
+\end{lstlisting}
+Компилятор может удалить проверку \texttt{i < n + 100}, если решит, что \texttt{n + 100} не может переполниться, или наоборот, превратить цикл в бесконечный, игнорируя условие остановки.
+
+\subsubsection{Неинициализированные переменные}
+
+Чтение неинициализированной памяти — это не просто получение случайного "мусора". Это получение значения, которое может вести себя нестабильно (quantum state). Переменная \texttt{bool b}, которая не была инициализирована, может одновременно оцениваться как \texttt{true} в одной ветке оптимизации и как \texttt{false} в другой, приводя к выполнению взаимоисключающих блоков кода.
+
+\subsection{Strict Aliasing и Type-Based Alias Analysis (TBAA)}
+
+Одним из важнейших механизмов оптимизации работы с памятью является анализ алиасинга (Alias Analysis). Компилятору необходимо знать, могут ли два указателя адресовать одну и ту же ячейку памяти.
+
+\begin{definitionbox}{Strict Aliasing Rule}
+Правило строгого алиасинга гласит, что доступ к объекту в памяти может осуществляться только через указатель (или ссылку) совместимого типа.
+\begin{itemize}
+    \item Нельзя читать \texttt{float} через \texttt{int*}.
+    \item Нельзя читать \texttt{struct A} через \texttt{struct B*}.
+    \item \textbf{Исключение:} Тип \texttt{char*} (и \texttt{unsigned char*}, \texttt{std::byte*}) может алиасить любые данные. Это необходимо для реализации \texttt{memcpy} и побайтового копирования.
+\end{itemize}
+\end{definitionbox}
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[node distance=1.5cm]
+  \node[box, fill=yellow!20] (char) {\texttt{char*}, \texttt{unsigned char*}};
+  \node[box, below left=of char] (int) {\texttt{int*}};
+  \node[box, below right=of char] (float) {\texttt{float*}};
+  \node[box, below=of int] (uint) {\texttt{unsigned int*}};
+  
+  \draw[arrow, dashed] (char) -- node[left, font=\tiny] {can alias} (int);
+  \draw[arrow, dashed] (char) -- node[right, font=\tiny] {can alias} (float);
+  \draw[arrow, <->] (int) -- node[below, font=\tiny] {compatible} (uint);
+\end{tikzpicture}
+\caption{Иерархия совместимости указателей (упрощенная)}
+\label{fig:strict_aliasing}
+\end{figure}
+
+Нарушение этого правила позволяет компилятору предполагать, что записи в память через указатели разных типов \textbf{не влияют} друг на друга. Это критически важно для векторизации и регистрового кэширования.
+
+\subsubsection{Пример: std::vector<int> против std::vector<size\_t>}
+
+Рассмотрим реализацию заполнения вектора значениями.
+
+\begin{lstlisting}[language=C++, caption={Влияние типов на оптимизацию цикла}, label={lst:ch3_vector_fill}]
+template <typename T>
+void fill_vector(std::vector<T>& v, const T& val) {
+    for (size_t i = 0; i < v.size(); ++i) {
+        v[i] = val;
+    }
+}
+\end{lstlisting}
+
+Компилятор генерирует принципиально разный код для \texttt{T=int} и \texttt{T=size\_t}.
+
+\textbf{Случай 1: \texttt{std::vector<int>}}
+Тип элементов — \texttt{int}, тип размера вектора — \texttt{size\_t} (обычно \texttt{unsigned long}). Правила Strict Aliasing гарантируют, что запись в \texttt{v[i]} (типа \texttt{int}) не может изменить поле \texttt{v.size()} (типа \texttt{size\_t}) внутри структуры вектора.
+\textit{Оптимизация:} Компилятор загружает \texttt{v.size()} в регистр один раз перед циклом.
+
+\textbf{Случай 2: \texttt{std::vector<size\_t>}}
+Тип элементов — \texttt{size\_t}, тип размера — \texttt{size\_t}. Указатель на данные (\texttt{v.data()}) имеет тип \texttt{size\_t*}. Компилятор не может доказать, что массив данных вектора не перекрывается с памятью, где лежит само поле \texttt{size} структуры вектора (теоретически, вы могли создать вектор поверх его же заголовка через placement new и злые касты).
+\textit{Результат:} Компилятор вынужден перезагружать значение \texttt{v.size()} из памяти на \textbf{каждой} итерации цикла, так как запись \texttt{v[i] = val} потенциально могла изменить размер. Это блокирует авто-векторизацию и снижает производительность.
+
+Для решения таких проблем в языке C (и как расширение в C++) существует ключевое слово \texttt{restrict}, которое обещает компилятору, что указатель не алиасится ни с чем другим. В стандартном C++ часто приходится копировать размер в локальную переменную перед циклом, чтобы "подсказать" оптимизатору:
+
+\begin{lstlisting}[language=C++]
+size_t n = v.size(); // Local copy to avoid reloading
+for (size_t i = 0; i < n; ++i) v[i] = val;
+\end{lstlisting}
+
+\begin{summarybox}
+\begin{itemize}
+    \item Undefined Behavior — это не ошибка, а контракт: компилятор обещает быстрый код, если программист обещает соблюдать правила.
+    \item Отсутствие \texttt{return} в функции (кроме main) ломает поток управления и может привести к выполнению произвольного кода.
+    \item Бесконечные циклы без побочных эффектов могут быть полностью удалены.
+    \item Strict Aliasing Rule позволяет компилятору эффективно работать с памятью, но требует строгого соблюдения типов. Использование \texttt{reinterpret\_cast} между несовместимыми типами (например, \texttt{int*} в \texttt{float*}) ведет к UB.
+    \item При работе с однотипными данными (как в примере с \texttt{vector<size\_t>}) возможна пессимизация кода из-за страха компилятора перед алиасингом.
+\end{itemize}
+\end{summarybox}
+
+\section{Многопоточность, Линковка и ODR: Где ломаются абстракции}
+
+В предыдущих главах мы рассматривали код преимущественно в контексте одного потока исполнения и одного модуля трансляции. Однако реальные системные приложения работают в многопоточной среде и собираются из сотен объектных файлов. В этих условиях оптимизации, корректные локально, могут приводить к катастрофическим последствиям глобально.
+
+Компиляторы C++ традиционно оптимизируют код, исходя из модели «as-if single-threaded». Это означает, что любое преобразование кода допустимо, если оно сохраняет наблюдаемое поведение \textit{текущего} потока. Однако, когда память становится разделяемым ресурсом, это предположение вступает в конфликт с моделями согласованности памяти.
+
+\subsection{Проблема спекулятивных записей (Write Invention)}
+
+Одной из самых коварных проблем, возникающих на стыке оптимизации и многопоточности, является «изобретение записи» (Write Invention или Speculative Store).
+
+Рассмотрим функцию, которая инкрементирует глобальную переменную только при выполнении определенного условия.
+
+\begin{lstlisting}[language=C++, caption={Исходный код с условной записью}, label={lst:ch4_write_invention_source}]
+int global_counter = 0;
+
+void process(bool condition) {
+    if (condition) {
+        global_counter++;
+    } else {
+        // Heavy computation that doesn't touch global_counter
+        heavy_computation();
+    }
+}
+\end{lstlisting}
+
+С точки зрения однопоточной логики, компилятор может попытаться избавиться от условного перехода (который может портить предсказание ветвлений) и заменить его на безусловную арифметику с последующей компенсацией.
+
+\begin{lstlisting}[language=C++, caption={Некорректная оптимизация (Псевдокод)}, label={lst:ch4_write_invention_opt}]
+void process_optimized(bool condition) {
+    // Speculative write: we always increment the counter
+    int temp = global_counter;
+    global_counter = temp + 1; 
+    
+    if (!condition) {
+        // If condition was false, revert the change
+        global_counter = temp; 
+        heavy_computation();
+    }
+}
+\end{lstlisting}
+
+Для однопоточной программы эти два варианта эквивалентны. Но в многопоточной среде вариант с оптимизацией вносит \textit{состояние гонки} (Data Race).
+
+Представьте, что параллельно работает второй поток, который читает \texttt{global\_counter}, когда \texttt{condition} ложно.
+\begin{enumerate}
+    \item \textbf{Исходный код:} Второй поток всегда видит старое значение (записи нет).
+    \item \textbf{Оптимизированный код:} Второй поток может увидеть промежуточное значение (инкрементированное), которое через мгновение будет «откачено» первым потоком.
+\end{enumerate}
+
+\begin{notebox}
+Современные стандарты C++ и модели памяти (например, LLVM Memory Model) явно запрещают компиляторам создавать записи в память (store) на тех путях исполнения, где их не было в исходном коде. Это правило известно как «Do not invent stores». Тем не менее, баги такого рода периодически всплывают в старых версиях компиляторов или на экзотических архитектурах.
+\end{notebox}
+
+\subsection{One Definition Rule (ODR) и процесс линковки}
+
+Еще одна зона риска находится на этапе сборки программы. C++ использует модель раздельной компиляции: каждый \texttt{.cpp} файл компилируется в отдельный модуль трансляции (Translation Unit, TU), ничего не зная о других. Связывание этих модулей в единый исполняемый файл выполняет линкер.
+
+\begin{definitionbox}{One Definition Rule (ODR)}
+Правило одного определения гласит:
+\begin{enumerate}
+    \item В пределах одного модуля трансляции сущность (переменная, функция, класс) может быть определена только один раз.
+    \item В всей программе глобальная сущность может быть определена только один раз.
+    \item \textbf{Исключение:} Inline-функции, шаблоны и классы могут быть определены в нескольких модулях трансляции, но эти определения должны быть \textbf{побитово идентичны}.
+\end{enumerate}
+\end{definitionbox}
+
+\subsubsection{Механизм Weak Symbols}
+Когда вы объявляете функцию \texttt{inline} (или определяете метод прямо в теле класса в хедере), компилятор помечает этот символ как «слабый» (weak symbol) в объектном файле. Это инструкция для линкера: «Если встретишь несколько определений этого символа, выбери любое одно и отбрось остальные». Линкер не проверяет, что тела функций идентичны — он просто верит программисту на слово.
+
+Это открывает дорогу к нарушению ODR, которое не ловится ни компилятором, ни линкером, но приводит к Runtime-ошибкам.
+
+\begin{lstlisting}[language=C++, caption={ODR Violation: Разные определения одной inline-функции}, label={lst:ch4_odr_violation}]
+// File: module_a.cpp
+// Definition 1: sum
+inline int logic(int a, int b) { return a + b; }
+
+void check_a() {
+    if (logic(1, 2) != 3) abort(); // Expect 3
+}
+
+// File: module_b.cpp
+// Definition 2: sum + 1 (ERROR: same name, different body)
+inline int logic(int a, int b) { return a + b + 1; }
+
+void check_b() {
+    if (logic(1, 2) != 4) abort(); // Expect 4
+}
+\end{lstlisting}
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[node distance=1.5cm]
+    \node[box, align=center] (tu_a) {Module A (.o)\\Sym: \texttt{logic}\\(Weak)};
+    \node[box, right=of tu_a, align=center] (tu_b) {Module B (.o)\\Sym: \texttt{logic}\\(Weak)};
+    
+    \node[process, below=of tu_a, xshift=2.05cm, align=center] (linker) {\textbf{LINKER}\\Discards duplicates};
+    \node[box, below=of linker, align=center] (exe) {Executable\\Single implementation\\of \texttt{logic}};
+    
+    \draw[arrow] (tu_a) -- (linker);
+    \draw[arrow] (tu_b) -- (linker);
+    \draw[arrow] (linker) -- (exe);
+    % Исправлено: экранирование формулы и align
+    \node[right=0.2cm of exe, text width=4.2cm, font=\small, align=left] {The linker randomly picks the version from Module A. Then \texttt{check\_b()} calls version A and crashes, since $1+2 \neq 4$.};
+\end{tikzpicture}
+\caption{Процесс выбора реализации inline-функции линкером}
+\label{fig:linker_odr}
+\end{figure}
+
+Если собрать этот код с оптимизацией \texttt{-O2}, компилятор может подставить (заинлайнить) тела функций прямо в места вызова \texttt{check\_a} и \texttt{check\_b} \textit{до} этапа линковки. В этом случае программа может «случайно» заработать корректно. Однако при сборке \texttt{-O0} вызовы останутся, линкер выберет одну реализацию, и один из модулей сломается.
+
+\subsubsection{Static vs Inline}
+Чтобы избежать таких проблем для вспомогательных функций, следует использовать ключевое слово \texttt{static} (в C) или безымянные пространства имен (в C++). Это сообщает линкеру, что символ имеет \textit{внутреннее связывание} (internal linkage) и не должен быть виден за пределами текущего объектного файла. В таком случае в каждом модуле будет своя независимая копия функции.
+
+\subsection{Нарушение ABI: Кейс библиотеки Abseil}
+
+Еще более сложный случай нарушения ODR происходит не из-за кода, а из-за несовпадения настроек препроцессора и компилятора в разных модулях. Это классическая проблема нарушения Application Binary Interface (ABI).
+
+В библиотеке Google Abseil (и многих других, включая STL) часто используется условная компиляция для добавления отладочной информации.
+
+\begin{lstlisting}[language=C++, caption={Условное изменение структуры данных}, label={lst:ch4_abi_mismatch}]
+// header.h
+struct Container {
+    int size;
+    void* data;
+    
+#ifdef DEBUG_BUILD
+    // Additional debug fields
+    // This changes sizeof(Container) and offsets below!
+    int debug_magic; 
+    const char* creation_stacktrace;
+#endif
+
+    int capacity; // Offset depends on DEBUG_BUILD
+};
+\end{lstlisting}
+
+Представьте, что вы используете предварительно скомпилированную библиотеку, собранную в режиме \texttt{Release} (без поля \texttt{debug\_magic}). Ваше приложение вы собираете в режиме \texttt{Debug} (или с включенным Address Sanitizer), где этот макрос определен.
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}
+    % Добавляем align=center во все узлы, где есть \\
+    % Release Layout
+    \node[draw, fill=green!10, minimum width=3.5cm, minimum height=1cm, align=center] (r_size) at (0, 4) {size (0x0)};
+    \node[draw, fill=green!10, minimum width=3.5cm, minimum height=1cm, align=center] (r_data) at (0, 3) {data (0x4)};
+    \node[draw, fill=green!10, minimum width=3.5cm, minimum height=1cm, align=center] (r_cap) at (0, 2) {capacity (\textbf{0xC})};
+    \node[fit=(r_size)(r_cap), label={[align=center]above:\textbf{Library (Release)}}] (lib_box) {};
+
+    % Debug Layout
+    \node[draw, fill=red!10, minimum width=3.5cm, minimum height=1cm, align=center] (d_size) at (5, 4) {size (0x0)};
+    \node[draw, fill=red!10, minimum width=3.5cm, minimum height=1cm, align=center] (d_data) at (5, 3) {data (0x4)};
+    % Исправлено: align=center позволяет использовать \\
+    \node[draw, fill=yellow!20, minimum width=3.5cm, minimum height=1.5cm, align=center] (d_debug) at (5, 1.75) {debug\_magic (0xC)\\stacktrace};
+    \node[draw, fill=red!10, minimum width=3.5cm, minimum height=1cm, align=center] (d_cap) at (5, 0.5) {capacity (\textbf{0x18})};
+    \node[fit=(d_size)(d_cap), label={[align=center]above:\textbf{App (Debug)}}] (app_box) {};
+
+    % Connection
+    \draw[arrow, red, dashed] (r_cap.east) -- node[midway, above, sloped, font=\tiny] {Mismatch!} (d_debug.west);
+\end{tikzpicture}
+\caption{Несовпадение раскладки памяти (Layout Mismatch)}
+\label{fig:abi_mismatch}
+\end{figure}
+
+Когда ваше приложение передает указатель на \texttt{Container} в библиотечную функцию, библиотека ожидает найти поле \texttt{capacity} по смещению \texttt{0xC}. Однако в вашей версии структуры по этому смещению находится поле \texttt{debug\_magic}.
+Библиотека запишет данные в \texttt{debug\_magic}, думая, что пишет в \texttt{capacity}, или наоборот. Это приведет к порче памяти (Memory Corruption), которую крайне сложно отладить, так как ошибка возникает не в момент записи, а спустя долгое время при использовании испорченных данных.
+
+\begin{summarybox}
+\begin{itemize}
+    \item Однопоточные оптимизации могут вносить гонки данных (Data Races) в многопоточный код, если компилятор "изобретает" записи в память.
+    \item One Definition Rule — фундаментальное требование C++. Нарушение ODR (разные тела inline-функций) приводит к неопределенному поведению, так как линкер произвольно выбирает одну из реализаций.
+    \item Слабые символы (Weak Symbols) — механизм, позволяющий множественные определения, но возлагающий ответственность за их идентичность на программиста.
+    \item Нарушение ABI через несовпадение флагов препроцессора (\texttt{-DDEBUG}, \texttt{-fsanitize}) в разных модулях приводит к несовпадению раскладки структур в памяти. Всегда следите за тем, чтобы все статические библиотеки и основное приложение собирались с идентичными фундаментальными флагами.
+\end{itemize}
+\end{summarybox}
+
+\end{document}

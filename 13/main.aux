@@ -1,0 +1,107 @@
+\relax 
+\providecommand \babel@aux [2]{\global \let \babel@toc \@gobbletwo }
+\@nameuse{bbl@beforestart}
+\catcode `"\active 
+\providecommand\hyper@newdestlabel[2]{}
+\providecommand\HyField@AuxAddToFields[1]{}
+\providecommand\HyField@AuxAddToCoFields[2]{}
+\providecommand\@newglossary[4]{}
+\@newglossary{main}{glg}{gls}{glo}
+\@newglossary{acronym}{alg}{acr}{acn}
+\providecommand\@glsorder[1]{}
+\providecommand\@istfilename[1]{}
+\@istfilename{main.ist}
+\@glsorder{word}
+\babel@aux{russian}{}
+\@writefile{toc}{\contentsline {section}{\numberline {1}Асинхронная модель и Системные события: Signals, Timers, inotify}{2}{section.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.1}Введение в асинхронность и доставку сигналов}{2}{subsection.1.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {1.1.1}Процесс Init и иммунитет к сигналам}{2}{subsubsection.1.1.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.2}Классификация сигналов: Синхронные и Асинхронные}{2}{subsection.1.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {1.2.1}Асинхронные сигналы}{3}{subsubsection.1.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {1.2.2}Синхронные сигналы (Traps)}{3}{subsubsection.1.2.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Пути доставки синхронных и асинхронных сигналов}}{3}{figure.caption.1}\protected@file@percent }
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
+\newlabel{fig:signal_path}{{1}{3}{Пути доставки синхронных и асинхронных сигналов}{figure.caption.1}{}}
+\newlabel{fig:signal_path@cref}{{[figure][1][]1}{[1][3][]3}{}{}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.3}Обработка синхронных ошибок памяти}{3}{subsection.1.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {1.3.1}Lazy Process Migration}{3}{subsubsection.1.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {1.3.2}Блокировка синхронных сигналов}{4}{subsubsection.1.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.4}Эволюция API: signalfd и Event Loop}{4}{subsection.1.4}\protected@file@percent }
+\newlabel{lst:signalfd}{{1}{4}{Использование signalfd с блокировкой}{lstlisting.1}{}}
+\newlabel{lst:signalfd@cref}{{[lstlisting][1][]1}{[1][4][]4}{}{}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {1}{\ignorespaces Использование signalfd с блокировкой}}{4}{lstlisting.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.5}Управление процессами: pidfd}{5}{subsection.1.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.6}Мониторинг файловой системы: inotify}{5}{subsection.1.6}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Буфер чтения inotify с записями переменной длины}}{5}{figure.caption.2}\protected@file@percent }
+\newlabel{fig:inotify_buffer}{{2}{5}{Буфер чтения inotify с записями переменной длины}{figure.caption.2}{}}
+\newlabel{fig:inotify_buffer@cref}{{[figure][2][]2}{[1][5][]5}{}{}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {2}Семантика памяти в C++: Pointer Provenance и Абстрактная машина}{6}{section.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Концепция Pointer Provenance}{6}{subsection.2.1}\protected@file@percent }
+\newlabel{lst:ch2_provenance_example}{{2}{7}{Выход за границы массива с точки зрения ассемблера и C++}{lstlisting.2}{}}
+\newlabel{lst:ch2_provenance_example@cref}{{[lstlisting][2][]2}{[1][7][]7}{}{}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {2}{\ignorespaces Выход за границы массива с точки зрения ассемблера и C++}}{7}{lstlisting.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Оптимизация аллокаций: Dead Allocation Elimination}{7}{subsection.2.2}\protected@file@percent }
+\newlabel{lst:ch2_dead_alloc}{{3}{7}{Удаление "неиспользуемой" аллокации}{lstlisting.3}{}}
+\newlabel{lst:ch2_dead_alloc@cref}{{[lstlisting][3][]3}{[1][7][]7}{}{}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {3}{\ignorespaces Удаление "неиспользуемой" аллокации}}{7}{lstlisting.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Проблема Roundtrip Casting и XOR Linked List}{8}{subsection.2.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Концепция XOR Linked List}}{8}{figure.caption.3}\protected@file@percent }
+\newlabel{fig:xor_list}{{3}{8}{Концепция XOR Linked List}{figure.caption.3}{}}
+\newlabel{fig:xor_list@cref}{{[figure][3][]3}{[1][8][]8}{}{}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.4}Конфликт оптимизаций LLVM: Case Study (2018)}{8}{subsection.2.4}\protected@file@percent }
+\newlabel{lst:ch2_llvm_bug}{{4}{8}{Код, ломающий оптимизатор LLVM}{lstlisting.4}{}}
+\newlabel{lst:ch2_llvm_bug@cref}{{[lstlisting][4][]4}{[1][8][]8}{}{}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {4}{\ignorespaces Код, ломающий оптимизатор LLVM}}{8}{lstlisting.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.5}Практический пример: Hazard Pointers и Placement New}{9}{subsection.2.5}\protected@file@percent }
+\newlabel{lst:ch2_hazard_ptr}{{5}{9}{Опасная арифметика с placement new}{lstlisting.5}{}}
+\newlabel{lst:ch2_hazard_ptr@cref}{{[lstlisting][5][]5}{[1][9][]9}{}{}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {5}{\ignorespaces Опасная арифметика с placement new}}{9}{lstlisting.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3}Каталог Undefined Behavior и Агрессивные Оптимизации}{10}{section.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Нарушение потока управления (Control Flow UB)}{10}{subsection.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.1}Отсутствие return в не-void функции}{10}{subsubsection.3.1.1}\protected@file@percent }
+\newlabel{lst:ch3_missing_return}{{6}{10}{Отсутствие return и генерация кода}{lstlisting.6}{}}
+\newlabel{lst:ch3_missing_return@cref}{{[lstlisting][6][]6}{[1][10][]10}{}{}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {6}{\ignorespaces Отсутствие return и генерация кода}}{10}{lstlisting.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.2}Бесконечные циклы без побочных эффектов}{11}{subsubsection.3.1.2}\protected@file@percent }
+\newlabel{lst:ch3_fermat}{{7}{11}{«Доказательство» Великой теоремы Ферма через UB}{lstlisting.7}{}}
+\newlabel{lst:ch3_fermat@cref}{{[lstlisting][7][]7}{[1][11][]11}{}{}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {7}{\ignorespaces «Доказательство» Великой теоремы Ферма через UB}}{11}{lstlisting.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Арифметика и Типы данных}{12}{subsection.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.1}Переполнение знаковых целых (Signed Integer Overflow)}{12}{subsubsection.3.2.1}\protected@file@percent }
+\newlabel{lst:ch3_signed_overflow}{{8}{12}{Оптимизация цикла с переполнением}{lstlisting.8}{}}
+\newlabel{lst:ch3_signed_overflow@cref}{{[lstlisting][8][]8}{[1][12][]12}{}{}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {8}{\ignorespaces Оптимизация цикла с переполнением}}{12}{lstlisting.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.2}Неинициализированные переменные}{12}{subsubsection.3.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Strict Aliasing и Type-Based Alias Analysis (TBAA)}{13}{subsection.3.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Иерархия совместимости указателей (упрощенная)}}{13}{figure.caption.4}\protected@file@percent }
+\newlabel{fig:strict_aliasing}{{4}{13}{Иерархия совместимости указателей (упрощенная)}{figure.caption.4}{}}
+\newlabel{fig:strict_aliasing@cref}{{[figure][4][]4}{[1][13][]13}{}{}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.1}Пример: std::vector<int> против std::vector<size\_t>}{13}{subsubsection.3.3.1}\protected@file@percent }
+\newlabel{lst:ch3_vector_fill}{{9}{13}{Влияние типов на оптимизацию цикла}{lstlisting.9}{}}
+\newlabel{lst:ch3_vector_fill@cref}{{[lstlisting][9][]9}{[1][13][]13}{}{}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {9}{\ignorespaces Влияние типов на оптимизацию цикла}}{13}{lstlisting.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4}Многопоточность, Линковка и ODR: Где ломаются абстракции}{14}{section.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Проблема спекулятивных записей (Write Invention)}{14}{subsection.4.1}\protected@file@percent }
+\newlabel{lst:ch4_write_invention_source}{{10}{14}{Исходный код с условной записью}{lstlisting.10}{}}
+\newlabel{lst:ch4_write_invention_source@cref}{{[lstlisting][10][]10}{[1][14][]14}{}{}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {10}{\ignorespaces Исходный код с условной записью}}{14}{lstlisting.10}\protected@file@percent }
+\newlabel{lst:ch4_write_invention_opt}{{11}{15}{Некорректная оптимизация (Псевдокод)}{lstlisting.11}{}}
+\newlabel{lst:ch4_write_invention_opt@cref}{{[lstlisting][11][]11}{[1][15][]15}{}{}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {11}{\ignorespaces Некорректная оптимизация (Псевдокод)}}{15}{lstlisting.11}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}One Definition Rule (ODR) и процесс линковки}{15}{subsection.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.1}Механизм Weak Symbols}{16}{subsubsection.4.2.1}\protected@file@percent }
+\newlabel{lst:ch4_odr_violation}{{12}{16}{ODR Violation: Разные определения одной inline-функции}{lstlisting.12}{}}
+\newlabel{lst:ch4_odr_violation@cref}{{[lstlisting][12][]12}{[1][16][]16}{}{}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {12}{\ignorespaces ODR Violation: Разные определения одной inline-функции}}{16}{lstlisting.12}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.2}Static vs Inline}{16}{subsubsection.4.2.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Процесс выбора реализации inline-функции линкером}}{17}{figure.caption.5}\protected@file@percent }
+\newlabel{fig:linker_odr}{{5}{17}{Процесс выбора реализации inline-функции линкером}{figure.caption.5}{}}
+\newlabel{fig:linker_odr@cref}{{[figure][5][]5}{[1][16][]17}{}{}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Нарушение ABI: Кейс библиотеки Abseil}{17}{subsection.4.3}\protected@file@percent }
+\newlabel{lst:ch4_abi_mismatch}{{13}{17}{Условное изменение структуры данных}{lstlisting.13}{}}
+\newlabel{lst:ch4_abi_mismatch@cref}{{[lstlisting][13][]13}{[1][17][]17}{}{}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {13}{\ignorespaces Условное изменение структуры данных}}{17}{lstlisting.13}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Несовпадение раскладки памяти (Layout Mismatch)}}{18}{figure.caption.6}\protected@file@percent }
+\newlabel{fig:abi_mismatch}{{6}{18}{Несовпадение раскладки памяти (Layout Mismatch)}{figure.caption.6}{}}
+\newlabel{fig:abi_mismatch@cref}{{[figure][6][]6}{[1][17][]18}{}{}{}}
+\gdef \@abspage@last{18}
