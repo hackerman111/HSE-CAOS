@@ -1,7 +1,6 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2026/dev/Arch Linux) (preloaded format=pdflatex 2025.11.12)  19 DEC 2025 17:22
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2026/dev/Arch Linux) (preloaded format=pdflatex 2025.11.12)  21 DEC 2025 20:44
 entering extended mode
- \write18 enabled.
- file:line:error style messages enabled.
+ restricted \write18 enabled.
  %&-line parsing enabled.
 **"РљРѕРЅСЃРїРµРєС‚ РїРѕ РђРљРћРЎСѓ.tex"
 (./РљРѕРЅСЃРїРµРєС‚ РїРѕ РђРљРћРЎСѓ.tex
@@ -24,25 +23,31 @@ File: size12.clo 2024/06/29 v1.4n Standard LaTeX file (size option)
 \abovecaptionskip=\skip49
 \belowcaptionskip=\skip50
 \bibindent=\dimen141
-) (/usr/share/texmf-dist/tex/latex/cmap/cmap.sty
+)
+(/usr/share/texmf-dist/tex/latex/cmap/cmap.sty
 Package: cmap 2021/02/06 v1.0j CMap support: searchable PDF
-) (/usr/share/texmf-dist/tex/latex/import/import.sty
+)
+(/usr/share/texmf-dist/tex/latex/import/import.sty
 Package: import 2020/04/01  v 6.2
-) (/usr/share/texmf-dist/tex/latex/amsmath/amsmath.sty
+)
+(/usr/share/texmf-dist/tex/latex/amsmath/amsmath.sty
 Package: amsmath 2024/11/05 v2.17t AMS math features
 \@mathmargin=\skip51
 
 For additional information on amsmath, use the `?' option.
 (/usr/share/texmf-dist/tex/latex/amsmath/amstext.sty
 Package: amstext 2021/08/26 v2.01 AMS text
- (/usr/share/texmf-dist/tex/latex/amsmath/amsgen.sty
+
+(/usr/share/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
 \@emptytoks=\toks17
 \ex@=\dimen142
-)) (/usr/share/texmf-dist/tex/latex/amsmath/amsbsy.sty
+))
+(/usr/share/texmf-dist/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 \pmbraise@=\dimen143
-) (/usr/share/texmf-dist/tex/latex/amsmath/amsopn.sty
+)
+(/usr/share/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 2022/04/08 v2.04 operator names
 )
 \inf@bad=\count271
@@ -92,26 +97,32 @@ LaTeX Info: Redefining \Relbar on input line 970.
 \mathdisplay@stack=\toks21
 LaTeX Info: Redefining \[ on input line 2953.
 LaTeX Info: Redefining \] on input line 2954.
-) (/usr/share/texmf-dist/tex/latex/amsfonts/amssymb.sty
+)
+(/usr/share/texmf-dist/tex/latex/amsfonts/amssymb.sty
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
- (/usr/share/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+
+(/usr/share/texmf-dist/tex/latex/amsfonts/amsfonts.sty
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 \symAMSa=\mathgroup4
 \symAMSb=\mathgroup5
 LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
-)) (/usr/share/texmf-dist/tex/latex/base/inputenc.sty
+))
+(/usr/share/texmf-dist/tex/latex/base/inputenc.sty
 Package: inputenc 2024/02/08 v1.3d Input encoding file
 \inpenc@prehook=\toks22
 \inpenc@posthook=\toks23
-) (/usr/share/texmf-dist/tex/latex/base/fontenc.sty
+)
+(/usr/share/texmf-dist/tex/latex/base/fontenc.sty
 Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
- (/usr/share/texmf-dist/tex/latex/cyrillic/t2aenc.def
+
+(/usr/share/texmf-dist/tex/latex/cyrillic/t2aenc.def
 File: t2aenc.def 2023/11/07 v1.0k Cyrillic encoding definition file
 Now handling font encoding T2A ...
 ... processing UTF-8 mapping file for font encoding T2A
- (/usr/share/texmf-dist/tex/latex/base/t2aenc.dfu
+
+(/usr/share/texmf-dist/tex/latex/base/t2aenc.dfu
 File: t2aenc.dfu 2022/06/07 v1.3c UTF-8 support
    defining Unicode char U+00A4 (decimal 164)
    defining Unicode char U+00A7 (decimal 167)
@@ -312,33 +323,44 @@ File: t2aenc.dfu 2022/06/07 v1.3c UTF-8 support
    defining Unicode char U+FB05 (decimal 64261)
    defining Unicode char U+FB06 (decimal 64262)
 ))
-LaTeX Font Info:    Trying to load font information for T2A+cmr on input line 116.
- (/usr/share/texmf-dist/tex/latex/cyrillic/t2acmr.fd
+LaTeX Font Info:    Trying to load font information for T2A+cmr on input line 1
+16.
+
+(/usr/share/texmf-dist/tex/latex/cyrillic/t2acmr.fd
 File: t2acmr.fd 2001/08/11 v1.0a Computer Modern Cyrillic font definitions
-)<<t2a.cmap>>) (/usr/share/texmf-dist/tex/generic/babel/babel.sty
-Package: babel 2025/02/14 v25.4 The multilingual framework for pdfLaTeX, LuaLaTeX and XeLaTeX
+)<<t2a.cmap>>)
+(/usr/share/texmf-dist/tex/generic/babel/babel.sty
+Package: babel 2025/02/14 v25.4 The multilingual framework for pdfLaTeX, LuaLaT
+eX and XeLaTeX
 \babel@savecnt=\count283
 \U@D=\dimen151
 \l@unhyphenated=\language12
- (/usr/share/texmf-dist/tex/generic/babel/txtbabel.def)
+
+(/usr/share/texmf-dist/tex/generic/babel/txtbabel.def)
 \bbl@readstream=\read2
 \bbl@dirlevel=\count284
- (/usr/share/texmf-dist/tex/generic/babel-russian/russianb.ldf
+
+(/usr/share/texmf-dist/tex/generic/babel-russian/russianb.ldf
 File: russianb.ldf 2021/01/10 1.3m Russian support for the Babel system
 Language: russian 2020/09/09 1.3k Russian support for the Babel system
 Package babel Info: Making " an active character on input line 124.
 Package babel Info: Default for \cyrdash is provided on input line 163.
-)) (/usr/share/texmf-dist/tex/generic/babel/locale/ru/babel-russian.tex
+))
+(/usr/share/texmf-dist/tex/generic/babel/locale/ru/babel-russian.tex
 Package babel Info: Importing font and identification data for russian
 (babel)             from babel-ru.ini. Reported on input line 11.
-) (/usr/share/texmf-dist/tex/latex/geometry/geometry.sty
+)
+(/usr/share/texmf-dist/tex/latex/geometry/geometry.sty
 Package: geometry 2020/01/02 v5.9 Page Geometry
- (/usr/share/texmf-dist/tex/latex/graphics/keyval.sty
+
+(/usr/share/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
 \KV@toks@=\toks24
-) (/usr/share/texmf-dist/tex/generic/iftex/ifvtex.sty
+)
+(/usr/share/texmf-dist/tex/generic/iftex/ifvtex.sty
 Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
- (/usr/share/texmf-dist/tex/generic/iftex/iftex.sty
+
+(/usr/share/texmf-dist/tex/generic/iftex/iftex.sty
 Package: iftex 2024/12/12 v1.0g TeX engine tests
 ))
 \Gm@cnth=\count285
@@ -353,9 +375,11 @@ Package: iftex 2024/12/12 v1.0g TeX engine tests
 \Gm@layouthoffset=\dimen158
 \Gm@layoutvoffset=\dimen159
 \Gm@dimlist=\toks25
-) (/usr/share/texmf-dist/tex/latex/microtype/microtype.sty
+)
+(/usr/share/texmf-dist/tex/latex/microtype/microtype.sty
 Package: microtype 2025/02/11 v3.2a Micro-typographical refinements (RS)
- (/usr/share/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+
+(/usr/share/texmf-dist/tex/latex/etoolbox/etoolbox.sty
 Package: etoolbox 2025/02/11 v2.5l e-TeX tools for LaTeX (JAW)
 \etb@tempcnta=\count288
 )
@@ -371,28 +395,36 @@ LaTeX Info: Redefining \textls on input line 1449.
 LaTeX Info: Redefining \microtypecontext on input line 2053.
 LaTeX Info: Redefining \textmicrotypecontext on input line 2070.
 \MT@listname@count=\count290
- (/usr/share/texmf-dist/tex/latex/microtype/microtype-pdftex.def
+
+(/usr/share/texmf-dist/tex/latex/microtype/microtype-pdftex.def
 File: microtype-pdftex.def 2025/02/11 v3.2a Definitions specific to pdftex (RS)
+
 LaTeX Info: Redefining \lsstyle on input line 944.
 LaTeX Info: Redefining \lslig on input line 944.
 \MT@outer@space=\skip54
 )
 Package microtype Info: Loading configuration file microtype.cfg.
- (/usr/share/texmf-dist/tex/latex/microtype/microtype.cfg
+
+(/usr/share/texmf-dist/tex/latex/microtype/microtype.cfg
 File: microtype.cfg 2025/02/11 v3.2a microtype main configuration file (RS)
 )
 LaTeX Info: Redefining \microtypesetup on input line 3065.
-) (/usr/share/texmf-dist/tex/latex/tools/indentfirst.sty
+)
+(/usr/share/texmf-dist/tex/latex/tools/indentfirst.sty
 Package: indentfirst 2023/07/02 v1.03 Indent first paragraph (DPC)
-) (/usr/share/texmf-dist/tex/latex/xcolor/xcolor.sty
+)
+(/usr/share/texmf-dist/tex/latex/xcolor/xcolor.sty
 Package: xcolor 2024/09/29 v3.02 LaTeX color extensions (UK)
- (/usr/share/texmf-dist/tex/latex/graphics-cfg/color.cfg
+
+(/usr/share/texmf-dist/tex/latex/graphics-cfg/color.cfg
 File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
 Package xcolor Info: Driver file: pdftex.def on input line 274.
- (/usr/share/texmf-dist/tex/latex/graphics-def/pdftex.def
+
+(/usr/share/texmf-dist/tex/latex/graphics-def/pdftex.def
 File: pdftex.def 2024/04/13 v1.2c Graphics/color driver for pdftex
-) (/usr/share/texmf-dist/tex/latex/graphics/mathcolor.ltx)
+)
+(/usr/share/texmf-dist/tex/latex/graphics/mathcolor.ltx)
 Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1349.
 Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1353.
 Package xcolor Info: Model `RGB' extended on input line 1365.
@@ -402,9 +434,11 @@ Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1369.
 Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1370.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1371.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1372.
-) (/usr/share/texmf-dist/tex/latex/colortbl/colortbl.sty
+)
+(/usr/share/texmf-dist/tex/latex/colortbl/colortbl.sty
 Package: colortbl 2024/07/06 v1.0i Color table columns (DPC)
- (/usr/share/texmf-dist/tex/latex/tools/array.sty
+
+(/usr/share/texmf-dist/tex/latex/tools/array.sty
 Package: array 2024/10/17 v2.6g Tabular extension package (FMi)
 \col@sep=\dimen161
 \ar@mcellbox=\box55
@@ -417,52 +451,69 @@ Package: array 2024/10/17 v2.6g Tabular extension package (FMi)
 \everycr=\toks29
 \minrowclearance=\skip57
 \rownum=\count291
-) (/usr/share/texmf-dist/tex/latex/hyperref/hyperref.sty
+)
+(/usr/share/texmf-dist/tex/latex/hyperref/hyperref.sty
 Package: hyperref 2024-11-05 v7.01l Hypertext links for LaTeX
- (/usr/share/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty
+
+(/usr/share/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty
 Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
-) (/usr/share/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty
+)
+(/usr/share/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty
 Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
-) (/usr/share/texmf-dist/tex/generic/pdfescape/pdfescape.sty
+)
+(/usr/share/texmf-dist/tex/generic/pdfescape/pdfescape.sty
 Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
- (/usr/share/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
+
+(/usr/share/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
 Package: ltxcmds 2023-12-04 v1.26 LaTeX kernel commands for general use (HO)
 )
 (/usr/share/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
-Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO)
- (/usr/share/texmf-dist/tex/generic/infwarerr/infwarerr.sty
+Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+(/usr/share/texmf-dist/tex/generic/infwarerr/infwarerr.sty
 Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
 )
 Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
 Package pdftexcmds Info: \pdfdraftmode found.
-)) (/usr/share/texmf-dist/tex/latex/hycolor/hycolor.sty
+))
+(/usr/share/texmf-dist/tex/latex/hycolor/hycolor.sty
 Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
-) (/usr/share/texmf-dist/tex/latex/hyperref/nameref.sty
+)
+(/usr/share/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2023-11-26 v2.56 Cross-referencing by name of section
- (/usr/share/texmf-dist/tex/latex/refcount/refcount.sty
+
+(/usr/share/texmf-dist/tex/latex/refcount/refcount.sty
 Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
-) (/usr/share/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
+)
+(/usr/share/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
- (/usr/share/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+
+(/usr/share/texmf-dist/tex/latex/kvoptions/kvoptions.sty
 Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
 ))
 \c@section@level=\count292
-) (/usr/share/texmf-dist/tex/generic/stringenc/stringenc.sty
-Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO)
+)
+(/usr/share/texmf-dist/tex/generic/stringenc/stringenc.sty
+Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO
+)
 )
 \@linkdim=\dimen163
 \Hy@linkcounter=\count293
 \Hy@pagecounter=\count294
- (/usr/share/texmf-dist/tex/latex/hyperref/pd1enc.def
+
+(/usr/share/texmf-dist/tex/latex/hyperref/pd1enc.def
 File: pd1enc.def 2024-11-05 v7.01l Hyperref: PDFDocEncoding definition (HO)
 Now handling font encoding PD1 ...
 ... no UTF-8 mapping file for font encoding PD1
-) (/usr/share/texmf-dist/tex/generic/intcalc/intcalc.sty
+)
+(/usr/share/texmf-dist/tex/generic/intcalc/intcalc.sty
 Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 )
 \Hy@SavedSpaceFactor=\count295
- (/usr/share/texmf-dist/tex/latex/hyperref/puenc.def
+
+(/usr/share/texmf-dist/tex/latex/hyperref/puenc.def
 File: puenc.def 2024-11-05 v7.01l Hyperref: PDF Unicode definition (HO)
 Now handling font encoding PU ...
 ... no UTF-8 mapping file for font encoding PU
@@ -477,16 +528,20 @@ Package hyperref Info: Backreferencing OFF on input line 4177.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4424.
 \c@Hy@tempcnt=\count296
- (/usr/share/texmf-dist/tex/latex/url/url.sty
+
+(/usr/share/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip18
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
 LaTeX Info: Redefining \url on input line 4763.
 \XeTeXLinkMargin=\dimen164
- (/usr/share/texmf-dist/tex/generic/bitset/bitset.sty
+
+(/usr/share/texmf-dist/tex/generic/bitset/bitset.sty
 Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
- (/usr/share/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
-Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO)
+
+(/usr/share/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
+Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
+)
 ))
 \Fld@menulength=\count297
 \Field@Width=\dimen165
@@ -498,7 +553,8 @@ Package hyperref Info: backreferencing OFF on input line 6057.
 Package hyperref Info: Link coloring OFF on input line 6062.
 Package hyperref Info: Link coloring with OCG OFF on input line 6067.
 Package hyperref Info: PDF/A mode OFF on input line 6072.
- (/usr/share/texmf-dist/tex/latex/base/atbegshi-ltx.sty
+
+(/usr/share/texmf-dist/tex/latex/base/atbegshi-ltx.sty
 Package: atbegshi-ltx 2021/01/10 v1.0c Emulation of the original atbegshi
 package with kernel methods
 )
@@ -507,25 +563,32 @@ package with kernel methods
 \c@Hfootnote=\count300
 )
 Package hyperref Info: Driver (autodetected): hpdftex.
- (/usr/share/texmf-dist/tex/latex/hyperref/hpdftex.def
+
+(/usr/share/texmf-dist/tex/latex/hyperref/hpdftex.def
 File: hpdftex.def 2024-11-05 v7.01l Hyperref driver for pdfTeX
- (/usr/share/texmf-dist/tex/latex/base/atveryend-ltx.sty
-Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atveryend package
+
+(/usr/share/texmf-dist/tex/latex/base/atveryend-ltx.sty
+Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atveryend pac
+kage
 with kernel methods
 )
 \Fld@listcount=\count301
 \c@bookmark@seq@number=\count302
- (/usr/share/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+
+(/usr/share/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
 Package: rerunfilecheck 2022-07-10 v1.10 Rerun checks for auxiliary files (HO)
- (/usr/share/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
+
+(/usr/share/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
 Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
 )
-Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 285.
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+85.
 )
 \Hy@SectionHShift=\skip58
 )
 Package hyperref Info: Option `colorlinks' set `true' on input line 36.
- (/usr/share/texmf-dist/tex/latex/cleveref/cleveref.sty
+
+(/usr/share/texmf-dist/tex/latex/cleveref/cleveref.sty
 Package: cleveref 2018/03/27 v0.21.4 Intelligent cross-referencing
 Package cleveref Info: `hyperref' support loaded on input line 2370.
 LaTeX Info: Redefining \cref on input line 2370.
@@ -538,11 +601,16 @@ LaTeX Info: Redefining \cpagerefrange on input line 2370.
 LaTeX Info: Redefining \Cpagerefrange on input line 2370.
 LaTeX Info: Redefining \labelcref on input line 2370.
 LaTeX Info: Redefining \labelcpageref on input line 2370.
-Package cleveref Info: always capitalise cross-reference names on input line 7825.
-Package cleveref Info: include cross-reference names in hyperlinks on input line 7836.
-Package cleveref Info: include cross-reference names in hyperlinks on input line 7852.
-Package cleveref Info: always capitalise cross-reference names on input line 7852.
-) (/usr/share/texmf-dist/tex/latex/titlesec/titlesec.sty
+Package cleveref Info: always capitalise cross-reference names on input line 78
+25.
+Package cleveref Info: include cross-reference names in hyperlinks on input lin
+e 7836.
+Package cleveref Info: include cross-reference names in hyperlinks on input lin
+e 7852.
+Package cleveref Info: always capitalise cross-reference names on input line 78
+52.
+)
+(/usr/share/texmf-dist/tex/latex/titlesec/titlesec.sty
 Package: titlesec 2025/01/04 v2.17 Sectioning titles
 \ttl@box=\box57
 \beforetitleunit=\skip59
@@ -553,8 +621,10 @@ Package: titlesec 2025/01/04 v2.17 Sectioning titles
 \titlewidth=\dimen169
 \titlewidthlast=\dimen170
 \titlewidthfirst=\dimen171
-) (/usr/share/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
+)
+(/usr/share/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
 Package: fancyhdr 2025/02/07 v5.2 Extensive control of page headers and footers
+
 \f@nch@headwidth=\skip61
 \f@nch@offset@elh=\skip62
 \f@nch@offset@erh=\skip63
@@ -570,9 +640,11 @@ Package: fancyhdr 2025/02/07 v5.2 Extensive control of page headers and footers
 \f@nch@widthC=\skip73
 \f@nch@widthR=\skip74
 \@temptokenb=\toks31
-) (/usr/share/texmf-dist/tex/latex/caption/caption.sty
+)
+(/usr/share/texmf-dist/tex/latex/caption/caption.sty
 Package: caption 2023/08/05 v3.6o Customizing captions (AR)
- (/usr/share/texmf-dist/tex/latex/caption/caption3.sty
+
+(/usr/share/texmf-dist/tex/latex/caption/caption3.sty
 Package: caption3 2023/07/31 v2.4d caption3 kernel (AR)
 \caption@tempdima=\dimen172
 \captionmargin=\dimen173
@@ -587,13 +659,15 @@ Package caption Info: Standard document class detected.
 \c@caption@flags=\count303
 \c@continuedfloat=\count304
 Package caption Info: hyperref package is loaded.
-) (/usr/share/texmf-dist/tex/latex/caption/subcaption.sty
+)
+(/usr/share/texmf-dist/tex/latex/caption/subcaption.sty
 Package: subcaption 2023/07/28 v1.6b Sub-captions (AR)
 Package caption Info: New subtype `subfigure' on input line 238.
 \c@subfigure=\count305
 Package caption Info: New subtype `subtable' on input line 238.
 \c@subtable=\count306
-) (/usr/share/texmf-dist/tex/latex/siunitx/siunitx.sty
+)
+(/usr/share/texmf-dist/tex/latex/siunitx/siunitx.sty
 Package: siunitx 2025-02-27 v3.4.6 A comprehensive (SI) units package
 \l__siunitx_number_uncert_offset_int=\count307
 \l__siunitx_number_exponent_fixed_int=\count308
@@ -609,8 +683,10 @@ Package: siunitx 2025-02-27 v3.4.6 A comprehensive (SI) units package
 \l__siunitx_angle_marker_box=\box58
 \l__siunitx_angle_unit_box=\box59
 \l__siunitx_compound_count_int=\count317
- (/usr/share/texmf-dist/tex/latex/translations/translations.sty
-Package: translations 2022/02/05 v1.12 internationalization of LaTeX2e packages (CN)
+
+(/usr/share/texmf-dist/tex/latex/translations/translations.sty
+Package: translations 2022/02/05 v1.12 internationalization of LaTeX2e packages
+ (CN)
 )
 \l__siunitx_table_tmp_box=\box60
 \l__siunitx_table_tmp_dim=\dimen181
@@ -635,7 +711,8 @@ Package siunitx Info: Option "detect-all" has been deprecated in this release.
 (siunitx)             text-family-to-math = true, text-series-to-math = true"
 (siunitx)             as a replacement.
 
- (/usr/share/texmf-dist/tex/latex/booktabs/booktabs.sty
+
+(/usr/share/texmf-dist/tex/latex/booktabs/booktabs.sty
 Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
 \heavyrulewidth=\dimen185
 \lightrulewidth=\dimen186
@@ -654,7 +731,8 @@ Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
 \@thisruleclass=\count323
 \@lastruleclass=\count324
 \@thisrulewidth=\dimen197
-) (/usr/share/texmf-dist/tex/latex/tools/tabularx.sty
+)
+(/usr/share/texmf-dist/tex/latex/tools/tabularx.sty
 Package: tabularx 2023/12/11 v2.12a `tabularx' package (DPC)
 \TX@col@width=\dimen198
 \TX@old@table=\dimen199
@@ -663,7 +741,8 @@ Package: tabularx 2023/12/11 v2.12a `tabularx' package (DPC)
 \TX@delta=\dimen258
 \TX@cols=\count325
 \TX@ftn=\toks32
-) (/usr/share/texmf-dist/tex/latex/enumitem/enumitem.sty
+)
+(/usr/share/texmf-dist/tex/latex/enumitem/enumitem.sty
 Package: enumitem 2025/02/06 v3.11 Customized lists
 \labelindent=\skip75
 \enit@outerparindent=\dimen259
@@ -671,13 +750,17 @@ Package: enumitem 2025/02/06 v3.11 Customized lists
 \enit@inbox=\box66
 \enit@count@id=\count326
 \enitdp@description=\count327
-) (/usr/share/texmf-dist/tex/latex/graphics/graphicx.sty
+)
+(/usr/share/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
- (/usr/share/texmf-dist/tex/latex/graphics/graphics.sty
+
+(/usr/share/texmf-dist/tex/latex/graphics/graphics.sty
 Package: graphics 2024/08/06 v1.4g Standard LaTeX Graphics (DPC,SPQR)
- (/usr/share/texmf-dist/tex/latex/graphics/trig.sty
+
+(/usr/share/texmf-dist/tex/latex/graphics/trig.sty
 Package: trig 2023/12/02 v1.11 sin cos tan (DPC)
-) (/usr/share/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+)
+(/usr/share/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: pdftex.def on input line 106.
@@ -685,22 +768,34 @@ Package graphics Info: Driver file: pdftex.def on input line 106.
 \Gin@req@height=\dimen260
 \Gin@req@width=\dimen261
 )
-(/usr/share/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty (/usr/share/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty (/usr/share/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty (/usr/share/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
+(/usr/share/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
+(/usr/share/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
+(/usr/share/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
+(/usr/share/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
 \pgfutil@everybye=\toks34
 \pgfutil@tempdima=\dimen262
 \pgfutil@tempdimb=\dimen263
-) (/usr/share/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
+)
+(/usr/share/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
 \pgfutil@abb=\box67
-) (/usr/share/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex (/usr/share/texmf-dist/tex/generic/pgf/pgf.revision.tex)
+)
+(/usr/share/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex
+(/usr/share/texmf-dist/tex/generic/pgf/pgf.revision.tex)
 Package: pgfrcs 2023-01-15 v3.1.10 (3.1.10)
 ))
 Package: pgf 2023-01-15 v3.1.10 (3.1.10)
- (/usr/share/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty (/usr/share/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty (/usr/share/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
+
+(/usr/share/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty
+(/usr/share/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
+(/usr/share/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
 Package: pgfsys 2023-01-15 v3.1.10 (3.1.10)
- (/usr/share/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
+
+(/usr/share/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
 \pgfkeys@pathtoks=\toks35
 \pgfkeys@temptoks=\toks36
- (/usr/share/texmf-dist/tex/generic/pgf/utilities/pgfkeyslibraryfiltered.code.tex
+
+(/usr/share/texmf-dist/tex/generic/pgf/utilities/pgfkeyslibraryfiltered.code.te
+x
 \pgfkeys@tmptoks=\toks37
 ))
 \pgf@x=\dimen264
@@ -727,29 +822,50 @@ Package: pgfsys 2023-01-15 v3.1.10 (3.1.10)
 File: pgf.cfg 2023-01-15 v3.1.10 (3.1.10)
 )
 Driver file for pgf: pgfsys-pdftex.def
- (/usr/share/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
+
+(/usr/share/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
 File: pgfsys-pdftex.def 2023-01-15 v3.1.10 (3.1.10)
- (/usr/share/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.def
+
+(/usr/share/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.def
 File: pgfsys-common-pdf.def 2023-01-15 v3.1.10 (3.1.10)
-))) (/usr/share/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.tex
+)))
+(/usr/share/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.tex
 File: pgfsyssoftpath.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgfsyssoftpath@smallbuffer@items=\count333
 \pgfsyssoftpath@bigbuffer@items=\count334
-) (/usr/share/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.tex
+)
+(/usr/share/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.tex
 File: pgfsysprotocol.code.tex 2023-01-15 v3.1.10 (3.1.10)
-)) (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
+))
+(/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
 Package: pgfcore 2023-01-15 v3.1.10 (3.1.10)
- (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex) (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
+
+(/usr/share/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex
+(/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex)
+(/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
 \pgfmath@dimen=\dimen274
 \pgfmath@count=\count335
 \pgfmath@box=\box68
 \pgfmath@toks=\toks41
 \pgfmath@stack@operand=\toks42
 \pgfmath@stack@operation=\toks43
-) (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex) (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code.tex) (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigonometric.code.tex) (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.random.code.tex) (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.comparison.code.tex) (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.tex) (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round.code.tex)
-(/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.tex) (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerarithmetics.code.tex) (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex) (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
+)
+(/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex)
+(/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code.tex)
+(/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigonometric.code
+.tex)
+(/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.random.code.tex)
+(/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.comparison.code.te
+x) (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.tex)
+(/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round.code.tex)
+(/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.tex)
+(/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerarithmetics
+.code.tex) (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex)
+(/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
 \c@pgfmathroundto@lastzeros=\count336
-)) (/usr/share/texmf-dist/tex/generic/pgf/math/pgfint.code.tex) (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.tex
+))
+(/usr/share/texmf-dist/tex/generic/pgf/math/pgfint.code.tex)
+(/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.tex
 File: pgfcorepoints.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgf@picminx=\dimen275
 \pgf@picmaxx=\dimen276
@@ -765,7 +881,8 @@ File: pgfcorepoints.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgf@yy=\dimen286
 \pgf@zx=\dimen287
 \pgf@zy=\dimen288
-) (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruct.code.tex
+)
+(/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruct.code.tex
 File: pgfcorepathconstruct.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgf@path@lastx=\dimen289
 \pgf@path@lasty=\dimen290
@@ -773,68 +890,93 @@ File: pgfcorepathconstruct.code.tex 2023-01-15 v3.1.10 (3.1.10)
 File: pgfcorepathusage.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgf@shorten@end@additional=\dimen291
 \pgf@shorten@start@additional=\dimen292
-) (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.tex
+)
+(/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.tex
 File: pgfcorescopes.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgfpic=\box69
 \pgf@hbox=\box70
 \pgf@layerbox@main=\box71
 \pgf@picture@serial@count=\count337
-) (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.code.tex
+)
+(/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.code.tex
 File: pgfcoregraphicstate.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgflinewidth=\dimen293
-) (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformations.code.tex
+)
+(/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformations.code.t
+ex
 File: pgfcoretransformations.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgf@pt@x=\dimen294
 \pgf@pt@y=\dimen295
 \pgf@pt@temp=\dimen296
 ) (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.code.tex
 File: pgfcorequick.code.tex 2023-01-15 v3.1.10 (3.1.10)
-) (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.code.tex
+)
+(/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.code.tex
 File: pgfcoreobjects.code.tex 2023-01-15 v3.1.10 (3.1.10)
-) (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathprocessing.code.tex
+)
+(/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathprocessing.code.te
+x
 File: pgfcorepathprocessing.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ) (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.code.tex
 File: pgfcorearrows.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgfarrowsep=\dimen297
-) (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
+)
+(/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
 File: pgfcoreshade.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgf@max=\dimen298
 \pgf@sys@shading@range@num=\count338
 \pgf@shadingcount=\count339
-) (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
+)
+(/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
 File: pgfcoreimage.code.tex 2023-01-15 v3.1.10 (3.1.10)
-) (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.tex
+)
+(/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.tex
 File: pgfcoreexternal.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgfexternal@startupbox=\box72
-) (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.code.tex
+)
+(/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.code.tex
 File: pgfcorelayers.code.tex 2023-01-15 v3.1.10 (3.1.10)
-) (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransparency.code.tex
+)
+(/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransparency.code.tex
 File: pgfcoretransparency.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ) (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.code.tex
 File: pgfcorepatterns.code.tex 2023-01-15 v3.1.10 (3.1.10)
-) (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorerdf.code.tex
+)
+(/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorerdf.code.tex
 File: pgfcorerdf.code.tex 2023-01-15 v3.1.10 (3.1.10)
-))) (/usr/share/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.code.tex
+)))
+(/usr/share/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.code.tex
 File: pgfmoduleshapes.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgfnodeparttextbox=\box73
-) (/usr/share/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.tex
+)
+(/usr/share/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.tex
 File: pgfmoduleplot.code.tex 2023-01-15 v3.1.10 (3.1.10)
-) (/usr/share/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65.sty
+)
+(/usr/share/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65.sty
 Package: pgfcomp-version-0-65 2023-01-15 v3.1.10 (3.1.10)
 \pgf@nodesepstart=\dimen299
 \pgf@nodesepend=\dimen300
-) (/usr/share/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18.sty
+)
+(/usr/share/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18.sty
 Package: pgfcomp-version-1-18 2023-01-15 v3.1.10 (3.1.10)
 ))
-(/usr/share/texmf-dist/tex/latex/pgf/utilities/pgffor.sty (/usr/share/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty (/usr/share/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex)) (/usr/share/texmf-dist/tex/latex/pgf/math/pgfmath.sty (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex)) (/usr/share/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
+(/usr/share/texmf-dist/tex/latex/pgf/utilities/pgffor.sty
+(/usr/share/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty
+(/usr/share/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex))
+(/usr/share/texmf-dist/tex/latex/pgf/math/pgfmath.sty
+(/usr/share/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex))
+(/usr/share/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
 Package: pgffor 2023-01-15 v3.1.10 (3.1.10)
 \pgffor@iter=\dimen301
 \pgffor@skip=\dimen302
 \pgffor@stack=\toks44
 \pgffor@toks=\toks45
-)) (/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
+))
+(/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
 Package: tikz 2023-01-15 v3.1.10 (3.1.10)
- (/usr/share/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers.code.tex
+
+(/usr/share/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers.code.te
+x
 File: pgflibraryplothandlers.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgf@plot@mark@count=\count340
 \pgfplotmarksize=\dimen303
@@ -862,31 +1004,54 @@ File: pgfmodulematrix.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgf@matrix@numberofcolumns=\count347
 )
 \tikz@expandcount=\count348
- (/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopaths.code.tex
+
+(/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrary
+topaths.code.tex
 File: tikzlibrarytopaths.code.tex 2023-01-15 v3.1.10 (3.1.10)
-))) (/usr/share/texmf-dist/tex/generic/pgf/libraries/pgflibraryarrows.meta.code.tex
+)))
+(/usr/share/texmf-dist/tex/generic/pgf/libraries/pgflibraryarrows.meta.code.tex
 File: pgflibraryarrows.meta.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgfarrowinset=\dimen312
 \pgfarrowlength=\dimen313
 \pgfarrowwidth=\dimen314
 \pgfarrowlinewidth=\dimen315
-) (/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarypositioning.code.tex
+)
+(/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrary
+positioning.code.tex
 File: tikzlibrarypositioning.code.tex 2023-01-15 v3.1.10 (3.1.10)
-) (/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshapes.geometric.code.tex
+)
+(/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrary
+shapes.geometric.code.tex
 File: tikzlibraryshapes.geometric.code.tex 2023-01-15 v3.1.10 (3.1.10)
- (/usr/share/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibraryshapes.geometric.code.tex
+
+(/usr/share/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibraryshapes.geomet
+ric.code.tex
 File: pgflibraryshapes.geometric.code.tex 2023-01-15 v3.1.10 (3.1.10)
-)) (/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarycalc.code.tex
+))
+(/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrary
+calc.code.tex
 File: tikzlibrarycalc.code.tex 2023-01-15 v3.1.10 (3.1.10)
-) (/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryfit.code.tex
+)
+(/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrary
+fit.code.tex
 File: tikzlibraryfit.code.tex 2023-01-15 v3.1.10 (3.1.10)
-) (/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshadows.code.tex
+)
+(/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrary
+shadows.code.tex
 File: tikzlibraryshadows.code.tex 2023-01-15 v3.1.10 (3.1.10)
- (/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryfadings.code.tex
+
+(/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrary
+fadings.code.tex
 File: tikzlibraryfadings.code.tex 2023-01-15 v3.1.10 (3.1.10)
- (/usr/share/texmf-dist/tex/generic/pgf/libraries/pgflibraryfadings.code.tex
+
+(/usr/share/texmf-dist/tex/generic/pgf/libraries/pgflibraryfadings.code.tex
 File: pgflibraryfadings.code.tex 2023-01-15 v3.1.10 (3.1.10)
-))) (/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecorations.pathreplacing.code.tex (/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecorations.code.tex (/usr/share/texmf-dist/tex/generic/pgf/modules/pgfmoduledecorations.code.tex
+)))
+(/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrary
+decorations.pathreplacing.code.tex
+(/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrary
+decorations.code.tex
+(/usr/share/texmf-dist/tex/generic/pgf/modules/pgfmoduledecorations.code.tex
 \pgfdecoratedcompleteddistance=\dimen316
 \pgfdecoratedremainingdistance=\dimen317
 \pgfdecoratedinputsegmentcompleteddistance=\dimen318
@@ -897,21 +1062,29 @@ File: pgflibraryfadings.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgfdecorationsegmentlength=\dimen322
 )
 \tikz@lib@dec@box=\box78
-) (/usr/share/texmf-dist/tex/generic/pgf/libraries/decorations/pgflibrarydecorations.pathreplacing.code.tex))
-(/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarypatterns.code.tex
+)
+(/usr/share/texmf-dist/tex/generic/pgf/libraries/decorations/pgflibrarydecorati
+ons.pathreplacing.code.tex))
+(/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrary
+patterns.code.tex
 File: tikzlibrarypatterns.code.tex 2023-01-15 v3.1.10 (3.1.10)
- (/usr/share/texmf-dist/tex/generic/pgf/libraries/pgflibrarypatterns.code.tex
+
+(/usr/share/texmf-dist/tex/generic/pgf/libraries/pgflibrarypatterns.code.tex
 File: pgflibrarypatterns.code.tex 2023-01-15 v3.1.10 (3.1.10)
-)) (/usr/share/texmf-dist/tex/latex/tcolorbox/tcolorbox.sty
+))
+(/usr/share/texmf-dist/tex/latex/tcolorbox/tcolorbox.sty
 Package: tcolorbox 2024/10/22 version 6.4.1 text color boxes
- (/usr/share/texmf-dist/tex/latex/tools/verbatim.sty
+
+(/usr/share/texmf-dist/tex/latex/tools/verbatim.sty
 Package: verbatim 2024-01-22 v1.5x LaTeX2e package for verbatim enhancements
 \every@verbatim=\toks46
 \verbatim@line=\toks47
 \verbatim@in@stream=\read4
-) (/usr/share/texmf-dist/tex/latex/environ/environ.sty
+)
+(/usr/share/texmf-dist/tex/latex/environ/environ.sty
 Package: environ 2014/05/04 v0.3 A new way to define environments
- (/usr/share/texmf-dist/tex/latex/trimspaces/trimspaces.sty
+
+(/usr/share/texmf-dist/tex/latex/trimspaces/trimspaces.sty
 Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
 ))
 \tcb@titlebox=\box79
@@ -927,7 +1100,8 @@ Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
 \tcb@temp=\box85
 \tcb@temp=\box86
 \tcb@temp=\box87
- (/usr/share/texmf-dist/tex/latex/tcolorbox/tcbraster.code.tex
+
+(/usr/share/texmf-dist/tex/latex/tcolorbox/tcbraster.code.tex
 Library (tcolorbox): 'tcbraster.code.tex' version '6.4.1'
 \c@tcbrastercolumn=\count353
 \c@tcbrasterrow=\count354
@@ -937,12 +1111,15 @@ Library (tcolorbox): 'tcbraster.code.tex' version '6.4.1'
 Library (tcolorbox): 'tcbskins.code.tex' version '6.4.1'
 (/usr/share/texmf-dist/tex/latex/tikzfill/tikzfill.image.sty
 Package: tikzfill.image 2023/08/08 v1.0.1 Image filling library for TikZ
- (/usr/share/texmf-dist/tex/latex/tikzfill/tikzfill-common.sty
+
+(/usr/share/texmf-dist/tex/latex/tikzfill/tikzfill-common.sty
 Package: tikzfill-common 2023/08/08 v1.0.1 Auxiliary code for tikzfill
-) (/usr/share/texmf-dist/tex/latex/tikzfill/tikzlibraryfill.image.code.tex
+)
+(/usr/share/texmf-dist/tex/latex/tikzfill/tikzlibraryfill.image.code.tex
 File: tikzlibraryfill.image.code.tex 2023/08/08 v1.0.1 Image filling library
 \l__tikzfill_img_box=\box88
-)) (/usr/share/texmf-dist/tex/latex/tcolorbox/tcbskinsjigsaw.code.tex
+))
+(/usr/share/texmf-dist/tex/latex/tcolorbox/tcbskinsjigsaw.code.tex
 Library (tcolorbox): 'tcbskinsjigsaw.code.tex' version '6.4.1'
 )) (/usr/share/texmf-dist/tex/latex/tcolorbox/tcbbreakable.code.tex
 Library (tcolorbox): 'tcbbreakable.code.tex' version '6.4.1'
@@ -953,7 +1130,8 @@ Package pdfcol Info: New color stack `tcb@breakable' = 1 on input line 23.
 \tcb@testbox=\box89
 \tcb@totalupperbox=\box90
 \tcb@totallowerbox=\box91
-) (/usr/share/texmf-dist/tex/latex/tcolorbox/tcbhooks.code.tex
+)
+(/usr/share/texmf-dist/tex/latex/tcolorbox/tcbhooks.code.tex
 Library (tcolorbox): 'tcbhooks.code.tex' version '6.4.1'
 ) (/usr/share/texmf-dist/tex/latex/tcolorbox/tcbtheorems.code.tex
 Library (tcolorbox): 'tcbtheorems.code.tex' version '6.4.1'
@@ -980,18 +1158,22 @@ Library (tcolorbox): 'tcblistings.code.tex' version '6.4.1'
 \lst@newlines=\count362
 \lst@lineno=\count363
 \lst@maxwidth=\dimen330
- (/usr/share/texmf-dist/tex/latex/listings/lstpatch.sty
+
+(/usr/share/texmf-dist/tex/latex/listings/lstpatch.sty
 File: lstpatch.sty 2024/09/23 1.10c (Carsten Heinz)
-) (/usr/share/texmf-dist/tex/latex/listings/lstmisc.sty
+)
+(/usr/share/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2024/09/23 1.10c (Carsten Heinz)
 \c@lstnumber=\count364
 \lst@skipnumbers=\count365
 \lst@framebox=\box93
-) (/usr/share/texmf-dist/tex/latex/listings/listings.cfg
+)
+(/usr/share/texmf-dist/tex/latex/listings/listings.cfg
 File: listings.cfg 2024/09/23 1.10c listings configuration
 ))
 Package: listings 2024/09/23 1.10c (Carsten Heinz)
- (/usr/share/texmf-dist/tex/latex/tcolorbox/tcblistingscore.code.tex
+
+(/usr/share/texmf-dist/tex/latex/tcolorbox/tcblistingscore.code.tex
 Library (tcolorbox): 'tcblistingscore.code.tex' version '6.4.1'
 (/usr/share/texmf-dist/tex/latex/tcolorbox/tcbprocessing.code.tex
 Library (tcolorbox): 'tcbprocessing.code.tex' version '6.4.1'
@@ -999,7 +1181,8 @@ Library (tcolorbox): 'tcbprocessing.code.tex' version '6.4.1'
 \c@tcblisting=\count366
 )) (/usr/share/texmf-dist/tex/latex/listingsutf8/listingsutf8.sty
 Package: listingsutf8 2019-12-10 v1.5 Allow UTF-8 in listings input (HO)
-)) (/usr/share/texmf-dist/tex/latex/tcolorbox/tcbexternal.code.tex
+))
+(/usr/share/texmf-dist/tex/latex/tcolorbox/tcbexternal.code.tex
 Library (tcolorbox): 'tcbexternal.code.tex' version '6.4.1'
 ) (/usr/share/texmf-dist/tex/latex/tcolorbox/tcbmagazine.code.tex
 Library (tcolorbox): 'tcbmagazine.code.tex' version '6.4.1'
@@ -1009,25 +1192,34 @@ Library (tcolorbox): 'tcbvignette.code.tex' version '6.4.1'
 Library (tcolorbox): 'tcbposter.code.tex' version '6.4.1'
 )) (/usr/share/texmf-dist/tex/latex/glossaries/base/glossaries.sty
 Package: glossaries 2025/03/03 v4.56 (NLCT)
- (/usr/share/texmf-dist/tex/latex/base/ifthen.sty
+
+(/usr/share/texmf-dist/tex/latex/base/ifthen.sty
 Package: ifthen 2024/03/16 v1.1e Standard LaTeX ifthen package (DPC)
-) (/usr/share/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+)
+(/usr/share/texmf-dist/tex/latex/xkeyval/xkeyval.sty
 Package: xkeyval 2022/06/16 v2.9 package option processing (HA)
- (/usr/share/texmf-dist/tex/generic/xkeyval/xkeyval.tex (/usr/share/texmf-dist/tex/generic/xkeyval/xkvutils.tex
+
+(/usr/share/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+(/usr/share/texmf-dist/tex/generic/xkeyval/xkvutils.tex
 \XKV@toks=\toks49
 \XKV@tempa@toks=\toks50
 )
 \XKV@depth=\count367
 File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
-)) (/usr/share/texmf-dist/tex/latex/mfirstuc/mfirstuc.sty
+))
+(/usr/share/texmf-dist/tex/latex/mfirstuc/mfirstuc.sty
 Package: mfirstuc 2022/10/14 v2.08 (NLCT)
 \@glsmfirst=\toks51
 \@glsmrest=\toks52
-) (/usr/share/texmf-dist/tex/latex/xfor/xfor.sty
+)
+(/usr/share/texmf-dist/tex/latex/xfor/xfor.sty
 Package: xfor 2009/02/05 v1.05 (NLCT)
-) (/usr/share/texmf-dist/tex/latex/tracklang/tracklang.sty
+)
+(/usr/share/texmf-dist/tex/latex/tracklang/tracklang.sty
 Package: tracklang 2025/03/04 v1.6.5 (NLCT) Track Languages
- (/usr/share/texmf-dist/tex/generic/tracklang/tracklang.tex)) (/usr/share/texmf-dist/tex/latex/translator/translator.sty
+
+(/usr/share/texmf-dist/tex/generic/tracklang/tracklang.tex))
+(/usr/share/texmf-dist/tex/latex/translator/translator.sty
 Package: translator 2021-05-31 v1.12d Easy translation of strings in LaTeX
 )
 
@@ -1038,7 +1230,8 @@ Package glossaries Warning: No language module detected for `russian'.
 
 (/usr/share/texmf-dist/tex/latex/datatool/datatool-base.sty
 Package: datatool-base 2025/03/05 v3.0.1 (NLCT)
- (/usr/share/texmf-dist/tex/latex/datatool/datatool-l3fp.def
+
+(/usr/share/texmf-dist/tex/latex/datatool/datatool-l3fp.def
 File: datatool-l3fp.def 2025/03/05 v3.0.1 (NLCT)
 )
 \@dtl@toks=\toks53
@@ -1046,7 +1239,8 @@ File: datatool-l3fp.def 2025/03/05 v3.0.1 (NLCT)
 \dtl@tmplength=\skip76
 \l__datatool_measure_box=\box94
 \dtl@sortresult=\count369
- (/usr/share/texmf-dist/tex/latex/datatool/datatool-utf8.ldf
+
+(/usr/share/texmf-dist/tex/latex/datatool/datatool-utf8.ldf
 File: datatool-utf8.ldf 2025/03/05 v3.0.1 (NLCT)
 )
 \@dtl@datatype=\count370
@@ -1074,7 +1268,8 @@ File: datatool-utf8.ldf 2025/03/05 v3.0.1 (NLCT)
 \@dtl@foreach@level=\count390
 
 
-Package tracklang Warning: No `datatool' support for dialect `russian'  on input line 9897.
+Package tracklang Warning: No `datatool' support for dialect `russian'  on inpu
+t line 9897.
 
 \dtl@codeA=\count391
 \dtl@codeB=\count392
@@ -1088,12 +1283,15 @@ Package tracklang Warning: No `datatool' support for dialect `russian'  on input
 \glslongtok=\toks58
  (/usr/share/texmf-dist/tex/latex/glossaries/styles/glossary-hypernav.sty
 Package: glossary-hypernav 2025/03/03 v4.56 (NLCT)
-) (/usr/share/texmf-dist/tex/latex/glossaries/styles/glossary-list.sty
+)
+(/usr/share/texmf-dist/tex/latex/glossaries/styles/glossary-list.sty
 Package: glossary-list 2025/03/03 v4.56 (NLCT)
 \glslistdottedwidth=\skip78
-) (/usr/share/texmf-dist/tex/latex/glossaries/styles/glossary-long.sty
+)
+(/usr/share/texmf-dist/tex/latex/glossaries/styles/glossary-long.sty
 Package: glossary-long 2025/03/03 v4.56 (NLCT)
- (/usr/share/texmf-dist/tex/latex/tools/longtable.sty
+
+(/usr/share/texmf-dist/tex/latex/tools/longtable.sty
 Package: longtable 2024-10-27 v4.22 Multi-page Table package (DPC)
 \LTleft=\skip79
 \LTright=\skip80
@@ -1114,9 +1312,11 @@ Package: longtable 2024-10-27 v4.22 Multi-page Table package (DPC)
 )
 \glsdescwidth=\skip83
 \glspagelistwidth=\skip84
-) (/usr/share/texmf-dist/tex/latex/glossaries/styles/glossary-super.sty
+)
+(/usr/share/texmf-dist/tex/latex/glossaries/styles/glossary-super.sty
 Package: glossary-super 2025/03/03 v4.56 (NLCT)
- (/usr/share/texmf-dist/tex/latex/supertabular/supertabular.sty
+
+(/usr/share/texmf-dist/tex/latex/supertabular/supertabular.sty
 Package: supertabular 2024/07/20 v4.2c the supertabular environment
 \c@tracingst=\count399
 \ST@wd=\dimen334
@@ -1133,7 +1333,8 @@ Package: supertabular 2024/07/20 v4.2c the supertabular environment
 \ST@toadd=\dimen342
 \ST@dimen=\dimen343
 \ST@pbox=\box100
-)) (/usr/share/texmf-dist/tex/latex/glossaries/styles/glossary-tree.sty
+))
+(/usr/share/texmf-dist/tex/latex/glossaries/styles/glossary-tree.sty
 Package: glossary-tree 2025/03/03 v4.56 (NLCT)
 \glstreeindent=\skip88
 ))
@@ -1141,39 +1342,112 @@ Package: glossary-tree 2025/03/03 v4.56 (NLCT)
 \glo@main@file=\write5
 \openout5 = `"РљРѕРЅСЃРїРµРєС‚ РїРѕ РђРљРћРЎСѓ.glo"'.
 
-Package glossaries Info: Writing glossary file "РљРѕРЅСЃРїРµРєС‚ РїРѕ РђРљРћРЎСѓ".glo on input line 160.
+Package glossaries Info: Writing glossary file "РљРѕРЅСЃРїРµРєС‚ РїРѕ РђРљРћРЎС
+ѓ".glo on input line 162.
 \glo@acronym@file=\write6
 \openout6 = `"РљРѕРЅСЃРїРµРєС‚ РїРѕ РђРљРћРЎСѓ.acn"'.
 
-Package glossaries Info: Writing glossary file "РљРѕРЅСЃРїРµРєС‚ РїРѕ РђРљРћРЎСѓ".acn on input line 160.
- (/usr/share/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+Package glossaries Info: Writing glossary file "РљРѕРЅСЃРїРµРєС‚ РїРѕ РђРљРћРЎС
+ѓ".acn on input line 162.
+
+(/usr/share/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2024-05-08 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count400
 \l__pdf_internal_box=\box101
-) (./РљРѕРЅСЃРїРµРєС‚ РїРѕ РђРљРћРЎСѓ.aux (./1.aux) (./2.aux) (./3.aux) (./4.aux) (./5.aux) (./6.aux) (./7.aux) (./8.aux) (./9.aux) (./10.aux) (./11.aux) (./13.aux))
+)
+(./РљРѕРЅСЃРїРµРєС‚ РїРѕ РђРљРћРЎСѓ.aux (./1.aux) (./2.aux) (./3.aux) (./4.aux)
+(./5.aux) (./6.aux) (./7.aux) (./8.aux) (./9.aux) (./10.aux
+
+LaTeX Warning: Label `fig:shared_ptr_struct' multiply defined.
+
+
+LaTeX Warning: Label `fig:shared_ptr_struct@cref' multiply defined.
+
+
+LaTeX Warning: Label `lst:tls_example' multiply defined.
+
+
+LaTeX Warning: Label `lst:tls_example@cref' multiply defined.
+
+) (./11.aux) (./11.aux
+
+LaTeX Warning: Label `line:accept' multiply defined.
+
+
+LaTeX Warning: Label `line:accept@cref' multiply defined.
+
+
+LaTeX Warning: Label `line:io' multiply defined.
+
+
+LaTeX Warning: Label `line:io@cref' multiply defined.
+
+
+LaTeX Warning: Label `tab:perf-metrics' multiply defined.
+
+
+LaTeX Warning: Label `tab:perf-metrics@cref' multiply defined.
+
+
+LaTeX Warning: Label `fig:arch-comparison' multiply defined.
+
+
+LaTeX Warning: Label `fig:arch-comparison@cref' multiply defined.
+
+
+LaTeX Warning: Label `fig:unified-loop' multiply defined.
+
+
+LaTeX Warning: Label `fig:unified-loop@cref' multiply defined.
+
+
+LaTeX Warning: Label `fig:stack-layout' multiply defined.
+
+
+LaTeX Warning: Label `fig:stack-layout@cref' multiply defined.
+
+
+LaTeX Warning: Label `tab:safe-funcs' multiply defined.
+
+
+LaTeX Warning: Label `tab:safe-funcs@cref' multiply defined.
+
+
+LaTeX Warning: Label `fig:signal-race' multiply defined.
+
+
+LaTeX Warning: Label `fig:signal-race@cref' multiply defined.
+
+
+LaTeX Warning: Label `fig:go-preemption' multiply defined.
+
+
+LaTeX Warning: Label `fig:go-preemption@cref' multiply defined.
+
+) (./13.aux))
 \openout1 = `"РљРѕРЅСЃРїРµРєС‚ РїРѕ РђРљРћРЎСѓ.aux"'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 585.
-LaTeX Font Info:    ... okay on input line 585.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 585.
-LaTeX Font Info:    ... okay on input line 585.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 585.
-LaTeX Font Info:    ... okay on input line 585.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 585.
-LaTeX Font Info:    ... okay on input line 585.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 585.
-LaTeX Font Info:    ... okay on input line 585.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 585.
-LaTeX Font Info:    ... okay on input line 585.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 585.
-LaTeX Font Info:    ... okay on input line 585.
-LaTeX Font Info:    Checking defaults for T2A/cmr/m/n on input line 585.
-LaTeX Font Info:    ... okay on input line 585.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 585.
-LaTeX Font Info:    ... okay on input line 585.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 585.
-LaTeX Font Info:    ... okay on input line 585.
-LaTeX Info: Redefining \th on input line 585.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 594.
+LaTeX Font Info:    ... okay on input line 594.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 594.
+LaTeX Font Info:    ... okay on input line 594.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 594.
+LaTeX Font Info:    ... okay on input line 594.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 594.
+LaTeX Font Info:    ... okay on input line 594.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 594.
+LaTeX Font Info:    ... okay on input line 594.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 594.
+LaTeX Font Info:    ... okay on input line 594.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 594.
+LaTeX Font Info:    ... okay on input line 594.
+LaTeX Font Info:    Checking defaults for T2A/cmr/m/n on input line 594.
+LaTeX Font Info:    ... okay on input line 594.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 594.
+LaTeX Font Info:    ... okay on input line 594.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 594.
+LaTeX Font Info:    ... okay on input line 594.
+LaTeX Info: Redefining \th on input line 594.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -1209,26 +1483,28 @@ LaTeX Info: Redefining \th on input line 585.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Info: Redefining \microtypecontext on input line 585.
-Package microtype Info: Applying patch `item' on input line 585.
-Package microtype Info: Applying patch `toc' on input line 585.
-Package microtype Info: Applying patch `eqnum' on input line 585.
-Package microtype Info: Applying patch `footnote' on input line 585.
-Package microtype Info: Applying patch `verbatim' on input line 585.
-LaTeX Info: Redefining \microtypesetup on input line 585.
+LaTeX Info: Redefining \microtypecontext on input line 594.
+Package microtype Info: Applying patch `item' on input line 594.
+Package microtype Info: Applying patch `toc' on input line 594.
+Package microtype Info: Applying patch `eqnum' on input line 594.
+Package microtype Info: Applying patch `footnote' on input line 594.
+Package microtype Info: Applying patch `verbatim' on input line 594.
+LaTeX Info: Redefining \microtypesetup on input line 594.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
 Package microtype Info: Automatic font expansion enabled (level 2),
 (microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
 Package microtype Info: Using default expansion set `alltext-nott'.
-LaTeX Info: Redefining \showhyphens on input line 585.
+LaTeX Info: Redefining \showhyphens on input line 594.
 Package microtype Info: No adjustment of tracking.
 Package microtype Info: No adjustment of interword spacing.
 Package microtype Info: No adjustment of character kerning.
 (/usr/share/texmf-dist/tex/latex/microtype/mt-cmr.cfg
-File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman (RS)
-) (/usr/share/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman 
+(RS)
+)
+(/usr/share/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count401
 \scratchdimen=\dimen344
@@ -1243,28 +1519,36 @@ File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
 \everyMPtoPDFconversion=\toks61
 ) (/usr/share/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
-Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
- (/usr/share/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
-File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+85.
+
+(/usr/share/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
 ))
-Package hyperref Info: Link coloring ON on input line 585.
- (./РљРѕРЅСЃРїРµРєС‚ РїРѕ РђРљРћРЎСѓ.out) (./РљРѕРЅСЃРїРµРєС‚ РїРѕ РђРљРћРЎСѓ.out)
+Package hyperref Info: Link coloring ON on input line 594.
+
+(./РљРѕРЅСЃРїРµРєС‚ РїРѕ РђРљРћРЎСѓ.out)
+(./РљРѕРЅСЃРїРµРєС‚ РїРѕ РђРљРћРЎСѓ.out)
 \@outlinefile=\write7
 \openout7 = `"РљРѕРЅСЃРїРµРєС‚ РїРѕ РђРљРћРЎСѓ.out"'.
 
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: listings package is loaded.
 Package caption Info: longtable package is loaded.
- (/usr/share/texmf-dist/tex/latex/caption/ltcaption.sty
+
+(/usr/share/texmf-dist/tex/latex/caption/ltcaption.sty
 Package: ltcaption 2021/01/08 v1.4c longtable captions (AR)
 )
 Package caption Info: supertabular package is loaded.
 Package caption Info: End \AtBeginDocument code.
-Package translations Info: no dictionary file `translations-basic-dictionary-russian.trsl' found. on input line 585.
+Package translations Info: no dictionary file `translations-basic-dictionary-ru
+ssian.trsl' found. on input line 594.
 \c@lstlisting=\count407
- (./РљРѕРЅСЃРїРµРєС‚ РїРѕ РђРљРћРЎСѓ.glsdefs)
-LaTeX Font Info:    Trying to load font information for T2A+cmss on input line 587.
- (/usr/share/texmf-dist/tex/latex/cyrillic/t2acmss.fd
+LaTeX Font Info:    Trying to load font information for T2A+cmss on input line 
+596.
+
+(/usr/share/texmf-dist/tex/latex/cyrillic/t2acmss.fd
 File: t2acmss.fd 2001/08/11 v1.0a Computer Modern Cyrillic font definitions
 )
 Package microtype Info: Loading generic protrusion settings for font family
@@ -1272,16 +1556,21 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 <<ot1.cmap>><<oml.cmap>><<oms.cmap>><<omx.cmap>>
-LaTeX Font Info:    Trying to load font information for U+msa on input line 587.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 596
+.
  (/usr/share/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
-) (/usr/share/texmf-dist/tex/latex/microtype/mt-msa.cfg
+)
+(/usr/share/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 587.
- (/usr/share/texmf-dist/tex/latex/amsfonts/umsb.fd
+LaTeX Font Info:    Trying to load font information for U+msb on input line 596
+.
+
+(/usr/share/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) (/usr/share/texmf-dist/tex/latex/microtype/mt-msb.cfg
+)
+(/usr/share/texmf-dist/tex/latex/microtype/mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
 
@@ -1289,9 +1578,13 @@ File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 
 \openout4 = `"РљРѕРЅСЃРїРµРєС‚ РїРѕ РђРљРћРЎСѓ.ist"'.
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t2a.enc}] (./РљРѕРЅСЃРїРµРєС‚ РїРѕ РђРљРћРЎСѓ.toc
-LaTeX Font Info:    Trying to load font information for T2A+cmtt on input line 25.
- (/usr/share/texmf-dist/tex/latex/cyrillic/t2acmtt.fd
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texmf-dist/fonts
+/enc/dvips/cm-super/cm-super-t2a.enc}]
+(./РљРѕРЅСЃРїРµРєС‚ РїРѕ РђРљРћРЎСѓ.toc
+LaTeX Font Info:    Trying to load font information for T2A+cmtt on input line 
+25.
+
+(/usr/share/texmf-dist/tex/latex/cyrillic/t2acmtt.fd
 File: t2acmtt.fd 2001/08/11 v1.0a Computer Modern Cyrillic font definitions
 )
 Package microtype Info: Loading generic protrusion settings for font family
@@ -1301,10 +1594,11 @@ Package microtype Info: Loading generic protrusion settings for font family
 
 
 
-pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
+pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
+been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.38 ...mberline {3}3 Р›РµРєС†РёСЏ}{24}{chapter.3}
+l.38 ...mberline {3}3 Р›РµРєС†РёСЏ}{31}{chapter.3}
                                                   % [1
 
 ]
@@ -1343,7 +1637,25 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
-[5])
+[5]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 24.01996pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.01996pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
+
+[6]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 24.01996pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.01996pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
+
+[7])
 \tf@toc=\write8
 \openout8 = `"РљРѕРЅСЃРїРµРєС‚ РїРѕ РђРљРћРЎСѓ.toc"'.
 
@@ -1356,11 +1668,11 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
-[6]
+[8]
 {\cyrillictext \CYRG \cyrl \cyra \cyrv \cyra } 1.
 
 
-[7
+[9
 
 
 ]
@@ -1368,12 +1680,15 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
  (./1.tex (/usr/share/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2024/09/23 1.10c listings language file
-) (/usr/share/texmf-dist/tex/latex/listings/lstlang1.sty
+)
+(/usr/share/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2024/09/23 1.10c listings language file
-) (/usr/share/texmf-dist/tex/latex/listings/lstmisc.sty
+)
+(/usr/share/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2024/09/23 1.10c (Carsten Heinz)
 )
-Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on input line 29.
+Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
+nput line 29.
 LaTeX Font Info:    Font shape `T2A/cmtt/bx/n' in size <10.95> not available
 (Font)              Font shape `T2A/cmtt/m/n' tried instead on input line 30.
 
@@ -1385,7 +1700,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
-[8
+[10
 
 
 {/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
@@ -1401,7 +1716,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
-[9]
+[11]
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1410,7 +1725,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
-[10]
+[12]
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `cmtt' (encoding: TS1).
 (microtype)             For optimal results, create family-specific settings.
@@ -1424,7 +1739,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
-[11
+[13
 
 ]
 
@@ -1435,7 +1750,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
-[12]
+[14]
 LaTeX Font Info:    Font shape `T2A/cmtt/bx/n' in size <12> not available
 (Font)              Font shape `T2A/cmtt/m/n' tried instead on input line 225.
 
@@ -1447,7 +1762,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
-[13]
+[15]
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1456,7 +1771,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
-[14]
+[16]
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1465,7 +1780,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
-[15
+[17
 
 ]
 
@@ -1476,7 +1791,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
-[16])
+[18])
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1485,11 +1800,11 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
-[17]
+[19]
 {\cyrillictext \CYRG \cyrl \cyra \cyrv \cyra } 2.
 
 
-[18
+[20
 
 
 
@@ -1505,32 +1820,15 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
-[19
+[21
 
 
 ] (/usr/share/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2024/09/23 1.10c listings language file
-) (/usr/share/texmf-dist/tex/latex/listings/lstlang1.sty
+)
+(/usr/share/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2024/09/23 1.10c listings language file
 )
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 24.01996pt, for example:
-(fancyhdr)                \setlength{\headheight}{24.01996pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
-
-[20]
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 24.01996pt, for example:
-(fancyhdr)                \setlength{\headheight}{24.01996pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
-
-[21]
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1584,7 +1882,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
-[27])
+[27]
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1594,10 +1892,28 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
 [28]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 24.01996pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.01996pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
+
+[29])
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 24.01996pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.01996pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
+
+[30]
 {\cyrillictext \CYRG \cyrl \cyra \cyrv \cyra } 3.
 
 
-[29
+[31
 
 
 
@@ -1613,7 +1929,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
-[30
+[32
 
 ]
 
@@ -1624,7 +1940,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
-[31]
+[33]
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
@@ -1637,28 +1953,10 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
-[32]
+[34]
 LaTeX Font Info:    Font shape `T2A/cmtt/bx/n' in size <14.4> not available
 (Font)              Font shape `T2A/cmtt/m/n' tried instead on input line 165.
 
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 24.01996pt, for example:
-(fancyhdr)                \setlength{\headheight}{24.01996pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
-
-[33]
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 24.01996pt, for example:
-(fancyhdr)                \setlength{\headheight}{24.01996pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
-
-[34]
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1676,7 +1974,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
-[36])
+[36]
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1686,10 +1984,28 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
 [37]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 24.01996pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.01996pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
+
+[38])
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 24.01996pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.01996pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
+
+[39]
 {\cyrillictext \CYRG \cyrl \cyra \cyrv \cyra } 4.
 
 
-[38
+[40
 
 
 
@@ -1705,7 +2021,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
-[39
+[41
 
 
 ]
@@ -1714,24 +2030,6 @@ Package enumitem Warning: Negative labelwidth. This does not make much
 (enumitem)                sense, on input line 91.
 
 
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 24.01996pt, for example:
-(fancyhdr)                \setlength{\headheight}{24.01996pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
-
-[40]
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 24.01996pt, for example:
-(fancyhdr)                \setlength{\headheight}{24.01996pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
-
-[41]
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1749,9 +2047,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
-[43
-
-]
+[43]
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1769,9 +2065,32 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
-[45]
+[45
+
+]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 24.01996pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.01996pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
+
+[46]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 24.01996pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.01996pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
+
+[47]
 Overfull \hbox (27.75372pt too wide) in paragraph at lines 294--295
-[]\T2A/cmr/bx/n/12 (-20) Критически важ-но: \T2A/cmr/m/n/12 (-20) за-крыть \T2A/cmr/bx/n/12 (-20) оба \T2A/cmr/m/n/12 (-20) кон-ца ка-на-ла: \T2A/cmtt/m/n/12 close(pipefd[0]) \T2A/cmr/m/n/12 (-20) и \T2A/cmtt/m/n/12 close(pipefd[1])\T2A/cmr/m/n/12 (-20) .
+[]\T2A/cmr/bx/n/12 (-20) Критически важ-но: \T2A/cmr/m/n/12 (-20) за-крыть \T2A
+/cmr/bx/n/12 (-20) оба \T2A/cmr/m/n/12 (-20) кон-ца ка-на-ла: \T2A/cmtt/m/n/12 
+close(pipefd[0]) \T2A/cmr/m/n/12 (-20) и \T2A/cmtt/m/n/12 close(pipefd[1])\T2A/
+cmr/m/n/12 (-20) .
  []
 
 
@@ -1783,7 +2102,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
-[46
+[48
 
 ])
 
@@ -1794,11 +2113,11 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
-[47]
+[49]
 {\cyrillictext \CYRG \cyrl \cyra \cyrv \cyra } 5.
 
 
-[48
+[50
 
 
 
@@ -1832,7 +2151,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
-[49
+[51
 
 
 ]
@@ -1844,31 +2163,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
-[50]
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 24.01996pt, for example:
-(fancyhdr)                \setlength{\headheight}{24.01996pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
-
-[51]
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 24.01996pt, for example:
-(fancyhdr)                \setlength{\headheight}{24.01996pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
-
-[52
-
-]
+[52]
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1878,8 +2173,34 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
 [53]
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 24.01996pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.01996pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
+
+[54
+
+]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 24.01996pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.01996pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
+
+[55]
 Overfull \hbox (1.63484pt too wide) in paragraph at lines 216--217
-[]\T2A/cmr/m/n/12 (-20) Первые 128 ко-до-вых по-зи-ций (\T2A/cmtt/m/n/12 U+0000 \T2A/cmr/m/n/12 (-20) -- \T2A/cmtt/m/n/12 U+007F\T2A/cmr/m/n/12 (-20) ) пол-но-стью сов-па-да-ют с [][][]ASCII (American
+[]\T2A/cmr/m/n/12 (-20) Первые 128 ко-до-вых по-зи-ций (\T2A/cmtt/m/n/12 U+0000
+ \T2A/cmr/m/n/12 (-20) -- \T2A/cmtt/m/n/12 U+007F\T2A/cmr/m/n/12 (-20) ) пол-но
+-стью сов-па-да-ют с [][][]ASCII (American
  []
 
 
@@ -1894,9 +2215,11 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
-[54]
+[56]
 Overfull \hbox (4.63826pt too wide) in paragraph at lines 268--269
-[]\T2A/cmr/m/n/12 (-20) Чтобы стан-дарт-ная биб-лио-те-ка зна-ла, как пре-об-ра-зо-вы-вать ши-ро-кие сим-во-лы (\T2A/cmtt/m/n/12 wchar_t\T2A/cmr/m/n/12 (-20) )
+[]\T2A/cmr/m/n/12 (-20) Чтобы стан-дарт-ная биб-лио-те-ка зна-ла, как пре-об-ра
+-зо-вы-вать ши-ро-кие сим-во-лы (\T2A/cmtt/m/n/12 wchar_t\T2A/cmr/m/n/12 (-20) 
+)
  []
 
 
@@ -1908,7 +2231,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
-[55])
+[57])
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1917,11 +2240,11 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
-[56]
+[58]
 {\cyrillictext \CYRG \cyrl \cyra \cyrv \cyra } 6.
 
 
-[57
+[59
 
 
 
@@ -1937,28 +2260,10 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
-[58
+[60
 
 
 ]
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 24.01996pt, for example:
-(fancyhdr)                \setlength{\headheight}{24.01996pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
-
-[59]
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 24.01996pt, for example:
-(fancyhdr)                \setlength{\headheight}{24.01996pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
-
-[60]
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1977,11 +2282,6 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
 [62]
-Overfull \hbox (23.33203pt too wide) in paragraph at lines 217--218
-[]\T2A/cmtt/m/n/12 .bss\T2A/cmr/m/n/12 (-20) : Неи-ни-ци-а-ли-зи-ро-ван-ные гло-баль-ные и ста-ти-че-ские пе-ре-мен-ные (<code>int y;</code>).
- []
-
-
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1991,21 +2291,6 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
 [63]
-Overfull \hbox (7.4507pt too wide) in paragraph at lines 298--299
-[]\T2A/cmr/m/n/12 (-20) Процессор со-вер-ша-ет без-услов-ный пе-ре-ход на ад-рес функ-ции \T2A/cmtt/m/n/12 f \T2A/cmr/m/n/12 (-20) (<code>jmp f</code>). 
- []
-
-
-Overfull \hbox (6.6743pt too wide) in paragraph at lines 302--303
-[]\T2A/cmr/m/n/12 (-20) Процессор сни-ма-ет ад-рес воз-вра-та с вер-ши-ны сте-ка (<code>pop return_addr</code>). 
- []
-
-
-Overfull \hbox (33.84283pt too wide) in paragraph at lines 303--304
-[]\T2A/cmr/m/n/12 (-20) Процессор со-вер-ша-ет без-услов-ный пе-ре-ход на этот ад-рес (<code>jmp return_addr</code>). 
- []
-
-
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -2014,21 +2299,11 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
-[64] (/usr/share/texmf-dist/tex/latex/listings/lstlang1.sty
-File: lstlang1.sty 2024/09/23 1.10c listings language file
-) (/usr/share/texmf-dist/tex/latex/listings/lstlang2.sty
-File: lstlang2.sty 2024/09/23 1.10c listings language file
-) (/usr/share/texmf-dist/tex/latex/listings/lstlang3.sty
-File: lstlang3.sty 2024/09/23 1.10c listings language file
-)
-
-Package Listings Warning: Text dropped after begin of listing on input line 348.
-
-
-Package Listings Warning: Text dropped after begin of listing on input line 353.
-
-
-Package Listings Warning: Text dropped after begin of listing on input line 364.
+[64]
+Overfull \hbox (23.33203pt too wide) in paragraph at lines 217--218
+[]\T2A/cmtt/m/n/12 .bss\T2A/cmr/m/n/12 (-20) : Неи-ни-ци-а-ли-зи-ро-ван-ные гло
+-баль-ные и ста-ти-че-ские пе-ре-мен-ные (<code>int y;</code>).
+ []
 
 
 
@@ -2040,17 +2315,22 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
 [65]
-
-Package Listings Warning: Text dropped after begin of listing on input line 375.
-
-
-Package Listings Warning: Text dropped after begin of listing on input line 387.
-
-
-Package Listings Warning: Text dropped after begin of listing on input line 403.
+Overfull \hbox (7.4507pt too wide) in paragraph at lines 298--299
+[]\T2A/cmr/m/n/12 (-20) Процессор со-вер-ша-ет без-услов-ный пе-ре-ход на ад-ре
+с функ-ции \T2A/cmtt/m/n/12 f \T2A/cmr/m/n/12 (-20) (<code>jmp f</code>). 
+ []
 
 
-Package Listings Warning: Text dropped after begin of listing on input line 434.
+Overfull \hbox (6.6743pt too wide) in paragraph at lines 302--303
+[]\T2A/cmr/m/n/12 (-20) Процессор сни-ма-ет ад-рес воз-вра-та с вер-ши-ны сте-к
+а (<code>pop return_addr</code>). 
+ []
+
+
+Overfull \hbox (33.84283pt too wide) in paragraph at lines 303--304
+[]\T2A/cmr/m/n/12 (-20) Процессор со-вер-ша-ет без-услов-ный пе-ре-ход на этот 
+ад-рес (<code>jmp return_addr</code>). 
+ []
 
 
 
@@ -2061,7 +2341,28 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
-[66])
+[66] (/usr/share/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2024/09/23 1.10c listings language file
+)
+(/usr/share/texmf-dist/tex/latex/listings/lstlang2.sty
+File: lstlang2.sty 2024/09/23 1.10c listings language file
+)
+(/usr/share/texmf-dist/tex/latex/listings/lstlang3.sty
+File: lstlang3.sty 2024/09/23 1.10c listings language file
+)
+
+Package Listings Warning: Text dropped after begin of listing on input line 348
+.
+
+
+Package Listings Warning: Text dropped after begin of listing on input line 353
+.
+
+
+Package Listings Warning: Text dropped after begin of listing on input line 364
+.
+
+
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -2071,10 +2372,45 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
 [67]
+
+Package Listings Warning: Text dropped after begin of listing on input line 375
+.
+
+
+Package Listings Warning: Text dropped after begin of listing on input line 387
+.
+
+
+Package Listings Warning: Text dropped after begin of listing on input line 403
+.
+
+
+Package Listings Warning: Text dropped after begin of listing on input line 434
+.
+
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 24.01996pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.01996pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
+
+[68])
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 24.01996pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.01996pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
+
+[69]
 {\cyrillictext \CYRG \cyrl \cyra \cyrv \cyra } 7.
 
 
-[68
+[70
 
 
 
@@ -2090,7 +2426,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
-[69
+[71
 
 
 ]
@@ -2102,30 +2438,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
-[70]
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 24.01996pt, for example:
-(fancyhdr)                \setlength{\headheight}{24.01996pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
-
-[71]
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 24.01996pt, for example:
-(fancyhdr)                \setlength{\headheight}{24.01996pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
-
 [72]
-Overfull \hbox (183.66376pt too wide) in paragraph at lines 229--230
- [][] 
- []
-
-
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -2144,6 +2457,11 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
 [74]
+Overfull \hbox (183.66376pt too wide) in paragraph at lines 229--230
+ [][] 
+ []
+
+
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -2179,7 +2497,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
-[78])
+[78]
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -2189,10 +2507,28 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
 [79]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 24.01996pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.01996pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
+
+[80])
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 24.01996pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.01996pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
+
+[81]
 {\cyrillictext \CYRG \cyrl \cyra \cyrv \cyra } 8.
 
 
-[80
+[82
 
 
 
@@ -2208,7 +2544,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
-[81
+[83
 
 
 ]
@@ -2220,27 +2556,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
-[82]
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 24.01996pt, for example:
-(fancyhdr)                \setlength{\headheight}{24.01996pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
-
-[83]
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 24.01996pt, for example:
-(fancyhdr)                \setlength{\headheight}{24.01996pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
-
-[84
-
-]
+[84]
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -2258,7 +2574,9 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
-[86]
+[86
+
+]
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -2267,9 +2585,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
-[87
-
-]
+[87]
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -2287,7 +2603,9 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
-[89]
+[89
+
+]
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -2297,11 +2615,6 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
 [90]
-Underfull \hbox (badness 2846) in paragraph at lines 412--413
-[][][][]\T2A/cmr/bx/n/12 (+20) Procedure Linkage Table (таб-ли-ца ком-по-нов-ки про-це-дур) (PLT)[][]
- []
-
-
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -2310,14 +2623,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
-[91
-
-]
-Overfull \hbox (155.163pt too wide) in paragraph at lines 471--472
- [][] 
- []
-
-
+[91]
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -2327,6 +2633,12 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
 [92]
+Underfull \hbox (badness 2846) in paragraph at lines 412--413
+[][][][]\T2A/cmr/bx/n/12 (+20) Procedure Linkage Table (таб-ли-ца ком-по-нов-ки
+ про-це-дур) (PLT)[][]
+ []
+
+
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -2335,7 +2647,14 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
-[93]
+[93
+
+]
+Overfull \hbox (155.163pt too wide) in paragraph at lines 471--472
+ [][] 
+ []
+
+
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -2353,9 +2672,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
-[95
-
-]
+[95]
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -2366,7 +2683,28 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 [96]
 
-Package Listings Warning: Text dropped after begin of listing on input line 652.
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 24.01996pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.01996pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
+
+[97
+
+]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 24.01996pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.01996pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
+
+[98]
+
+Package Listings Warning: Text dropped after begin of listing on input line 652
+.
 
 
 
@@ -2377,7 +2715,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
-[97]
+[99]
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -2386,7 +2724,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
-[98
+[100
 
 ] (/usr/share/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2024/09/23 1.10c listings language file
@@ -2399,7 +2737,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
-[99])
+[101])
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -2408,11 +2746,11 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
-[100]
+[102]
 {\cyrillictext \CYRG \cyrl \cyra \cyrv \cyra } 9.
 
 
-[101
+[103
 
 
 
@@ -2428,7 +2766,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
-[102
+[104
 
 
 ]
@@ -2440,27 +2778,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
-[103]
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 24.01996pt, for example:
-(fancyhdr)                \setlength{\headheight}{24.01996pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
-
-[104]
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 24.01996pt, for example:
-(fancyhdr)                \setlength{\headheight}{24.01996pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
-
-[105
-
-]
+[105]
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -2478,7 +2796,9 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
-[107]
+[107
+
+]
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -2487,9 +2807,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
-[108
-
-]
+[108]
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -2507,7 +2825,9 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
-[110]
+[110
+
+]
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -2516,13 +2836,31 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
-[111
+[111]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 24.01996pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.01996pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
+
+[112]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 24.01996pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.01996pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
+
+[113
 
 ])
 {\cyrillictext \CYRG \cyrl \cyra \cyrv \cyra } 10.
 
 
-[112
+[114
 
 
 
@@ -2539,37 +2877,9 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
-[113
+[115
 
 ]
-Overfull \hbox (31.851pt too wide) in paragraph at lines 83--84
-[]\T2A/cmr/bx/n/12 (-20) Неконстантные ме-то-ды \T2A/cmr/m/n/12 (-20) не яв-ля-ют-ся по-то-ко-без-опас-ны-ми. Нель-зя вы-зы-вать `v.push_back()`
- []
-
-
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 24.01996pt, for example:
-(fancyhdr)                \setlength{\headheight}{24.01996pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
-
-[114]
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 24.01996pt, for example:
-(fancyhdr)                \setlength{\headheight}{24.01996pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
-
-[115]
-Overfull \hbox (78.64523pt too wide) in paragraph at lines 182--184
-[]\T2A/cmr/m/n/12 (-20) Мощная ато-мар-ная опе-ра-ция для ре-а-ли-за-ции lock-free ал-го-рит-мов. В C++: \T2A/cmtt/m/n/12 compare_exchange_strong
- []
-
-
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -2605,80 +2915,54 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
-[119])
-{\cyrillictext \CYRG \cyrl \cyra \cyrv \cyra } 11.
+[119]
 
 
-[120
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 24.01996pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.01996pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
+
+[120]
+Overfull \hbox (5.65929pt too wide) in paragraph at lines 294--295
+[]\T2A/cmr/m/n/12 (-20) При ис-поль-зо-ва-нии вы-рав-ни-ва-ния \T2A/cmtt/m/n/12
+ alignas(64) \T2A/cmr/m/n/12 (-20) или встав-ки фик-тив-ных по-лей (\T2A/cmr/m/
+it/12 (-20) padding\T2A/cmr/m/n/12 (-20) ),
+ []
 
 
 
 
-]
-\openout2 = `11.aux'.
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 24.01996pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.01996pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
- (./11.tex
-\@gls@deffile=\write9
-\openout9 = `"РљРѕРЅСЃРїРµРєС‚ РїРѕ РђРљРћРЎСѓ.glsdefs"'.
+[121]
+Overfull \hbox (4.04109pt too wide) in paragraph at lines 321--322
+[]\T2A/cmr/m/n/12 (-20) Конфликтующие опе-ра-ции над неа-то-мар-ны-ми пе-ре-мен
+-ны-ми ^^V это \T2A/cmr/bx/n/12 (-20) Undefined Behavior\T2A/cmr/m/n/12 (-20) .
 
-
-
-Package glossaries Warning: Entry `mac' has already been defined in the preamble (in which case remove the duplicate definition) or you have just updated to glossaries.sty v4.47 (in which case delete `"РљРѕРЅСЃРїРµРєС‚ РїРѕ РђРљРћРЎСѓ".glsdefs') on input line 1.
-
-
-Package glossaries Warning: Entry `ethernet' has already been defined in the preamble (in which case remove the duplicate definition) or you have just updated to glossaries.sty v4.47 (in which case delete `"РљРѕРЅСЃРїРµРєС‚ РїРѕ РђРљРћРЎСѓ".glsdefs') on input line 2.
-
-
-Package glossaries Warning: Entry `ip' has already been defined in the preamble (in which case remove the duplicate definition) or you have just updated to glossaries.sty v4.47 (in which case delete `"РљРѕРЅСЃРїРµРєС‚ РїРѕ РђРљРћРЎСѓ".glsdefs') on input line 3.
+ []
 
 
-Package glossaries Warning: Entry `nat' has already been defined in the preamble (in which case remove the duplicate definition) or you have just updated to glossaries.sty v4.47 (in which case delete `"РљРѕРЅСЃРїРµРєС‚ РїРѕ РђРљРћРЎСѓ".glsdefs') on input line 4.
+Underfull \hbox (badness 10000) in paragraph at lines 335--336
+[]\T2A/cmr/m/n/12 (+20) Исключением яв-ля-ют-ся при-ми-ти-вы син-хро-ни-за-ции:
+ \T2A/cmtt/m/n/12 std::mutex::lock \T2A/cmr/m/n/12 (+20) и
+ []
 
 
-Package glossaries Warning: Entry `tcp' has already been defined in the preamble (in which case remove the duplicate definition) or you have just updated to glossaries.sty v4.47 (in which case delete `"РљРѕРЅСЃРїРµРєС‚ РїРѕ РђРљРћРЎСѓ".glsdefs') on input line 5.
-
-
-Package glossaries Warning: Entry `udp' has already been defined in the preamble (in which case remove the duplicate definition) or you have just updated to glossaries.sty v4.47 (in which case delete `"РљРѕРЅСЃРїРµРєС‚ РїРѕ РђРљРћРЎСѓ".glsdefs') on input line 6.
-
-
-Package glossaries Warning: Entry `socket' has already been defined in the preamble (in which case remove the duplicate definition) or you have just updated to glossaries.sty v4.47 (in which case delete `"РљРѕРЅСЃРїРµРєС‚ РїРѕ РђРљРћРЎСѓ".glsdefs') on input line 7.
-
-
-Package glossaries Warning: Entry `epoll' has already been defined in the preamble (in which case remove the duplicate definition) or you have just updated to glossaries.sty v4.47 (in which case delete `"РљРѕРЅСЃРїРµРєС‚ РїРѕ РђРљРћРЎСѓ".glsdefs') on input line 8.
-
-
-Package glossaries Warning: Entry `dns' has already been defined in the preamble (in which case remove the duplicate definition) or you have just updated to glossaries.sty v4.47 (in which case delete `"РљРѕРЅСЃРїРµРєС‚ РїРѕ РђРљРћРЎСѓ".glsdefs') on input line 9.
-
-
-./11.tex:11: LaTeX Error: Can be used only in preamble.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.11 \begin{document}
-                     
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-(./РљРѕРЅСЃРїРµРєС‚ РїРѕ РђРљРћРЎСѓ.toc)
-\tf@toc=\write10
-\openout10 = `"РљРѕРЅСЃРїРµРєС‚ РїРѕ РђРљРћРЎСѓ.toc"'.
-
+Underfull \hbox (badness 3612) in paragraph at lines 335--336
+\T2A/cmtt/m/n/12 std::atomic::store \T2A/cmr/m/n/12 (+20) не яв-ля-ют-ся кон-ст
+ант-ны-ми ме-то-да-ми, но их \T2A/cmr/bx/n/12 (+20) мож-но
+ []
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-
-[121
-
-
-]
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -2688,16 +2972,6 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
 [122]
-Underfull \hbox (badness 1968) in paragraph at lines 129--129
-[]|\T2A/cmr/m/n/12 (+20) Дискретные со-об-ще-ния (да-та-
- []
-
-
-Underfull \hbox (badness 1783) in paragraph at lines 129--129
-[]|\T2A/cmr/m/n/12 (+20) Высокий (за-го-лов-ки, под-твер-
- []
-
-
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -2707,6 +2981,13 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
 [123]
+Overfull \hbox (4.04109pt too wide) in paragraph at lines 430--431
+[]\T2A/cmr/m/n/12 (-20) Конфликтующие опе-ра-ции над неа-то-мар-ны-ми пе-ре-мен
+-ны-ми ^^V это \T2A/cmr/bx/n/12 (-20) Undefined Behavior\T2A/cmr/m/n/12 (-20) .
+
+ []
+
+
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -2716,6 +2997,18 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
 [124]
+Underfull \hbox (badness 10000) in paragraph at lines 444--445
+[]\T2A/cmr/m/n/12 (+20) Исключением яв-ля-ют-ся при-ми-ти-вы син-хро-ни-за-ции:
+ \T2A/cmtt/m/n/12 std::mutex::lock \T2A/cmr/m/n/12 (+20) и
+ []
+
+
+Underfull \hbox (badness 3612) in paragraph at lines 444--445
+\T2A/cmtt/m/n/12 std::atomic::store \T2A/cmr/m/n/12 (+20) не яв-ля-ют-ся кон-ст
+ант-ны-ми ме-то-да-ми, но их \T2A/cmr/bx/n/12 (+20) мож-но
+ []
+
+
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -2724,7 +3017,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
-[125])
+[125]
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -2734,44 +3027,6 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
 [126]
-{\cyrillictext \CYRG \cyrl \cyra \cyrv \cyra } 12.
-
-
-[127
-
-
-
-]
-\openout2 = `13.aux'.
-
- (./13.tex
-
-./13.tex:13: LaTeX Error: Environment warningbox undefined.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.13 \begin{warningbox}
-                       
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-./13.tex:15: LaTeX Error: \begin{document} on input line 11 ended by \end{warningbox}.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.15 \end{warningbox}
-                     
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -2780,67 +3035,23 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
-[128
-
-]
-
-./13.tex:43: Package pgfkeys Error: I do not know the key '/tikz/process' and I am going to ignore it. Perhaps you misspelled it.
-
-See the pgfkeys package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.43     \node[process]
-                        (cpu) {CPU: Instruction Execution};
-This error message was generated by an \errmessage
-command, so I can't give any explicit help.
-Pretend that you're Hercule Poirot: Examine all clues,
-and deduce the truth by order and method.
+[127]
 
 
-./13.tex:44: Package pgfkeys Error: I do not know the key '/tikz/kernel' and I am going to ignore it. Perhaps you misspelled it.
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 24.01996pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.01996pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
-See the pgfkeys package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.44     \node[kernel, right=of cpu, xshift=1cm]
-                                                 (trap) {Kernel Trap Handler};
-(That was another \errmessage.)
-
-
-./13.tex:45: Package pgfkeys Error: I do not know the key '/tikz/process' and I am going to ignore it. Perhaps you misspelled it.
-
-See the pgfkeys package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.45     \node[process, right=of trap, xshift=1cm]
-                                                   (handler) {User Signal Ha...
-(That was another \errmessage.)
-
-
-./13.tex:46: Package pgfkeys Error: I do not know the key '/tikz/process' and I am going to ignore it. Perhaps you misspelled it.
-
-See the pgfkeys package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.46     \node[process, below=of cpu]
-                                      (kill) {Other Process (kill)};
-(That was another \errmessage.)
-
-
-Overfull \hbox (20.2597pt too wide) in paragraph at lines 53--54
- [][] 
+[128]
+Overfull \hbox (47.27945pt too wide) in paragraph at lines 602--603
+[]\T2A/cmr/m/n/12 (-20) Стандарт C++ предо-став-ля-ет две вер-сии: \T2A/cmtt/m/
+n/12 compare_exchange_strong \T2A/cmr/m/n/12 (-20) и \T2A/cmtt/m/n/12 compare_e
+xchange_weak\T2A/cmr/m/n/12 (-20) . 
  []
 
-
-Overfull \hbox (5.18413pt too wide) in paragraph at lines 73--74
-[]\T2A/cmr/m/n/12 (-20) Возникает во-прос: что про-изой-дет, ес-ли за-бло-ки-ро-вать \T2A/cmtt/m/n/12 SIGSEGV \T2A/cmr/m/n/12 (-20) с по-мо-щью \T2A/cmtt/m/n/12 sigprocmask\T2A/cmr/m/n/12 (-20) ,
- []
-
-
+)
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -2850,6 +3061,17 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
 [129]
+{\cyrillictext \CYRG \cyrl \cyra \cyrv \cyra } 11.
+
+
+[130
+
+
+
+]
+\openout2 = `11.aux'.
+
+ (./11.tex
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -2858,26 +3080,9 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
-[130]
-Overfull \hbox (21.42017pt too wide) in paragraph at lines 164--166
- [][] 
- []
+[131
 
-
-Underfull \hbox (badness 1152) in paragraph at lines 179--180
-[]\T2A/cmr/m/n/12 (+20) Современные Linux API (\T2A/cmtt/m/n/12 signalfd\T2A/cmr/m/n/12 (+20) , \T2A/cmtt/m/n/12 pidfd\T2A/cmr/m/n/12 (+20) , \T2A/cmtt/m/n/12 inotify\T2A/cmr/m/n/12 (+20) ) ухо-дят от кон-цеп-ции
- []
-
-
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 24.01996pt, for example:
-(fancyhdr)                \setlength{\headheight}{24.01996pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
-
-[131]
+]
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -2887,6 +3092,12 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
 [132]
+Overfull \hbox (9.96591pt too wide) in paragraph at lines 137--137
+|[]\T2A/cmss/bx/n/14.4 (-20) Унифицированный цикл со-бы-тий: TimerFD, PIDFD и i
+o_uring| 
+ []
+
+
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -2967,19 +3178,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
-[141]
-
-./13.tex:624: Package pgfkeys Error: I do not know the key '/tikz/process' and I am going to ignore it. Perhaps you misspelled it.
-
-See the pgfkeys package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.624 ...low=of tu_a, xshift=2.05cm, align=center]
-                                                   (linker) {\textbf{LINKER}...
-(That was another \errmessage.)
-
-
+[141])
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -2989,6 +3188,17 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
 [142]
+{\cyrillictext \CYRG \cyrl \cyra \cyrv \cyra } 12.
+
+
+[143
+
+
+
+]
+\openout2 = `11.aux'.
+
+ (./11.tex
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -2997,7 +3207,9 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
-[143])
+[144
+
+]
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -3006,397 +3218,580 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
-[144]
+[145]
+Overfull \hbox (9.96591pt too wide) in paragraph at lines 137--137
+|[]\T2A/cmss/bx/n/14.4 (-20) Унифицированный цикл со-бы-тий: TimerFD, PIDFD и i
+o_uring| 
+ []
+
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 24.01996pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.01996pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
+
+[146]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 24.01996pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.01996pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
+
+[147]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 24.01996pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.01996pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
+
+[148]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 24.01996pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.01996pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
+
+[149]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 24.01996pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.01996pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
+
+[150]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 24.01996pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.01996pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
+
+[151]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 24.01996pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.01996pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
+
+[152]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 24.01996pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.01996pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
+
+[153]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 24.01996pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.01996pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
+
+[154])
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 24.01996pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.01996pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
+
+[155]
 {\cyrillictext \CYRG \cyrl \cyra \cyrv \cyra } 13.
-No file "РљРѕРЅСЃРїРµРєС‚ РїРѕ РђРљРћРЎСѓ".gls.
+
+
+[156
+
+
+
+]
+\openout2 = `13.aux'.
+
+ (./13.tex
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 24.01996pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.01996pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
+
+[157
+
+]
+Overfull \hbox (20.6597pt too wide) in paragraph at lines 51--52
+ [][] 
+ []
+
+
+Overfull \hbox (5.18413pt too wide) in paragraph at lines 71--72
+[]\T2A/cmr/m/n/12 (-20) Возникает во-прос: что про-изой-дет, ес-ли за-бло-ки-ро
+-вать \T2A/cmtt/m/n/12 SIGSEGV \T2A/cmr/m/n/12 (-20) с по-мо-щью \T2A/cmtt/m/n/
+12 sigprocmask\T2A/cmr/m/n/12 (-20) ,
+ []
+
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 24.01996pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.01996pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
+
+[158]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 24.01996pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.01996pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
+
+[159]
+Overfull \hbox (21.42017pt too wide) in paragraph at lines 162--164
+ [][] 
+ []
+
+
+Underfull \hbox (badness 1152) in paragraph at lines 177--178
+[]\T2A/cmr/m/n/12 (+20) Современные Linux API (\T2A/cmtt/m/n/12 signalfd\T2A/cm
+r/m/n/12 (+20) , \T2A/cmtt/m/n/12 pidfd\T2A/cmr/m/n/12 (+20) , \T2A/cmtt/m/n/12
+ inotify\T2A/cmr/m/n/12 (+20) ) ухо-дят от кон-цеп-ции
+ []
+
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 24.01996pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.01996pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
+
+[160]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 24.01996pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.01996pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
+
+[161]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 24.01996pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.01996pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
+
+[162]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 24.01996pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.01996pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
+
+[163]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 24.01996pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.01996pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
+
+[164]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 24.01996pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.01996pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
+
+[165]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 24.01996pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.01996pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
+
+[166]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 24.01996pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.01996pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
+
+[167]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 24.01996pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.01996pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
+
+[168]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 24.01996pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.01996pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
+
+[169]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 24.01996pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.01996pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
+
+[170]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 24.01996pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.01996pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
+
+[171]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 24.01996pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.01996pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
+
+[172])
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 24.01996pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.01996pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
+
+[173]
+{\cyrillictext \CYRG \cyrl \cyra \cyrv \cyra } 14.
+(./РљРѕРЅСЃРїРµРєС‚ РїРѕ РђРљРћРЎСѓ.gls
+
+[174
+
+
+
+
+]
+
+Package enumitem Warning: Negative labelwidth. This does not make much
+(enumitem)                sense, on input line 2.
+
+
+
+[175
+
+
+]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 24.01996pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.01996pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
+
+[176]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 24.01996pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.01996pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
+
+[177]
+Overfull \hbox (0.29022pt too wide) in paragraph at lines 112--114
+[]\T2A/cmr/m/n/12 (-20) Системный вы-зов в POSIX-совместимых си-сте-мах для ото
+б-ра-же-ния фай-лов или устройств
+ []
+
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 24.01996pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.01996pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
+
+[178]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 24.01996pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.01996pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
+
+[179]
+! Missing $ inserted.
+<inserted text> 
+                $
+l.176 ...ntrycounter[]{page}\glsnumberformat{99}}}
+                                                  %
+? 
+! Extra }, or forgotten $.
+\@settodim ...dim }#3\ResumeTagging {\@settodim }}
+                                                  }#2#1\@tempboxa \setbox \@...
+l.176 ...ntrycounter[]{page}\glsnumberformat{99}}}
+                                                  %
+? 
+! Extra }, or forgotten $.
+\@settodim ...im }#3\ResumeTagging {\@settodim }}}
+                                                  #2#1\@tempboxa \setbox \@t...
+l.176 ...ntrycounter[]{page}\glsnumberformat{99}}}
+                                                  %
+? 
+! Missing $ inserted.
+<inserted text> 
+                $
+l.176 ...ntrycounter[]{page}\glsnumberformat{99}}}
+                                                  %
+? 
+! Missing } inserted.
+<inserted text> 
+                }
+l.176 ...ntrycounter[]{page}\glsnumberformat{99}}}
+                                                  %
+? 
+! Missing } inserted.
+<inserted text> 
+                }
+l.176 ...ntrycounter[]{page}\glsnumberformat{99}}}
+                                                  %
+? 
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 24.01996pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.01996pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
+
+[180])
 No file "РљРѕРЅСЃРїРµРєС‚ РїРѕ РђРљРћРЎСѓ".acr.
 
 
-[145
 
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 24.01996pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.01996pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
-
-
-] (./РљРѕРЅСЃРїРµРєС‚ РїРѕ РђРљРћРЎСѓ.aux (./1.aux) (./2.aux) (./3.aux) (./4.aux) (./5.aux) (./6.aux) (./7.aux) (./8.aux) (./9.aux) (./10.aux) (./11.aux) (./13.aux))
+[181] (./РљРѕРЅСЃРїРµРєС‚ РїРѕ РђРљРћРЎСѓ.aux (./1.aux) (./2.aux) (./3.aux)
+(./4.aux) (./5.aux) (./6.aux) (./7.aux) (./8.aux) (./9.aux) (./10.aux)
+(./11.aux) (./11.aux) (./13.aux))
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
 
 
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+LaTeX Warning: There were multiply-defined labels.
 
-Package rerunfilecheck Info: File `"РљРѕРЅСЃРїРµРєС‚ РїРѕ РђРљРћРЎСѓ".out' has not changed.
-(rerunfilecheck)             Checksum: 62429176AFF1F488E407D48C8957B111;63933.
- )
-(\end occurred inside a group at level 1)
-
-### semi simple group (level 1) entered at line 11 (\begingroup)
-### bottom level 
+Package rerunfilecheck Info: File `"РљРѕРЅСЃРїРµРєС‚ РїРѕ РђРљРћРЎСѓ".out' has 
+not changed.
+(rerunfilecheck)             Checksum: 7965A9CF809D78E735CC807C331C7B54;91775.
+ ) 
 Here is how much of TeX's memory you used:
- 58381 strings out of 474645
- 1169130 string characters out of 5759192
- 2040952 words of memory out of 5000000
- 78227 multiletter control sequences out of 15000+600000
- 601183 words of font info for 261 fonts, out of 8000000 for 9000
+ 59329 strings out of 474645
+ 1184078 string characters out of 5759192
+ 2044247 words of memory out of 5000000
+ 78768 multiletter control sequences out of 15000+600000
+ 604901 words of font info for 276 fonts, out of 8000000 for 9000
  430 hyphenation exceptions out of 8191
- 84i,16n,104p,2395b,3012s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 84i,16n,104p,2395b,2707s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-pdfTeX warning (dest): name{glo:epoll} has been referenced but does not exist, replaced by a fixed one
+pdfTeX warning (dest): name{glo:futex} has been referenced but does not exist, 
+replaced by a fixed one
 
 
-pdfTeX warning (dest): name{glo:socket} has been referenced but does not exist, replaced by a fixed one
+pdfTeX warning (dest): name{glo:ub} has been referenced but does not exist, rep
+laced by a fixed one
 
 
-pdfTeX warning (dest): name{glo:dns} has been referenced but does not exist, replaced by a fixed one
+pdfTeX warning (dest): name{glo:nan} has been referenced but does not exist, re
+placed by a fixed one
 
 
-pdfTeX warning (dest): name{glo:tcp} has been referenced but does not exist, replaced by a fixed one
+pdfTeX warning (dest): name{glo:ieee754} has been referenced but does not exist
+, replaced by a fixed one
 
 
-pdfTeX warning (dest): name{glo:nat} has been referenced but does not exist, replaced by a fixed one
+pdfTeX warning (dest): name{glo:oooe} has been referenced but does not exist, r
+eplaced by a fixed one
 
 
-pdfTeX warning (dest): name{glo:ip} has been referenced but does not exist, replaced by a fixed one
+pdfTeX warning (dest): name{glo:tlb} has been referenced but does not exist, re
+placed by a fixed one
 
 
-pdfTeX warning (dest): name{glo:mac} has been referenced but does not exist, replaced by a fixed one
+pdfTeX warning (dest): name{glo:start-label} has been referenced but does not e
+xist, replaced by a fixed one
 
 
-pdfTeX warning (dest): name{glo:ethernet} has been referenced but does not exist, replaced by a fixed one
+pdfTeX warning (dest): name{glo:plt} has been referenced but does not exist, re
+placed by a fixed one
 
 
-pdfTeX warning (dest): name{glo:Amdahl} has been referenced but does not exist, replaced by a fixed one
+pdfTeX warning (dest): name{glo:got} has been referenced but does not exist, re
+placed by a fixed one
 
 
-pdfTeX warning (dest): name{glo:Hyperthreading} has been referenced but does not exist, replaced by a fixed one
+pdfTeX warning (dest): name{glo:jit} has been referenced but does not exist, re
+placed by a fixed one
 
 
-pdfTeX warning (dest): name{glo:deadlock} has been referenced but does not exist, replaced by a fixed one
+pdfTeX warning (dest): name{glo:llvm} has been referenced but does not exist, r
+eplaced by a fixed one
 
 
-pdfTeX warning (dest): name{glo:mutex} has been referenced but does not exist, replaced by a fixed one
+pdfTeX warning (dest): name{glo:ir} has been referenced but does not exist, rep
+laced by a fixed one
 
 
-pdfTeX warning (dest): name{glo:ub} has been referenced but does not exist, replaced by a fixed one
+pdfTeX warning (dest): name{glo:lto} has been referenced but does not exist, re
+placed by a fixed one
 
 
-pdfTeX warning (dest): name{glo:nan} has been referenced but does not exist, replaced by a fixed one
+pdfTeX warning (dest): name{glo:tco} has been referenced but does not exist, re
+placed by a fixed one
 
 
-pdfTeX warning (dest): name{glo:ieee754} has been referenced but does not exist, replaced by a fixed one
+pdfTeX warning (dest): name{glo:pic} has been referenced but does not exist, re
+placed by a fixed one
 
 
-pdfTeX warning (dest): name{glo:branch-prediction} has been referenced but does not exist, replaced by a fixed one
+pdfTeX warning (dest): name{glo:of} has been referenced but does not exist, rep
+laced by a fixed one
 
 
-pdfTeX warning (dest): name{glo:oooe} has been referenced but does not exist, replaced by a fixed one
+pdfTeX warning (dest): name{glo:sf} has been referenced but does not exist, rep
+laced by a fixed one
 
 
-pdfTeX warning (dest): name{glo:control-hazard} has been referenced but does not exist, replaced by a fixed one
+pdfTeX warning (dest): name{glo:zf} has been referenced but does not exist, rep
+laced by a fixed one
 
 
-pdfTeX warning (dest): name{glo:data-hazard} has been referenced but does not exist, replaced by a fixed one
+pdfTeX warning (dest): name{glo:cf} has been referenced but does not exist, rep
+laced by a fixed one
 
 
-pdfTeX warning (dest): name{glo:pipeline} has been referenced but does not exist, replaced by a fixed one
+pdfTeX warning (dest): name{glo:rbp} has been referenced but does not exist, re
+placed by a fixed one
 
 
-pdfTeX warning (dest): name{glo:set-associative} has been referenced but does not exist, replaced by a fixed one
+pdfTeX warning (dest): name{glo:lea} has been referenced but does not exist, re
+placed by a fixed one
 
 
-pdfTeX warning (dest): name{glo:cache-line} has been referenced but does not exist, replaced by a fixed one
+pdfTeX warning (dest): name{glo:asm} has been referenced but does not exist, re
+placed by a fixed one
 
 
-pdfTeX warning (dest): name{glo:cache} has been referenced but does not exist, replaced by a fixed one
+pdfTeX warning (dest): name{glo:rsp} has been referenced but does not exist, re
+placed by a fixed one
 
 
-pdfTeX warning (dest): name{glo:tlb} has been referenced but does not exist, replaced by a fixed one
+pdfTeX warning (dest): name{glo:rip} has been referenced but does not exist, re
+placed by a fixed one
 
 
-pdfTeX warning (dest): name{glo:movsx} has been referenced but does not exist, replaced by a fixed one
+pdfTeX warning (dest): name{glo:pid} has been referenced but does not exist, re
+placed by a fixed one
 
 
-pdfTeX warning (dest): name{glo:start-label} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{glo:lazy-binding} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{glo:plt} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{glo:got} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{glo:shared-object} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{glo:jit} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{glo:vptr} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{glo:vtable} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{glo:endbr64} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{glo:volatile} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{glo:clobbers} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{glo:llvm} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{glo:ir} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{glo:lto} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{glo:inline-asm} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{glo:indirect-jump} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{glo:att-syntax} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{glo:tco} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{glo:pic} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{glo:of} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{glo:sf} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{glo:zf} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{glo:cf} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{glo:bss} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{glo:data} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{glo:rodata} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{glo:rbp} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{glo:stack-frame} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{glo:lea} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{glo:intel-syntax} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{glo:asm} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{glo:rflags} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{glo:rax} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{glo:rsi} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{glo:rdi} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{glo:abi} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{glo:rsp} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{glo:register} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{glo:rip} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{glo:vonneumann} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{glo:externc} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{glo:namemangling} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{glo:elf} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{glo:relocation} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{glo:objectfile} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{glo:translationunit} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{glo:includeguard} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{glo:preprocessing} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{glo:alignment} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{glo:twoscomplement} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{glo:locale} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{glo:utf8} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{glo:unicode} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{glo:ascii} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{glo:endianness} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{glo:cow} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{glo:coredump} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{glo:ipc} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{glo:signal} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{glo:sid} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{glo:pgid} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{glo:exec} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{glo:ororphan} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{glo:zombie} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{glo:fork} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{glo:pid} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{glo:swap} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{glo:pagetable} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{glo:ondemandpaging} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{glo:pagefault} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{glo:mmap} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{glo:mempage} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{glo:physicalmem} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{glo:virtualmem} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{glo:stack} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{glo:heap} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{glo:pipe} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{glo:sparse} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{glo:offset} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{glo:umask} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{glo:symlink} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{glo:api} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{glo:fs} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{glo:stderr} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{glo:stdout} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{glo:errno} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{glo:stdin} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{glo:fd} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{glo:syscall} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{glo:ram} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{glo:cpu} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{glo:os} has been referenced but does not exist, replaced by a fixed one
-
-</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbi1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1095.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfit1095.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfit1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfsi2074.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfss1095.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfss1440.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfss2074.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfsx1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfsx1440.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfti1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sftt1095.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sftt1440.pfb>
-Output written on "РљРѕРЅСЃРїРµРєС‚ РїРѕ РђРљРћРЎСѓ.pdf" (146 pages, 1190284 bytes).
+pdfTeX warning (dest): name{glo:api} has been referenced but does not exist, re
+placed by a fixed one
+
+
+pdfTeX warning (dest): name{glo:ram} has been referenced but does not exist, re
+placed by a fixed one
+
+
+pdfTeX warning (dest): name{glo:cpu} has been referenced but does not exist, re
+placed by a fixed one
+
+
+pdfTeX warning (dest): name{glo:os} has been referenced but does not exist, rep
+laced by a fixed one
+
+</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr1
+2.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/shar
+e/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/f
+onts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-dist/fonts/type1/publ
+ic/cm-super/sfbi1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfb
+x1000.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1095.pfb></usr
+/share/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texmf-di
+st/fonts/type1/public/cm-super/sfbx2488.pfb></usr/share/texmf-dist/fonts/type1/
+public/cm-super/sfit1095.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super
+/sfit1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb><
+/usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/share/texm
+f-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/share/texmf-dist/fonts/ty
+pe1/public/cm-super/sfrm1095.pfb></usr/share/texmf-dist/fonts/type1/public/cm-s
+uper/sfrm1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfsi2074.p
+fb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfss1095.pfb></usr/share/
+texmf-dist/fonts/type1/public/cm-super/sfss1440.pfb></usr/share/texmf-dist/font
+s/type1/public/cm-super/sfss2074.pfb></usr/share/texmf-dist/fonts/type1/public/
+cm-super/sfsx1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfsx14
+40.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfti1095.pfb></usr/sh
+are/texmf-dist/fonts/type1/public/cm-super/sfti1200.pfb></usr/share/texmf-dist/
+fonts/type1/public/cm-super/sftt1095.pfb></usr/share/texmf-dist/fonts/type1/pub
+lic/cm-super/sftt1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sf
+tt1440.pfb>
+Output written on "РљРѕРЅСЃРїРµРєС‚ РїРѕ РђРљРћРЎСѓ.pdf" (182 pages, 1417733 by
+tes).
 PDF statistics:
- 4441 PDF objects out of 5155 (max. 8388607)
- 4183 compressed objects within 42 object streams
- 2003 named destinations out of 2073 (max. 500000)
- 63941 words of extra memory for PDF output out of 74296 (max. 10000000)
+ 5328 PDF objects out of 6186 (max. 8388607)
+ 5026 compressed objects within 51 object streams
+ 2376 named destinations out of 2487 (max. 500000)
+ 70661 words of extra memory for PDF output out of 74296 (max. 10000000)
 

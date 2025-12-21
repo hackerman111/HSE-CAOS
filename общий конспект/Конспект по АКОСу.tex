@@ -100,7 +100,9 @@
   levelbox/.style={draw, rectangle, minimum width=2.5cm, minimum height=3cm, align=center},
   fpbox/.style={membox, fill=red!20},
   retbox/.style={membox, fill=blue!15},
-  codebox/.style={draw=AccentDark, fill=CodeBg, rounded corners, font=\ttfamily\small, align=left, minimum width=3cm, inner sep=4pt}
+  codebox/.style={draw=AccentDark, fill=CodeBg, rounded corners, font=\ttfamily\small, align=left, minimum width=3cm, inner sep=4pt},
+  process/.style={rectangle, draw=AccentDark, fill=white, text centered, minimum height=2em},
+  kernel/.style={rectangle, draw=red!70!black, fill=red!10, text centered, minimum height=2em, rounded corners},
 }
 
 
@@ -166,6 +168,16 @@
 \newacronym[sort=os]{os}{ОС}{Операционная система}
 \newacronym[sort=cpu]{cpu}{CPU}{Центральный процессор}
 \newacronym[sort=ram]{ram}{RAM}{Оперативная память}
+\newglossaryentry{mac}{name={MAC-адрес}, description={уникальный идентификатор сетевого интерфейса (Media Access Control), назначаемый производителем}}
+\newglossaryentry{ethernet}{name={Ethernet}, description={семейство технологий пакетной передачи данных для локальных сетей (LAN)}}
+\newglossaryentry{ip}{name={IP}, description={Internet Protocol — маршрутизируемый протокол сетевого уровня}}
+\newglossaryentry{nat}{name={NAT}, description={Network Address Translation — механизм преобразования транзитных пакетов путём подмены IP-адресов}}
+\newglossaryentry{tcp}{name={TCP}, description={Transmission Control Protocol — протокол транспортного уровня с гарантией доставки и порядка}}
+\newglossaryentry{udp}{name={UDP}, description={User Datagram Protocol — протокол транспортного уровня без гарантий доставки}}
+\newglossaryentry{socket}{name={сокет}, description={программный интерфейс (API) для обеспечения обмена данными между процессами}}
+\newglossaryentry{epoll}{name={epoll}, description={механизм масштабируемого ввода-вывода в Linux для мониторинга множества файловых дескрипторов}}
+\newglossaryentry{dns}{name={DNS}, description={Domain Name System — распределённая система для получения информации о доменах}}
+
 
 \newglossaryentry{syscall}{
   name={Системный вызов},
@@ -567,15 +579,12 @@
 \newglossaryentry{Futex}{name={Futex}, description={Fast Userspace Mutex — механизм ядра Linux для реализации быстрой синхронизации в пространстве пользователя}}
 \newglossaryentry{FalseSharing}{name={False Sharing}, description={ложное разделение данных — ситуация, когда разные потоки изменяют разные переменные, находящиеся на одной кэш-линии, вызывая постоянную инвалидацию кэша}}
 
-\newglossaryentry{mac}{name={MAC-адрес}, description={уникальный идентификатор сетевого интерфейса (Media Access Control), назначаемый производителем}}
-\newglossaryentry{ethernet}{name={Ethernet}, description={семейство технологий пакетной передачи данных для локальных сетей (LAN)}}
-\newglossaryentry{ip}{name={IP}, description={Internet Protocol — маршрутизируемый протокол сетевого уровня}}
-\newglossaryentry{nat}{name={NAT}, description={Network Address Translation — механизм преобразования транзитных пакетов путём подмены IP-адресов}}
-\newglossaryentry{tcp}{name={TCP}, description={Transmission Control Protocol — протокол транспортного уровня с гарантией доставки и порядка}}
-\newglossaryentry{udp}{name={UDP}, description={User Datagram Protocol — протокол транспортного уровня без гарантий доставки}}
-\newglossaryentry{socket}{name={сокет}, description={программный интерфейс (API) для обеспечения обмена данными между процессами}}
-\newglossaryentry{epoll}{name={epoll}, description={механизм масштабируемого ввода-вывода в Linux для мониторинга множества файловых дескрипторов}}
-\newglossaryentry{dns}{name={DNS}, description={Domain Name System — распределённая система для получения информации о доменах}}
+\newacronym[sort=futex]{futex}{Futex}{Fast Userspace Mutex}
+\newglossaryentry{lostwakeup}{
+  name={Lost Wake-up},
+  sort={lostwakeup},
+  description={состояние гонки, при котором сигнал пробуждения отправляется до того, как поток фактически уснул, что приводит к вечной блокировке}
+}
 % Титульные данные
 \title{\sffamily Курс: \textit{\CourseName}\\\large Лекция \LectureNo: \LectureTitle}
 \author{\sffamily Лектор: \Lecturer}
@@ -617,8 +626,13 @@
 
 \chapter{10 Лекция}
 \include{10.tex}
+
 \chapter{11 Лекция}
 \include{11.tex}
+
+\chapter{12 Лекция}
+\include{11.tex}
+
 \chapter{13 Лекция}
 \include{13.tex}
 

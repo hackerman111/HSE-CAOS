@@ -1,34 +1,83 @@
 \relax 
 \providecommand\hyper@newdestlabel[2]{}
-\@writefile{toc}{\contentsline {section}{\numberline {10.1}Введение: Сигналы и наблюдаемый параллелизм}{113}{section.10.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {10.1.1}Наблюдаемый параллелизм и квантование}{113}{subsection.10.1.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {10.2}Аппаратная поддержка многопоточности}{113}{section.10.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {10.2.1}Hyper-threading}{113}{subsection.10.2.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {10.2.2}Привязка к ядрам (CPU Affinity)}{113}{subsection.10.2.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {10.2.3}Закон Амдала}{114}{subsection.10.2.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {10.3}Thread Safety (Потокобезопасность)}{114}{section.10.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {10.3.1}Контракты стандартной библиотеки C++}{114}{subsection.10.3.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {10.3.2}Свободные функции}{115}{subsection.10.3.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {10.4}Примитивы синхронизации}{115}{section.10.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {10.4.1}Семафор (Semaphore)}{115}{subsection.10.4.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {10.4.2}RWLock (Read-Write Lock)}{115}{subsection.10.4.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {10.4.3}Барьер (Barrier)}{115}{subsection.10.4.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {10.5}Thread Local Storage (TLS)}{116}{section.10.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {10.6}Shared Pointer и безопасность}{116}{section.10.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {10.7}Атомики и модель памяти}{116}{section.10.7}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {10.7.1}Compare-And-Swap (CAS)}{116}{subsection.10.7.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {10.8}Кэши и когерентность}{117}{section.10.8}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {10.8.1}Иерархия памяти и протокол MESI}{117}{subsection.10.8.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {10.8.2}False Sharing (Ложное разделение)}{117}{subsection.10.8.2}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {10.1}{\ignorespaces Иллюстрация False Sharing}}{117}{figure.caption.20}\protected@file@percent }
-\newlabel{fig:falsesharing}{{10.1}{117}{Иллюстрация False Sharing}{figure.caption.20}{}}
-\newlabel{fig:falsesharing@cref}{{[figure][1][10]10.1}{[1][117][]117}{}{}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {10.9}Процессы и Fork в многопоточной среде}{118}{section.10.9}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {10.10}Futex (Fast Userspace Mutex)}{118}{section.10.10}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {10.1}Введение в механизмы системной синхронизации}{115}{section.10.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {10.2}Futex: Fast Userspace Mutex}{115}{section.10.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.2.1}Механика работы и системные вызовы}{115}{subsection.10.2.1}\protected@file@percent }
+\newlabel{lst:futex-mutex}{{10.1}{115}{Упрощенная реализация Mutex на базе Futex}{lstlisting.10.1}{}}
+\newlabel{lst:futex-mutex@cref}{{[lstlisting][1][10]10.1}{[1][115][]115}{}{}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {10.1}{\ignorespaces Упрощенная реализация Mutex на базе Futex}}{115}{lstlisting.10.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.2.2}Проблема Lost Wake-up и атомарность в ядре}{115}{subsection.10.2.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {10.1}{\ignorespaces Алгоритм работы FUTEX\_WAIT}}{116}{figure.caption.20}\protected@file@percent }
+\newlabel{fig:futex-flow}{{10.1}{116}{Алгоритм работы FUTEX\_WAIT}{figure.caption.20}{}}
+\newlabel{fig:futex-flow@cref}{{[figure][1][10]10.1}{[1][116][]116}{}{}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {10.3}Взаимодействие fork() и многопоточности}{116}{section.10.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.3.1}Проблема "мертвых" блокировок}{116}{subsection.10.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.3.2}Решение через pthread\_atfork}{116}{subsection.10.3.2}\protected@file@percent }
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {10.2}{\ignorespaces Использование pthread\_atfork для безопасности аллокаторов}}{117}{lstlisting.10.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {10.4}Основы параллелизма: Планирование ОС и границы ускорения}{117}{section.10.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.4.1}Квантование времени и аппаратная поддержка планирования}{117}{subsection.10.4.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {10.2}{\ignorespaces Реализация наблюдаемого параллелизма на одном ядре процессора}}{118}{figure.caption.21}\protected@file@percent }
+\newlabel{fig:time_slicing}{{10.2}{118}{Реализация наблюдаемого параллелизма на одном ядре процессора}{figure.caption.21}{}}
+\newlabel{fig:time_slicing@cref}{{[figure][2][10]10.2}{[1][118][]118}{}{}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.4.2}Механизмы обработки сигналов и их ограничения}{118}{subsection.10.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.4.3}Закон Амдала: пределы масштабируемости}{118}{subsection.10.4.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.4.4}Управление привязкой к ядрам (CPU Affinity)}{118}{subsection.10.4.4}\protected@file@percent }
+\newlabel{lst:affinity}{{10.3}{119}{Использование sched\_setaffinity для закрепления потока за ядром 0}{lstlisting.10.3}{}}
+\newlabel{lst:affinity@cref}{{[lstlisting][3][10]10.3}{[1][119][]119}{}{}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {10.3}{\ignorespaces Использование sched\_setaffinity для закрепления потока за ядром 0}}{119}{lstlisting.10.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {10.5}Аппаратный уровень: Hyper-threading и когерентность кэшей}{119}{section.10.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.5.1}Архитектура Hyper-threading (SMT)}{119}{subsection.10.5.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.5.2}Протоколы когерентности кэшей: Модель MESI}{120}{subsection.10.5.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {10.3}{\ignorespaces Граф переходов состояний протокола MESI}}{120}{figure.caption.22}\protected@file@percent }
+\newlabel{fig:mesi_graph}{{10.3}{120}{Граф переходов состояний протокола MESI}{figure.caption.22}{}}
+\newlabel{fig:mesi_graph@cref}{{[figure][3][10]10.3}{[1][120][]120}{}{}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.5.3}Проблема False Sharing (Ложное разделение)}{120}{subsection.10.5.3}\protected@file@percent }
+\newlabel{lst:false_sharing}{{10.4}{121}{Пример структуры, подверженной False Sharing}{lstlisting.10.4}{}}
+\newlabel{lst:false_sharing@cref}{{[lstlisting][4][10]10.4}{[1][121][]121}{}{}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {10.4}{\ignorespaces Пример структуры, подверженной False Sharing}}{121}{lstlisting.10.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {10.6}Потокобезопасность в C++ и модель памяти}{121}{section.10.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.6.1}Определение гонки данных (Data Race)}{122}{subsection.10.6.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.6.2}Контракт потокобезопасности стандартной библиотеки (STL)}{122}{subsection.10.6.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.6.3}Анатомия std::shared\_ptr в многопоточной среде}{122}{subsection.10.6.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {10.4}{\ignorespaces Внутренняя структура std::shared\_ptr}}{123}{figure.caption.23}\protected@file@percent }
+\newlabel{fig:shared_ptr_struct}{{10.4}{123}{Внутренняя структура std::shared\_ptr}{figure.caption.23}{}}
+\newlabel{fig:shared_ptr_struct@cref}{{[figure][4][10]10.4}{[1][122][]123}{}{}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.6.4}Thread Local Storage (TLS)}{123}{subsection.10.6.4}\protected@file@percent }
+\newlabel{lst:tls_example}{{10.5}{123}{Пример использования thread\_local}{lstlisting.10.5}{}}
+\newlabel{lst:tls_example@cref}{{[lstlisting][5][10]10.5}{[1][123][]123}{}{}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {10.5}{\ignorespaces Пример использования thread\_local}}{123}{lstlisting.10.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.6.5}Диагностика через Thread Sanitizer (TSan)}{124}{subsection.10.6.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {10.7}Потокобезопасность в C++ и модель памяти}{124}{section.10.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.7.1}Определение гонки данных (Data Race)}{124}{subsection.10.7.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.7.2}Контракт потокобезопасности стандартной библиотеки (STL)}{125}{subsection.10.7.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.7.3}Анатомия std::shared\_ptr в многопоточной среде}{125}{subsection.10.7.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {10.5}{\ignorespaces Внутренняя структура std::shared\_ptr}}{125}{figure.caption.24}\protected@file@percent }
+\newlabel{fig:shared_ptr_struct}{{10.5}{125}{Внутренняя структура std::shared\_ptr}{figure.caption.24}{}}
+\newlabel{fig:shared_ptr_struct@cref}{{[figure][5][10]10.5}{[1][125][]125}{}{}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.7.4}Thread Local Storage (TLS)}{125}{subsection.10.7.4}\protected@file@percent }
+\newlabel{lst:tls_example}{{10.6}{126}{Пример использования thread\_local}{lstlisting.10.6}{}}
+\newlabel{lst:tls_example@cref}{{[lstlisting][6][10]10.6}{[1][126][]126}{}{}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {10.6}{\ignorespaces Пример использования thread\_local}}{126}{lstlisting.10.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.7.5}Диагностика через Thread Sanitizer (TSan)}{126}{subsection.10.7.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {10.8}Примитивы синхронизации и Lock-free механизмы}{127}{section.10.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.8.1}Семафоры: управление доступом к ресурсам}{127}{subsection.10.8.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.8.2}RW-Lock: оптимизация для сценариев с преобладанием чтения}{127}{subsection.10.8.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.8.3}Барьеры: фазовая синхронизация}{128}{subsection.10.8.3}\protected@file@percent }
+\newlabel{lst:barrier}{{10.7}{128}{Пример использования std::barrier}{lstlisting.10.7}{}}
+\newlabel{lst:barrier@cref}{{[lstlisting][7][10]10.7}{[1][128][]128}{}{}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {10.7}{\ignorespaces Пример использования std::barrier}}{128}{lstlisting.10.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.8.4}Атомарные операции и Compare-and-Swap (CAS)}{128}{subsection.10.8.4}\protected@file@percent }
+\newlabel{lst:cas_loop}{{10.8}{128}{Реализация атомарного инкремента через CAS loop}{lstlisting.10.8}{}}
+\newlabel{lst:cas_loop@cref}{{[lstlisting][8][10]10.8}{[1][128][]128}{}{}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {10.8}{\ignorespaces Реализация атомарного инкремента через CAS loop}}{128}{lstlisting.10.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.8.5}Аппаратная специфика: Weak vs Strong CAS}{129}{subsection.10.8.5}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {10.6}{\ignorespaces Логика CAS-цикла для обновления значения}}{129}{figure.caption.25}\protected@file@percent }
+\newlabel{fig:cas_logic}{{10.6}{129}{Логика CAS-цикла для обновления значения}{figure.caption.25}{}}
+\newlabel{fig:cas_logic@cref}{{[figure][6][10]10.6}{[1][129][]129}{}{}{}}
 \@setckpt{10}{
-\setcounter{page}{120}
+\setcounter{page}{130}
 \setcounter{equation}{0}
-\setcounter{enumi}{4}
+\setcounter{enumi}{2}
 \setcounter{enumii}{0}
 \setcounter{enumiii}{0}
 \setcounter{enumiv}{0}
@@ -36,32 +85,32 @@
 \setcounter{mpfootnote}{0}
 \setcounter{part}{0}
 \setcounter{chapter}{10}
-\setcounter{section}{10}
-\setcounter{subsection}{0}
+\setcounter{section}{8}
+\setcounter{subsection}{5}
 \setcounter{subsubsection}{0}
 \setcounter{paragraph}{0}
 \setcounter{subparagraph}{0}
-\setcounter{figure}{1}
+\setcounter{figure}{6}
 \setcounter{table}{0}
 \setcounter{parentequation}{0}
 \setcounter{section@level}{0}
-\setcounter{Item}{86}
+\setcounter{Item}{113}
 \setcounter{Hfootnote}{0}
-\setcounter{bookmark@seq@number}{186}
+\setcounter{bookmark@seq@number}{198}
 \setcounter{caption@flags}{2}
 \setcounter{continuedfloat}{0}
 \setcounter{subfigure}{0}
 \setcounter{subtable}{0}
 \setcounter{tcbbreakpart}{1}
 \setcounter{tcblayer}{0}
-\setcounter{tcolorbox@number}{113}
+\setcounter{tcolorbox@number}{133}
 \setcounter{tcbrastercolumn}{1}
 \setcounter{tcbrasterrow}{1}
 \setcounter{tcbrasternum}{1}
 \setcounter{tcbraster}{0}
-\setcounter{lstnumber}{14}
+\setcounter{lstnumber}{8}
 \setcounter{tcblisting}{0}
 \setcounter{LT@tables}{0}
 \setcounter{LT@chunks}{0}
-\setcounter{lstlisting}{0}
+\setcounter{lstlisting}{8}
 }

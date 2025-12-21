@@ -1,90 +1,90 @@
 \relax 
 \providecommand\hyper@newdestlabel[2]{}
-\@writefile{toc}{\contentsline {section}{\numberline {8.1}Оптимизация ассемблерного кода}{81}{section.8.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.1.1}Проблема раздельной компиляции}{81}{subsection.8.1.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.1.2}Встроенный ассемблер (GNU Inline Assembly)}{81}{subsection.8.1.2}\protected@file@percent }
-\newlabel{lst:inline_asm_add}{{8.1}{81}{Использование inline asm для сложения}{lstlisting.8.1}{}}
-\newlabel{lst:inline_asm_add@cref}{{[lstlisting][1][8]8.1}{[1][81][]81}{}{}{}}
-\@writefile{lol}{\contentsline {lstlisting}{\numberline {8.1}{\ignorespaces Использование inline asm для сложения}}{81}{lstlisting.8.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Операнды и ограничения (Constraints)}{82}{lstnumber.8.1.13}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Список порчи (Clobbers)}{82}{lstnumber.8.1.13}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.1.3}Оптимизация на этапе компоновки (LTO)}{82}{subsection.8.1.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {8.2}Взаимодействие с ядром и побочные эффекты}{84}{section.8.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.2.1}Прямой вызов \texttt  {syscall}}{84}{subsection.8.2.1}\protected@file@percent }
-\newlabel{lst:inline_syscall}{{8.2}{84}{Системный вызов \texttt {write} через inline asm}{lstlisting.8.2}{}}
-\newlabel{lst:inline_syscall@cref}{{[lstlisting][2][8]8.2}{[1][84][]84}{}{}{}}
-\@writefile{lol}{\contentsline {lstlisting}{\numberline {8.2}{\ignorespaces Системный вызов \texttt  {write} через inline asm}}{84}{lstlisting.8.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.2.2}\texttt  {volatile} и побочные эффекты}{85}{subsection.8.2.2}\protected@file@percent }
-\newlabel{lst:asm_optim_problem}{{8.3}{85}{Проблема оптимизации}{lstlisting.8.3}{}}
-\newlabel{lst:asm_optim_problem@cref}{{[lstlisting][3][8]8.3}{[1][85][]85}{}{}{}}
-\@writefile{lol}{\contentsline {lstlisting}{\numberline {8.3}{\ignorespaces Проблема оптимизации}}{85}{lstlisting.8.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.2.3}Использование \texttt  {asm} для барьеров компиляции}{85}{subsection.8.2.3}\protected@file@percent }
-\newlabel{sec:asm_barriers}{{8.2.3}{85}{Использование \texttt {asm} для барьеров компиляции}{subsection.8.2.3}{}}
-\newlabel{sec:asm_barriers@cref}{{[subsection][3][8,2]8.2.3}{[1][85][]85}{}{}{}}
-\@writefile{toc}{\contentsline {subsubsection}{Барьер оптимизации (\texttt  {DoNotOptimize})}{85}{subsection.8.2.3}\protected@file@percent }
-\@writefile{lol}{\contentsline {lstlisting}{\numberline {8.4}{\ignorespaces Запрет оптимизации переменной}}{85}{lstlisting.8.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Барьер памяти (\texttt  {Compiler Fence})}{86}{lstnumber.8.4.12}\protected@file@percent }
-\@writefile{lol}{\contentsline {lstlisting}{\numberline {8.5}{\ignorespaces Барьер памяти компилятора}}{86}{lstlisting.8.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {8.3}Указатели, функции и полиморфизм}{87}{section.8.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.3.1}Указатели на функции и косвенные переходы}{87}{subsection.8.3.1}\protected@file@percent }
-\newlabel{lst:fn_ptr_array}{{8.6}{87}{Массив указателей на функции}{lstlisting.8.6}{}}
-\newlabel{lst:fn_ptr_array@cref}{{[lstlisting][6][8]8.6}{[1][87][]87}{}{}{}}
-\@writefile{lol}{\contentsline {lstlisting}{\numberline {8.6}{\ignorespaces Массив указателей на функции}}{87}{lstlisting.8.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.3.2}Защита от атак: \texttt  {endbr64}}{87}{subsection.8.3.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.3.3}Реализация виртуальных функций C++}{88}{subsection.8.3.3}\protected@file@percent }
-\newlabel{lst:virtual_call}{{8.7}{88}{Виртуальный вызов}{lstlisting.8.7}{}}
-\newlabel{lst:virtual_call@cref}{{[lstlisting][7][8]8.7}{[1][88][]88}{}{}{}}
-\@writefile{lol}{\contentsline {lstlisting}{\numberline {8.7}{\ignorespaces Виртуальный вызов}}{88}{lstlisting.8.7}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {8.1}{\ignorespaces Схема виртуального вызова через \gls {vptr} и \gls {vtable}}}{88}{figure.caption.13}\protected@file@percent }
-\newlabel{fig:vtable}{{8.1}{88}{Схема виртуального вызова через \gls {vptr} и \gls {vtable}}{figure.caption.13}{}}
-\newlabel{fig:vtable@cref}{{[figure][1][8]8.1}{[1][88][]88}{}{}{}}
-\@writefile{toc}{\contentsline {subsubsection}{Цена виртуализации}{89}{figure.caption.13}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.3.4}JIT-компиляция (Just-in-Time)}{89}{subsection.8.3.4}\protected@file@percent }
-\newlabel{sec:jit}{{8.3.4}{89}{JIT-компиляция (Just-in-Time)}{subsection.8.3.4}{}}
-\newlabel{sec:jit@cref}{{[subsection][4][8,3]8.3.4}{[1][89][]89}{}{}{}}
-\newlabel{lst:jit_mmap}{{8.8}{89}{Ручная JIT-компиляция функции \texttt {add(a, b)}}{lstlisting.8.8}{}}
-\newlabel{lst:jit_mmap@cref}{{[lstlisting][8][8]8.8}{[1][89][]89}{}{}{}}
-\@writefile{lol}{\contentsline {lstlisting}{\numberline {8.8}{\ignorespaces Ручная JIT-компиляция функции \texttt  {add(a, b)}}}{89}{lstlisting.8.8}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {8.4}Динамическая компоновка}{91}{section.8.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.4.1}Мотивация и основы (.so)}{91}{subsection.8.4.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Позиционно-независимый код (PIC)}{91}{Item.55}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.4.2}Механизмы PLT и GOT}{91}{subsection.8.4.2}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {8.2}{\ignorespaces Процесс ленивого связывания (Lazy Binding)}}{92}{figure.caption.14}\protected@file@percent }
-\newlabel{fig:lazy_binding}{{8.2}{92}{Процесс ленивого связывания (Lazy Binding)}{figure.caption.14}{}}
-\newlabel{fig:lazy_binding@cref}{{[figure][2][8]8.2}{[1][92][]92}{}{}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.4.3}Перехват вызовов (LD\_PRELOAD)}{92}{subsection.8.4.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.4.4}Ручная загрузка библиотек (dlopen)}{93}{subsection.8.4.4}\protected@file@percent }
-\newlabel{lst:dlopen}{{8.9}{93}{Ручная загрузка \texttt {libm.so} для вызова \texttt {sin}}{lstlisting.8.9}{}}
-\newlabel{lst:dlopen@cref}{{[lstlisting][9][8]8.9}{[1][93][]93}{}{}{}}
-\@writefile{lol}{\contentsline {lstlisting}{\numberline {8.9}{\ignorespaces Ручная загрузка \texttt  {libm.so} для вызова \texttt  {sin}}}{93}{lstlisting.8.9}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {8.5}Freestanding: Программы без \texttt  {stdlib}}{95}{section.8.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.5.1}\texttt  {hosted} vs \texttt  {freestanding}}{95}{subsection.8.5.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.5.2}Точка входа \texttt  {\_start}}{95}{subsection.8.5.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Состояние при запуске}{95}{subsection.8.5.2}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {8.3}{\ignorespaces Содержимое стека при вызове \texttt  {\_start}}}{95}{figure.caption.15}\protected@file@percent }
-\newlabel{fig:stack_layout}{{8.3}{95}{Содержимое стека при вызове \texttt {\_start}}{figure.caption.15}{}}
-\newlabel{fig:stack_layout@cref}{{[figure][3][8]8.3}{[1][95][]95}{}{}{}}
-\@writefile{toc}{\contentsline {subsubsection}{Пример \texttt  {\_start}}{96}{figure.caption.15}\protected@file@percent }
-\newlabel{lst:freestanding_start}{{8.10}{96}{Freestanding "Hello World" (AT\&T синтаксис)}{lstlisting.8.10}{}}
-\newlabel{lst:freestanding_start@cref}{{[lstlisting][10][8]8.10}{[1][96][]96}{}{}{}}
-\@writefile{lol}{\contentsline {lstlisting}{\numberline {8.10}{\ignorespaces Freestanding "Hello World" (AT\&T синтаксис)}}{96}{lstlisting.8.10}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.5.3}Загрузка и расширение знака}{96}{subsection.8.5.3}\protected@file@percent }
-\newlabel{sec:sign_extend}{{8.5.3}{96}{Загрузка и расширение знака}{subsection.8.5.3}{}}
-\newlabel{sec:sign_extend@cref}{{[subsection][3][8,5]8.5.3}{[1][96][]96}{}{}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {8.6}Введение в архитектуру процессора}{98}{section.8.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.6.1}Проблема доступа к памяти и кэши}{98}{subsection.8.6.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Решение 1: TLB}{98}{Item.67}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Решение 2: Иерархия кэшей L1/L2/L3}{98}{Item.67}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Организация кэша}{98}{Item.67}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.6.2}Конвейер инструкций (Pipeline)}{98}{subsection.8.6.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Конфликты (Hazards)}{99}{subsection.8.6.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Продвинутые оптимизации CPU}{99}{subsection.8.6.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Пример: Предсказатель ветвлений}{99}{Item.73}\protected@file@percent }
-\newlabel{lst:branch_prediction_test}{{8.11}{99}{Тест предсказателя ветвлений}{lstlisting.8.11}{}}
-\newlabel{lst:branch_prediction_test@cref}{{[lstlisting][11][8]8.11}{[1][99][]99}{}{}{}}
-\@writefile{lol}{\contentsline {lstlisting}{\numberline {8.11}{\ignorespaces Тест предсказателя ветвлений}}{99}{lstlisting.8.11}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {8.1}Оптимизация ассемблерного кода}{83}{section.8.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.1.1}Проблема раздельной компиляции}{83}{subsection.8.1.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.1.2}Встроенный ассемблер (GNU Inline Assembly)}{83}{subsection.8.1.2}\protected@file@percent }
+\newlabel{lst:inline_asm_add}{{8.1}{83}{Использование inline asm для сложения}{lstlisting.8.1}{}}
+\newlabel{lst:inline_asm_add@cref}{{[lstlisting][1][8]8.1}{[1][83][]83}{}{}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {8.1}{\ignorespaces Использование inline asm для сложения}}{83}{lstlisting.8.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Операнды и ограничения (Constraints)}{84}{lstnumber.8.1.13}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Список порчи (Clobbers)}{84}{lstnumber.8.1.13}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.1.3}Оптимизация на этапе компоновки (LTO)}{84}{subsection.8.1.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {8.2}Взаимодействие с ядром и побочные эффекты}{86}{section.8.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.2.1}Прямой вызов \texttt  {syscall}}{86}{subsection.8.2.1}\protected@file@percent }
+\newlabel{lst:inline_syscall}{{8.2}{86}{Системный вызов \texttt {write} через inline asm}{lstlisting.8.2}{}}
+\newlabel{lst:inline_syscall@cref}{{[lstlisting][2][8]8.2}{[1][86][]86}{}{}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {8.2}{\ignorespaces Системный вызов \texttt  {write} через inline asm}}{86}{lstlisting.8.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.2.2}\texttt  {volatile} и побочные эффекты}{87}{subsection.8.2.2}\protected@file@percent }
+\newlabel{lst:asm_optim_problem}{{8.3}{87}{Проблема оптимизации}{lstlisting.8.3}{}}
+\newlabel{lst:asm_optim_problem@cref}{{[lstlisting][3][8]8.3}{[1][87][]87}{}{}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {8.3}{\ignorespaces Проблема оптимизации}}{87}{lstlisting.8.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.2.3}Использование \texttt  {asm} для барьеров компиляции}{87}{subsection.8.2.3}\protected@file@percent }
+\newlabel{sec:asm_barriers}{{8.2.3}{87}{Использование \texttt {asm} для барьеров компиляции}{subsection.8.2.3}{}}
+\newlabel{sec:asm_barriers@cref}{{[subsection][3][8,2]8.2.3}{[1][87][]87}{}{}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Барьер оптимизации (\texttt  {DoNotOptimize})}{87}{subsection.8.2.3}\protected@file@percent }
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {8.4}{\ignorespaces Запрет оптимизации переменной}}{87}{lstlisting.8.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Барьер памяти (\texttt  {Compiler Fence})}{88}{lstnumber.8.4.12}\protected@file@percent }
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {8.5}{\ignorespaces Барьер памяти компилятора}}{88}{lstlisting.8.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {8.3}Указатели, функции и полиморфизм}{89}{section.8.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.3.1}Указатели на функции и косвенные переходы}{89}{subsection.8.3.1}\protected@file@percent }
+\newlabel{lst:fn_ptr_array}{{8.6}{89}{Массив указателей на функции}{lstlisting.8.6}{}}
+\newlabel{lst:fn_ptr_array@cref}{{[lstlisting][6][8]8.6}{[1][89][]89}{}{}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {8.6}{\ignorespaces Массив указателей на функции}}{89}{lstlisting.8.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.3.2}Защита от атак: \texttt  {endbr64}}{89}{subsection.8.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.3.3}Реализация виртуальных функций C++}{90}{subsection.8.3.3}\protected@file@percent }
+\newlabel{lst:virtual_call}{{8.7}{90}{Виртуальный вызов}{lstlisting.8.7}{}}
+\newlabel{lst:virtual_call@cref}{{[lstlisting][7][8]8.7}{[1][90][]90}{}{}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {8.7}{\ignorespaces Виртуальный вызов}}{90}{lstlisting.8.7}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {8.1}{\ignorespaces Схема виртуального вызова через \gls {vptr} и \gls {vtable}}}{90}{figure.caption.13}\protected@file@percent }
+\newlabel{fig:vtable}{{8.1}{90}{Схема виртуального вызова через \gls {vptr} и \gls {vtable}}{figure.caption.13}{}}
+\newlabel{fig:vtable@cref}{{[figure][1][8]8.1}{[1][90][]90}{}{}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Цена виртуализации}{91}{figure.caption.13}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.3.4}JIT-компиляция (Just-in-Time)}{91}{subsection.8.3.4}\protected@file@percent }
+\newlabel{sec:jit}{{8.3.4}{91}{JIT-компиляция (Just-in-Time)}{subsection.8.3.4}{}}
+\newlabel{sec:jit@cref}{{[subsection][4][8,3]8.3.4}{[1][91][]91}{}{}{}}
+\newlabel{lst:jit_mmap}{{8.8}{91}{Ручная JIT-компиляция функции \texttt {add(a, b)}}{lstlisting.8.8}{}}
+\newlabel{lst:jit_mmap@cref}{{[lstlisting][8][8]8.8}{[1][91][]91}{}{}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {8.8}{\ignorespaces Ручная JIT-компиляция функции \texttt  {add(a, b)}}}{91}{lstlisting.8.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {8.4}Динамическая компоновка}{93}{section.8.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.4.1}Мотивация и основы (.so)}{93}{subsection.8.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Позиционно-независимый код (PIC)}{93}{Item.55}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.4.2}Механизмы PLT и GOT}{93}{subsection.8.4.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {8.2}{\ignorespaces Процесс ленивого связывания (Lazy Binding)}}{94}{figure.caption.14}\protected@file@percent }
+\newlabel{fig:lazy_binding}{{8.2}{94}{Процесс ленивого связывания (Lazy Binding)}{figure.caption.14}{}}
+\newlabel{fig:lazy_binding@cref}{{[figure][2][8]8.2}{[1][94][]94}{}{}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.4.3}Перехват вызовов (LD\_PRELOAD)}{94}{subsection.8.4.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.4.4}Ручная загрузка библиотек (dlopen)}{95}{subsection.8.4.4}\protected@file@percent }
+\newlabel{lst:dlopen}{{8.9}{95}{Ручная загрузка \texttt {libm.so} для вызова \texttt {sin}}{lstlisting.8.9}{}}
+\newlabel{lst:dlopen@cref}{{[lstlisting][9][8]8.9}{[1][95][]95}{}{}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {8.9}{\ignorespaces Ручная загрузка \texttt  {libm.so} для вызова \texttt  {sin}}}{95}{lstlisting.8.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {8.5}Freestanding: Программы без \texttt  {stdlib}}{97}{section.8.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.5.1}\texttt  {hosted} vs \texttt  {freestanding}}{97}{subsection.8.5.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.5.2}Точка входа \texttt  {\_start}}{97}{subsection.8.5.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Состояние при запуске}{97}{subsection.8.5.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {8.3}{\ignorespaces Содержимое стека при вызове \texttt  {\_start}}}{97}{figure.caption.15}\protected@file@percent }
+\newlabel{fig:stack_layout}{{8.3}{97}{Содержимое стека при вызове \texttt {\_start}}{figure.caption.15}{}}
+\newlabel{fig:stack_layout@cref}{{[figure][3][8]8.3}{[1][97][]97}{}{}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Пример \texttt  {\_start}}{98}{figure.caption.15}\protected@file@percent }
+\newlabel{lst:freestanding_start}{{8.10}{98}{Freestanding "Hello World" (AT\&T синтаксис)}{lstlisting.8.10}{}}
+\newlabel{lst:freestanding_start@cref}{{[lstlisting][10][8]8.10}{[1][98][]98}{}{}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {8.10}{\ignorespaces Freestanding "Hello World" (AT\&T синтаксис)}}{98}{lstlisting.8.10}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.5.3}Загрузка и расширение знака}{98}{subsection.8.5.3}\protected@file@percent }
+\newlabel{sec:sign_extend}{{8.5.3}{98}{Загрузка и расширение знака}{subsection.8.5.3}{}}
+\newlabel{sec:sign_extend@cref}{{[subsection][3][8,5]8.5.3}{[1][98][]98}{}{}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {8.6}Введение в архитектуру процессора}{100}{section.8.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.6.1}Проблема доступа к памяти и кэши}{100}{subsection.8.6.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Решение 1: TLB}{100}{Item.67}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Решение 2: Иерархия кэшей L1/L2/L3}{100}{Item.67}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Организация кэша}{100}{Item.67}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.6.2}Конвейер инструкций (Pipeline)}{100}{subsection.8.6.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Конфликты (Hazards)}{101}{subsection.8.6.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Продвинутые оптимизации CPU}{101}{subsection.8.6.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Пример: Предсказатель ветвлений}{101}{Item.73}\protected@file@percent }
+\newlabel{lst:branch_prediction_test}{{8.11}{101}{Тест предсказателя ветвлений}{lstlisting.8.11}{}}
+\newlabel{lst:branch_prediction_test@cref}{{[lstlisting][11][8]8.11}{[1][101][]101}{}{}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {8.11}{\ignorespaces Тест предсказателя ветвлений}}{101}{lstlisting.8.11}\protected@file@percent }
 \@setckpt{8}{
-\setcounter{page}{101}
+\setcounter{page}{103}
 \setcounter{equation}{0}
 \setcounter{enumi}{3}
 \setcounter{enumii}{0}

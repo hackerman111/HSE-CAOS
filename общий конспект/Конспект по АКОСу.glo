@@ -1,248 +1,256 @@
-\glossaryentry{sistemnyj vyzov?\glossentry{syscall}|setentrycounter[]{page}"\glsnumberformat}{12}
-\glossaryentry{sistemnyj vyzov?\glossentry{syscall}|setentrycounter[]{page}"\glsnumberformat}{12}
-\glossaryentry{fajlovyj deskriptor?\glossentry{fd}|setentrycounter[]{page}"\glsnumberformat}{12}
-\glossaryentry{fajlovyj deskriptor?\glossentry{fd}|setentrycounter[]{page}"\glsnumberformat}{13}
-\glossaryentry{standartnyj potok vvoda?\glossentry{stdin}|setentrycounter[]{page}"\glsnumberformat}{13}
-\glossaryentry{errno?\glossentry{errno}|setentrycounter[]{page}"\glsnumberformat}{13}
-\glossaryentry{fajlovyj deskriptor?\glossentry{fd}|setentrycounter[]{page}"\glsnumberformat}{13}
-\glossaryentry{fajlovyj deskriptor?\glossentry{fd}|setentrycounter[]{page}"\glsnumberformat}{13}
-\glossaryentry{standartnyj potok vyvoda?\glossentry{stdout}|setentrycounter[]{page}"\glsnumberformat}{13}
-\glossaryentry{standartnyj potok oshibok?\glossentry{stderr}|setentrycounter[]{page}"\glsnumberformat}{13}
-\glossaryentry{errno?\glossentry{errno}|setentrycounter[]{page}"\glsnumberformat}{14}
-\glossaryentry{errno?\glossentry{errno}|setentrycounter[]{page}"\glsnumberformat}{15}
+\glossaryentry{sistemnyj vyzov?\glossentry{syscall}|setentrycounter[]{page}"\glsnumberformat}{14}
+\glossaryentry{sistemnyj vyzov?\glossentry{syscall}|setentrycounter[]{page}"\glsnumberformat}{14}
+\glossaryentry{fajlovyj deskriptor?\glossentry{fd}|setentrycounter[]{page}"\glsnumberformat}{14}
+\glossaryentry{fajlovyj deskriptor?\glossentry{fd}|setentrycounter[]{page}"\glsnumberformat}{15}
+\glossaryentry{standartnyj potok vvoda?\glossentry{stdin}|setentrycounter[]{page}"\glsnumberformat}{15}
 \glossaryentry{errno?\glossentry{errno}|setentrycounter[]{page}"\glsnumberformat}{15}
 \glossaryentry{fajlovyj deskriptor?\glossentry{fd}|setentrycounter[]{page}"\glsnumberformat}{15}
-\glossaryentry{fajlovyj deskriptor?\glossentry{fd}|setentrycounter[]{page}"\glsnumberformat}{16}
-\glossaryentry{fajlovyj deskriptor?\glossentry{fd}|setentrycounter[]{page}"\glsnumberformat}{16}
+\glossaryentry{fajlovyj deskriptor?\glossentry{fd}|setentrycounter[]{page}"\glsnumberformat}{15}
+\glossaryentry{standartnyj potok vyvoda?\glossentry{stdout}|setentrycounter[]{page}"\glsnumberformat}{15}
+\glossaryentry{standartnyj potok oshibok?\glossentry{stderr}|setentrycounter[]{page}"\glsnumberformat}{15}
 \glossaryentry{errno?\glossentry{errno}|setentrycounter[]{page}"\glsnumberformat}{16}
+\glossaryentry{errno?\glossentry{errno}|setentrycounter[]{page}"\glsnumberformat}{17}
+\glossaryentry{errno?\glossentry{errno}|setentrycounter[]{page}"\glsnumberformat}{17}
 \glossaryentry{fajlovyj deskriptor?\glossentry{fd}|setentrycounter[]{page}"\glsnumberformat}{17}
-\glossaryentry{fajlovyj deskriptor?\glossentry{fd}|setentrycounter[]{page}"\glsnumberformat}{17}
-\glossaryentry{sistemnyj vyzov?\glossentry{syscall}|setentrycounter[]{page}"\glsnumberformat}{19}
-\glossaryentry{failovaia sistema?\glossentry{fs}|setentrycounter[]{page}"\glsnumberformat}{19}
-\glossaryentry{failovaia sistema?\glossentry{fs}|setentrycounter[]{page}"\glsnumberformat}{19}
-\glossaryentry{failovaia sistema?\glossentry{fs}|setentrycounter[]{page}"\glsnumberformat}{19}
-\glossaryentry{failovaia sistema?\glossentry{fs}|setentrycounter[]{page}"\glsnumberformat}{20}
-\glossaryentry{simvolicheskaia ssylka?\glossentry{symlink}|setentrycounter[]{page}"\glsnumberformat}{20}
+\glossaryentry{fajlovyj deskriptor?\glossentry{fd}|setentrycounter[]{page}"\glsnumberformat}{18}
+\glossaryentry{fajlovyj deskriptor?\glossentry{fd}|setentrycounter[]{page}"\glsnumberformat}{18}
+\glossaryentry{errno?\glossentry{errno}|setentrycounter[]{page}"\glsnumberformat}{18}
+\glossaryentry{fajlovyj deskriptor?\glossentry{fd}|setentrycounter[]{page}"\glsnumberformat}{19}
+\glossaryentry{fajlovyj deskriptor?\glossentry{fd}|setentrycounter[]{page}"\glsnumberformat}{19}
 \glossaryentry{sistemnyj vyzov?\glossentry{syscall}|setentrycounter[]{page}"\glsnumberformat}{21}
-\glossaryentry{fajlovyj deskriptor?\glossentry{fd}|setentrycounter[]{page}"\glsnumberformat}{21}
-\glossaryentry{fajlovyj deskriptor?\glossentry{fd}|setentrycounter[]{page}"\glsnumberformat}{21}
-\glossaryentry{fajlovyj deskriptor?\glossentry{fd}|setentrycounter[]{page}"\glsnumberformat}{21}
-\glossaryentry{fajlovyj deskriptor?\glossentry{fd}|setentrycounter[]{page}"\glsnumberformat}{21}
-\glossaryentry{sistemnyj vyzov?\glossentry{syscall}|setentrycounter[]{page}"\glsnumberformat}{22}
-\glossaryentry{fajlovyj deskriptor?\glossentry{fd}|setentrycounter[]{page}"\glsnumberformat}{22}
-\glossaryentry{umask?\glossentry{umask}|setentrycounter[]{page}"\glsnumberformat}{22}
+\glossaryentry{failovaia sistema?\glossentry{fs}|setentrycounter[]{page}"\glsnumberformat}{21}
+\glossaryentry{failovaia sistema?\glossentry{fs}|setentrycounter[]{page}"\glsnumberformat}{21}
+\glossaryentry{failovaia sistema?\glossentry{fs}|setentrycounter[]{page}"\glsnumberformat}{21}
+\glossaryentry{failovaia sistema?\glossentry{fs}|setentrycounter[]{page}"\glsnumberformat}{22}
+\glossaryentry{simvolicheskaia ssylka?\glossentry{symlink}|setentrycounter[]{page}"\glsnumberformat}{22}
 \glossaryentry{sistemnyj vyzov?\glossentry{syscall}|setentrycounter[]{page}"\glsnumberformat}{23}
 \glossaryentry{fajlovyj deskriptor?\glossentry{fd}|setentrycounter[]{page}"\glsnumberformat}{23}
-\glossaryentry{smeschenie?\glossentry{offset}|setentrycounter[]{page}"\glsnumberformat}{23}
-\glossaryentry{failovaia sistema?\glossentry{fs}|setentrycounter[]{page}"\glsnumberformat}{23}
 \glossaryentry{fajlovyj deskriptor?\glossentry{fd}|setentrycounter[]{page}"\glsnumberformat}{23}
-\glossaryentry{sistemnyj vyzov?\glossentry{syscall}|setentrycounter[]{page}"\glsnumberformat}{23}
-\glossaryentry{smeschenie?\glossentry{offset}|setentrycounter[]{page}"\glsnumberformat}{23}
 \glossaryentry{fajlovyj deskriptor?\glossentry{fd}|setentrycounter[]{page}"\glsnumberformat}{23}
-\glossaryentry{smeschenie?\glossentry{offset}|setentrycounter[]{page}"\glsnumberformat}{23}
-\glossaryentry{smeschenie?\glossentry{offset}|setentrycounter[]{page}"\glsnumberformat}{23}
-\glossaryentry{smeschenie?\glossentry{offset}|setentrycounter[]{page}"\glsnumberformat}{23}
-\glossaryentry{smeschenie?\glossentry{offset}|setentrycounter[]{page}"\glsnumberformat}{23}
-\glossaryentry{razrezhennyi fail?\glossentry{sparse}|setentrycounter[]{page}"\glsnumberformat}{24}
-\glossaryentry{fajlovyj deskriptor?\glossentry{fd}|setentrycounter[]{page}"\glsnumberformat}{24}
-\glossaryentry{fajlovyj deskriptor?\glossentry{fd}|setentrycounter[]{page}"\glsnumberformat}{24}
-\glossaryentry{fajlovyj deskriptor?\glossentry{fd}|setentrycounter[]{page}"\glsnumberformat}{24}
-\glossaryentry{smeschenie?\glossentry{offset}|setentrycounter[]{page}"\glsnumberformat}{24}
-\glossaryentry{fajlovyj deskriptor?\glossentry{fd}|setentrycounter[]{page}"\glsnumberformat}{24}
+\glossaryentry{fajlovyj deskriptor?\glossentry{fd}|setentrycounter[]{page}"\glsnumberformat}{23}
 \glossaryentry{sistemnyj vyzov?\glossentry{syscall}|setentrycounter[]{page}"\glsnumberformat}{24}
-\glossaryentry{kanal?\glossentry{pipe}|setentrycounter[]{page}"\glsnumberformat}{24}
 \glossaryentry{fajlovyj deskriptor?\glossentry{fd}|setentrycounter[]{page}"\glsnumberformat}{24}
-\glossaryentry{fajlovyj deskriptor?\glossentry{fd}|setentrycounter[]{page}"\glsnumberformat}{24}
-\glossaryentry{fajlovyj deskriptor?\glossentry{fd}|setentrycounter[]{page}"\glsnumberformat}{24}
-\glossaryentry{fajlovyj deskriptor?\glossentry{fd}|setentrycounter[]{page}"\glsnumberformat}{24}
-\glossaryentry{fajlovyj deskriptor?\glossentry{fd}|setentrycounter[]{page}"\glsnumberformat}{24}
-\glossaryentry{smeschenie?\glossentry{offset}|setentrycounter[]{page}"\glsnumberformat}{24}
+\glossaryentry{umask?\glossentry{umask}|setentrycounter[]{page}"\glsnumberformat}{24}
+\glossaryentry{sistemnyj vyzov?\glossentry{syscall}|setentrycounter[]{page}"\glsnumberformat}{25}
 \glossaryentry{fajlovyj deskriptor?\glossentry{fd}|setentrycounter[]{page}"\glsnumberformat}{25}
+\glossaryentry{smeschenie?\glossentry{offset}|setentrycounter[]{page}"\glsnumberformat}{25}
+\glossaryentry{failovaia sistema?\glossentry{fs}|setentrycounter[]{page}"\glsnumberformat}{25}
 \glossaryentry{fajlovyj deskriptor?\glossentry{fd}|setentrycounter[]{page}"\glsnumberformat}{25}
+\glossaryentry{sistemnyj vyzov?\glossentry{syscall}|setentrycounter[]{page}"\glsnumberformat}{25}
+\glossaryentry{smeschenie?\glossentry{offset}|setentrycounter[]{page}"\glsnumberformat}{25}
 \glossaryentry{fajlovyj deskriptor?\glossentry{fd}|setentrycounter[]{page}"\glsnumberformat}{25}
+\glossaryentry{smeschenie?\glossentry{offset}|setentrycounter[]{page}"\glsnumberformat}{25}
+\glossaryentry{smeschenie?\glossentry{offset}|setentrycounter[]{page}"\glsnumberformat}{25}
+\glossaryentry{smeschenie?\glossentry{offset}|setentrycounter[]{page}"\glsnumberformat}{25}
+\glossaryentry{smeschenie?\glossentry{offset}|setentrycounter[]{page}"\glsnumberformat}{25}
+\glossaryentry{razrezhennyi fail?\glossentry{sparse}|setentrycounter[]{page}"\glsnumberformat}{26}
+\glossaryentry{fajlovyj deskriptor?\glossentry{fd}|setentrycounter[]{page}"\glsnumberformat}{26}
+\glossaryentry{fajlovyj deskriptor?\glossentry{fd}|setentrycounter[]{page}"\glsnumberformat}{26}
+\glossaryentry{fajlovyj deskriptor?\glossentry{fd}|setentrycounter[]{page}"\glsnumberformat}{26}
+\glossaryentry{smeschenie?\glossentry{offset}|setentrycounter[]{page}"\glsnumberformat}{26}
 \glossaryentry{fajlovyj deskriptor?\glossentry{fd}|setentrycounter[]{page}"\glsnumberformat}{26}
 \glossaryentry{sistemnyj vyzov?\glossentry{syscall}|setentrycounter[]{page}"\glsnumberformat}{26}
-\glossaryentry{kucha?\glossentry{heap}|setentrycounter[]{page}"\glsnumberformat}{31}
-\glossaryentry{stek?\glossentry{stack}|setentrycounter[]{page}"\glsnumberformat}{31}
-\glossaryentry{virtualnaia pamiat?\glossentry{virtualmem}|setentrycounter[]{page}"\glsnumberformat}{32}
-\glossaryentry{fizicheskaia pamiat?\glossentry{physicalmem}|setentrycounter[]{page}"\glsnumberformat}{32}
-\glossaryentry{virtualnaia pamiat?\glossentry{virtualmem}|setentrycounter[]{page}"\glsnumberformat}{32}
-\glossaryentry{stranitsa pamiati?\glossentry{mempage}|setentrycounter[]{page}"\glsnumberformat}{32}
-\glossaryentry{mmap?\glossentry{mmap}|setentrycounter[]{page}"\glsnumberformat}{33}
-\glossaryentry{virtualnaia pamiat?\glossentry{virtualmem}|setentrycounter[]{page}"\glsnumberformat}{39}
-\glossaryentry{fizicheskaia pamiat?\glossentry{physicalmem}|setentrycounter[]{page}"\glsnumberformat}{39}
-\glossaryentry{stranichnaia oshibka?\glossentry{pagefault}|setentrycounter[]{page}"\glsnumberformat}{39}
-\glossaryentry{virtualnaia pamiat?\glossentry{virtualmem}|setentrycounter[]{page}"\glsnumberformat}{39}
-\glossaryentry{fizicheskaia pamiat?\glossentry{physicalmem}|setentrycounter[]{page}"\glsnumberformat}{39}
-\glossaryentry{stranichnaia oshibka?\glossentry{pagefault}|setentrycounter[]{page}"\glsnumberformat}{39}
-\glossaryentry{stranichnaia oshibka?\glossentry{pagefault}|setentrycounter[]{page}"\glsnumberformat}{39}
-\glossaryentry{postranichnaia podkachka?\glossentry{ondemandpaging}|setentrycounter[]{page}"\glsnumberformat}{39}
-\glossaryentry{stranichnaia oshibka?\glossentry{pagefault}|setentrycounter[]{page}"\glsnumberformat}{39}
-\glossaryentry{stranichnaia oshibka?\glossentry{pagefault}|setentrycounter[]{page}"\glsnumberformat}{39}
-\glossaryentry{tablitsa stranits?\glossentry{pagetable}|setentrycounter[]{page}"\glsnumberformat}{40}
-\glossaryentry{svop?\glossentry{swap}|setentrycounter[]{page}"\glsnumberformat}{41}
-\glossaryentry{svop?\glossentry{swap}|setentrycounter[]{page}"\glsnumberformat}{41}
+\glossaryentry{kanal?\glossentry{pipe}|setentrycounter[]{page}"\glsnumberformat}{26}
+\glossaryentry{fajlovyj deskriptor?\glossentry{fd}|setentrycounter[]{page}"\glsnumberformat}{26}
+\glossaryentry{fajlovyj deskriptor?\glossentry{fd}|setentrycounter[]{page}"\glsnumberformat}{26}
+\glossaryentry{fajlovyj deskriptor?\glossentry{fd}|setentrycounter[]{page}"\glsnumberformat}{26}
+\glossaryentry{fajlovyj deskriptor?\glossentry{fd}|setentrycounter[]{page}"\glsnumberformat}{26}
+\glossaryentry{fajlovyj deskriptor?\glossentry{fd}|setentrycounter[]{page}"\glsnumberformat}{26}
+\glossaryentry{smeschenie?\glossentry{offset}|setentrycounter[]{page}"\glsnumberformat}{26}
+\glossaryentry{fajlovyj deskriptor?\glossentry{fd}|setentrycounter[]{page}"\glsnumberformat}{27}
+\glossaryentry{fajlovyj deskriptor?\glossentry{fd}|setentrycounter[]{page}"\glsnumberformat}{27}
+\glossaryentry{fajlovyj deskriptor?\glossentry{fd}|setentrycounter[]{page}"\glsnumberformat}{27}
+\glossaryentry{fajlovyj deskriptor?\glossentry{fd}|setentrycounter[]{page}"\glsnumberformat}{28}
+\glossaryentry{sistemnyj vyzov?\glossentry{syscall}|setentrycounter[]{page}"\glsnumberformat}{28}
+\glossaryentry{kucha?\glossentry{heap}|setentrycounter[]{page}"\glsnumberformat}{33}
+\glossaryentry{stek?\glossentry{stack}|setentrycounter[]{page}"\glsnumberformat}{33}
+\glossaryentry{virtualnaia pamiat?\glossentry{virtualmem}|setentrycounter[]{page}"\glsnumberformat}{34}
+\glossaryentry{fizicheskaia pamiat?\glossentry{physicalmem}|setentrycounter[]{page}"\glsnumberformat}{34}
+\glossaryentry{virtualnaia pamiat?\glossentry{virtualmem}|setentrycounter[]{page}"\glsnumberformat}{34}
+\glossaryentry{stranitsa pamiati?\glossentry{mempage}|setentrycounter[]{page}"\glsnumberformat}{34}
+\glossaryentry{mmap?\glossentry{mmap}|setentrycounter[]{page}"\glsnumberformat}{35}
+\glossaryentry{virtualnaia pamiat?\glossentry{virtualmem}|setentrycounter[]{page}"\glsnumberformat}{41}
+\glossaryentry{fizicheskaia pamiat?\glossentry{physicalmem}|setentrycounter[]{page}"\glsnumberformat}{41}
+\glossaryentry{stranichnaia oshibka?\glossentry{pagefault}|setentrycounter[]{page}"\glsnumberformat}{41}
+\glossaryentry{virtualnaia pamiat?\glossentry{virtualmem}|setentrycounter[]{page}"\glsnumberformat}{41}
+\glossaryentry{fizicheskaia pamiat?\glossentry{physicalmem}|setentrycounter[]{page}"\glsnumberformat}{41}
+\glossaryentry{stranichnaia oshibka?\glossentry{pagefault}|setentrycounter[]{page}"\glsnumberformat}{41}
+\glossaryentry{stranichnaia oshibka?\glossentry{pagefault}|setentrycounter[]{page}"\glsnumberformat}{41}
+\glossaryentry{postranichnaia podkachka?\glossentry{ondemandpaging}|setentrycounter[]{page}"\glsnumberformat}{41}
+\glossaryentry{stranichnaia oshibka?\glossentry{pagefault}|setentrycounter[]{page}"\glsnumberformat}{41}
 \glossaryentry{stranichnaia oshibka?\glossentry{pagefault}|setentrycounter[]{page}"\glsnumberformat}{41}
 \glossaryentry{tablitsa stranits?\glossentry{pagetable}|setentrycounter[]{page}"\glsnumberformat}{42}
-\glossaryentry{stranichnaia oshibka?\glossentry{pagefault}|setentrycounter[]{page}"\glsnumberformat}{42}
-\glossaryentry{stranichnaia oshibka?\glossentry{pagefault}|setentrycounter[]{page}"\glsnumberformat}{42}
-\glossaryentry{svop?\glossentry{swap}|setentrycounter[]{page}"\glsnumberformat}{42}
-\glossaryentry{fork?\glossentry{fork}|setentrycounter[]{page}"\glsnumberformat}{43}
-\glossaryentry{fork?\glossentry{fork}|setentrycounter[]{page}"\glsnumberformat}{44}
-\glossaryentry{protsess-zombi?\glossentry{zombie}|setentrycounter[]{page}"\glsnumberformat}{45}
-\glossaryentry{protsess-sirota?\glossentry{ororphan}|setentrycounter[]{page}"\glsnumberformat}{45}
-\glossaryentry{exec?\glossentry{exec}|setentrycounter[]{page}"\glsnumberformat}{45}
+\glossaryentry{svop?\glossentry{swap}|setentrycounter[]{page}"\glsnumberformat}{43}
+\glossaryentry{svop?\glossentry{swap}|setentrycounter[]{page}"\glsnumberformat}{43}
+\glossaryentry{stranichnaia oshibka?\glossentry{pagefault}|setentrycounter[]{page}"\glsnumberformat}{43}
+\glossaryentry{tablitsa stranits?\glossentry{pagetable}|setentrycounter[]{page}"\glsnumberformat}{44}
+\glossaryentry{stranichnaia oshibka?\glossentry{pagefault}|setentrycounter[]{page}"\glsnumberformat}{44}
+\glossaryentry{stranichnaia oshibka?\glossentry{pagefault}|setentrycounter[]{page}"\glsnumberformat}{44}
+\glossaryentry{svop?\glossentry{swap}|setentrycounter[]{page}"\glsnumberformat}{44}
 \glossaryentry{fork?\glossentry{fork}|setentrycounter[]{page}"\glsnumberformat}{45}
-\glossaryentry{protsess-zombi?\glossentry{zombie}|setentrycounter[]{page}"\glsnumberformat}{45}
-\glossaryentry{kanal?\glossentry{pipe}|setentrycounter[]{page}"\glsnumberformat}{46}
-\glossaryentry{kanal?\glossentry{pipe}|setentrycounter[]{page}"\glsnumberformat}{46}
-\glossaryentry{kanal?\glossentry{pipe}|setentrycounter[]{page}"\glsnumberformat}{47}
-\glossaryentry{pgid?\glossentry{pgid}|setentrycounter[]{page}"\glsnumberformat}{49}
-\glossaryentry{sid?\glossentry{sid}|setentrycounter[]{page}"\glsnumberformat}{49}
-\glossaryentry{pgid?\glossentry{pgid}|setentrycounter[]{page}"\glsnumberformat}{49}
-\glossaryentry{pgid?\glossentry{pgid}|setentrycounter[]{page}"\glsnumberformat}{49}
-\glossaryentry{pgid?\glossentry{pgid}|setentrycounter[]{page}"\glsnumberformat}{49}
-\glossaryentry{pgid?\glossentry{pgid}|setentrycounter[]{page}"\glsnumberformat}{49}
-\glossaryentry{pgid?\glossentry{pgid}|setentrycounter[]{page}"\glsnumberformat}{49}
-\glossaryentry{signal?\glossentry{signal}|setentrycounter[]{page}"\glsnumberformat}{49}
-\glossaryentry{ipc?\glossentry{ipc}|setentrycounter[]{page}"\glsnumberformat}{49}
-\glossaryentry{coredump?\glossentry{coredump}|setentrycounter[]{page}"\glsnumberformat}{49}
-\glossaryentry{pgid?\glossentry{pgid}|setentrycounter[]{page}"\glsnumberformat}{50}
-\glossaryentry{pgid?\glossentry{pgid}|setentrycounter[]{page}"\glsnumberformat}{50}
-\glossaryentry{cow?\glossentry{cow}|setentrycounter[]{page}"\glsnumberformat}{51}
-\glossaryentry{cow?\glossentry{cow}|setentrycounter[]{page}"\glsnumberformat}{51}
-\glossaryentry{cow?\glossentry{cow}|setentrycounter[]{page}"\glsnumberformat}{51}
+\glossaryentry{fork?\glossentry{fork}|setentrycounter[]{page}"\glsnumberformat}{46}
+\glossaryentry{protsess-zombi?\glossentry{zombie}|setentrycounter[]{page}"\glsnumberformat}{47}
+\glossaryentry{protsess-sirota?\glossentry{ororphan}|setentrycounter[]{page}"\glsnumberformat}{47}
+\glossaryentry{exec?\glossentry{exec}|setentrycounter[]{page}"\glsnumberformat}{47}
+\glossaryentry{fork?\glossentry{fork}|setentrycounter[]{page}"\glsnumberformat}{47}
+\glossaryentry{protsess-zombi?\glossentry{zombie}|setentrycounter[]{page}"\glsnumberformat}{47}
+\glossaryentry{kanal?\glossentry{pipe}|setentrycounter[]{page}"\glsnumberformat}{48}
+\glossaryentry{kanal?\glossentry{pipe}|setentrycounter[]{page}"\glsnumberformat}{48}
+\glossaryentry{kanal?\glossentry{pipe}|setentrycounter[]{page}"\glsnumberformat}{49}
 \glossaryentry{pgid?\glossentry{pgid}|setentrycounter[]{page}"\glsnumberformat}{51}
-\glossaryentry{cow?\glossentry{cow}|setentrycounter[]{page}"\glsnumberformat}{51}
-\glossaryentry{endianness?\glossentry{endianness}|setentrycounter[]{page}"\glsnumberformat}{52}
-\glossaryentry{endianness?\glossentry{endianness}|setentrycounter[]{page}"\glsnumberformat}{52}
-\glossaryentry{ascii?\glossentry{ascii}|setentrycounter[]{page}"\glsnumberformat}{52}
-\glossaryentry{ascii?\glossentry{ascii}|setentrycounter[]{page}"\glsnumberformat}{52}
-\glossaryentry{ascii?\glossentry{ascii}|setentrycounter[]{page}"\glsnumberformat}{53}
-\glossaryentry{unicode?\glossentry{unicode}|setentrycounter[]{page}"\glsnumberformat}{53}
-\glossaryentry{unicode?\glossentry{unicode}|setentrycounter[]{page}"\glsnumberformat}{54}
-\glossaryentry{unicode?\glossentry{unicode}|setentrycounter[]{page}"\glsnumberformat}{54}
+\glossaryentry{sid?\glossentry{sid}|setentrycounter[]{page}"\glsnumberformat}{51}
+\glossaryentry{pgid?\glossentry{pgid}|setentrycounter[]{page}"\glsnumberformat}{51}
+\glossaryentry{pgid?\glossentry{pgid}|setentrycounter[]{page}"\glsnumberformat}{51}
+\glossaryentry{pgid?\glossentry{pgid}|setentrycounter[]{page}"\glsnumberformat}{51}
+\glossaryentry{pgid?\glossentry{pgid}|setentrycounter[]{page}"\glsnumberformat}{51}
+\glossaryentry{pgid?\glossentry{pgid}|setentrycounter[]{page}"\glsnumberformat}{51}
+\glossaryentry{signal?\glossentry{signal}|setentrycounter[]{page}"\glsnumberformat}{51}
+\glossaryentry{ipc?\glossentry{ipc}|setentrycounter[]{page}"\glsnumberformat}{51}
+\glossaryentry{coredump?\glossentry{coredump}|setentrycounter[]{page}"\glsnumberformat}{51}
+\glossaryentry{pgid?\glossentry{pgid}|setentrycounter[]{page}"\glsnumberformat}{52}
+\glossaryentry{pgid?\glossentry{pgid}|setentrycounter[]{page}"\glsnumberformat}{52}
+\glossaryentry{cow?\glossentry{cow}|setentrycounter[]{page}"\glsnumberformat}{53}
+\glossaryentry{cow?\glossentry{cow}|setentrycounter[]{page}"\glsnumberformat}{53}
+\glossaryentry{cow?\glossentry{cow}|setentrycounter[]{page}"\glsnumberformat}{53}
+\glossaryentry{pgid?\glossentry{pgid}|setentrycounter[]{page}"\glsnumberformat}{53}
+\glossaryentry{cow?\glossentry{cow}|setentrycounter[]{page}"\glsnumberformat}{53}
+\glossaryentry{endianness?\glossentry{endianness}|setentrycounter[]{page}"\glsnumberformat}{54}
+\glossaryentry{endianness?\glossentry{endianness}|setentrycounter[]{page}"\glsnumberformat}{54}
 \glossaryentry{ascii?\glossentry{ascii}|setentrycounter[]{page}"\glsnumberformat}{54}
-\glossaryentry{utf8?\glossentry{utf8}|setentrycounter[]{page}"\glsnumberformat}{54}
-\glossaryentry{utf8?\glossentry{utf8}|setentrycounter[]{page}"\glsnumberformat}{54}
-\glossaryentry{locale?\glossentry{locale}|setentrycounter[]{page}"\glsnumberformat}{55}
-\glossaryentry{locale?\glossentry{locale}|setentrycounter[]{page}"\glsnumberformat}{55}
-\glossaryentry{endianness?\glossentry{endianness}|setentrycounter[]{page}"\glsnumberformat}{56}
+\glossaryentry{ascii?\glossentry{ascii}|setentrycounter[]{page}"\glsnumberformat}{54}
+\glossaryentry{ascii?\glossentry{ascii}|setentrycounter[]{page}"\glsnumberformat}{55}
+\glossaryentry{unicode?\glossentry{unicode}|setentrycounter[]{page}"\glsnumberformat}{55}
 \glossaryentry{unicode?\glossentry{unicode}|setentrycounter[]{page}"\glsnumberformat}{56}
-\glossaryentry{dopolnyayushchiy kod?\glossentry{twoscomplement}|setentrycounter[]{page}"\glsnumberformat}{58}
-\glossaryentry{dopolnyayushchiy kod?\glossentry{twoscomplement}|setentrycounter[]{page}"\glsnumberformat}{58}
-\glossaryentry{vyravnivanie dannykh?\glossentry{alignment}|setentrycounter[]{page}"\glsnumberformat}{60}
-\glossaryentry{preprotsessing?\glossentry{preprocessing}|setentrycounter[]{page}"\glsnumberformat}{60}
-\glossaryentry{strazh vklyucheniya?\glossentry{includeguard}|setentrycounter[]{page}"\glsnumberformat}{61}
-\glossaryentry{edinitsa translyatsii?\glossentry{translationunit}|setentrycounter[]{page}"\glsnumberformat}{61}
-\glossaryentry{obektnyy fayl?\glossentry{objectfile}|setentrycounter[]{page}"\glsnumberformat}{61}
-\glossaryentry{obektnyy fayl?\glossentry{objectfile}|setentrycounter[]{page}"\glsnumberformat}{62}
-\glossaryentry{relokatsiya?\glossentry{relocation}|setentrycounter[]{page}"\glsnumberformat}{62}
-\glossaryentry{elf?\glossentry{elf}|setentrycounter[]{page}"\glsnumberformat}{62}
-\glossaryentry{iskazhenie imen?\glossentry{namemangling}|setentrycounter[]{page}"\glsnumberformat}{63}
-\glossaryentry{iskazhenie imen?\glossentry{namemangling}|setentrycounter[]{page}"\glsnumberformat}{63}
-\glossaryentry{extern c?\glossentry{externc}|setentrycounter[]{page}"\glsnumberformat}{63}
-\glossaryentry{arkhitektura fon neymana?\glossentry{vonneumann}|setentrycounter[]{page}"\glsnumberformat}{64}
-\glossaryentry{registr?\glossentry{register}|setentrycounter[]{page}"\glsnumberformat}{64}
-\glossaryentry{abi?\glossentry{abi}|setentrycounter[]{page}"\glsnumberformat}{64}
-\glossaryentry{rdi?\glossentry{rdi}|setentrycounter[]{page}"\glsnumberformat}{64}
-\glossaryentry{rsi?\glossentry{rsi}|setentrycounter[]{page}"\glsnumberformat}{64}
-\glossaryentry{rax?\glossentry{rax}|setentrycounter[]{page}"\glsnumberformat}{65}
-\glossaryentry{abi?\glossentry{abi}|setentrycounter[]{page}"\glsnumberformat}{67}
-\glossaryentry{rflags?\glossentry{rflags}|setentrycounter[]{page}"\glsnumberformat}{67}
-\glossaryentry{intel?\glossentry{intel-syntax}|setentrycounter[]{page}"\glsnumberformat}{69}
-\glossaryentry{stack-frame?\glossentry{stack-frame}|setentrycounter[]{page}"\glsnumberformat}{71}
-\glossaryentry{relokatsiya?\glossentry{relocation}|setentrycounter[]{page}"\glsnumberformat}{72}
+\glossaryentry{unicode?\glossentry{unicode}|setentrycounter[]{page}"\glsnumberformat}{56}
+\glossaryentry{ascii?\glossentry{ascii}|setentrycounter[]{page}"\glsnumberformat}{56}
+\glossaryentry{utf8?\glossentry{utf8}|setentrycounter[]{page}"\glsnumberformat}{56}
+\glossaryentry{utf8?\glossentry{utf8}|setentrycounter[]{page}"\glsnumberformat}{56}
+\glossaryentry{locale?\glossentry{locale}|setentrycounter[]{page}"\glsnumberformat}{57}
+\glossaryentry{locale?\glossentry{locale}|setentrycounter[]{page}"\glsnumberformat}{57}
+\glossaryentry{endianness?\glossentry{endianness}|setentrycounter[]{page}"\glsnumberformat}{58}
+\glossaryentry{unicode?\glossentry{unicode}|setentrycounter[]{page}"\glsnumberformat}{58}
+\glossaryentry{dopolnyayushchiy kod?\glossentry{twoscomplement}|setentrycounter[]{page}"\glsnumberformat}{60}
+\glossaryentry{dopolnyayushchiy kod?\glossentry{twoscomplement}|setentrycounter[]{page}"\glsnumberformat}{60}
+\glossaryentry{vyravnivanie dannykh?\glossentry{alignment}|setentrycounter[]{page}"\glsnumberformat}{62}
+\glossaryentry{preprotsessing?\glossentry{preprocessing}|setentrycounter[]{page}"\glsnumberformat}{62}
+\glossaryentry{strazh vklyucheniya?\glossentry{includeguard}|setentrycounter[]{page}"\glsnumberformat}{63}
+\glossaryentry{edinitsa translyatsii?\glossentry{translationunit}|setentrycounter[]{page}"\glsnumberformat}{63}
+\glossaryentry{obektnyy fayl?\glossentry{objectfile}|setentrycounter[]{page}"\glsnumberformat}{63}
+\glossaryentry{obektnyy fayl?\glossentry{objectfile}|setentrycounter[]{page}"\glsnumberformat}{64}
+\glossaryentry{relokatsiya?\glossentry{relocation}|setentrycounter[]{page}"\glsnumberformat}{64}
+\glossaryentry{elf?\glossentry{elf}|setentrycounter[]{page}"\glsnumberformat}{64}
+\glossaryentry{iskazhenie imen?\glossentry{namemangling}|setentrycounter[]{page}"\glsnumberformat}{65}
+\glossaryentry{iskazhenie imen?\glossentry{namemangling}|setentrycounter[]{page}"\glsnumberformat}{65}
+\glossaryentry{extern c?\glossentry{externc}|setentrycounter[]{page}"\glsnumberformat}{65}
+\glossaryentry{arkhitektura fon neymana?\glossentry{vonneumann}|setentrycounter[]{page}"\glsnumberformat}{66}
+\glossaryentry{registr?\glossentry{register}|setentrycounter[]{page}"\glsnumberformat}{66}
+\glossaryentry{abi?\glossentry{abi}|setentrycounter[]{page}"\glsnumberformat}{66}
+\glossaryentry{rdi?\glossentry{rdi}|setentrycounter[]{page}"\glsnumberformat}{66}
+\glossaryentry{rsi?\glossentry{rsi}|setentrycounter[]{page}"\glsnumberformat}{66}
+\glossaryentry{rax?\glossentry{rax}|setentrycounter[]{page}"\glsnumberformat}{67}
+\glossaryentry{abi?\glossentry{abi}|setentrycounter[]{page}"\glsnumberformat}{69}
+\glossaryentry{rflags?\glossentry{rflags}|setentrycounter[]{page}"\glsnumberformat}{69}
+\glossaryentry{intel?\glossentry{intel-syntax}|setentrycounter[]{page}"\glsnumberformat}{71}
 \glossaryentry{stack-frame?\glossentry{stack-frame}|setentrycounter[]{page}"\glsnumberformat}{73}
-\glossaryentry{rodata?\glossentry{rodata}|setentrycounter[]{page}"\glsnumberformat}{74}
-\glossaryentry{data?\glossentry{data}|setentrycounter[]{page}"\glsnumberformat}{74}
-\glossaryentry{bss?\glossentry{bss}|setentrycounter[]{page}"\glsnumberformat}{74}
-\glossaryentry{data?\glossentry{data}|setentrycounter[]{page}"\glsnumberformat}{74}
-\glossaryentry{rodata?\glossentry{rodata}|setentrycounter[]{page}"\glsnumberformat}{74}
+\glossaryentry{relokatsiya?\glossentry{relocation}|setentrycounter[]{page}"\glsnumberformat}{74}
+\glossaryentry{stack-frame?\glossentry{stack-frame}|setentrycounter[]{page}"\glsnumberformat}{75}
+\glossaryentry{rodata?\glossentry{rodata}|setentrycounter[]{page}"\glsnumberformat}{76}
 \glossaryentry{data?\glossentry{data}|setentrycounter[]{page}"\glsnumberformat}{76}
-\glossaryentry{intel?\glossentry{intel-syntax}|setentrycounter[]{page}"\glsnumberformat}{79}
-\glossaryentry{att?\glossentry{att-syntax}|setentrycounter[]{page}"\glsnumberformat}{79}
-\glossaryentry{intel?\glossentry{intel-syntax}|setentrycounter[]{page}"\glsnumberformat}{79}
-\glossaryentry{kosvenniy perehod?\glossentry{indirect-jump}|setentrycounter[]{page}"\glsnumberformat}{81}
-\glossaryentry{vstroenniy assembler?\glossentry{inline-asm}|setentrycounter[]{page}"\glsnumberformat}{81}
+\glossaryentry{bss?\glossentry{bss}|setentrycounter[]{page}"\glsnumberformat}{76}
+\glossaryentry{data?\glossentry{data}|setentrycounter[]{page}"\glsnumberformat}{76}
+\glossaryentry{rodata?\glossentry{rodata}|setentrycounter[]{page}"\glsnumberformat}{76}
+\glossaryentry{data?\glossentry{data}|setentrycounter[]{page}"\glsnumberformat}{78}
+\glossaryentry{intel?\glossentry{intel-syntax}|setentrycounter[]{page}"\glsnumberformat}{81}
+\glossaryentry{att?\glossentry{att-syntax}|setentrycounter[]{page}"\glsnumberformat}{81}
+\glossaryentry{intel?\glossentry{intel-syntax}|setentrycounter[]{page}"\glsnumberformat}{81}
+\glossaryentry{kosvenniy perehod?\glossentry{indirect-jump}|setentrycounter[]{page}"\glsnumberformat}{83}
 \glossaryentry{vstroenniy assembler?\glossentry{inline-asm}|setentrycounter[]{page}"\glsnumberformat}{83}
-\glossaryentry{klobbers?\glossentry{clobbers}|setentrycounter[]{page}"\glsnumberformat}{83}
-\glossaryentry{sistemnyj vyzov?\glossentry{syscall}|setentrycounter[]{page}"\glsnumberformat}{84}
-\glossaryentry{volatile?\glossentry{volatile}|setentrycounter[]{page}"\glsnumberformat}{85}
-\glossaryentry{klobbers?\glossentry{clobbers}|setentrycounter[]{page}"\glsnumberformat}{86}
-\glossaryentry{kosvenniy perehod?\glossentry{indirect-jump}|setentrycounter[]{page}"\glsnumberformat}{87}
-\glossaryentry{endbr64?\glossentry{endbr64}|setentrycounter[]{page}"\glsnumberformat}{87}
-\glossaryentry{kosvenniy perehod?\glossentry{indirect-jump}|setentrycounter[]{page}"\glsnumberformat}{87}
-\glossaryentry{vtable?\glossentry{vtable}|setentrycounter[]{page}"\glsnumberformat}{88}
-\glossaryentry{vptr?\glossentry{vptr}|setentrycounter[]{page}"\glsnumberformat}{88}
-\glossaryentry{vptr?\glossentry{vptr}|setentrycounter[]{page}"\glsnumberformat}{88}
-\glossaryentry{vtable?\glossentry{vtable}|setentrycounter[]{page}"\glsnumberformat}{88}
-\glossaryentry{vptr?\glossentry{vptr}|setentrycounter[]{page}"\glsnumberformat}{88}
-\glossaryentry{vtable?\glossentry{vtable}|setentrycounter[]{page}"\glsnumberformat}{88}
-\glossaryentry{vptr?\glossentry{vptr}|setentrycounter[]{page}"\glsnumberformat}{88}
-\glossaryentry{vtable?\glossentry{vtable}|setentrycounter[]{page}"\glsnumberformat}{88}
-\glossaryentry{vptr?\glossentry{vptr}|setentrycounter[]{page}"\glsnumberformat}{89}
-\glossaryentry{vptr?\glossentry{vptr}|setentrycounter[]{page}"\glsnumberformat}{89}
-\glossaryentry{vptr?\glossentry{vptr}|setentrycounter[]{page}"\glsnumberformat}{89}
-\glossaryentry{vtable?\glossentry{vtable}|setentrycounter[]{page}"\glsnumberformat}{89}
+\glossaryentry{vstroenniy assembler?\glossentry{inline-asm}|setentrycounter[]{page}"\glsnumberformat}{85}
+\glossaryentry{klobbers?\glossentry{clobbers}|setentrycounter[]{page}"\glsnumberformat}{85}
+\glossaryentry{sistemnyj vyzov?\glossentry{syscall}|setentrycounter[]{page}"\glsnumberformat}{86}
+\glossaryentry{volatile?\glossentry{volatile}|setentrycounter[]{page}"\glsnumberformat}{87}
+\glossaryentry{klobbers?\glossentry{clobbers}|setentrycounter[]{page}"\glsnumberformat}{88}
 \glossaryentry{kosvenniy perehod?\glossentry{indirect-jump}|setentrycounter[]{page}"\glsnumberformat}{89}
-\glossaryentry{kosvenniy perehod?\glossentry{indirect-jump}|setentrycounter[]{page}"\glsnumberformat}{90}
-\glossaryentry{endbr64?\glossentry{endbr64}|setentrycounter[]{page}"\glsnumberformat}{90}
+\glossaryentry{endbr64?\glossentry{endbr64}|setentrycounter[]{page}"\glsnumberformat}{89}
+\glossaryentry{kosvenniy perehod?\glossentry{indirect-jump}|setentrycounter[]{page}"\glsnumberformat}{89}
+\glossaryentry{vtable?\glossentry{vtable}|setentrycounter[]{page}"\glsnumberformat}{90}
+\glossaryentry{vptr?\glossentry{vptr}|setentrycounter[]{page}"\glsnumberformat}{90}
 \glossaryentry{vptr?\glossentry{vptr}|setentrycounter[]{page}"\glsnumberformat}{90}
 \glossaryentry{vtable?\glossentry{vtable}|setentrycounter[]{page}"\glsnumberformat}{90}
-\glossaryentry{kosvenniy perehod?\glossentry{indirect-jump}|setentrycounter[]{page}"\glsnumberformat}{90}
-\glossaryentry{dinamicheskaya biblioteka?\glossentry{shared-object}|setentrycounter[]{page}"\glsnumberformat}{91}
-\glossaryentry{dinamicheskaya biblioteka?\glossentry{shared-object}|setentrycounter[]{page}"\glsnumberformat}{91}
-\glossaryentry{lenivoe svyazivanie?\glossentry{lazy-binding}|setentrycounter[]{page}"\glsnumberformat}{91}
-\glossaryentry{lenivoe svyazivanie?\glossentry{lazy-binding}|setentrycounter[]{page}"\glsnumberformat}{92}
-\glossaryentry{dinamicheskaya biblioteka?\glossentry{shared-object}|setentrycounter[]{page}"\glsnumberformat}{92}
+\glossaryentry{vptr?\glossentry{vptr}|setentrycounter[]{page}"\glsnumberformat}{90}
+\glossaryentry{vtable?\glossentry{vtable}|setentrycounter[]{page}"\glsnumberformat}{90}
+\glossaryentry{vptr?\glossentry{vptr}|setentrycounter[]{page}"\glsnumberformat}{90}
+\glossaryentry{vtable?\glossentry{vtable}|setentrycounter[]{page}"\glsnumberformat}{90}
+\glossaryentry{vptr?\glossentry{vptr}|setentrycounter[]{page}"\glsnumberformat}{91}
+\glossaryentry{vptr?\glossentry{vptr}|setentrycounter[]{page}"\glsnumberformat}{91}
+\glossaryentry{vptr?\glossentry{vptr}|setentrycounter[]{page}"\glsnumberformat}{91}
+\glossaryentry{vtable?\glossentry{vtable}|setentrycounter[]{page}"\glsnumberformat}{91}
+\glossaryentry{kosvenniy perehod?\glossentry{indirect-jump}|setentrycounter[]{page}"\glsnumberformat}{91}
+\glossaryentry{kosvenniy perehod?\glossentry{indirect-jump}|setentrycounter[]{page}"\glsnumberformat}{92}
+\glossaryentry{endbr64?\glossentry{endbr64}|setentrycounter[]{page}"\glsnumberformat}{92}
+\glossaryentry{vptr?\glossentry{vptr}|setentrycounter[]{page}"\glsnumberformat}{92}
+\glossaryentry{vtable?\glossentry{vtable}|setentrycounter[]{page}"\glsnumberformat}{92}
+\glossaryentry{kosvenniy perehod?\glossentry{indirect-jump}|setentrycounter[]{page}"\glsnumberformat}{92}
+\glossaryentry{dinamicheskaya biblioteka?\glossentry{shared-object}|setentrycounter[]{page}"\glsnumberformat}{93}
+\glossaryentry{dinamicheskaya biblioteka?\glossentry{shared-object}|setentrycounter[]{page}"\glsnumberformat}{93}
+\glossaryentry{lenivoe svyazivanie?\glossentry{lazy-binding}|setentrycounter[]{page}"\glsnumberformat}{93}
 \glossaryentry{lenivoe svyazivanie?\glossentry{lazy-binding}|setentrycounter[]{page}"\glsnumberformat}{94}
-\glossaryentry{sistemnyj vyzov?\glossentry{syscall}|setentrycounter[]{page}"\glsnumberformat}{95}
-\glossaryentry{start?\glossentry{start-label}|setentrycounter[]{page}"\glsnumberformat}{95}
-\glossaryentry{start?\glossentry{start-label}|setentrycounter[]{page}"\glsnumberformat}{95}
-\glossaryentry{movsx?\glossentry{movsx}|setentrycounter[]{page}"\glsnumberformat}{96}
+\glossaryentry{dinamicheskaya biblioteka?\glossentry{shared-object}|setentrycounter[]{page}"\glsnumberformat}{94}
+\glossaryentry{lenivoe svyazivanie?\glossentry{lazy-binding}|setentrycounter[]{page}"\glsnumberformat}{96}
+\glossaryentry{sistemnyj vyzov?\glossentry{syscall}|setentrycounter[]{page}"\glsnumberformat}{97}
 \glossaryentry{start?\glossentry{start-label}|setentrycounter[]{page}"\glsnumberformat}{97}
-\glossaryentry{movsx?\glossentry{movsx}|setentrycounter[]{page}"\glsnumberformat}{97}
-\glossaryentry{kesh?\glossentry{cache}|setentrycounter[]{page}"\glsnumberformat}{98}
-\glossaryentry{kesh-linia?\glossentry{cache-line}|setentrycounter[]{page}"\glsnumberformat}{98}
-\glossaryentry{associativniy kesh?\glossentry{set-associative}|setentrycounter[]{page}"\glsnumberformat}{98}
-\glossaryentry{kesh-linia?\glossentry{cache-line}|setentrycounter[]{page}"\glsnumberformat}{98}
-\glossaryentry{kesh-linia?\glossentry{cache-line}|setentrycounter[]{page}"\glsnumberformat}{98}
-\glossaryentry{konveier?\glossentry{pipeline}|setentrycounter[]{page}"\glsnumberformat}{98}
-\glossaryentry{konflikt po dannim?\glossentry{data-hazard}|setentrycounter[]{page}"\glsnumberformat}{99}
-\glossaryentry{konflikt po dannim?\glossentry{data-hazard}|setentrycounter[]{page}"\glsnumberformat}{99}
-\glossaryentry{konflikt po upravleniyu?\glossentry{control-hazard}|setentrycounter[]{page}"\glsnumberformat}{99}
-\glossaryentry{konflikt po dannim?\glossentry{data-hazard}|setentrycounter[]{page}"\glsnumberformat}{99}
-\glossaryentry{predskazanie vetvleniy?\glossentry{branch-prediction}|setentrycounter[]{page}"\glsnumberformat}{99}
-\glossaryentry{konflikt po upravleniyu?\glossentry{control-hazard}|setentrycounter[]{page}"\glsnumberformat}{99}
-\glossaryentry{predskazanie vetvleniy?\glossentry{branch-prediction}|setentrycounter[]{page}"\glsnumberformat}{99}
-\glossaryentry{kesh-linia?\glossentry{cache-line}|setentrycounter[]{page}"\glsnumberformat}{99}
-\glossaryentry{konveier?\glossentry{pipeline}|setentrycounter[]{page}"\glsnumberformat}{99}
-\glossaryentry{predskazanie vetvleniy?\glossentry{branch-prediction}|setentrycounter[]{page}"\glsnumberformat}{100}
-\glossaryentry{konflikt po dannim?\glossentry{data-hazard}|setentrycounter[]{page}"\glsnumberformat}{100}
-\glossaryentry{konflikt po upravleniyu?\glossentry{control-hazard}|setentrycounter[]{page}"\glsnumberformat}{100}
-\glossaryentry{kesh?\glossentry{cache}|setentrycounter[]{page}"\glsnumberformat}{102}
-\glossaryentry{konveier?\glossentry{pipeline}|setentrycounter[]{page}"\glsnumberformat}{103}
-\glossaryentry{konveier?\glossentry{pipeline}|setentrycounter[]{page}"\glsnumberformat}{103}
-\glossaryentry{miuteks?\glossentry{mutex}|setentrycounter[]{page}"\glsnumberformat}{109}
-\glossaryentry{miuteks?\glossentry{mutex}|setentrycounter[]{page}"\glsnumberformat}{109}
-\glossaryentry{miuteks?\glossentry{mutex}|setentrycounter[]{page}"\glsnumberformat}{109}
-\glossaryentry{miuteks?\glossentry{mutex}|setentrycounter[]{page}"\glsnumberformat}{110}
-\glossaryentry{miuteks?\glossentry{mutex}|setentrycounter[]{page}"\glsnumberformat}{110}
-\glossaryentry{vzaimoblokirovka?\glossentry{deadlock}|setentrycounter[]{page}"\glsnumberformat}{111}
-\glossaryentry{vzaimoblokirovka?\glossentry{deadlock}|setentrycounter[]{page}"\glsnumberformat}{111}
-\glossaryentry{vzaimoblokirovka?\glossentry{deadlock}|setentrycounter[]{page}"\glsnumberformat}{111}
-\glossaryentry{Hyper-threading?\glossentry{Hyperthreading}|setentrycounter[]{page}"\glsnumberformat}{113}
-\glossaryentry{Закон Амдала?\glossentry{Amdahl}|setentrycounter[]{page}"\glsnumberformat}{114}
-\glossaryentry{Ethernet?\glossentry{ethernet}|setentrycounter[]{page}"\glsnumberformat}{121}
-\glossaryentry{MAC-адрес?\glossentry{mac}|setentrycounter[]{page}"\glsnumberformat}{121}
-\glossaryentry{MAC-адрес?\glossentry{mac}|setentrycounter[]{page}"\glsnumberformat}{122}
-\glossaryentry{MAC-адрес?\glossentry{mac}|setentrycounter[]{page}"\glsnumberformat}{122}
-\glossaryentry{IP?\glossentry{ip}|setentrycounter[]{page}"\glsnumberformat}{122}
-\glossaryentry{NAT?\glossentry{nat}|setentrycounter[]{page}"\glsnumberformat}{122}
-\glossaryentry{TCP?\glossentry{tcp}|setentrycounter[]{page}"\glsnumberformat}{124}
-\glossaryentry{DNS?\glossentry{dns}|setentrycounter[]{page}"\glsnumberformat}{124}
-\glossaryentry{сокет?\glossentry{socket}|setentrycounter[]{page}"\glsnumberformat}{124}
-\glossaryentry{epoll?\glossentry{epoll}|setentrycounter[]{page}"\glsnumberformat}{125}
-\glossaryentry{epoll?\glossentry{epoll}|setentrycounter[]{page}"\glsnumberformat}{126}
-\glossaryentry{fajlovyj deskriptor?\glossentry{fd}|setentrycounter[]{page}"\glsnumberformat}{130}
+\glossaryentry{start?\glossentry{start-label}|setentrycounter[]{page}"\glsnumberformat}{97}
+\glossaryentry{movsx?\glossentry{movsx}|setentrycounter[]{page}"\glsnumberformat}{98}
+\glossaryentry{start?\glossentry{start-label}|setentrycounter[]{page}"\glsnumberformat}{99}
+\glossaryentry{movsx?\glossentry{movsx}|setentrycounter[]{page}"\glsnumberformat}{99}
+\glossaryentry{kesh?\glossentry{cache}|setentrycounter[]{page}"\glsnumberformat}{100}
+\glossaryentry{kesh-linia?\glossentry{cache-line}|setentrycounter[]{page}"\glsnumberformat}{100}
+\glossaryentry{associativniy kesh?\glossentry{set-associative}|setentrycounter[]{page}"\glsnumberformat}{100}
+\glossaryentry{kesh-linia?\glossentry{cache-line}|setentrycounter[]{page}"\glsnumberformat}{100}
+\glossaryentry{kesh-linia?\glossentry{cache-line}|setentrycounter[]{page}"\glsnumberformat}{100}
+\glossaryentry{konveier?\glossentry{pipeline}|setentrycounter[]{page}"\glsnumberformat}{100}
+\glossaryentry{konflikt po dannim?\glossentry{data-hazard}|setentrycounter[]{page}"\glsnumberformat}{101}
+\glossaryentry{konflikt po dannim?\glossentry{data-hazard}|setentrycounter[]{page}"\glsnumberformat}{101}
+\glossaryentry{konflikt po upravleniyu?\glossentry{control-hazard}|setentrycounter[]{page}"\glsnumberformat}{101}
+\glossaryentry{konflikt po dannim?\glossentry{data-hazard}|setentrycounter[]{page}"\glsnumberformat}{101}
+\glossaryentry{predskazanie vetvleniy?\glossentry{branch-prediction}|setentrycounter[]{page}"\glsnumberformat}{101}
+\glossaryentry{konflikt po upravleniyu?\glossentry{control-hazard}|setentrycounter[]{page}"\glsnumberformat}{101}
+\glossaryentry{predskazanie vetvleniy?\glossentry{branch-prediction}|setentrycounter[]{page}"\glsnumberformat}{101}
+\glossaryentry{kesh-linia?\glossentry{cache-line}|setentrycounter[]{page}"\glsnumberformat}{101}
+\glossaryentry{konveier?\glossentry{pipeline}|setentrycounter[]{page}"\glsnumberformat}{101}
+\glossaryentry{predskazanie vetvleniy?\glossentry{branch-prediction}|setentrycounter[]{page}"\glsnumberformat}{102}
+\glossaryentry{konflikt po dannim?\glossentry{data-hazard}|setentrycounter[]{page}"\glsnumberformat}{102}
+\glossaryentry{konflikt po upravleniyu?\glossentry{control-hazard}|setentrycounter[]{page}"\glsnumberformat}{102}
+\glossaryentry{kesh?\glossentry{cache}|setentrycounter[]{page}"\glsnumberformat}{104}
+\glossaryentry{konveier?\glossentry{pipeline}|setentrycounter[]{page}"\glsnumberformat}{105}
+\glossaryentry{konveier?\glossentry{pipeline}|setentrycounter[]{page}"\glsnumberformat}{105}
+\glossaryentry{miuteks?\glossentry{mutex}|setentrycounter[]{page}"\glsnumberformat}{111}
+\glossaryentry{miuteks?\glossentry{mutex}|setentrycounter[]{page}"\glsnumberformat}{111}
+\glossaryentry{miuteks?\glossentry{mutex}|setentrycounter[]{page}"\glsnumberformat}{111}
+\glossaryentry{miuteks?\glossentry{mutex}|setentrycounter[]{page}"\glsnumberformat}{112}
+\glossaryentry{miuteks?\glossentry{mutex}|setentrycounter[]{page}"\glsnumberformat}{112}
+\glossaryentry{vzaimoblokirovka?\glossentry{deadlock}|setentrycounter[]{page}"\glsnumberformat}{113}
+\glossaryentry{vzaimoblokirovka?\glossentry{deadlock}|setentrycounter[]{page}"\glsnumberformat}{113}
+\glossaryentry{vzaimoblokirovka?\glossentry{deadlock}|setentrycounter[]{page}"\glsnumberformat}{113}
+\glossaryentry{lostwakeup?\glossentry{lostwakeup}|setentrycounter[]{page}"\glsnumberformat}{115}
+\glossaryentry{fajlovyj deskriptor?\glossentry{fd}|setentrycounter[]{page}"\glsnumberformat}{131}
+\glossaryentry{epoll?\glossentry{epoll}|setentrycounter[]{page}"\glsnumberformat}{132}
+\glossaryentry{epoll?\glossentry{epoll}|setentrycounter[]{page}"\glsnumberformat}{132}
+\glossaryentry{epoll?\glossentry{epoll}|setentrycounter[]{page}"\glsnumberformat}{133}
+\glossaryentry{epoll?\glossentry{epoll}|setentrycounter[]{page}"\glsnumberformat}{134}
+\glossaryentry{epoll?\glossentry{epoll}|setentrycounter[]{page}"\glsnumberformat}{134}
+\glossaryentry{epoll?\glossentry{epoll}|setentrycounter[]{page}"\glsnumberformat}{135}
+\glossaryentry{fajlovyj deskriptor?\glossentry{fd}|setentrycounter[]{page}"\glsnumberformat}{144}
+\glossaryentry{epoll?\glossentry{epoll}|setentrycounter[]{page}"\glsnumberformat}{145}
+\glossaryentry{epoll?\glossentry{epoll}|setentrycounter[]{page}"\glsnumberformat}{145}
+\glossaryentry{epoll?\glossentry{epoll}|setentrycounter[]{page}"\glsnumberformat}{146}
+\glossaryentry{epoll?\glossentry{epoll}|setentrycounter[]{page}"\glsnumberformat}{147}
+\glossaryentry{epoll?\glossentry{epoll}|setentrycounter[]{page}"\glsnumberformat}{147}
+\glossaryentry{epoll?\glossentry{epoll}|setentrycounter[]{page}"\glsnumberformat}{148}
+\glossaryentry{fajlovyj deskriptor?\glossentry{fd}|setentrycounter[]{page}"\glsnumberformat}{159}
+\glossaryentry{kesh-linia?\glossentry{cache-line}|setentrycounter[]{page}"\glsnumberformat}{175}
+\glossaryentry{kesh?\glossentry{cache}|setentrycounter[]{page}"\glsnumberformat}{177}
+\glossaryentry{konveier?\glossentry{pipeline}|setentrycounter[]{page}"\glsnumberformat}{177}
+\glossaryentry{konveier?\glossentry{pipeline}|setentrycounter[]{page}"\glsnumberformat}{177}
+\glossaryentry{konflikt po upravleniyu?\glossentry{control-hazard}|setentrycounter[]{page}"\glsnumberformat}{178}
+\glossaryentry{vtable?\glossentry{vtable}|setentrycounter[]{page}"\glsnumberformat}{181}

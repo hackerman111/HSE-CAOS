@@ -1,80 +1,112 @@
 \relax 
 \providecommand\hyper@newdestlabel[2]{}
-\@writefile{toc}{\contentsline {section}{\numberline {11.1}Введение}{121}{section.11.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {11.2}Физический и Канальный уровни}{121}{section.11.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {11.2.1}Принципы передачи сигнала}{121}{subsection.11.2.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {11.2.2}Протокол Ethernet и MAC-адресация}{121}{subsection.11.2.2}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {11.1}{\ignorespaces Принцип Манчестерского кодирования (схематично)}}{122}{figure.caption.22}\protected@file@percent }
-\newlabel{fig:manchester}{{11.1}{122}{Принцип Манчестерского кодирования (схематично)}{figure.caption.22}{}}
-\newlabel{fig:manchester@cref}{{[figure][1][11]11.1}{[1][121][]122}{}{}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {11.1}{\ignorespaces Структура Ethernet-фрейма}}{122}{table.caption.23}\protected@file@percent }
-\newlabel{tab:ethernet-frame}{{11.1}{122}{Структура Ethernet-фрейма}{table.caption.23}{}}
-\newlabel{tab:ethernet-frame@cref}{{[table][1][11]11.1}{[1][121][]122}{}{}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {11.3}Сетевой уровень (Network Layer)}{122}{section.11.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {11.3.1}Протокол IP и маршрутизация}{122}{subsection.11.3.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {11.3.2}Подсети и маски (CIDR)}{122}{subsection.11.3.2}\protected@file@percent }
-\newlabel{lst:cidr}{{11.1}{122}{Пример расчета диапазона подсети /23}{lstlisting.11.1}{}}
-\newlabel{lst:cidr@cref}{{[lstlisting][1][11]11.1}{[1][122][]122}{}{}{}}
-\@writefile{lol}{\contentsline {lstlisting}{\numberline {11.1}{\ignorespaces Пример расчета диапазона подсети /23}}{122}{lstlisting.11.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {11.4}Транспортный уровень (Transport Layer)}{123}{section.11.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {11.4.1}Сравнение TCP и UDP}{123}{subsection.11.4.1}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {11.2}{\ignorespaces Сравнение транспортных протоколов}}{123}{table.caption.24}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {11.4.2}Порядок байт (Endianness)}{123}{subsection.11.4.2}\protected@file@percent }
-\newlabel{lst:endian}{{11.2}{123}{Конвертация порядка байт}{lstlisting.11.2}{}}
-\newlabel{lst:endian@cref}{{[lstlisting][2][11]11.2}{[1][123][]123}{}{}{}}
-\@writefile{lol}{\contentsline {lstlisting}{\numberline {11.2}{\ignorespaces Конвертация порядка байт}}{123}{lstlisting.11.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {11.5}Прикладной уровень (Application Layer)}{124}{section.11.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {11.5.1}HTTP и DNS}{124}{subsection.11.5.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {11.6}Socket API и Модели конкурентности}{124}{section.11.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {11.6.1}Базовый жизненный цикл TCP-сервера}{124}{subsection.11.6.1}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {11.2}{\ignorespaces Системные вызовы TCP-сервера}}{124}{figure.caption.25}\protected@file@percent }
-\newlabel{fig:socket-lifecycle}{{11.2}{124}{Системные вызовы TCP-сервера}{figure.caption.25}{}}
-\newlabel{fig:socket-lifecycle@cref}{{[figure][2][11]11.2}{[1][124][]124}{}{}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {11.6.2}Эволюция моделей ввода-вывода}{124}{subsection.11.6.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Thread-per-connection (Поток на соединение)}{124}{subsection.11.6.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Non-blocking I/O (Неблокирующий ввод-вывод)}{125}{subsection.11.6.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{I/O Multiplexing (epoll)}{125}{subsection.11.6.2}\protected@file@percent }
-\newlabel{lst:epoll}{{11.3}{125}{Скелет Event Loop на epoll}{lstlisting.11.3}{}}
-\newlabel{lst:epoll@cref}{{[lstlisting][3][11]11.3}{[1][125][]125}{}{}{}}
-\@writefile{lol}{\contentsline {lstlisting}{\numberline {11.3}{\ignorespaces Скелет Event Loop на epoll}}{125}{lstlisting.11.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {11.7}Итоги раздела}{125}{section.11.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {12.1}Введение: Эволюция сетевых архитектур}{144}{section.12.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {12.2}Многопоточная модель (Thread-per-Connection)}{144}{section.12.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {12.2.1}Ограничения многопоточности}{144}{subsection.12.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {12.3}Ограничения ОС: Файловые дескрипторы и ulimit}{144}{section.12.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {12.4}Событийная модель: Мультиплексирование через ePoll}{145}{section.12.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {12.4.1}Флаг O\_NONBLOCK}{145}{subsection.12.4.1}\protected@file@percent }
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {12.1}{\ignorespaces Setting socket to non-blocking mode}}{145}{lstlisting.12.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {12.4.2}Механизм ePoll}{145}{subsection.12.4.2}\protected@file@percent }
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {12.2}{\ignorespaces Main multiplexing loop using ePoll}}{145}{lstlisting.12.2}\protected@file@percent }
+\newlabel{line:accept}{{14}{145}{Механизм ePoll}{lstnumber.12.2.14}{}}
+\newlabel{line:accept@cref}{{[subsection][2][12,4]12.4.2}{[1][145][]145}{}{}{}}
+\newlabel{line:io}{{16}{145}{Механизм ePoll}{lstnumber.12.2.16}{}}
+\newlabel{line:io@cref}{{[subsection][2][12,4]12.4.2}{[1][145][]145}{}{}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {12.5}Сравнительный анализ производительности}{146}{section.12.5}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {12.1}{\ignorespaces Метрики производительности при 2000 соединениях}}{146}{table.caption.33}\protected@file@percent }
+\newlabel{tab:perf-metrics}{{12.1}{146}{Метрики производительности при 2000 соединениях}{table.caption.33}{}}
+\newlabel{tab:perf-metrics@cref}{{[table][1][12]12.1}{[1][146][]146}{}{}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {12.6}Visuals: Сравнение архитектур}{146}{section.12.6}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {12.1}{\ignorespaces Сравнение архитектур сетевых серверов}}{146}{figure.caption.34}\protected@file@percent }
+\newlabel{fig:arch-comparison}{{12.1}{146}{Сравнение архитектур сетевых серверов}{figure.caption.34}{}}
+\newlabel{fig:arch-comparison@cref}{{[figure][1][12]12.1}{[1][146][]146}{}{}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {12.7}Унифицированный цикл событий: TimerFD, PIDFD и io\_uring}{146}{section.12.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {12.8}Таймеры как дескрипторы: TimerFD}{147}{section.12.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {12.8.1}Механика настройки}{147}{subsection.12.8.1}\protected@file@percent }
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {12.3}{\ignorespaces Periodic timer initialization using timerfd\_settime}}{147}{lstlisting.12.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {12.9}События процессов: PIDFD}{147}{section.12.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {12.10}Путь к Zero Syscall I/O: io\_uring}{148}{section.12.10}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {12.10.1}Идея батчинга (Batching)}{148}{subsection.12.10.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {12.11}Визуализация: Унифицированный Event Loop}{148}{section.12.11}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {12.2}{\ignorespaces Схема унификации ресурсов в событийном цикле}}{148}{figure.caption.35}\protected@file@percent }
+\newlabel{fig:unified-loop}{{12.2}{148}{Схема унификации ресурсов в событийном цикле}{figure.caption.35}{}}
+\newlabel{fig:unified-loop@cref}{{[figure][2][12]12.2}{[1][148][]148}{}{}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {12.12}Задача с семинара: Обработка сигналов через FD}{148}{section.12.12}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {12.13}Механика сигналов: Аппаратные корни и безопасность стека}{149}{section.12.13}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {12.13.1}Генезис сигналов: от аппаратных прерываний к программным}{149}{subsection.12.13.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {12.13.2}Анатомия доставки сигнала и манипуляция стеком}{149}{subsection.12.13.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {12.13.3}x86\_64 Red Zone и листовые функции}{149}{subsection.12.13.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {12.3}{\ignorespaces Stack layout during signal processing on x86\_64}}{150}{figure.caption.36}\protected@file@percent }
+\newlabel{fig:stack-layout}{{12.3}{150}{Stack layout during signal processing on x86\_64}{figure.caption.36}{}}
+\newlabel{fig:stack-layout@cref}{{[figure][3][12]12.3}{[1][150][]150}{}{}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {12.13.4}Проблема Signal-Safety: почему printf — это риск}{150}{subsection.12.13.4}\protected@file@percent }
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {12.4}{\ignorespaces Example of a dangerous handler (Signal-Unsafe)}}{150}{lstlisting.12.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {12.13.5}Безопасные системные вызовы}{150}{subsection.12.13.5}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {12.2}{\ignorespaces Examples of Async-Signal-Safe functions}}{151}{table.caption.37}\protected@file@percent }
+\newlabel{tab:safe-funcs}{{12.2}{151}{Examples of Async-Signal-Safe functions}{table.caption.37}{}}
+\newlabel{tab:safe-funcs@cref}{{[table][2][12]12.2}{[1][150][]151}{}{}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {12.14}Синхронная обработка и атомарное ожидание: sigsuspend}{151}{section.12.14}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {12.15}Проблемы пассивного и активного ожидания}{151}{section.12.15}\protected@file@percent }
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {12.5}{\ignorespaces Busy Wait: incorrect implementation}}{151}{lstlisting.12.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {12.15.1}Оптимизации компилятора и volatile}{151}{subsection.12.15.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {12.16}Манипуляция масками сигналов}{152}{section.12.16}\protected@file@percent }
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {12.6}{\ignorespaces Signal mask manipulation}}{152}{lstlisting.12.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {12.17}Критическая гонка (Race Condition): pause()}{152}{section.12.17}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {12.4}{\ignorespaces Race condition between signal unblocking and entering sleep state}}{152}{figure.caption.38}\protected@file@percent }
+\newlabel{fig:signal-race}{{12.4}{152}{Race condition between signal unblocking and entering sleep state}{figure.caption.38}{}}
+\newlabel{fig:signal-race@cref}{{[figure][4][12]12.4}{[1][152][]152}{}{}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {12.18}Решение: системный вызов sigsuspend}{152}{section.12.18}\protected@file@percent }
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {12.7}{\ignorespaces Safe signal waiting pattern}}{153}{lstlisting.12.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {12.19}Итоги раздела}{153}{section.12.19}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {12.20}Контроль контекста и современные рантаймы: sigaction и Go Preemption}{153}{section.12.20}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {12.21}Интерфейс sigaction: Преимущества и флаги}{154}{section.12.21}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {12.21.1}Флаг SA\_RESTART и обработка EINTR}{154}{subsection.12.21.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {12.22}Расширенная информация: SA\_SIGINFO и siginfo\_t}{154}{section.12.22}\protected@file@percent }
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {12.8}{\ignorespaces SIGSEGV processing using SA\_SIGINFO}}{154}{lstlisting.12.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {12.23}Низкоуровневая манипуляция контекстом: ucontext\_t}{155}{section.12.23}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {12.24}Case Study: Вытеснение в языке Go (Preemption)}{155}{section.12.24}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {12.5}{\ignorespaces Механизм вытеснения горутины через манипуляцию RIP}}{155}{figure.caption.39}\protected@file@percent }
+\newlabel{fig:go-preemption}{{12.5}{155}{Механизм вытеснения горутины через манипуляцию RIP}{figure.caption.39}{}}
+\newlabel{fig:go-preemption@cref}{{[figure][5][12]12.5}{[1][155][]155}{}{}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {12.25}Итоги раздела}{155}{section.12.25}\protected@file@percent }
 \@setckpt{11}{
-\setcounter{page}{127}
+\setcounter{page}{156}
 \setcounter{equation}{0}
-\setcounter{enumi}{2}
+\setcounter{enumi}{3}
 \setcounter{enumii}{0}
 \setcounter{enumiii}{0}
 \setcounter{enumiv}{0}
 \setcounter{footnote}{0}
 \setcounter{mpfootnote}{0}
 \setcounter{part}{0}
-\setcounter{chapter}{11}
-\setcounter{section}{7}
+\setcounter{chapter}{12}
+\setcounter{section}{25}
 \setcounter{subsection}{0}
 \setcounter{subsubsection}{0}
 \setcounter{paragraph}{0}
 \setcounter{subparagraph}{0}
-\setcounter{figure}{2}
+\setcounter{figure}{5}
 \setcounter{table}{2}
 \setcounter{parentequation}{0}
 \setcounter{section@level}{0}
-\setcounter{Item}{88}
+\setcounter{Item}{127}
 \setcounter{Hfootnote}{0}
-\setcounter{bookmark@seq@number}{203}
+\setcounter{bookmark@seq@number}{274}
 \setcounter{caption@flags}{2}
 \setcounter{continuedfloat}{0}
 \setcounter{subfigure}{0}
 \setcounter{subtable}{0}
-\setcounter{tcbbreakpart}{2}
+\setcounter{tcbbreakpart}{1}
 \setcounter{tcblayer}{0}
-\setcounter{tcolorbox@number}{120}
+\setcounter{tcolorbox@number}{173}
 \setcounter{tcbrastercolumn}{1}
 \setcounter{tcbrasterrow}{1}
 \setcounter{tcbrasternum}{1}
 \setcounter{tcbraster}{0}
-\setcounter{lstnumber}{21}
+\setcounter{lstnumber}{19}
 \setcounter{tcblisting}{0}
 \setcounter{LT@tables}{0}
 \setcounter{LT@chunks}{0}
-\setcounter{lstlisting}{3}
+\setcounter{lstlisting}{8}
 }
