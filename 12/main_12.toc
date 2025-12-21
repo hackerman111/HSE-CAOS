@@ -1,0 +1,38 @@
+\babel@toc {russian}{}\relax 
+\contentsline {section}{\numberline {1}Введение: Эволюция сетевых архитектур}{2}{section.1}%
+\contentsline {section}{\numberline {2}Многопоточная модель (Thread-per-Connection)}{2}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Ограничения многопоточности}{2}{subsection.2.1}%
+\contentsline {section}{\numberline {3}Ограничения ОС: Файловые дескрипторы и ulimit}{2}{section.3}%
+\contentsline {section}{\numberline {4}Событийная модель: Мультиплексирование через ePoll}{3}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Флаг O\_NONBLOCK}{3}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Механизм ePoll}{3}{subsection.4.2}%
+\contentsline {section}{\numberline {5}Сравнительный анализ производительности}{4}{section.5}%
+\contentsline {section}{\numberline {6}Visuals: Сравнение архитектур}{4}{section.6}%
+\contentsline {section}{\numberline {7}Унифицированный цикл событий: TimerFD, PIDFD и io\_uring}{4}{section.7}%
+\contentsline {section}{\numberline {8}Таймеры как дескрипторы: TimerFD}{5}{section.8}%
+\contentsline {subsection}{\numberline {8.1}Механика настройки}{5}{subsection.8.1}%
+\contentsline {section}{\numberline {9}События процессов: PIDFD}{5}{section.9}%
+\contentsline {section}{\numberline {10}Путь к Zero Syscall I/O: io\_uring}{6}{section.10}%
+\contentsline {subsection}{\numberline {10.1}Идея батчинга (Batching)}{6}{subsection.10.1}%
+\contentsline {section}{\numberline {11}Визуализация: Унифицированный Event Loop}{6}{section.11}%
+\contentsline {section}{\numberline {12}Задача с семинара: Обработка сигналов через FD}{6}{section.12}%
+\contentsline {section}{\numberline {13}Механика сигналов: Аппаратные корни и безопасность стека}{7}{section.13}%
+\contentsline {subsection}{\numberline {13.1}Генезис сигналов: от аппаратных прерываний к программным}{7}{subsection.13.1}%
+\contentsline {subsection}{\numberline {13.2}Анатомия доставки сигнала и манипуляция стеком}{7}{subsection.13.2}%
+\contentsline {subsection}{\numberline {13.3}x86\_64 Red Zone и листовые функции}{8}{subsection.13.3}%
+\contentsline {subsection}{\numberline {13.4}Проблема Signal-Safety: почему printf — это риск}{8}{subsection.13.4}%
+\contentsline {subsection}{\numberline {13.5}Безопасные системные вызовы}{9}{subsection.13.5}%
+\contentsline {section}{\numberline {14}Синхронная обработка и атомарное ожидание: sigsuspend}{9}{section.14}%
+\contentsline {section}{\numberline {15}Проблемы пассивного и активного ожидания}{9}{section.15}%
+\contentsline {subsection}{\numberline {15.1}Оптимизации компилятора и volatile}{10}{subsection.15.1}%
+\contentsline {section}{\numberline {16}Манипуляция масками сигналов}{10}{section.16}%
+\contentsline {section}{\numberline {17}Критическая гонка (Race Condition): pause()}{10}{section.17}%
+\contentsline {section}{\numberline {18}Решение: системный вызов sigsuspend}{11}{section.18}%
+\contentsline {section}{\numberline {19}Итоги раздела}{11}{section.19}%
+\contentsline {section}{\numberline {20}Контроль контекста и современные рантаймы: sigaction и Go Preemption}{12}{section.20}%
+\contentsline {section}{\numberline {21}Интерфейс sigaction: Преимущества и флаги}{12}{section.21}%
+\contentsline {subsection}{\numberline {21.1}Флаг SA\_RESTART и обработка EINTR}{12}{subsection.21.1}%
+\contentsline {section}{\numberline {22}Расширенная информация: SA\_SIGINFO и siginfo\_t}{12}{section.22}%
+\contentsline {section}{\numberline {23}Низкоуровневая манипуляция контекстом: ucontext\_t}{13}{section.23}%
+\contentsline {section}{\numberline {24}Case Study: Вытеснение в языке Go (Preemption)}{13}{section.24}%
+\contentsline {section}{\numberline {25}Итоги раздела}{14}{section.25}%

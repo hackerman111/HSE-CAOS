@@ -1,0 +1,697 @@
+% ===================== PREAMBLE START (Aesthetic, pdfLaTeX, RU, no shell-escape) =========
+\documentclass[12pt,a4paper]{article}
+
+% Поиск/копирование кириллицы из PDF
+\usepackage{cmap}
+
+% Математика и единицы
+\usepackage{amsmath,amssymb,amsfonts,mathtools}
+\numberwithin{equation}{section}
+\usepackage{siunitx}
+\sisetup{detect-all=true}
+
+% Язык и кодировки
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage[russian]{babel}
+
+% Поля, типографика, абзацы
+\usepackage[a4paper,margin=2.2cm]{geometry}
+\usepackage{microtype}
+\usepackage{indentfirst}
+\setlength{\parindent}{1.25em}
+\setlength{\parskip}{0.25em}
+\raggedbottom
+
+% Цветовая тема
+\usepackage[table]{xcolor}
+\definecolor{Accent}{HTML}{1F6FEB}     % основной акцент
+\definecolor{AccentDark}{HTML}{0B5394} % тёмный акцент
+\definecolor{AccentLight}{HTML}{E8F0FE}% светлый акцент (фон)
+\definecolor{CodeBg}{HTML}{F6F8FA}     % фон для кода
+\definecolor{Link}{HTML}{1F6FEB}       % ссылки
+
+% Гиперссылки и умные ссылки
+\usepackage[unicode]{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=Link, citecolor=Link, urlcolor=Link,
+  pdfauthor={},
+  pdftitle={}
+}
+\usepackage[nameinlink,capitalise]{cleveref}
+\urlstyle{same}
+
+% Заголовки разделов
+\usepackage{titlesec}
+\titleformat{\section}{\large\bfseries\sffamily\color{Accent}}{\thesection}{1em}{}
+\titleformat{\subsection}{\bfseries\sffamily\color{AccentDark}}{\thesubsection}{0.75em}{}
+\titleformat{\subsubsection}{\bfseries}{\thesubsubsection}{0.6em}{}
+\titlespacing*{\section}{0pt}{1.0ex plus 0.5ex}{0.6ex}
+\titlespacing*{\subsection}{0pt}{0.9ex plus 0.4ex}{0.5ex}
+\titlespacing*{\subsubsection}{0pt}{0.8ex plus 0.3ex}{0.4ex}
+
+% Шапки/футеры
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+% Макросы метаданных
+\newcommand{\CourseName}{Архитектура компьютера и ОС}
+\newcommand{\LectureNo}{12}
+\newcommand{\LectureTitle}{Архитектура высокопроизводительных серверов}
+\newcommand{\LectureDate}{21.12.2025}
+\newcommand{\Lecturer}{Преподаватель}
+\fancyhead[L]{\small\sffamily \CourseName}
+\fancyhead[C]{\small\sffamily \LectureTitle}
+\fancyhead[R]{\small\sffamily Лекция \LectureNo}
+\fancyfoot[C]{\small\sffamily \thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\makeatletter
+\renewcommand{\headrule}{\hbox to\headwidth{\color{Accent}\leaders\hrule height \headrulewidth\hfill}}
+\makeatother
+
+% Подписи к рисункам/таблицам
+\usepackage[font=small,labelfont=bf,labelsep=endash]{caption}
+\usepackage{subcaption}
+
+% Таблицы и списки
+\usepackage{booktabs}
+\usepackage{array,tabularx}
+\usepackage{enumitem}
+\setlist{itemsep=2pt,topsep=4pt,leftmargin=*,labelsep=0.5em}
+
+% Графика и TikZ
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,shapes.geometric,calc,fit}
+\tikzset{
+  box/.style={draw=Accent, rounded corners, fill=AccentLight, minimum width=2.6cm, minimum height=1cm, align=center},
+  arrow/.style={-{Stealth[length=3mm,width=2mm]}, line width=0.5pt, draw=AccentDark}
+}
+
+% Красивые боксы "методички"
+\usepackage[most]{tcolorbox}
+\tcbset{enhanced, breakable, boxrule=0.6pt, fonttitle=\bfseries\sffamily}
+\newtcolorbox{definitionbox}[1]{
+  title={Определение: #1},
+  colback=AccentLight, colframe=Accent, coltitle=black, arc=2pt, left=8pt, right=8pt, top=6pt, bottom=6pt
+}
+\newtcolorbox{notebox}{
+  title={Примечание},
+  colback=yellow!8, colframe=yellow!40!black, arc=2pt, left=8pt, right=8pt, top=6pt, bottom=6pt
+}
+\newtcolorbox{summarybox}{
+  title={Итоги раздела},
+  colback=green!6, colframe=green!50!black, arc=2pt, left=8pt, right=8pt, top=6pt, bottom=6pt
+}
+
+% Листинги
+\usepackage{listings}
+\usepackage{listingsutf8}
+\lstdefinestyle{elegant}{
+  inputencoding=utf8,
+  basicstyle=\ttfamily\small,
+  columns=fullflexible,
+  breaklines=true,
+  frame=single,
+  framerule=0.4pt,
+  rulecolor=\color{black!20},
+  backgroundcolor=\color{CodeBg},
+  xleftmargin=0.5em,
+  framexleftmargin=0.5em,
+  tabsize=2,
+  showstringspaces=false,
+  keywordstyle=\bfseries\color{AccentDark},
+  commentstyle=\itshape\color{black!55},
+  stringstyle=\color{orange!60!black},
+  numbers=left,
+  numberstyle=\tiny\color{black!50},
+  numbersep=8pt,
+  captionpos=b,
+  upquote=true,
+  escapechar=§
+}
+\lstset{style=elegant}
+
+% Макросы удобства
+\newcommand{\TODO}[1]{\textcolor{red!70!black}{[TODO: #1]}}
+\newcommand{\figref}[1]{рис.~\ref{#1}}
+\newcommand{\secref}[1]{раздел~\ref{#1}}
+\newcommand{\eqnref}[1]{(\ref{#1})}
+\newcommand{\lstref}[1]{листинг~\ref{#1}}
+
+% Глоссарий
+\usepackage[acronym,nonumberlist,toc]{glossaries}
+\makeglossaries
+\setacronymstyle{long-short}
+
+\newacronym[sort=fd]{fd}{FD}{File Descriptor}
+\newacronym[sort=epoll]{epoll}{ePoll}{event poll}
+\newacronym[sort=pcb]{pcb}{PCB}{Process Control Block}
+
+\begin{document}
+\tableofcontents
+
+\section{Введение: Эволюция сетевых архитектур}
+
+Разработка высокопроизводительных сетевых сервисов требует глубокого понимания механизмов взаимодействия между пользовательским пространством (User Space) и ядром ОС (Kernel Space). Основной метрикой эффективности веб-сервера является не только пропускная способность, но и способность масштабироваться при росте количества одновременных соединений без деградации времени отклика.
+
+\section{Многопоточная модель (Thread-per-Connection)}
+
+Классическая архитектура сетевого сервера базируется на создании отдельного потока выполнения для каждого входящего соединения. Процесс обработки в этом случае линейен: поток вызывает блокирующий системный вызов \texttt{accept()}, получает дескриптор соединения и переходит к чтению/записи данных.
+
+\begin{definitionbox}{Context Switch (Переключение контекста)}
+Процедура сохранения состояния текущего потока (регистры, указатель стека, программный счетчик) и восстановления состояния другого потока. В Linux переключение контекста управляется планировщиком задач и требует перехода в режим ядра, что сопряжено с накладными расходами на кэш-промахи и сброс конвейера процессора.
+\end{definitionbox}
+
+\subsection{Ограничения многопоточности}
+При малом количестве соединений (десятки) данная модель эффективна благодаря простоте программирования. Однако при увеличении числа клиентов до тысяч возникают следующие проблемы:
+\begin{enumerate}
+    \item \textbf{Расход памяти:} Каждый поток требует собственного стека (обычно от 2 до 8 МБ в зависимости от настроек \texttt{ulimit}).
+    \item \textbf{Деградация планировщика:} Постоянные переключения между тысячами активных потоков приводят к тому, что значительная часть ресурсов CPU тратится на обслуживание инфраструктуры ОС, а не на полезную нагрузку.
+\end{enumerate}
+
+\section{Ограничения ОС: Файловые дескрипторы и ulimit}
+
+Для обработки большого количества соединений необходимо учитывать системные лимиты на количество открытых файловых дескрипторов (\gls{fd}).
+
+\begin{notebox}
+По умолчанию в большинстве дистрибутивов Linux лимит на количество открытых файлов процессом составляет 1024. При попытке открыть 2000 соединений сервер вернет ошибку \texttt{EMFILE} (Too many open files).
+\end{notebox}
+
+Для изменения лимитов используется команда \texttt{ulimit -n} или редактирование конфигурации \texttt{/etc/security/limits.conf}. Серверные приложения должны уметь обрабатывать это ограничение, увеличивая лимит через системный вызов \texttt{setrlimit()}. Каждое сетевое соединение — это запись в системной таблице открытых файлов, привязанная к \gls{pcb} (в Linux — \texttt{task\_struct}).
+
+\section{Событийная модель: Мультиплексирование через ePoll}
+
+Альтернативой многопоточности является мультиплексирование ввода-вывода. Вместо того чтобы блокировать поток на чтении из одного сокета, мы заставляем один поток следить за множеством сокетов одновременно.
+
+\subsection{Флаг O\_NONBLOCK}
+Ключевым элементом событийной модели является перевод файловых дескрипторов в неблокирующий режим.
+\begin{lstlisting}[language=C, caption={Setting socket to non-blocking mode}]
+int flags = fcntl(fd, F_GETFL, 0); // Get current flags
+fcntl(fd, F_SETFL, flags | O_NONBLOCK); // Set non-blocking flag
+\end{lstlisting}
+В этом режиме системный вызов \texttt{read()} или \texttt{write()}, если данные недоступны, немедленно возвращает $-1$ и устанавливает \texttt{errno} в \texttt{EAGAIN} или \texttt{EWOULDBLOCK}.
+
+\subsection{Механизм ePoll}
+\gls{epoll} — это масштабируемый интерфейс уведомления о событиях ввода-вывода в Linux. Он эффективнее устаревших \texttt{select} и \texttt{poll}, так как сложность уведомления составляет $O(1)$, а не $O(N)$.
+
+\begin{lstlisting}[language=C, caption={Main multiplexing loop using ePoll}]
+int epfd = epoll_create1(0); // Create epoll instance
+struct epoll_event event, events[MAX_EVENTS];
+
+// Add server socket to ePoll
+event.events = EPOLLIN;
+event.data.fd = server_fd;
+epoll_ctl(epfd, EPOLL_CTL_ADD, server_fd, &event);
+
+while (1) {
+    // Wait for events (timeout = -1 means infinite)
+    int n = epoll_wait(epfd, events, MAX_EVENTS, -1);
+    for (int i = 0; i < n; i++) {
+        if (events[i].data.fd == server_fd) {
+            // Logic: accept() new connections §\label{line:accept}§
+        } else {
+            // Logic: non-blocking read/write for clients §\label{line:io}§
+        }
+    }
+}
+\end{lstlisting}
+
+\begin{definitionbox}{Инверсия управления (State Machine)}
+При использовании \gls{epoll} программист не контролирует порядок исполнения логики линейно. Код превращается в конечный автомат (State Machine), где обработка данных разбивается на части, привязанные к готовности дескриптора. Это требует сохранения состояния (Context) сессии вручную между вызовами событий.
+\end{definitionbox}
+
+\section{Сравнительный анализ производительности}
+
+На семинаре было проведено тестирование двух реализаций сервера: на базе потоков и на базе \gls{epoll}. Нагрузка создавалась Python-скриптом, имитирующим 2000 одновременных соединений с передачей 1 байта данных.
+
+\begin{table}[h]
+  \centering
+  \caption{Метрики производительности при 2000 соединениях}
+  \label{tab:perf-metrics}
+  \begin{tabular}{@{}lcc@{}}
+    \toprule
+    Архитектура & Потребление CPU & Масштабируемость \\
+    \midrule
+    Multi-threaded & 35--40\% & Низкая (лимит потоков) \\
+    ePoll Reactor  & $\sim$25\% & Высокая ($O(1)$ на событие) \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+Разница в 10--15\% потребления CPU объясняется отсутствием избыточных переключений контекста и эффективным использованием кэша L1 в одном потоке исполнения.
+
+\section{Visuals: Сравнение архитектур}
+
+На \figref{fig:arch-comparison} показано различие в обработке запросов между блокирующей и событийной моделями.
+
+\begin{figure}[h]
+  \centering
+  \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \begin{tikzpicture}[node distance=6mm]
+      \node[box] (t1) {Thread 1};
+      \node[box, below=of t1] (t2) {Thread 2};
+      \node[box, below=of t2] (t3) {Thread N};
+      \node[box, right=1.5cm of t2, fill=orange!20, draw=orange] (kernel) {Kernel (Wait)};
+      \draw[arrow] (t1.east) -- (kernel.west);
+      \draw[arrow] (t2.east) -- (kernel.west);
+      \draw[arrow] (t3.east) -- (kernel.west);
+    \end{tikzpicture}
+    \caption{Блокирующая модель (1 поток на FD)}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \begin{tikzpicture}[node distance=6mm]
+      \node[box] (loop) {Event Loop};
+      \node[box, right=1.5cm of loop] (fds) {FD Set\\(Sockets)};
+      \node[box, below=of loop] (handler) {State\\Handler};
+      \draw[arrow] (fds) -- (loop);
+      \draw[arrow] (loop) -- (handler);
+      \draw[arrow, bend left] (handler) to (loop);
+    \end{tikzpicture}
+    \caption{Событийная модель (ePoll)}
+  \end{subfigure}
+  \caption{Сравнение архитектур сетевых серверов}
+  \label{fig:arch-comparison}
+\end{figure}
+
+\begin{summarybox}
+\begin{itemize}
+  \item \textbf{Многопоточность} интуитивно понятна, но не масштабируется из-за накладных расходов на Context Switch и потребление RAM стеками.
+  \item \textbf{Мультиплексирование (ePoll)} позволяет эффективно использовать один поток CPU для обслуживания тысяч соединений.
+  \item \textbf{Неблокирующий I/O} и флаг \texttt{O\_NONBLOCK} являются обязательным условием работы событийного цикла.
+  \item \textbf{Цена ePoll} — значительное усложнение кода и необходимость реализации логики сервера в виде конечного автомата.
+\end{itemize}
+\end{summarybox}
+
+
+\section{Унифицированный цикл событий: TimerFD, PIDFD и io\_uring}
+
+Развитие механизмов мультиплексирования в Linux привело к концепции «единого дескриптора», где не только сетевые сокеты, но и таймеры, сигналы и события жизненного цикла процессов представляются в виде файловых дескрипторов. Это позволяет строить архитектуры, в которых весь ввод-вывод и управляющая логика сосредоточены в одном вызове \texttt{epoll\_wait}.
+
+\section{Таймеры как дескрипторы: TimerFD}
+
+Традиционные методы работы с временем в системном программировании, такие как \texttt{nanosleep()} или \texttt{setitimer()}, имеют существенный недостаток: они либо блокируют поток, либо требуют асинхронной обработки через сигналы, что нарушает событийную логику \gls{epoll}. 
+
+\begin{definitionbox}{TimerFD}
+Механизм ядра Linux, создающий файловый дескриптор, который становится доступным для чтения (\texttt{EPOLLIN}) по истечении заданного интервала времени. Это позволяет интегрировать временные события непосредственно в цикл мультиплексирования.
+\end{definitionbox}
+
+\subsection{Механика настройки}
+Таймер описывается структурой \texttt{itimerspec}, состоящей из двух величин: \texttt{it\_value} (время до первого срабатывания) и \texttt{it\_interval} (период последующих срабатываний).
+
+\begin{lstlisting}[language=C, caption={Periodic timer initialization using timerfd\_settime}, style=elegant]
+struct itimerspec new\_value;
+new\_value.it\_value.tv\_sec = 1;     // First expiration after 1 second
+new\_value.it\_value.tv\_nsec = 0;
+new\_value.it\_interval.tv\_sec = 2;  // Repeat interval: 2 seconds
+new\_value.it\_interval.tv\_nsec = 0;
+
+// Create non-blocking timer descriptor
+int tfd = timerfd\_create(CLOCK\_MONOTONIC, TFD\_NONBLOCK);
+// Arm the timer
+timerfd\_settime(tfd, 0, &new\_value, NULL);
+\end{lstlisting}
+
+\begin{notebox}
+При срабатывании таймера дескриптор возвращает результат при вызове \texttt{read()}. Возвращаемое значение — это 8-байтовое беззнаковое целое число (\texttt{uint64\_t}), представляющее количество произошедших срабатываний с момента последнего чтения. Это критически важно для обнаружения «пропусков» (overruns), если основной поток был занят другой работой.
+\end{notebox}
+
+\section{События процессов: PIDFD}
+
+Долгое время интеграция завершения дочерних процессов в событийные циклы была затруднена. Сигнал \texttt{SIGCHLD} асинхронен, а вызовы семейства \texttt{wait()} блокируют поток. Относительно недавняя абстракция \texttt{pidfd} (доступна с ядер 5.2+) решает эту проблему.
+
+\begin{definitionbox}{PIDFD}
+Файловый дескриптор, ссылающийся на конкретный процесс. Он становится «готовым к чтению», когда соответствующий процесс завершается.
+\end{definitionbox}
+
+Использование \texttt{pidfd} вместо традиционных PID предотвращает состояние гонки (Race Condition), когда PID завершенного процесса переиспользуется операционной системой для нового процесса до того, как родитель успел вызвать \texttt{waitid()}. В контексте \gls{epoll} это позволяет обрабатывать завершение дочерних задач так же, как чтение из сокета.
+
+\section{Путь к Zero Syscall I/O: io\_uring}
+
+Несмотря на эффективность \gls{epoll}, он все еще требует минимум одного системного вызова (\texttt{epoll\_wait}) для получения событий и последующих вызовов (\texttt{read}, \texttt{write}) для обработки данных. Для высоконагруженных систем это создает оверхед на переключение между User и Kernel mode.
+
+\subsection{Идея батчинга (Batching)}
+Современное решение — \texttt{io\_uring}. Оно базируется на разделяемой памяти между ядром и приложением в виде двух кольцевых буферов:
+\begin{enumerate}
+    \item \textbf{Submission Queue (SQ):} Приложение записывает сюда запросы на ввод-вывод.
+    \item \textbf{Completion Queue (CQ):} Ядро записывает сюда результаты выполнения.
+\end{enumerate}
+
+\begin{notebox}
+В предельном режиме (\texttt{IORING\_SETUP\_SQPOLL}) ядро выделяет отдельный ядерный поток, который сам сканирует SQ. Приложение просто кладет данные в память и забирает результаты без единого системного вызова в основном цикле.
+\end{notebox}
+
+\section{Визуализация: Унифицированный Event Loop}
+
+На \figref{fig:unified-loop} представлена архитектура современного сетевого рантайма, объединяющего разнородные ресурсы.
+
+\begin{figure}[h]
+  \centering
+  \begin{tikzpicture}[node distance=10mm]
+    \node[box, fill=blue!10] (epoll) {epoll\_wait()};
+    
+    \node[box, left=of epoll, xshift=-1cm] (net) {Socket FD\\(Network I/O)};
+    \node[box, above left=of epoll, yshift=0.5cm] (timer) {Timer FD\\(Timeouts)};
+    \node[box, below left=of epoll, yshift=-0.5cm] (pid) {PID FD\\(Procs)};
+    
+    \node[box, right=of epoll, xshift=1cm, fill=green!10] (dispatch) {Event\\Dispatcher};
+    
+    \draw[arrow] (net) -- (epoll);
+    \draw[arrow] (timer) -- (epoll);
+    \draw[arrow] (pid) -- (epoll);
+    \draw[arrow] (epoll) -- (dispatch);
+    
+    \node[draw=AccentDark, dashed, inner sep=10pt, fit=(net) (timer) (pid)] (kernel_side) {};
+    \node[above=0.1cm of kernel_side, font=\small\itshape] {Kernel Space (Ready FDs)};
+  \end{tikzpicture}
+  \caption{Схема унификации ресурсов в событийном цикле}
+  \label{fig:unified-loop}
+\end{figure}
+
+\section{Задача с семинара: Обработка сигналов через FD}
+На семинаре обсуждалась возможность интеграции даже классических сигналов в этот цикл через \texttt{signalfd()}. Это позволяет избежать написания небезопасных (signal-unsafe) обработчиков, перенося логику обработки сигнала в обычный синхронный поток.
+
+\begin{summarybox}
+\begin{itemize}
+    \item \textbf{TimerFD} позволяет обрабатывать таймауты без прерывания логики цикла и без накладных расходов на сигналы.
+    \item \textbf{PIDFD} решает проблему зомби-процессов и Race Condition при мониторинге дочерних задач.
+    \item \textbf{Batching} и \textbf{io\_uring} представляют собой вершину эволюции I/O в Linux, стремясь исключить системные вызовы из «горячего цикла» обработки.
+    \item Единый цикл событий упрощает архитектуру, превращая все внешние воздействия в последовательность дескрипторов.
+\end{itemize}
+\end{summarybox}
+
+\section{Механика сигналов: Аппаратные корни и безопасность стека}
+
+Концепция сигналов в операционных системах семейства POSIX является прямой программной надстройкой над механизмом аппаратных прерываний (Interrupts) и исключений (Exceptions) процессора. Понимание этой связи критично для написания корректного системного кода, так как обработка сигнала нарушает линейную логику исполнения программы и вводит скрытый параллелизм внутри одного потока.
+
+\subsection{Генезис сигналов: от аппаратных прерываний к программным}
+
+На аппаратном уровне процессор реагирует на внешние события (I/O) или ошибки исполнения (деление на ноль, неверный адрес) через таблицу дескрипторов прерываний (IDT). Операционная система перехватывает эти события и транслирует их в абстракцию сигналов для пользовательских процессов.
+
+\begin{definitionbox}{Сигнал}
+Асинхронное уведомление процесса о событии. Сигналы могут генерироваться аппаратно (например, \texttt{SIGSEGV} при обращении \gls{cpu} к незамапленной странице) или программно через системный вызов \texttt{kill()}.
+\end{definitionbox}
+
+При возникновении исключения, такого как \texttt{Page Fault}, управление переходит в ядро. Ядро анализирует причину и, если ошибка произошла в User Mode, выставляет соответствующий бит в маске ожидающих сигналов (\textit{pending signals}) в \gls{pcb} процесса.
+
+\subsection{Анатомия доставки сигнала и манипуляция стеком}
+
+Когда ядро планирует возврат процесса из режима ядра в пользовательский режим, оно проверяет наличие необработанных сигналов. Если для сигнала установлен пользовательский обработчик (\textit{handler}), ядро выполняет процедуру «инъекции» вызова:
+
+\begin{enumerate}
+    \item \textbf{Сохранение контекста:} Состояние регистров (\texttt{RAX}, \texttt{RIP}, \texttt{EFLAGS} и др.) сохраняется в специальную структуру на стеке пользователя — \textit{Signal Frame}.
+    \item \textbf{Манипуляция RIP/RSP:} Ядро принудительно изменяет указатель команд (\texttt{RIP}) на адрес обработчика сигнала и корректирует указатель стека (\texttt{RSP}).
+    \item \textbf{Трамплин (Restorer):} На стек также кладется адрес кода «возврата» (\texttt{sigreturn}), который вызовет системный вызов для восстановления исходного контекста после завершения обработчика.
+\end{enumerate}
+
+\subsection{x86\_64 Red Zone и листовые функции}
+
+Важнейшим аспектом безопасности стека в архитектуре x86\_64 является понятие «красной зоны» (Red Zone). Согласно ABI (Application Binary Interface), область в 128 байт ниже текущего значения \texttt{RSP} считается зарезервированной.
+
+\begin{notebox}
+Листовые функции (те, что не вызывают другие функции) могут использовать Red Zone для хранения локальных переменных без явного изменения \texttt{RSP}. Это оптимизация, позволяющая экономить такты процессора на манипуляциях со стеком.
+\end{notebox}
+
+Чтобы не повредить данные в Red Zone, ядро при создании Signal Frame обязано сместить указатель стека еще на 128 байт глубже. Если бы ядро этого не делало, обработчик сигнала затер бы локальные переменные прерванной функции.
+
+\begin{figure}[h]
+  \centering
+  \begin{tikzpicture}[node distance=0cm, outer sep=0pt]
+    \node[box, minimum height=1.5cm, fill=white] (stack) {Main Program Stack\\(Local vars, Frames)};
+    \node[box, below=of stack, fill=gray!20, minimum height=1cm] (redzone) {Red Zone (128 bytes)};
+    \node[box, below=of redzone, fill=AccentLight, minimum height=1.5cm] (sigframe) {Signal Frame\\(Saved registers, Restorer)};
+    \node[box, below=of sigframe, fill=white, minimum height=1cm] (handler) {Handler Stack};
+
+    \draw[<-] (stack.north west) -- ++(-0.5,0) node[left] {High Addr};
+    \draw[<-] (handler.south west) -- ++(-0.5,0) node[left] {Low Addr};
+    
+    \node[right=0.5cm of stack.south east, AccentDark] (origrsp) {RSP before signal};
+    \draw[arrow, AccentDark] (origrsp) -- (stack.south east);
+    
+    \node[right=0.5cm of sigframe.north east, AccentDark] (kerneljump) {Kernel Offset};
+    \draw[arrow, AccentDark] (kerneljump) -- (redzone.south east);
+  \end{tikzpicture}
+  \caption{Stack layout during signal processing on x86\_64}
+  \label{fig:stack-layout}
+\end{figure}
+
+\subsection{Проблема Signal-Safety: почему printf — это риск}
+
+Поскольку сигнал может прервать программу в произвольной точке (между любыми двумя инструкциями ассемблера), возникает проблема реентерабельности (Reentrancy). Большинство функций стандартной библиотеки C (\texttt{libc}) не являются \textit{Async-Signal-Safe}.
+
+\begin{lstlisting}[language=C, caption={Example of a dangerous handler (Signal-Unsafe)}, style=elegant]
+void handler(int sig) {
+    // DANGEROUS: printf takes an internal mutex for the output stream
+    printf("Received signal %d\n", sig); 
+}
+
+int main() {
+    signal(SIGINT, handler);
+    while(1) {
+        // If the signal arrives while printf already holds the mutex,
+        // a Deadlock occurs: the handler will wait for the same mutex forever.
+        printf("Working...\n");
+    }
+}
+\end{lstlisting}
+
+Аналогичная проблема касается \texttt{malloc()} и \texttt{free()}: они управляют глобальными структурами данных кучи под блокировками. Прерывание процесса во время модификации связного списка блоков памяти приведет к повреждению кучи (\textit{Heap Corruption}) или вечной блокировке.
+
+\subsection{Безопасные системные вызовы}
+
+Для корректной работы внутри обработчика можно использовать только ограниченный набор функций, определенных стандартом POSIX как атомарные относительно сигналов.
+
+\begin{table}[h]
+  \centering
+  \caption{Examples of Async-Signal-Safe functions}
+  \label{tab:safe-funcs}
+  \begin{tabular}{@{}ll@{}}
+    \toprule
+    Function & Description \\
+    \midrule
+    \texttt{write()} & Direct write to descriptor (no libc buffering) \\
+    \texttt{read()} & Read from descriptor \\
+    \texttt{\_exit()} & Immediate termination without calling \texttt{atexit} functions \\
+    \texttt{kill()} & Sending a signal \\
+    \texttt{signal()} & Setting a signal handler \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\begin{summarybox}
+\begin{itemize}
+    \item Сигналы — это программные прерывания, управляемые ядром через манипуляцию \texttt{RIP} и стеком пользователя.
+    \item \textbf{Red Zone} (128 байт) защищает данные листовых функций от затирания обработчиками сигналов на архитектуре x86\_64.
+    \item Основная угроза в обработчиках — \textbf{Deadlock} из-за неатомарных функций \texttt{libc} (\texttt{printf}, \texttt{malloc}).
+    \item Золотое правило: обработчик должен быть максимально простым, в идеале — только выставлять флаг типа \texttt{volatile sig\_atomic\_t}.
+\end{itemize}
+\end{summarybox}
+
+\section{Синхронная обработка и атомарное ожидание: sigsuspend}
+
+Асинхронная природа сигналов накладывает жесткие ограничения на используемые функции. Для обхода проблем реентерабельности и неопределенного состояния памяти в системном программировании применяется паттерн синхронного ожидания: вместо выполнения сложной логики в обработчике, программа переходит в состояние сна до момента доставки сигнала, который лишь выставляет флаг готовности.
+
+\section{Проблемы пассивного и активного ожидания}
+
+Простейший способ дождаться сигнала — использование глобального флага. Однако реализация данного подхода сталкивается с двумя типами проблем: архитектурными и компиляторными.
+
+\begin{lstlisting}[language=C, caption={Busy Wait: incorrect implementation}, style=elegant]
+int flag = 0;
+void handler(int sig) { flag = 1; }
+
+int main() {
+    signal(SIGINT, handler);
+    while (!flag); // Busy wait: 100% CPU load
+    return 0;
+}
+\end{lstlisting}
+
+\subsection{Оптимизации компилятора и volatile}
+В приведенном примере компилятор при высоком уровне оптимизации (например, \texttt{-O3}) может предположить, что переменная \texttt{flag} не меняется внутри цикла, так как в теле цикла нет обращений к ней. В результате проверка выносится за пределы цикла, и программа входит в бесконечный пустой цикл.
+
+\begin{definitionbox}{volatile sig\_atomic\_t}
+\textbf{volatile} — a qualifier that forces the compiler to always read the value from memory, forbidding caching in registers.
+\textbf{sig\_atomic\_t} — an integer type that guarantees atomicity of read and write operations even if the process is interrupted by a signal. On most architectures, this is an \texttt{int} aligned to the word boundary.
+\end{definitionbox}
+
+\section{Манипуляция масками сигналов}
+
+Для управления моментом доставки сигналов используется маска заблокированных сигналов процесса. Заблокированный сигнал не игнорируется, а переходит в состояние \textit{pending} и доставляется сразу после разблокировки.
+
+\begin{lstlisting}[language=C, caption={Signal mask manipulation}, style=elegant]
+sigset\_t set;
+sigemptyset(&set);
+sigaddset(&set, SIGINT);
+
+// Block SIGINT
+sigprocmask(SIG\_BLOCK, &set, &old\_mask);
+// Critical section: SIGINT delivery is deferred
+sigprocmask(SIG\_SETMASK, &old\_mask, NULL);
+\end{lstlisting}
+
+\section{Критическая гонка (Race Condition): pause()}
+
+Исторически для ожидания сигнала использовался вызов \texttt{pause()}, который приостанавливает поток до получения любого сигнала. Попытка реализовать безопасное ожидание через разблокировку и \texttt{pause()} порождает классическую ошибку Race Condition.
+
+\begin{figure}[h]
+  \centering
+  \begin{tikzpicture}[node distance=10mm]
+    \node[box] (unblock) {sigprocmask\\(UNBLOCK)};
+    \node[box, below=of unblock] (pause) {pause()};
+    \node[right=2cm of unblock, xshift=1cm] (signal) {\textbf{Signal arrives here}};
+    
+    \draw[arrow] (unblock) -- (pause);
+    \draw[arrow, red, thick] (signal.west) -- ($(unblock.south)!0.5!(pause.north)$);
+    
+    \node[draw=red, dashed, fit=(unblock) (pause), inner sep=5pt, label=left:{\color{red}Window of vulnerability}] {};
+  \end{tikzpicture}
+  \caption{Race condition between signal unblocking and entering sleep state}
+  \label{fig:signal-race}
+\end{figure}
+
+\begin{notebox}
+Если сигнал доставляется в зазоре между \texttt{sigprocmask} и \texttt{pause()}, обработчик выполнится немедленно. После этого \texttt{pause()} уснет навсегда, так как единственный ожидаемый сигнал уже был обработан.
+\end{notebox}
+
+\section{Решение: системный вызов sigsuspend}
+
+Для устранения гонки необходимо обеспечить атомарность двух действий: временной подмены маски сигналов и перевода процесса в состояние ожидания.
+
+\begin{definitionbox}{sigsuspend}
+An atomic system call that:
+1. Sets a new temporary signal mask.
+2. Suspends the process until an unblocked signal arrives.
+3. Restores the original signal mask upon return.
+\end{definitionbox}
+
+\begin{lstlisting}[language=C, caption={Safe signal waiting pattern}, style=elegant]
+volatile sig\_atomic\_t done = 0;
+void handler(int s) { done = 1; }
+
+int main() {
+    sigset\_t mask, wait\_mask;
+    sigemptyset(&mask);
+    sigaddset(&mask, SIGINT);
+    // 1. Block signal in advance
+    sigprocmask(SIG\_BLOCK, &mask, &wait\_mask);
+    
+    signal(SIGINT, handler);
+
+    while (!done) {
+        // 2. Atomically unblock and wait
+        sigsuspend(&wait\_mask); 
+    }
+    
+    // 3. Restore original signal mask
+    sigprocmask(SIG\_SETMASK, &wait\_mask, NULL);
+    return 0;
+}
+\end{lstlisting}
+
+\section{Итоги раздела}
+\begin{summarybox}
+\begin{itemize}
+    \item \textbf{Busy wait} недопустим из-за неэффективности и непредсказуемости оптимизаций компилятора.
+    \item Использование \textbf{volatile sig\_atomic\_t} обязательно для флагов, изменяемых в обработчиках.
+    \item \textbf{sigprocmask} позволяет откладывать доставку сигналов, переводя их в состояние pending.
+    \item Вызов \textbf{sigsuspend} — единственный надежный способ ожидания конкретного сигнала, исключающий потерю уведомления в критическом интервале между разблокировкой и системным вызовом ожидания.
+\end{itemize}
+\end{summarybox}
+
+
+\section{Контроль контекста и современные рантаймы: sigaction и Go Preemption}
+
+Завершающим этапом изучения механизмов обработки сигналов является переход от упрощенного интерфейса \texttt{signal()} к профессиональному стандарту \texttt{sigaction}. Этот интерфейс предоставляет полный контроль над состоянием процесса в момент прерывания, позволяя не только обрабатывать ошибки, но и реализовывать сложные механизмы управления рантаймами высокоуровневых языков.
+
+\section{Интерфейс sigaction: Преимущества и флаги}
+
+Системный вызов \texttt{sigaction()} является предпочтительным в современных POSIX-системах, так как он гарантирует предсказуемое поведение масок сигналов и позволяет настраивать семантику прерываний через структуру \texttt{struct sigaction}.
+
+\begin{definitionbox}{Reentrancy (Реентерабельность)}
+Свойство функции или участка кода, позволяющее его безопасный повторный вызов до завершения предыдущего вызова. В контексте сигналов это означает, что функция не должна использовать статические или глобальные неблокируемые ресурсы, которые могут быть повреждены при внезапном прерывании.
+\end{definitionbox}
+
+\subsection{Флаг SA\_RESTART и обработка EINTR}
+Одной из главных сложностей при работе с сигналами является прерывание «медленных» системных вызовов (например, \texttt{read()} из сокета или \texttt{wait()}).
+
+\begin{notebox}
+Если сигнал доставляется во время выполнения системного вызова, ядро может либо вернуть ошибку \texttt{EINTR}, либо автоматически перезапустить вызов после завершения обработчика. Поведение по умолчанию зависит от версии ОС, поэтому флаг \texttt{SA\_RESTART} используется для принудительного включения автоматического перезапуска.
+\end{notebox}
+
+\section{Расширенная информация: SA\_SIGINFO и siginfo\_t}
+
+При установке флага \texttt{SA\_SIGINFO} обработчик сигнала принимает три аргумента вместо одного. Это дает доступ к структуре \texttt{siginfo\_t}, содержащей метаданные о причине возникновения сигнала.
+
+\begin{lstlisting}[language=C, caption={SIGSEGV processing using SA\_SIGINFO}, style=elegant]
+void segfault\_handler(int sig, siginfo\_t *si, void *unused) {
+    // si\_addr contains the memory address that triggered the MMU exception
+    write(STDERR\_FILENO, "Segmentation Fault at address: ", 31);
+    // In production code, address-to-HEX conversion (signal-safe) would follow
+    \_exit(EXIT\_FAILURE);
+}
+
+int main() {
+    struct sigaction sa;
+    sa.sa\_sigaction = segfault\_handler;
+    sigemptyset(&sa.sa\_mask);
+    sa.sa\_flags = SA\_SIGINFO; // Enable extended signal handler mode
+    
+    sigaction(SIGSEGV, &sa, NULL);
+    int *p = NULL;
+    *p = 42; // Triggers SIGSEGV
+    return 0;
+}
+\end{lstlisting}
+
+\section{Низкоуровневая манипуляция контекстом: ucontext\_t}
+
+Третий аргумент обработчика сигнала (\texttt{void *ucontext}) в действительности является указателем на структуру \texttt{ucontext\_t}. Она содержит полное состояние регистров процессора на момент прерывания.
+
+\begin{itemize}
+    \item \textbf{REG\_RIP:} Указатель на следующую инструкцию.
+    \item \textbf{REG\_RSP:} Текущий указатель стека.
+    \item \textbf{REG\_RAX / REG\_RBX / ...:} Значения регистров общего назначения.
+\end{itemize}
+
+Модифицируя эти значения внутри обработчика, программа может принудительно изменить точку возврата из прерывания, что является основой для реализации кооперативной и вытесняющей многозадачности в пользовательском пространстве.
+
+\section{Case Study: Вытеснение в языке Go (Preemption)}
+
+Рантайм языка Go использует сигналы для реализации вытесняющей многозадачности (Preemptive Multitasking). Если горутина выполняется слишком долго без блокирующих вызовов, планировщик Go отправляет потоку сигнал (обычно \texttt{SIGURG}).
+
+\begin{figure}[h]
+  \centering
+  \begin{tikzpicture}[node distance=10mm]
+    \node[box] (runtime) {Runtime Scheduler\\(Thread A)};
+    \node[box, below=of runtime, fill=orange!10] (signal) {Send SIGURG to\\Target Thread};
+    \node[box, right=2cm of runtime, fill=gray!10] (user_code) {User Goroutine\\(Execution)};
+    \node[box, below=of user_code, Accent] (handler) {Signal Handler\\(Context Switch)};
+    \node[box, right=2cm of handler, fill=green!10] (new_rip) {New RIP =\\Preemption Logic};
+
+    \draw[arrow] (runtime) -- (signal);
+    \draw[arrow, dashed] (signal) -- (user_code) node[midway, right] {Interrupt};
+    \draw[arrow] (user_code) -- (handler);
+    \draw[arrow] (handler) -- (new_rip);
+    \draw[arrow, bend right=45] (new_rip.north) to (runtime.east);
+  \end{tikzpicture}
+  \caption{Механизм вытеснения горутины через манипуляцию RIP}
+  \label{fig:go-preemption}
+\end{figure}
+
+Обработчик сигнала в рантайме Go анализирует сохраненный \texttt{ucontext\_t}. Если прерывание произошло в безопасной точке, он подменяет значение \texttt{REG\_RIP} в структуре на адрес функции планировщика. Когда ядро восстанавливает контекст, поток оказывается не в прерванном коде, а в процедуре переключения горутин.
+
+\section{Итоги раздела}
+\begin{summarybox}
+\begin{itemize}
+    \item \textbf{sigaction} — золотой стандарт работы с сигналами, предотвращающий Race Conditions и дающий доступ к метаданным события.
+    \item Флаг \textbf{SA\_RESTART} избавляет разработчика от необходимости вручную обрабатывать ошибки прерванных вызовов (\texttt{EINTR}).
+    \item \textbf{SA\_SIGINFO} позволяет диагностировать причины падения (\texttt{si\_addr}) и восстанавливать цепочку вызовов.
+    \item Манипуляция \textbf{ucontext\_t} превращает механизм сигналов в мощный инструмент управления потоком исполнения, используемый в рантаймах современных языков для вытеснения задач и реализации высокоуровневой абстракции «горутин».
+\end{itemize}
+\end{summarybox}
+
+\end{document}

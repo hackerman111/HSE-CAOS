@@ -1,0 +1,87 @@
+\relax 
+\providecommand \babel@aux [2]{\global \let \babel@toc \@gobbletwo }
+\@nameuse{bbl@beforestart}
+\catcode `"\active 
+\providecommand\hyper@newdestlabel[2]{}
+\providecommand\HyField@AuxAddToFields[1]{}
+\providecommand\HyField@AuxAddToCoFields[2]{}
+\providecommand\@newglossary[4]{}
+\@newglossary{main}{glg}{gls}{glo}
+\@newglossary{acronym}{alg}{acr}{acn}
+\providecommand\@glsorder[1]{}
+\providecommand\@istfilename[1]{}
+\@istfilename{main_12.ist}
+\@glsorder{word}
+\babel@aux{russian}{}
+\@writefile{toc}{\contentsline {section}{\numberline {1}Введение: Эволюция сетевых архитектур}{2}{section.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2}Многопоточная модель (Thread-per-Connection)}{2}{section.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Ограничения многопоточности}{2}{subsection.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3}Ограничения ОС: Файловые дескрипторы и ulimit}{2}{section.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4}Событийная модель: Мультиплексирование через ePoll}{3}{section.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Флаг O\_NONBLOCK}{3}{subsection.4.1}\protected@file@percent }
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {1}{\ignorespaces Setting socket to non-blocking mode}}{3}{lstlisting.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Механизм ePoll}{3}{subsection.4.2}\protected@file@percent }
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {2}{\ignorespaces Main multiplexing loop using ePoll}}{3}{lstlisting.2}\protected@file@percent }
+\newlabel{line:accept}{{14}{3}{Механизм ePoll}{lstnumber.2.14}{}}
+\newlabel{line:accept@cref}{{[subsection][2][4]4.2}{[1][3][]3}{}{}{}}
+\newlabel{line:io}{{16}{3}{Механизм ePoll}{lstnumber.2.16}{}}
+\newlabel{line:io@cref}{{[subsection][2][4]4.2}{[1][3][]3}{}{}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Сравнительный анализ производительности}{4}{section.5}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Метрики производительности при 2000 соединениях}}{4}{table.caption.1}\protected@file@percent }
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
+\newlabel{tab:perf-metrics}{{1}{4}{Метрики производительности при 2000 соединениях}{table.caption.1}{}}
+\newlabel{tab:perf-metrics@cref}{{[table][1][]1}{[1][4][]4}{}{}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Visuals: Сравнение архитектур}{4}{section.6}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Сравнение архитектур сетевых серверов}}{4}{figure.caption.2}\protected@file@percent }
+\newlabel{fig:arch-comparison}{{1}{4}{Сравнение архитектур сетевых серверов}{figure.caption.2}{}}
+\newlabel{fig:arch-comparison@cref}{{[figure][1][]1}{[1][4][]4}{}{}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {7}Унифицированный цикл событий: TimerFD, PIDFD и io\_uring}{4}{section.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {8}Таймеры как дескрипторы: TimerFD}{5}{section.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.1}Механика настройки}{5}{subsection.8.1}\protected@file@percent }
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {3}{\ignorespaces Periodic timer initialization using timerfd\_settime}}{5}{lstlisting.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {9}События процессов: PIDFD}{5}{section.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {10}Путь к Zero Syscall I/O: io\_uring}{6}{section.10}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.1}Идея батчинга (Batching)}{6}{subsection.10.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {11}Визуализация: Унифицированный Event Loop}{6}{section.11}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Схема унификации ресурсов в событийном цикле}}{6}{figure.caption.3}\protected@file@percent }
+\newlabel{fig:unified-loop}{{2}{6}{Схема унификации ресурсов в событийном цикле}{figure.caption.3}{}}
+\newlabel{fig:unified-loop@cref}{{[figure][2][]2}{[1][6][]6}{}{}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {12}Задача с семинара: Обработка сигналов через FD}{6}{section.12}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {13}Механика сигналов: Аппаратные корни и безопасность стека}{7}{section.13}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {13.1}Генезис сигналов: от аппаратных прерываний к программным}{7}{subsection.13.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {13.2}Анатомия доставки сигнала и манипуляция стеком}{7}{subsection.13.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {13.3}x86\_64 Red Zone и листовые функции}{8}{subsection.13.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Stack layout during signal processing on x86\_64}}{8}{figure.caption.4}\protected@file@percent }
+\newlabel{fig:stack-layout}{{3}{8}{Stack layout during signal processing on x86\_64}{figure.caption.4}{}}
+\newlabel{fig:stack-layout@cref}{{[figure][3][]3}{[1][8][]8}{}{}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {13.4}Проблема Signal-Safety: почему printf — это риск}{8}{subsection.13.4}\protected@file@percent }
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {4}{\ignorespaces Example of a dangerous handler (Signal-Unsafe)}}{8}{lstlisting.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {13.5}Безопасные системные вызовы}{9}{subsection.13.5}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Examples of Async-Signal-Safe functions}}{9}{table.caption.5}\protected@file@percent }
+\newlabel{tab:safe-funcs}{{2}{9}{Examples of Async-Signal-Safe functions}{table.caption.5}{}}
+\newlabel{tab:safe-funcs@cref}{{[table][2][]2}{[1][9][]9}{}{}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {14}Синхронная обработка и атомарное ожидание: sigsuspend}{9}{section.14}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {15}Проблемы пассивного и активного ожидания}{9}{section.15}\protected@file@percent }
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {5}{\ignorespaces Busy Wait: incorrect implementation}}{9}{lstlisting.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {15.1}Оптимизации компилятора и volatile}{10}{subsection.15.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {16}Манипуляция масками сигналов}{10}{section.16}\protected@file@percent }
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {6}{\ignorespaces Signal mask manipulation}}{10}{lstlisting.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {17}Критическая гонка (Race Condition): pause()}{10}{section.17}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Race condition between signal unblocking and entering sleep state}}{10}{figure.caption.6}\protected@file@percent }
+\newlabel{fig:signal-race}{{4}{10}{Race condition between signal unblocking and entering sleep state}{figure.caption.6}{}}
+\newlabel{fig:signal-race@cref}{{[figure][4][]4}{[1][10][]10}{}{}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {18}Решение: системный вызов sigsuspend}{11}{section.18}\protected@file@percent }
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {7}{\ignorespaces Safe signal waiting pattern}}{11}{lstlisting.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {19}Итоги раздела}{11}{section.19}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {20}Контроль контекста и современные рантаймы: sigaction и Go Preemption}{12}{section.20}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {21}Интерфейс sigaction: Преимущества и флаги}{12}{section.21}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {21.1}Флаг SA\_RESTART и обработка EINTR}{12}{subsection.21.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {22}Расширенная информация: SA\_SIGINFO и siginfo\_t}{12}{section.22}\protected@file@percent }
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {8}{\ignorespaces SIGSEGV processing using SA\_SIGINFO}}{12}{lstlisting.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {23}Низкоуровневая манипуляция контекстом: ucontext\_t}{13}{section.23}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {24}Case Study: Вытеснение в языке Go (Preemption)}{13}{section.24}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Механизм вытеснения горутины через манипуляцию RIP}}{13}{figure.caption.7}\protected@file@percent }
+\newlabel{fig:go-preemption}{{5}{13}{Механизм вытеснения горутины через манипуляцию RIP}{figure.caption.7}{}}
+\newlabel{fig:go-preemption@cref}{{[figure][5][]5}{[1][13][]13}{}{}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {25}Итоги раздела}{14}{section.25}\protected@file@percent }
+\gdef \@abspage@last{14}

@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2026/dev/Arch Linux) (preloaded format=pdflatex 2025.11.12)  21 DEC 2025 20:38
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2026/dev/Arch Linux) (preloaded format=pdflatex 2025.11.12)  21 DEC 2025 20:17
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**11.tex
-(./11.tex
+**main_12.tex
+(./main_12.tex
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
 (/usr/share/texmf-dist/tex/latex/base/article.cls
@@ -1012,35 +1012,174 @@ File: tikzlibraryfadings.code.tex 2023-01-15 v3.1.10 (3.1.10)
 File: pgflibraryfadings.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ))) (/usr/share/texmf-dist/tex/latex/tcolorbox/tcbposter.code.tex
 Library (tcolorbox): 'tcbposter.code.tex' version '6.4.1'
-)) (/usr/share/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
-File: l3backend-pdftex.def 2024-05-08 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count369
-\l__pdf_internal_box=\box94
-) (./11.aux)
-\openout1 = `11.aux'.
+)) (/usr/share/texmf-dist/tex/latex/glossaries/base/glossaries.sty
+Package: glossaries 2025/03/03 v4.56 (NLCT)
+ (/usr/share/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2024/03/16 v1.1e Standard LaTeX ifthen package (DPC)
+) (/usr/share/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+Package: xkeyval 2022/06/16 v2.9 package option processing (HA)
+ (/usr/share/texmf-dist/tex/generic/xkeyval/xkeyval.tex (/usr/share/texmf-dist/tex/generic/xkeyval/xkvutils.tex
+\XKV@toks=\toks49
+\XKV@tempa@toks=\toks50
+)
+\XKV@depth=\count369
+File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
+)) (/usr/share/texmf-dist/tex/latex/mfirstuc/mfirstuc.sty
+Package: mfirstuc 2022/10/14 v2.08 (NLCT)
+\@glsmfirst=\toks51
+\@glsmrest=\toks52
+) (/usr/share/texmf-dist/tex/latex/xfor/xfor.sty
+Package: xfor 2009/02/05 v1.05 (NLCT)
+) (/usr/share/texmf-dist/tex/latex/tracklang/tracklang.sty
+Package: tracklang 2025/03/04 v1.6.5 (NLCT) Track Languages
+ (/usr/share/texmf-dist/tex/generic/tracklang/tracklang.tex)) (/usr/share/texmf-dist/tex/latex/translator/translator.sty
+Package: translator 2021-05-31 v1.12d Easy translation of strings in LaTeX
+)
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 142.
-LaTeX Font Info:    ... okay on input line 142.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 142.
-LaTeX Font Info:    ... okay on input line 142.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 142.
-LaTeX Font Info:    ... okay on input line 142.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 142.
-LaTeX Font Info:    ... okay on input line 142.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 142.
-LaTeX Font Info:    ... okay on input line 142.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 142.
-LaTeX Font Info:    ... okay on input line 142.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 142.
-LaTeX Font Info:    ... okay on input line 142.
-LaTeX Font Info:    Checking defaults for T2A/cmr/m/n on input line 142.
-LaTeX Font Info:    ... okay on input line 142.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 142.
-LaTeX Font Info:    ... okay on input line 142.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 142.
-LaTeX Font Info:    ... okay on input line 142.
-Package translations Info: no dictionary file `translations-basic-dictionary-russian.trsl' found. on input line 142.
-LaTeX Info: Redefining \th on input line 142.
+Package glossaries Warning: No language module detected for `russian'.
+(glossaries)                Language modules need to be installed separately.
+(glossaries)                Please check on CTAN for a bundle called
+(glossaries)                `glossaries-russian' or similar.
+
+(/usr/share/texmf-dist/tex/latex/datatool/datatool-base.sty
+Package: datatool-base 2025/03/05 v3.0.1 (NLCT)
+ (/usr/share/texmf-dist/tex/latex/datatool/datatool-l3fp.def
+File: datatool-l3fp.def 2025/03/05 v3.0.1 (NLCT)
+)
+\@dtl@toks=\toks53
+\@dtl@tmpcount=\count370
+\dtl@tmplength=\skip80
+\l__datatool_measure_box=\box94
+\dtl@sortresult=\count371
+ (/usr/share/texmf-dist/tex/latex/datatool/datatool-utf8.ldf
+File: datatool-utf8.ldf 2025/03/05 v3.0.1 (NLCT)
+)
+\@dtl@datatype=\count372
+\l__datatool_tmpa_int=\count373
+\l__datatool_tmpb_int=\count374
+\l__datatool_tmpc_int=\count375
+\l__datatool_tmpd_int=\count376
+\l__datatool_count_int=\count377
+\l__datatool_tmp_datatype_int=\count378
+\l__datatool_tmpa_dim=\dimen334
+\l__datatool_tmpb_dim=\dimen335
+\c_datatool_unknown_int=\count379
+\l__datatool_year_int=\count380
+\l__datatool_month_int=\count381
+\l__datatool_day_int=\count382
+\l__datatool_hour_int=\count383
+\l__datatool_minute_int=\count384
+\l__datatool_second_int=\count385
+\l__datatool_tzhour_int=\count386
+\l__datatool_tzminute_int=\count387
+\l__datatool_julian_int=\count388
+\l__datatool_local_julian_int=\count389
+\l__datatool_prefix_int=\count390
+\l__datatool_suffix_int=\count391
+\@dtl@foreach@level=\count392
+
+
+Package tracklang Warning: No `datatool' support for dialect `russian'  on input line 9897.
+
+\dtl@codeA=\count393
+\dtl@codeB=\count394
+)
+\gls@level=\count395
+\@gls@tmpb=\toks54
+\gls@tmplen=\skip81
+\glskeylisttok=\toks55
+\glslabeltok=\toks56
+\glsshorttok=\toks57
+\glslongtok=\toks58
+ (/usr/share/texmf-dist/tex/latex/glossaries/styles/glossary-hypernav.sty
+Package: glossary-hypernav 2025/03/03 v4.56 (NLCT)
+) (/usr/share/texmf-dist/tex/latex/glossaries/styles/glossary-list.sty
+Package: glossary-list 2025/03/03 v4.56 (NLCT)
+\glslistdottedwidth=\skip82
+) (/usr/share/texmf-dist/tex/latex/glossaries/styles/glossary-long.sty
+Package: glossary-long 2025/03/03 v4.56 (NLCT)
+ (/usr/share/texmf-dist/tex/latex/tools/longtable.sty
+Package: longtable 2024-10-27 v4.22 Multi-page Table package (DPC)
+\LTleft=\skip83
+\LTright=\skip84
+\LTpre=\skip85
+\LTpost=\skip86
+\LTchunksize=\count396
+\LTcapwidth=\dimen336
+\LT@head=\box95
+\LT@firsthead=\box96
+\LT@foot=\box97
+\LT@lastfoot=\box98
+\LT@gbox=\box99
+\LT@cols=\count397
+\LT@rows=\count398
+\c@LT@tables=\count399
+\c@LT@chunks=\count400
+\LT@p@ftn=\toks59
+)
+\glsdescwidth=\skip87
+\glspagelistwidth=\skip88
+) (/usr/share/texmf-dist/tex/latex/glossaries/styles/glossary-super.sty
+Package: glossary-super 2025/03/03 v4.56 (NLCT)
+ (/usr/share/texmf-dist/tex/latex/supertabular/supertabular.sty
+Package: supertabular 2024/07/20 v4.2c the supertabular environment
+\c@tracingst=\count401
+\ST@wd=\dimen337
+\ST@rightskip=\skip89
+\ST@leftskip=\skip90
+\ST@parfillskip=\skip91
+\ST@pageleft=\dimen338
+\ST@headht=\dimen339
+\ST@tailht=\dimen340
+\ST@pagesofar=\dimen341
+\ST@pboxht=\dimen342
+\ST@rowht=\dimen343
+\ST@prevht=\dimen344
+\ST@toadd=\dimen345
+\ST@dimen=\dimen346
+\ST@pbox=\box100
+)) (/usr/share/texmf-dist/tex/latex/glossaries/styles/glossary-tree.sty
+Package: glossary-tree 2025/03/03 v4.56 (NLCT)
+\glstreeindent=\skip92
+))
+\glswrite=\write4
+\glo@main@file=\write5
+\openout5 = `main_12.glo'.
+
+Package glossaries Info: Writing glossary file main_12.glo on input line 145.
+\glo@acronym@file=\write6
+\openout6 = `main_12.acn'.
+
+Package glossaries Info: Writing glossary file main_12.acn on input line 145.
+ (/usr/share/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+File: l3backend-pdftex.def 2024-05-08 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count402
+\l__pdf_internal_box=\box101
+) (./main_12.aux)
+\openout1 = `main_12.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 152.
+LaTeX Font Info:    ... okay on input line 152.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 152.
+LaTeX Font Info:    ... okay on input line 152.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 152.
+LaTeX Font Info:    ... okay on input line 152.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 152.
+LaTeX Font Info:    ... okay on input line 152.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 152.
+LaTeX Font Info:    ... okay on input line 152.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 152.
+LaTeX Font Info:    ... okay on input line 152.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 152.
+LaTeX Font Info:    ... okay on input line 152.
+LaTeX Font Info:    Checking defaults for T2A/cmr/m/n on input line 152.
+LaTeX Font Info:    ... okay on input line 152.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 152.
+LaTeX Font Info:    ... okay on input line 152.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 152.
+LaTeX Font Info:    ... okay on input line 152.
+Package translations Info: no dictionary file `translations-basic-dictionary-russian.trsl' found. on input line 152.
+LaTeX Info: Redefining \th on input line 152.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -1076,20 +1215,20 @@ LaTeX Info: Redefining \th on input line 142.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Info: Redefining \microtypecontext on input line 142.
-Package microtype Info: Applying patch `item' on input line 142.
-Package microtype Info: Applying patch `toc' on input line 142.
-Package microtype Info: Applying patch `eqnum' on input line 142.
-Package microtype Info: Applying patch `footnote' on input line 142.
-Package microtype Info: Applying patch `verbatim' on input line 142.
-LaTeX Info: Redefining \microtypesetup on input line 142.
+LaTeX Info: Redefining \microtypecontext on input line 152.
+Package microtype Info: Applying patch `item' on input line 152.
+Package microtype Info: Applying patch `toc' on input line 152.
+Package microtype Info: Applying patch `eqnum' on input line 152.
+Package microtype Info: Applying patch `footnote' on input line 152.
+Package microtype Info: Applying patch `verbatim' on input line 152.
+LaTeX Info: Redefining \microtypesetup on input line 152.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
 Package microtype Info: Automatic font expansion enabled (level 2),
 (microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
 Package microtype Info: Using default expansion set `alltext-nott'.
-LaTeX Info: Redefining \showhyphens on input line 142.
+LaTeX Info: Redefining \showhyphens on input line 152.
 Package microtype Info: No adjustment of tracking.
 Package microtype Info: No adjustment of interword spacing.
 Package microtype Info: No adjustment of character kerning.
@@ -1097,33 +1236,38 @@ Package microtype Info: No adjustment of character kerning.
 File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman (RS)
 ) (/usr/share/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count370
-\scratchdimen=\dimen334
-\scratchbox=\box95
-\nofMPsegments=\count371
-\nofMParguments=\count372
-\everyMPshowfont=\toks49
-\MPscratchCnt=\count373
-\MPscratchDim=\dimen335
-\MPnumerator=\count374
-\makeMPintoPDFobject=\count375
-\everyMPtoPDFconversion=\toks50
+\scratchcounter=\count403
+\scratchdimen=\dimen347
+\scratchbox=\box102
+\nofMPsegments=\count404
+\nofMParguments=\count405
+\everyMPshowfont=\toks60
+\MPscratchCnt=\count406
+\MPscratchDim=\dimen348
+\MPnumerator=\count407
+\makeMPintoPDFobject=\count408
+\everyMPtoPDFconversion=\toks61
 ) (/usr/share/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
  (/usr/share/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
-Package hyperref Info: Link coloring ON on input line 142.
- (./11.out) (./11.out)
-\@outlinefile=\write4
-\openout4 = `11.out'.
+Package hyperref Info: Link coloring ON on input line 152.
+ (./main_12.out) (./main_12.out)
+\@outlinefile=\write7
+\openout7 = `main_12.out'.
 
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: listings package is loaded.
+Package caption Info: longtable package is loaded.
+ (/usr/share/texmf-dist/tex/latex/caption/ltcaption.sty
+Package: ltcaption 2021/01/08 v1.4c longtable captions (AR)
+)
+Package caption Info: supertabular package is loaded.
 Package caption Info: End \AtBeginDocument code.
-\c@lstlisting=\count376
-LaTeX Font Info:    Trying to load font information for T2A+cmss on input line 143.
+\c@lstlisting=\count409
+LaTeX Font Info:    Trying to load font information for T2A+cmss on input line 153.
  (/usr/share/texmf-dist/tex/latex/cyrillic/t2acmss.fd
 File: t2acmss.fd 2001/08/11 v1.0a Computer Modern Cyrillic font definitions
 )
@@ -1131,7 +1275,7 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `cmss' (encoding: T2A).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
- (./11.toc<<ot1.cmap>><<oml.cmap>><<oms.cmap>><<omx.cmap>>
+ (./main_12.toc<<ot1.cmap>><<oml.cmap>><<oms.cmap>><<omx.cmap>>
 LaTeX Font Info:    Trying to load font information for U+msa on input line 4.
  (/usr/share/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
@@ -1154,35 +1298,13 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t2a.enc}
 
+\openout4 = `main_12.ist'.
+
 ])
-\tf@toc=\write5
-\openout5 = `11.toc'.
+\tf@toc=\write8
+\openout8 = `main_12.toc'.
 
-
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 24.01996pt, for example:
-(fancyhdr)                \setlength{\headheight}{24.01996pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
-
-[2{/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 24.01996pt, for example:
-(fancyhdr)                \setlength{\headheight}{24.01996pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
-
-[3] (/usr/share/texmf-dist/tex/latex/listings/lstlang1.sty
-File: lstlang1.sty 2024/09/23 1.10c listings language file
-) (/usr/share/texmf-dist/tex/latex/listings/lstmisc.sty
-File: lstmisc.sty 2024/09/23 1.10c (Carsten Heinz)
-)
-Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on input line 258.
-LaTeX Font Info:    Trying to load font information for T2A+cmtt on input line 258.
+LaTeX Font Info:    Trying to load font information for T2A+cmtt on input line 161.
  (/usr/share/texmf-dist/tex/latex/cyrillic/t2acmtt.fd
 File: t2acmtt.fd 2001/08/11 v1.0a Computer Modern Cyrillic font definitions
 )
@@ -1190,8 +1312,6 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `cmtt' (encoding: T2A).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-LaTeX Font Info:    Font shape `T2A/cmtt/bx/n' in size <10.95> not available
-(Font)              Font shape `T2A/cmtt/m/n' tried instead on input line 259.
 
 
 
@@ -1201,12 +1321,33 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
-[4]
-Overfull \hbox (1.73973pt too wide) in paragraph at lines 296--297
-[]\T2A/cmr/bx/n/12 (-20) Address Family (AF): \T2A/cmr/m/n/12 (-20) опре-де-ля-ет про-то-кол ад-ре-са-ции. \T2A/cmtt/m/n/12 AF_INET \T2A/cmr/m/n/12 (-20) для IPv4 или \T2A/cmtt/m/n/12 AF_INET6
- []
+[2] (/usr/share/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2024/09/23 1.10c listings language file
+) (/usr/share/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2024/09/23 1.10c (Carsten Heinz)
+)
+Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on input line 190.
+LaTeX Font Info:    Font shape `T2A/cmtt/bx/n' in size <10.95> not available
+(Font)              Font shape `T2A/cmtt/m/n' tried instead on input line 191.
 
 
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 24.01996pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.01996pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
+
+[3]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 24.01996pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.01996pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
+
+[4{/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1226,7 +1367,15 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 [6]
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+./main_12.tex:396: Package glossaries Error: Glossary entry `cpu' has not been defined.
+
+See the glossaries package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.396 ...EGV} РїСЂРё РѕР±СЂР°С‰РµРЅРёРё \gls{cpu} 
+                                                  Рє РЅРµР·Р°РјР°РїР»РµРЅРЅР...
+You need to define a glossary entry before you can use it.
 
 
 
@@ -1255,13 +1404,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
-[9
-
-]
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
+[9]
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1297,27 +1440,61 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
 
-[13] (./11.aux)
+[13]
+
+Package glossaries Warning: No \printglossary or \printglossaries found. 
+(Remove \makeglossaries if you don't want any glossaries.) 
+This document will not have a glossary.
+
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 24.01996pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.01996pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-12.01996pt}.
+
+[14] (./main_12.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
-Package rerunfilecheck Info: File `11.out' has not changed.
-(rerunfilecheck)             Checksum: FD38407ECD3F0944D3BB48339C2E4E23;9863.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+
+Package rerunfilecheck Warning: File `main_12.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `main_12.out':
+(rerunfilecheck)             Before: 8A1D5CD997EC427D4E7B39318F109E1A;9515
+(rerunfilecheck)             After:  73A8D07786089D23B735AF283342E30E;11925.
  ) 
 Here is how much of TeX's memory you used:
- 41906 strings out of 474645
- 856932 string characters out of 5759192
- 1513474 words of memory out of 5000000
- 64024 multiletter control sequences out of 15000+600000
- 581271 words of font info for 151 fonts, out of 8000000 for 9000
+ 48772 strings out of 474645
+ 1007364 string characters out of 5759192
+ 1786216 words of memory out of 5000000
+ 70755 multiletter control sequences out of 15000+600000
+ 583154 words of font info for 157 fonts, out of 8000000 for 9000
  430 hyphenation exceptions out of 8191
- 84i,13n,96p,999b,2715s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1095.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfit1095.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfss1095.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfsx1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfsx1440.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfti1095.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfti1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sftt1095.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb>
-Output written on 11.pdf (13 pages, 447572 bytes).
+ 84i,13n,96p,2368b,2746s stack positions out of 10000i,1000n,20000p,200000b,200000s
+
+pdfTeX warning (dest): name{glo:epoll} has been referenced but does not exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{glo:pcb} has been referenced but does not exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{glo:fd} has been referenced but does not exist, replaced by a fixed one
+
+</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1095.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfit1095.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfss1095.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfsx1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfsx1440.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfti1095.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfti1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sftt1095.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb>
+Output written on main_12.pdf (14 pages, 478064 bytes).
 PDF statistics:
- 472 PDF objects out of 1000 (max. 8388607)
- 404 compressed objects within 5 object streams
- 127 named destinations out of 1000 (max. 500000)
- 34769 words of extra memory for PDF output out of 35830 (max. 10000000)
+ 522 PDF objects out of 1000 (max. 8388607)
+ 452 compressed objects within 5 object streams
+ 176 named destinations out of 1000 (max. 500000)
+ 38817 words of extra memory for PDF output out of 42996 (max. 10000000)
 
